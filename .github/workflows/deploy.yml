@@ -1,5 +1,7 @@
 name: Deploy to GitHub Pages
 
+# Cada push (a cualquier rama) compila la landing y la publica en
+# https://weballcode.github.io/weball-landing/
 on:
   push:
     branches: ["**"]
@@ -20,34 +22,20 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node
-        if: hashFiles('package.json') != ''
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
+          cache: npm
 
-      - name: Build (si hay package.json)
-        id: build
-        run: |
-          if [ -f package.json ]; then
-            if [ -f package-lock.json ]; then npm ci; else npm install; fi
-            if node -e "process.exit(require('./package.json').scripts?.build ? 0 : 1)"; then
-              npm run build
-            fi
-            for d in dist build out public; do
-              if [ -d "$d" ]; then echo "dir=$d" >> "$GITHUB_OUTPUT"; exit 0; fi
-            done
-          fi
-          # Sitio estático: publicar la raíz sin archivos internos
-          mkdir -p _site
-          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'node_modules' ./ _site/
-          echo "dir=_site" >> "$GITHUB_OUTPUT"
+      - run: npm ci
+
+      - run: npm run build
 
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ steps.build.outputs.dir }}
+          path: dist
 
   deploy:
     needs: build
