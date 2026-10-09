@@ -20,6 +20,8 @@ const clubs = [
   { name: 'Kimberley', file: 'kimberley' },
   { name: 'San Martín Futsal', file: 'san-martin-futsal' },
   { name: '17 de Agosto Futsal', file: '17-de-agosto' },
+  { name: 'Amigos de Villa Luro', file: 'amigos-de-villa-luro' },
+  { name: 'Club S. y D. Pacífico', file: 'pacifico' },
   { name: 'C.S.D.P.', file: 'csdp' },
   { name: 'C.A.', file: 'ca' },
   { name: 'C.P.', file: 'cp' },
@@ -29,7 +31,7 @@ function ClubWall() {
   return (
     <div>
       <p className="text-sm font-medium uppercase tracking-[0.2em] text-acero">Juegan en ligas con Weball</p>
-      <ul className="mt-6 grid grid-cols-4 gap-2 sm:grid-cols-7 lg:grid-cols-10">
+      <ul className="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-7">
         {clubs.map((c) => (
           <li key={c.file} className="bg-white" title={c.name}>
             {/* Cada imagen ya viene recortada y centrada en un cuadrado blanco del mismo tamaño */}
