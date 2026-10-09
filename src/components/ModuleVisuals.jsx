@@ -1,6 +1,5 @@
-// Animaciones de los módulos de Tecnología Weball, en la misma línea que Torneos a Medida:
+// Animaciones de los módulos de Tecnología Weball (Tribunal IA y Comunicación):
 // trazos finos, toques celestes, y cada escena se dibuja, se queda un momento y vuelve a empezar.
-import { useEffect, useState } from 'react'
 import { useCycle, useInView, usePlay } from './motion.jsx'
 
 const LINE = '#365a70'
@@ -33,84 +32,11 @@ function Replay({ play, viewBox, children }) {
   )
 }
 
-// Va contando pasos en los tiempos indicados (se reinicia en cada vuelta)
-function useSteps(on, times) {
-  const [step, setStep] = useState(0)
-  useEffect(() => {
-    if (!on) return
-    const timers = times.map((t, i) => setTimeout(() => setStep(i + 1), t))
-    return () => timers.forEach(clearTimeout)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [on])
-  return step
-}
-
 const Text = ({ children, size = 9, weight = 700, fill = BRUMA, spacing = 1.5, ...rest }) => (
   <text fontFamily={FONT} fontSize={size} fontWeight={weight} fill={fill} letterSpacing={spacing} {...rest}>
     {children}
   </text>
 )
-
-// ---------- Planilla digital: el marcador en el celular, gol a gol ----------
-const events = [
-  { min: "12'", team: 'local' },
-  { min: "34'", team: 'visita' },
-  { min: "67'", team: 'local' },
-]
-
-function PlanillaScene({ on }) {
-  const step = useSteps(on, [900, 1700, 2500, 3300])
-  const shown = events.slice(0, Math.min(step, events.length))
-  const local = shown.filter((e) => e.team === 'local').length
-  const visita = shown.filter((e) => e.team === 'visita').length
-
-  return (
-    <>
-      {/* Celular */}
-      <rect className="draw" pathLength="1" x="80" y="4" width="140" height="192" rx="16" stroke={LINE} strokeWidth="2.5" />
-      <line className="draw" pathLength="1" style={delay(200)} x1="134" y1="16" x2="166" y2="16" stroke={LINE} strokeWidth="2.5" />
-      <Text className="pop" style={delay(300)} x="150" y="38" textAnchor="middle" fill={CELESTE} size={8} spacing={2.5}>
-        PLANILLA DEL PARTIDO
-      </Text>
-      {/* Marcador */}
-      <g className="pop" style={delay(400)}>
-        <Text x="108" y="58" size={8} fill={BRUMA} spacing={1.5}>LOCAL</Text>
-        <Text x="192" y="58" size={8} fill={BRUMA} spacing={1.5} textAnchor="end">VISITA</Text>
-        <Text x="118" y="88" size={28} weight={800} fill={BLANCO} spacing={0} textAnchor="middle">{local}</Text>
-        <Text x="150" y="85" size={16} weight={800} fill={LINE} spacing={0} textAnchor="middle">-</Text>
-        <Text x="182" y="88" size={28} weight={800} fill={BLANCO} spacing={0} textAnchor="middle">{visita}</Text>
-      </g>
-      <line className="draw" pathLength="1" style={delay(500)} x1="94" y1="100" x2="206" y2="100" stroke={LINE} strokeWidth="2" />
-      {/* Goles con su minuto */}
-      {shown.map((e, i) => {
-        const y = 118 + i * 20
-        const isLocal = e.team === 'local'
-        return (
-          <g key={i} className="format-enter">
-            <Text x="96" y={y + 3} size={9} weight={800} fill={CELESTE} spacing={0}>{e.min}</Text>
-            <circle cx="120" cy={y} r="4" fill={BLANCO} />
-            <line x1="130" y1={y} x2={isLocal ? 170 : 196} y2={y} stroke={isLocal ? BRUMA : LINE} strokeWidth="3" />
-          </g>
-        )
-      })}
-      {/* Enviada */}
-      {step >= 4 && (
-        <g className="format-enter">
-          <rect x="104" y="174" width="92" height="16" fill={CELESTE} />
-          <Text x="150" y="185.5" size={8} weight={800} fill={MARINO} spacing={2} textAnchor="middle">ENVIADA ✓</Text>
-        </g>
-      )}
-    </>
-  )
-}
-
-export function PlanillaVisual() {
-  return (
-    <Scene loop={6500} label="Un celular con la planilla del partido: los goles se cargan con su minuto y el marcador se actualiza">
-      {(on) => <PlanillaScene on={on} />}
-    </Scene>
-  )
-}
 
 // ---------- Tribunal IA: del reglamento a la sanción y el boletín ----------
 // Va sobre la tarjeta celeste, por eso los trazos son marino

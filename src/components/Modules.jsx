@@ -1,6 +1,7 @@
 import { Icon, Label, Section, Title } from './ui.jsx'
 import FormatShowcase from './FormatShowcase.jsx'
-import { ComunicacionVisual, PlanillaVisual, TribunalVisual } from './ModuleVisuals.jsx'
+import { ComunicacionVisual, TribunalVisual } from './ModuleVisuals.jsx'
+import PlanillaShowcase from './PlanillaShowcase.jsx'
 import { FichajesVisual } from './FichajeVisual.jsx'
 import CustomFields from './CustomFields.jsx'
 import { Reveal } from './motion.jsx'
@@ -26,7 +27,7 @@ const modules = [
     name: 'Planilla digital',
     kicker: 'Desde el celular',
     text: 'Carga de resultados vía celular para los árbitros y la mesa de control.',
-    visual: <PlanillaVisual />,
+    extra: <PlanillaShowcase />,
   },
   {
     icon: 'tribunal',
