@@ -38,8 +38,15 @@ export function usePlay(play) {
   const [on, setOn] = useState(false)
   useEffect(() => {
     if (!play) return
-    const frame = requestAnimationFrame(() => setOn(true))
-    return () => cancelAnimationFrame(frame)
+    // Dos cuadros de espera: el navegador primero pinta el estado inicial y recién después arranca la animación
+    let second
+    const first = requestAnimationFrame(() => {
+      second = requestAnimationFrame(() => setOn(true))
+    })
+    return () => {
+      cancelAnimationFrame(first)
+      cancelAnimationFrame(second)
+    }
   }, [play])
   return on
 }
@@ -61,7 +68,7 @@ export function Reveal({ as: Tag = 'div', delay = 0, className = '', style, chil
   return (
     <Tag
       ref={ref}
-      className={`reveal ${inView ? 'is-visible' : ''} ${className}`}
+      className={`reveal ${inView ? 'revealed' : ''} ${className}`}
       style={{ transitionDelay: `${delay}ms`, ...style }}
       {...rest}
     >
