@@ -7,8 +7,8 @@ export default function Asociacion() {
       id="asociacion"
       light
       icon="gestion"
-      audience="Para asociaciones y federaciones"
-      name="Weball Asociación"
+      audience="Weball Asociación"
+      name="Federaciones"
       title="Tené tu propio sistema y tu app, con todas tus ligas adentro."
       items={[
         { name: 'Su gestión', text: 'Para que cada liga organice su actividad.' },
