@@ -2,12 +2,13 @@ import { Icon, Label, Lead, Section, Title } from './ui.jsx'
 import FormatShowcase from './FormatShowcase.jsx'
 import ComunicacionShowcase from './ComunicacionShowcase.jsx'
 import PlanillaShowcase from './PlanillaShowcase.jsx'
+import TribunalShowcase from './TribunalShowcase.jsx'
 import { FichajesVisual } from './FichajeVisual.jsx'
 import CustomFields from './CustomFields.jsx'
 import { Reveal } from './motion.jsx'
 
-// Cada solución tiene su propia sección, igual que Tribunal IA. Alternan marino claro y marino
-// (las animaciones están pensadas para fondo oscuro).
+// Cada solución tiene su propia sección. Alternan marino claro y marino (las animaciones están
+// pensadas para fondo oscuro), salvo Tribunal IA, que va en celeste.
 const modules = [
   {
     id: 'fichajes',
@@ -35,6 +36,16 @@ const modules = [
     show: <PlanillaShowcase />,
   },
   {
+    // Tribunal IA va en celeste para que se destaque
+    id: 'tribunal',
+    icon: 'tribunal',
+    short: 'Tribunal IA',
+    name: 'Tribunal IA',
+    text: 'Cargá tus reglamentos y dejá que nuestro agente se ocupe de sancionar.',
+    show: <TribunalShowcase />,
+    tone: 'celeste',
+  },
+  {
     id: 'comunicacion',
     icon: 'comunidad',
     short: 'Comunicación',
@@ -44,10 +55,7 @@ const modules = [
   },
 ]
 
-const links = [
-  ...modules.map((m) => ({ href: `#${m.id}`, icon: m.icon, label: m.short })),
-  { href: '#tribunal', icon: 'tribunal', label: 'Tribunal IA' },
-]
+const links = modules.map((m) => ({ href: `#${m.id}`, icon: m.icon, label: m.short }))
 
 // Una solución: texto a la izquierda, animación a la derecha (mismo esquema que Tribunal IA)
 export function SolutionLayout({ id, tone, icon, name, text, side, show }) {
@@ -109,7 +117,7 @@ export default function Modules() {
       </Section>
 
       {modules.map((m, i) => (
-        <SolutionLayout key={m.id} {...m} tone={i % 2 === 0 ? 'darker' : 'dark'} />
+        <SolutionLayout key={m.id} {...m} tone={m.tone || (i % 2 === 0 ? 'darker' : 'dark')} />
       ))}
     </>
   )

@@ -7,7 +7,6 @@ import Scores from './components/Scores.jsx'
 import Asociacion from './components/Asociacion.jsx'
 import Sponsors from './components/Sponsors.jsx'
 import Modules from './components/Modules.jsx'
-import Tribunal from './components/Tribunal.jsx'
 import Investors from './components/Investors.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
@@ -22,7 +21,6 @@ export default function App() {
         <Ticker />
         <Products />
         <Modules />
-        <Tribunal />
         <Liga />
         <Scores />
         <Asociacion />
