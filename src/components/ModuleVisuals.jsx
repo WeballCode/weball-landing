@@ -1,4 +1,4 @@
-// Animaciones de los módulos de Tecnología Weball (Tribunal IA y Comunicación):
+// Animaciones de los módulos de Tecnología Weball (Comunicación):
 // trazos finos, toques celestes, y cada escena se dibuja, se queda un momento y vuelve a empezar.
 import { useCycle, useInView, usePlay } from './motion.jsx'
 
@@ -37,69 +37,6 @@ const Text = ({ children, size = 9, weight = 700, fill = BRUMA, spacing = 1.5, .
     {children}
   </text>
 )
-
-// ---------- Tribunal IA: del reglamento a la sanción y el boletín ----------
-// Va sobre la tarjeta celeste, por eso los trazos son marino
-export function TribunalVisual() {
-  return (
-    <Scene loop={7000} label="El agente de IA lee el reglamento y propone la sanción, que sale en el boletín">
-      {() => (
-        <>
-          {/* Reglamento */}
-          <rect className="draw" pathLength="1" x="2" y="14" width="96" height="172" stroke={MARINO} strokeWidth="2.5" />
-          <Text className="pop" x="12" y="34" size={8} weight={800} fill={MARINO} spacing={1.5}>REGLAMENTO</Text>
-          {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-            <line
-              key={i}
-              className="draw"
-              pathLength="1"
-              style={delay(200 + i * 70)}
-              x1="12"
-              y1={52 + i * 18}
-              x2={[78, 64, 82, 56, 74, 68, 50][i]}
-              y2={52 + i * 18}
-              stroke={MARINO}
-              strokeOpacity="0.45"
-              strokeWidth="3"
-            />
-          ))}
-          {/* Barra que escanea */}
-          <rect className="scan" x="4" y="40" width="92" height="10" fill={MARINO} fillOpacity="0.18" />
-          {/* Flecha al agente */}
-          <path className="draw" pathLength="1" style={delay(1300)} d="M104 100h26" stroke={MARINO} strokeWidth="2.5" />
-          <g className="pop" style={delay(1600)}>
-            <circle cx="152" cy="100" r="22" fill={MARINO} />
-            <Text x="152" y="105.5" size={15} weight={800} fill={CELESTE} spacing={0} textAnchor="middle">IA</Text>
-          </g>
-          <path className="draw" pathLength="1" style={delay(2000)} d="M178 100h20" stroke={MARINO} strokeWidth="2.5" />
-          {/* Sanción */}
-          <g className="pop" style={delay(2300)}>
-            <rect x="202" y="62" width="96" height="50" fill={MARINO} />
-            <Text x="212" y="80" size={8} weight={700} fill={CELESTE} spacing={2}>SANCIÓN</Text>
-            <Text x="212" y="102" size={16} weight={800} fill={BLANCO} spacing={0}>2 FECHAS</Text>
-          </g>
-          {/* Boletín */}
-          <Text className="pop" style={delay(2800)} x="202" y="132" size={8} weight={800} fill={MARINO} spacing={2}>BOLETÍN</Text>
-          {[0, 1, 2].map((i) => (
-            <line
-              key={i}
-              className="draw"
-              pathLength="1"
-              style={delay(2900 + i * 150)}
-              x1="202"
-              y1={144 + i * 14}
-              x2={[290, 270, 282][i]}
-              y2={144 + i * 14}
-              stroke={MARINO}
-              strokeOpacity="0.45"
-              strokeWidth="3"
-            />
-          ))}
-        </>
-      )}
-    </Scene>
-  )
-}
 
 // ---------- Comunicación: la liga avisa y cada uno recibe ----------
 const targets = [

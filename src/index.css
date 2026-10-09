@@ -138,18 +138,16 @@ body {
   animation: drop 0.6s cubic-bezier(0.5, 0, 0.5, 1) both;
 }
 
-/* Tribunal IA: barra que escanea el reglamento */
-@keyframes scan {
-  0% { transform: translateY(0); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(130px); opacity: 0; }
+/* Tribunal IA: informes que entran deslizándose desde la izquierda */
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: none; }
 }
-.scan {
+.slide-in {
   opacity: 0;
 }
-.is-visible .scan {
-  animation: scan 1.4s ease-in-out 0.4s both;
+.is-visible .slide-in {
+  animation: slide-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 /* Comunicación: avisos que viajan y destinatarios que se iluminan al recibir */
@@ -194,10 +192,14 @@ body {
   .chip-in {
     animation: none;
   }
-  .scan,
   .travel,
   .ping {
     display: none;
+  }
+  .slide-in,
+  .is-visible .slide-in {
+    animation: none;
+    opacity: 1;
   }
   .drop,
   .is-visible .drop {

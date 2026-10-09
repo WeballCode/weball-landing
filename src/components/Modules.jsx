@@ -1,6 +1,7 @@
 import { Icon, Label, Section, Title } from './ui.jsx'
 import FormatShowcase from './FormatShowcase.jsx'
-import { ComunicacionVisual, TribunalVisual } from './ModuleVisuals.jsx'
+import { ComunicacionVisual } from './ModuleVisuals.jsx'
+import TribunalShowcase from './TribunalShowcase.jsx'
 import PlanillaShowcase from './PlanillaShowcase.jsx'
 import { FichajesVisual } from './FichajeVisual.jsx'
 import CustomFields from './CustomFields.jsx'
@@ -29,8 +30,8 @@ const modules = [
   {
     icon: 'tribunal',
     name: 'Tribunal IA',
-    text: 'Cargá tus reglamentos y dejá que nuestro agente se ocupe de sancionar. Podés ajustarlo y regular sus permisos. Generación automática de boletines, como las mejores ligas del mundo.',
-    visual: <TribunalVisual />,
+    text: 'Cargá tus reglamentos y dejá que nuestro agente se ocupe de sancionar.',
+    extra: <TribunalShowcase />,
     featured: true,
   },
   {
