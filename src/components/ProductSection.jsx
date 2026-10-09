@@ -1,7 +1,7 @@
 import { Icon, Section } from './ui.jsx'
 
 // Sección de un producto Weball: nombre, promesa y lista numerada de lo que incluye
-export default function ProductSection({ id, light = false, icon, name, audience, title, items, closing, cta, visual, stats }) {
+export default function ProductSection({ id, light = false, icon, name, audience, title, items, closing, cta, visual, stats, footer }) {
   const muted = light ? 'text-pizarra' : 'text-bruma'
   const accent = light ? 'text-celeste-profundo' : 'text-celeste'
 
@@ -83,6 +83,8 @@ export default function ProductSection({ id, light = false, icon, name, audience
         )}
         </div>
       </div>
+
+      {footer && <div className="mt-16">{footer}</div>}
     </Section>
   )
 }

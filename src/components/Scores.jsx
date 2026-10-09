@@ -1,9 +1,44 @@
 import ProductSection from './ProductSection.jsx'
 import { COMMUNITY_URL } from '../links.js'
 
-// Escudos de clubes que hoy están en Weball: guardá cada imagen en public/clubes/ y sumala acá,
-// por ejemplo { name: 'Club Atlético Ejemplo', src: './clubes/ejemplo.png' }. Si la lista está vacía, no se muestra.
-const clubs = []
+// Escudos de clubes que hoy juegan en ligas con Weball. Las imágenes están en public/clubes/.
+// Para sumar uno: guardá la imagen ahí y agregá una línea con su nombre.
+const clubs = [
+  { name: 'Boca Juniors', file: 'boca-juniors' },
+  { name: 'River Plate', file: 'river-plate' },
+  { name: 'Racing Club', file: 'racing' },
+  { name: 'Independiente', file: 'independiente' },
+  { name: 'San Lorenzo', file: 'san-lorenzo' },
+  { name: 'Huracán', file: 'huracan' },
+  { name: 'Vélez Sarsfield', file: 'velez' },
+  { name: 'Estudiantes de La Plata', file: 'estudiantes' },
+  { name: 'Banfield', file: 'banfield' },
+  { name: 'Platense', file: 'platense' },
+  { name: 'Ferro Carril Oeste', file: 'ferro' },
+  { name: 'All Boys', file: 'all-boys' },
+  { name: 'Deportivo Morón', file: 'deportivo-moron' },
+  { name: 'Kimberley', file: 'kimberley' },
+  { name: 'San Martín Futsal', file: 'san-martin-futsal' },
+  { name: '17 de Agosto Futsal', file: '17-de-agosto' },
+  { name: 'C.S.D.P.', file: 'csdp' },
+  { name: 'C.A.', file: 'ca' },
+  { name: 'C.P.', file: 'cp' },
+]
+
+function ClubWall() {
+  return (
+    <div>
+      <p className="text-sm font-medium uppercase tracking-[0.2em] text-acero">Juegan en ligas con Weball</p>
+      <ul className="mt-6 grid grid-cols-4 gap-2 sm:grid-cols-7 lg:grid-cols-10">
+        {clubs.map((c) => (
+          <li key={c.file} className="grid aspect-square place-items-center bg-white p-3" title={c.name}>
+            <img src={`./clubes/${c.file}.png`} alt={c.name} loading="lazy" className="h-full w-full object-contain" />
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export default function Scores() {
   return (
@@ -20,26 +55,13 @@ export default function Scores() {
         { value: '+400', label: 'Clubes' },
         { value: '+300', label: 'Árbitros' },
       ]}
-      visual={
-        clubs.length > 0 && (
-          <div>
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-acero">Están en Weball</p>
-            <ul className="mt-4 flex flex-wrap items-center gap-6">
-              {clubs.map((c) => (
-                <li key={c.name}>
-                  <img src={c.src} alt={c.name} title={c.name} className="h-14 w-14 object-contain" />
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
       items={[
         { name: 'Estadísticas de todos los torneos', text: 'Partidos, resultados y tablas.' },
         { name: 'Perfiles de jugadores, cuerpo técnico y árbitros' },
       ]}
       closing="Dale a tu torneo la visibilidad que merece"
       cta={COMMUNITY_URL ? { label: 'Entrá a We Are Weball', href: COMMUNITY_URL, external: true } : null}
+      footer={<ClubWall />}
     />
   )
 }
