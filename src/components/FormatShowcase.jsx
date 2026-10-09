@@ -211,7 +211,7 @@ export default function FormatShowcase() {
   const current = formats[index]
 
   return (
-    <div ref={ref} className="flex flex-col gap-6">
+    <div ref={ref} className="flex flex-col gap-8">
       {/* Arriba: el dibujo del formato */}
       <div
         key={`d-${round}`}

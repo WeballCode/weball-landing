@@ -79,7 +79,7 @@ export default function Modules() {
                 {m.caption}
               </p>
             )}
-            {m.extra && <div className={m.visual ? '' : 'mt-auto pt-4'}>{m.extra}</div>}
+            {m.extra && <div className={m.visual ? 'pt-4' : 'mt-auto pt-4'}>{m.extra}</div>}
           </div>
           </Reveal>
         ))}
