@@ -1,6 +1,7 @@
 import { Icon, Label, Section, Title } from './ui.jsx'
 import { FormatShowcase } from './Illustrations.jsx'
-import { ComunicacionVisual, FichajesVisual, PlanillaVisual, TribunalVisual } from './ModuleVisuals.jsx'
+import { ComunicacionVisual, PlanillaVisual, TribunalVisual } from './ModuleVisuals.jsx'
+import { FichajesVisual } from './FichajeVisual.jsx'
 import { Reveal } from './motion.jsx'
 
 const modules = [
@@ -8,8 +9,10 @@ const modules = [
     icon: 'credencial',
     name: 'Fichajes',
     kicker: 'Dinámico y personalizado',
-    text: 'Además de los datos básicos, pedí lo que vos necesites.',
+    text: 'El jugador se ficha solo desde el celular, de la invitación a la credencial digital.',
     visual: <FichajesVisual />,
+    caption: 'Sumá los datos que tu liga necesite: talle de zapatillas, de remera, dirección y más.',
+    captionAccent: true,
   },
   {
     icon: 'competicion',
@@ -73,7 +76,11 @@ export default function Modules() {
             <p className={`leading-relaxed ${m.featured ? 'text-marino' : 'text-bruma'}`}>{m.text}</p>
             {m.visual && <div className="mt-auto pt-4">{m.visual}</div>}
             {m.caption && (
-              <p className={`border-t-2 pt-4 font-bold leading-relaxed ${m.featured ? 'border-marino' : 'border-linea'}`}>
+              <p
+                className={`border-t-2 pt-4 font-bold leading-relaxed ${m.featured ? 'border-marino' : 'border-linea'} ${
+                  m.captionAccent ? 'text-lg text-celeste' : ''
+                }`}
+              >
                 {m.caption}
               </p>
             )}
