@@ -47,7 +47,7 @@ export default function Modules() {
     <Section id="modulos">
       <Label>Tecnología Weball</Label>
       <Title>
-        Soluciones <span className="text-celeste">para el deporte</span>
+        Soluciones
       </Title>
       <Reveal as="p" delay={200} className="mt-6 max-w-2xl text-lg leading-relaxed text-bruma">
         Como no somos los únicos, decidimos hacer la diferencia.
