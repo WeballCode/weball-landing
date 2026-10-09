@@ -10,8 +10,8 @@ import { Reveal } from './motion.jsx'
 const modules = [
   {
     icon: 'credencial',
-    name: 'Fichajes a tu medida',
-    text: 'El jugador se ficha solo desde el celular, con la info que vos le pidas.',
+    name: 'Fichajes a medida',
+    text: 'El jugador se ficha solo desde el celular. Vos elegís cómo y qué info le vas a pedir.',
     visual: <FichajesVisual />,
     extra: <CustomFields />,
   },
