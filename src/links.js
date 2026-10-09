@@ -9,5 +9,5 @@ export function whatsappLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
 }
 
-// Comunidad We Are Weball (Weball Scores). Mientras esté vacío, el botón a la comunidad no se muestra.
-export const COMMUNITY_URL = ''
+// Comunidad We Are Weball (Weball Scores): página con todos los partidos
+export const COMMUNITY_URL = 'https://we-are-weball.com/partidos'
