@@ -16,21 +16,20 @@ export default function Hero() {
         <CourtLines className="pointer-events-none absolute top-1/2 -right-28 h-[115%] -translate-y-1/2 opacity-30 sm:-right-16 lg:right-[max(1.5rem,calc((100vw-72rem)/2))] lg:h-[88%] lg:opacity-100" />
         <div className="relative mx-auto max-w-6xl px-4 pt-16 pb-16 sm:px-6 sm:pt-24 sm:pb-20">
           <Reveal as="p" className="text-sm font-medium uppercase tracking-[0.2em] text-celeste">
-            Organizamos y conectamos al deporte amateur
+            Potenciamos el deporte amateur
           </Reveal>
 
           <h1 className="mt-6 max-w-4xl text-[2.75rem] font-extrabold uppercase leading-[0.95] sm:text-7xl lg:text-8xl">
             <Reveal as="span" delay={150} className="block">
-              Llevá tu liga a
+              Llevá tu liga al
             </Reveal>
             <Reveal as="span" delay={300} className="block text-celeste">
-              otro nivel.
+              próximo nivel.
             </Reveal>
           </h1>
 
           <Reveal as="p" delay={450} className="mt-8 max-w-2xl text-lg leading-relaxed text-bruma sm:text-xl">
-            Weball le da al deporte amateur el orden y la visibilidad que merece. Organizamos ligas y asociaciones,
-            conectamos a jugadores, clubes y público, y sumamos a las marcas a la experiencia.
+            Organizá, mostrá y hacé crecer tu liga. Todo en un solo lugar.
           </Reveal>
 
           <Reveal delay={600} className="mt-10 flex flex-col gap-3 sm:flex-row">
