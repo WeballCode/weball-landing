@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
 const links = [
-  { href: '#modulos', label: 'Tecnología' },
+  { href: '#modulos', label: 'Soluciones' },
+  { href: '#tribunal', label: 'Tribunal IA' },
   { href: '#liga', label: 'Liga' },
   { href: '#scores', label: 'Scores' },
   { href: '#asociacion', label: 'Asociación' },

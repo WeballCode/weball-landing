@@ -201,17 +201,18 @@ export default function PlanillaShowcase() {
   const current = steps[index]
 
   return (
-    <div ref={ref} className="flex flex-col gap-8">
+    // En pantallas medianas para arriba, el recuadro del paso va al costado del celular (ocupa menos alto)
+    <div ref={ref} className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-6">
       <div
         key={`p-${round}`}
-        className="format-enter mx-auto w-full max-w-[220px]"
+        className="format-enter mx-auto w-full max-w-[200px] shrink-0 sm:mx-0"
         role="img"
         aria-label={`Planilla digital, paso ${index + 1}: ${current.name}`}
       >
         <Phone index={index} play={inView} />
       </div>
 
-      <div className="bg-celeste p-4 text-marino">
+      <div className="bg-celeste p-4 text-marino sm:flex-1">
         <div key={`t-${round}`} className="format-enter flex items-center gap-4">
           <span className="text-5xl font-extrabold leading-none text-blanco">{`0${index + 1}`}</span>
           <p className="text-lg font-extrabold uppercase leading-tight">{current.name}</p>
