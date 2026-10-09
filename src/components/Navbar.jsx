@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const links = [
   { href: '#modulos', label: 'Soluciones' },
@@ -12,9 +12,27 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [hidden, setHidden] = useState(false)
+
+  // Al bajar el menú se esconde para liberar pantalla; al subir vuelve a aparecer
+  useEffect(() => {
+    let lastY = window.scrollY
+    const onScroll = () => {
+      const y = window.scrollY
+      if (Math.abs(y - lastY) < 6) return
+      setHidden(y > lastY && y > 80)
+      lastY = y
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-linea bg-marino">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 border-b border-linea bg-marino transition-transform duration-300 ${
+        hidden && !open ? '-translate-y-full' : 'translate-y-0'
+      }`}
+    >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#inicio" aria-label="Weball, inicio">
           <img src="./logo-blanco.png" alt="Weball" className="h-8 w-auto" />
@@ -41,8 +59,10 @@ export default function Navbar() {
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
         >
-          <span className="relative block h-3 w-5">
+          {/* Tres líneas; al abrir se convierten en una X */}
+          <span className="relative block h-3.5 w-5">
             <span className={`absolute left-0 h-0.5 w-5 bg-blanco transition ${open ? 'top-1.5 rotate-45' : 'top-0'}`} />
+            <span className={`absolute left-0 top-1.5 h-0.5 w-5 bg-blanco transition ${open ? 'opacity-0' : 'opacity-100'}`} />
             <span className={`absolute left-0 h-0.5 w-5 bg-blanco transition ${open ? 'top-1.5 -rotate-45' : 'top-3'}`} />
           </span>
         </button>

@@ -2,7 +2,7 @@
 
 // WhatsApp de contacto: +54 11 7073-6993 (en el link va con el 9 de celular argentino y sin espacios)
 export const WHATSAPP_NUMBER = '5491170736993'
-export const WHATSAPP_LABEL = '+54 11 7073-6993'
+export const WHATSAPP_LABEL = '+54 11 7073 6993'
 
 // Arma el link de WhatsApp con un mensaje ya escrito
 export function whatsappLink(message) {

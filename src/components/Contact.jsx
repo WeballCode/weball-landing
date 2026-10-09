@@ -18,7 +18,7 @@ export default function Contact() {
           <Title>Te mostramos tu liga funcionando</Title>
           <Lead tone="celeste">Contanos quién sos por WhatsApp y te mostramos Weball en acción.</Lead>
           <Reveal as="p" delay={300} className="mt-5">
-            O escribinos directo al{' '}
+            Escribinos al{' '}
             <a
               href={whatsappLink('Hola Weball, quiero más información.')}
               target="_blank"

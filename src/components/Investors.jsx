@@ -4,11 +4,11 @@ import { Reveal } from './motion.jsx'
 const points = [
   {
     title: 'Un mercado enorme',
-    text: 'Millones de personas juegan deporte amateur todas las semanas, y la mayoría de las ligas todavía se organiza con papel, planillas y grupos de WhatsApp.',
+    text: 'Millones juegan cada semana y la mayoría de las ligas sigue con papel, planillas y WhatsApp.',
   },
   {
     title: 'Crece desde adentro',
-    text: 'Cada asociación suma a sus ligas, cada liga a sus clubes, y cada club a sus jugadores y sus familias.',
+    text: 'Cada asociación trae sus ligas; cada liga, sus clubes; cada club, sus jugadores y familias.',
   },
   {
     title: 'Las marcas lo financian',
