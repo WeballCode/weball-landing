@@ -44,6 +44,7 @@ const paths = {
   competicion: 'M4 5h5v4H4zM4 15h5v4H4zM15 10h5v4h-5zM9 7h3v10H9M12 12h3',
   app: 'M7 2h10v20H7zM11 18h2',
   comunidad: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 11a3 3 0 1 0 0-6M3 20a6 6 0 0 1 12 0M15 14a6 6 0 0 1 6 6',
+  rayo: 'M13 2L4 14h7l-1 8 9-12h-7l1-8z',
 }
 
 export function Icon({ name, className = 'h-7 w-7' }) {

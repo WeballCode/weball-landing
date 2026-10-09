@@ -49,13 +49,17 @@ export default function Modules() {
   return (
     <Section id="modulos" tight>
       {/* Encabezado en una línea */}
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+      <div className="flex items-end justify-between gap-6">
         <div>
           <Label>Tecnología Weball</Label>
           <Title>Soluciones</Title>
+          <Reveal as="p" delay={200} className="mt-3 text-lg leading-relaxed text-bruma">
+            Como no somos los únicos, decidimos hacer la diferencia.
+          </Reveal>
         </div>
-        <Reveal as="p" delay={200} className="max-w-md text-lg leading-relaxed text-bruma lg:pb-1 lg:text-right">
-          Como no somos los únicos, decidimos hacer la diferencia.
+        {/* Ícono: el rayo de "hacer la diferencia" */}
+        <Reveal delay={300} className="hidden shrink-0 place-items-center rounded-full border-2 border-celeste p-4 text-celeste sm:grid">
+          <Icon name="rayo" className="h-10 w-10" />
         </Reveal>
       </div>
 
@@ -64,7 +68,7 @@ export default function Modules() {
         key={active}
         role="tabpanel"
         aria-label={m.name}
-        className="format-enter mt-8 grid gap-8 border-t-[6px] border-celeste bg-marino-claro p-6 sm:p-8 lg:min-h-[470px] lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-12"
+        className="format-enter mt-6 grid gap-8 border-t-[6px] border-celeste bg-marino-claro p-6 sm:p-8 lg:min-h-[464px] lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-12"
       >
         <div className="flex min-w-0 flex-col gap-6">
           <div>
