@@ -13,8 +13,9 @@ const modules = [
     icon: 'competicion',
     name: 'Torneos a Medida',
     kicker: 'Módulo de competición',
-    text: 'Organizá por temporada, divisiones y categorías para darle estructura a largo plazo a tu liga. Todos los formatos: liga, copa y 100% personalizados, a medida y en minutos.',
+    text: 'Organizá por temporada, divisiones y categorías para darle estructura a largo plazo a tu liga.',
     visual: <FormatShowcase />,
+    caption: 'Todos los formatos: liga, copa y 100% personalizados, a medida y en minutos.',
   },
   {
     icon: 'app',
@@ -66,6 +67,11 @@ export default function Modules() {
             <h3 className="text-3xl font-extrabold uppercase leading-none">{m.name}</h3>
             <p className={`leading-relaxed ${m.featured ? 'text-marino' : 'text-bruma'}`}>{m.text}</p>
             {m.visual && <div className="mt-auto pt-4">{m.visual}</div>}
+            {m.caption && (
+              <p className={`border-t-2 pt-4 font-bold leading-relaxed ${m.featured ? 'border-marino' : 'border-linea'}`}>
+                {m.caption}
+              </p>
+            )}
           </div>
           </Reveal>
         ))}
