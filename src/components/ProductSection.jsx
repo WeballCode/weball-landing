@@ -16,24 +16,10 @@ export default function ProductSection({ id, light = false, icon, name, audience
           <h2 className="mt-6 text-5xl font-extrabold uppercase leading-none sm:text-7xl">{name}</h2>
           <p className={`mt-6 text-2xl font-bold leading-snug ${light ? 'text-marino' : 'text-blanco'}`}>{title}</p>
 
-          {cta && (
-            <a
-              href={cta.href}
-              target={cta.external ? '_blank' : undefined}
-              rel={cta.external ? 'noopener noreferrer' : undefined}
-              className={`mt-10 self-start px-7 py-4 font-bold uppercase tracking-wide transition ${
-                light
-                  ? 'bg-marino text-blanco hover:bg-marino-claro'
-                  : 'bg-celeste text-marino hover:bg-celeste-claro'
-              }`}
-            >
-              {cta.label}
-            </a>
-          )}
-
           {visual && <div className="mt-12 lg:mt-auto lg:pt-12">{visual}</div>}
         </div>
 
+        <div className="flex flex-col">
         <div
           className={`flex flex-col border-t-[6px] p-7 sm:p-10 ${
             light ? 'border-marino bg-blanco' : 'border-celeste bg-marino-claro'
@@ -62,6 +48,23 @@ export default function ProductSection({ id, light = false, icon, name, audience
           >
             {closing}
           </p>
+        </div>
+
+        {/* El botón va debajo de los pasos */}
+        {cta && (
+          <a
+            href={cta.href}
+            target={cta.external ? '_blank' : undefined}
+            rel={cta.external ? 'noopener noreferrer' : undefined}
+            className={`mt-6 px-7 py-4 text-center font-bold uppercase tracking-wide transition sm:self-start ${
+              light
+                ? 'bg-marino text-blanco hover:bg-marino-claro'
+                : 'bg-celeste text-marino hover:bg-celeste-claro'
+            }`}
+          >
+            {cta.label}
+          </a>
+        )}
         </div>
       </div>
     </Section>
