@@ -11,6 +11,7 @@ export default function ProductSection({
   audience,
   title,
   items = [],
+  itemsTitle,
   closing,
   cta,
   visual,
@@ -90,6 +91,17 @@ export default function ProductSection({
               light ? 'border-marino bg-blanco' : 'border-celeste bg-marino-claro'
             }`}
           >
+            {itemsTitle && (
+              <Reveal
+                as="p"
+                delay={250}
+                className={`border-b-4 pb-4 text-sm font-bold uppercase tracking-[0.2em] ${
+                  light ? 'border-marino text-celeste-profundo' : 'border-celeste text-celeste'
+                }`}
+              >
+                {itemsTitle}
+              </Reveal>
+            )}
             <ol>
               {items.map((item, i) => (
                 <Reveal
