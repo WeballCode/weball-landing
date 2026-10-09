@@ -1,4 +1,4 @@
-// Weball Scores: tarjeta "Conocé la comunidad" con un feed de resultados que van entrando en vivo.
+// Weball Scores: tarjeta "Partidos todos los días" con un feed de resultados que van entrando en vivo.
 import { useEffect, useState } from 'react'
 import { prefersReducedMotion, useInView } from './motion.jsx'
 import { COMMUNITY_URL } from '../links.js'
@@ -36,10 +36,7 @@ export default function ScoresFeed() {
   return (
     <div ref={ref} className="flex flex-col border-t-[6px] border-celeste bg-marino-claro p-7 sm:p-10">
       <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-3xl font-extrabold uppercase leading-none">Conocé la comunidad</p>
-          <p className="mt-2 text-bruma">Partidos todos los días.</p>
-        </div>
+        <p className="text-3xl font-extrabold uppercase leading-none">Partidos todos los días</p>
         <span className="flex shrink-0 items-center gap-1.5 bg-celeste px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-marino">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-marino" />
           En vivo
