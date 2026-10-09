@@ -33,6 +33,28 @@ export function useInView({ threshold = 0.1, rootMargin = '0px 0px -8% 0px' } = 
   return [ref, inView]
 }
 
+// Prende la animación un instante después de montarse (para que las transiciones arranquen de cero)
+export function usePlay(play) {
+  const [on, setOn] = useState(false)
+  useEffect(() => {
+    if (!play) return
+    const frame = requestAnimationFrame(() => setOn(true))
+    return () => cancelAnimationFrame(frame)
+  }, [play])
+  return on
+}
+
+// Cuenta vueltas cada tantos milisegundos mientras se ve, para repetir una animación en loop
+export function useCycle(play, ms) {
+  const [cycle, setCycle] = useState(0)
+  useEffect(() => {
+    if (!play || prefersReducedMotion()) return
+    const timer = setInterval(() => setCycle((c) => c + 1), ms)
+    return () => clearInterval(timer)
+  }, [play, ms])
+  return cycle
+}
+
 // Hace aparecer su contenido con un deslizamiento suave cuando entra en pantalla
 export function Reveal({ as: Tag = 'div', delay = 0, className = '', style, children, ...rest }) {
   const [ref, inView] = useInView()

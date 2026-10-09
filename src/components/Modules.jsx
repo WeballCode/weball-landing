@@ -1,5 +1,6 @@
 import { Icon, Label, Section, Title } from './ui.jsx'
 import { FormatShowcase } from './Illustrations.jsx'
+import { ComunicacionVisual, FichajesVisual, PlanillaVisual, TribunalVisual } from './ModuleVisuals.jsx'
 import { Reveal } from './motion.jsx'
 
 const modules = [
@@ -8,6 +9,7 @@ const modules = [
     name: 'Fichajes',
     kicker: 'Dinámico y personalizado',
     text: 'Además de los datos básicos, pedí lo que vos necesites.',
+    visual: <FichajesVisual />,
   },
   {
     icon: 'competicion',
@@ -22,12 +24,14 @@ const modules = [
     name: 'Planilla digital',
     kicker: 'Desde el celular',
     text: 'Carga de resultados vía celular para los árbitros y la mesa de control.',
+    visual: <PlanillaVisual />,
   },
   {
     icon: 'tribunal',
     name: 'Tribunal IA',
     kicker: 'Tu agente de disciplina',
     text: 'Cargá tus reglamentos y dejá que nuestro agente se ocupe de sancionar. Podés ajustarlo y regular sus permisos. Generación automática de boletines, como las mejores ligas del mundo.',
+    visual: <TribunalVisual />,
     featured: true,
   },
   {
@@ -35,6 +39,7 @@ const modules = [
     name: 'Comunicación',
     kicker: 'Vos decidís',
     text: 'Configurá qué se comunica, cómo, cuándo y a quién: notificaciones, información visible y acceso de los usuarios.',
+    visual: <ComunicacionVisual />,
   },
 ]
 

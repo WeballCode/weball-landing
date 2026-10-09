@@ -1,7 +1,7 @@
 // Ilustraciones planas en los colores de la marca (sin degradados ni sombras).
 // Las líneas con la clase "draw" se dibujan solas cuando el gráfico entra en pantalla.
 import { useEffect, useState } from 'react'
-import { prefersReducedMotion, useInView } from './motion.jsx'
+import { prefersReducedMotion, useInView, usePlay } from './motion.jsx'
 
 // Recorrido de la pelota entre jugadores (pases), en la cancha de la portada
 const passes = [
@@ -140,17 +140,6 @@ export function AssociationDiagram({ className = '' }) {
 const LINE = '#365a70'
 const FONT = 'Roboto, Arial, sans-serif'
 const delay = (ms) => ({ transitionDelay: `${ms}ms` })
-
-// Prende la animación un instante después de montarse
-function usePlay(play) {
-  const [on, setOn] = useState(false)
-  useEffect(() => {
-    if (!play) return
-    const frame = requestAnimationFrame(() => setOn(true))
-    return () => cancelAnimationFrame(frame)
-  }, [play])
-  return on
-}
 
 // Trofeo chico sobre un cuadrado celeste
 function Cup({ x, y }) {
