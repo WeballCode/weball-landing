@@ -1,6 +1,6 @@
 import { Icon, Label, Section, Title } from './ui.jsx'
 import FormatShowcase from './FormatShowcase.jsx'
-import { ComunicacionVisual } from './ModuleVisuals.jsx'
+import ComunicacionShowcase from './ComunicacionShowcase.jsx'
 import TribunalShowcase from './TribunalShowcase.jsx'
 import PlanillaShowcase from './PlanillaShowcase.jsx'
 import { FichajesVisual } from './FichajeVisual.jsx'
@@ -38,7 +38,7 @@ const modules = [
     icon: 'comunidad',
     name: 'Comunicación',
     text: 'Configurá qué se comunica, cómo, cuándo y a quién: notificaciones, información visible y acceso de los usuarios.',
-    visual: <ComunicacionVisual />,
+    extra: <ComunicacionShowcase />,
   },
 ]
 
