@@ -36,10 +36,10 @@ const products = [
 export default function Products() {
   return (
     <Section id="productos" light>
-      <Label dark={false}>Productos Weball</Label>
-      <Title>Una plataforma, todo el deporte amateur</Title>
+      <Label dark={false}>Weball</Label>
+      <Title>Nuestros productos</Title>
       <Reveal as="p" delay={200} className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
-        Seas de una liga, de una asociación, juegues o tengas una marca, Weball tiene un producto para vos.
+        Seas de una liga o una asociación, juegues o tengas una marca, Weball tiene algo para vos.
       </Reveal>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
