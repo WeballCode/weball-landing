@@ -1,5 +1,5 @@
-// Torneos a Medida: arriba un dibujo que va rotando entre copa, liga, grupos y personalizado (bombos),
-// y abajo el recuadro celeste "Todos los formatos" con la etiqueta del formato que se está viendo.
+// Tu torneo a medida: arriba un dibujo que va rotando entre copa, liga, grupos y personalizado (bombos),
+// y abajo un recuadro celeste con el número, el nombre y la descripción del formato que se está viendo.
 import { useEffect, useState } from 'react'
 import { prefersReducedMotion, useInView, usePlay } from './motion.jsx'
 
@@ -212,36 +212,25 @@ export default function FormatShowcase() {
 
   return (
     <div ref={ref} className="flex flex-col gap-6">
-      {/* Arriba: el formato que se está viendo y su dibujo */}
-      <div role="img" aria-label={`Ejemplo de torneo en formato ${current.name.toLowerCase()}: ${current.text}`}>
-        <div key={`t-${round}`} className="format-enter flex items-baseline gap-3">
-          <span className="text-3xl font-extrabold text-celeste">{`0${index + 1}`}</span>
-          <div>
-            <p className="font-extrabold uppercase tracking-wide">{current.name}</p>
-            <p className="text-sm text-bruma">{current.text}</p>
-          </div>
-        </div>
-        <div key={`d-${round}`} className="format-enter mt-5 w-full max-w-sm">
-          <Drawing index={index} play={inView} />
-        </div>
+      {/* Arriba: el dibujo del formato */}
+      <div
+        key={`d-${round}`}
+        className="format-enter w-full max-w-sm"
+        role="img"
+        aria-label={`Ejemplo de torneo en formato ${current.name.toLowerCase()}: ${current.text}`}
+      >
+        <Drawing index={index} play={inView} />
       </div>
 
-      {/* Abajo: recuadro celeste fijo */}
+      {/* Abajo: recuadro celeste con el formato que se está viendo */}
       <div className="bg-celeste p-4 text-marino">
-        <p className="text-lg font-extrabold uppercase leading-tight">Todos los formatos</p>
-        <p className="mt-1 text-sm font-medium leading-snug">Liga, copa y 100% personalizados, a medida y en minutos.</p>
-        <ul className="mt-3 flex flex-wrap gap-1.5">
-          {formats.map((f, i) => (
-            <li
-              key={f.name}
-              className={`border-2 border-marino px-2 py-0.5 text-xs font-bold uppercase tracking-wide transition-colors duration-300 ${
-                i === index ? 'bg-marino text-celeste' : 'text-marino'
-              }`}
-            >
-              {f.name}
-            </li>
-          ))}
-        </ul>
+        <div key={`t-${round}`} className="format-enter flex items-baseline gap-3">
+          <span className="text-3xl font-extrabold leading-none">{`0${index + 1}`}</span>
+          <div>
+            <p className="text-lg font-extrabold uppercase leading-tight">{current.name}</p>
+            <p className="text-sm font-medium leading-snug">{current.text}</p>
+          </div>
+        </div>
       </div>
     </div>
   )

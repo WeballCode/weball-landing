@@ -16,9 +16,9 @@ const modules = [
   },
   {
     icon: 'competicion',
-    name: 'Torneos a Medida',
+    name: 'Tu torneo a medida',
     kicker: 'Módulo de competición',
-    text: 'Organizá por temporada, divisiones y categorías para darle estructura a largo plazo a tu liga.',
+    text: 'Organizá por temporada, división y categoría. Armá el fixture que quieras.',
     extra: <FormatShowcase />,
   },
   {
