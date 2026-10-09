@@ -43,7 +43,7 @@ export default function CustomFields() {
   }, [inView, reduced, done, typed, current.length])
 
   return (
-    <div ref={ref} className="max-w-md bg-celeste p-4 text-marino">
+    <div ref={ref} className="w-full bg-celeste p-4 text-marino">
       <p className="text-[11px] font-bold uppercase tracking-[0.2em]">Nuevo · Fichaje a medida</p>
       <p className="mt-1 text-lg font-extrabold uppercase leading-tight">Sumá los datos que quieras</p>
 
