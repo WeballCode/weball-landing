@@ -31,8 +31,16 @@ function ClubWall() {
       <p className="text-sm font-medium uppercase tracking-[0.2em] text-acero">Juegan en ligas con Weball</p>
       <ul className="mt-6 grid grid-cols-4 gap-2 sm:grid-cols-7 lg:grid-cols-10">
         {clubs.map((c) => (
-          <li key={c.file} className="grid aspect-square place-items-center bg-white p-3" title={c.name}>
-            <img src={`./clubes/${c.file}.png`} alt={c.name} loading="lazy" className="h-full w-full object-contain" />
+          <li key={c.file} className="bg-white" title={c.name}>
+            {/* Cada imagen ya viene recortada y centrada en un cuadrado blanco del mismo tamaño */}
+            <img
+              src={`./clubes/${c.file}.png`}
+              alt={c.name}
+              loading="lazy"
+              width="256"
+              height="256"
+              className="block aspect-square w-full object-contain"
+            />
           </li>
         ))}
       </ul>
