@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Icon, Label, Section, Title } from './ui.jsx'
+import { Icon, Label, Title } from './ui.jsx'
 import FormatShowcase from './FormatShowcase.jsx'
 import ComunicacionShowcase from './ComunicacionShowcase.jsx'
 import PlanillaShowcase from './PlanillaShowcase.jsx'
@@ -7,122 +6,114 @@ import { FichajesVisual } from './FichajeVisual.jsx'
 import CustomFields from './CustomFields.jsx'
 import { Reveal } from './motion.jsx'
 
+// Cada solución tiene su propia sección, como Tribunal IA. Alternan marino y marino claro
+// (las animaciones están pensadas para fondo oscuro).
 const modules = [
   {
+    id: 'fichajes',
     icon: 'credencial',
-    tab: 'Fichajes',
     name: 'Fichajes a medida',
     text: 'El jugador se ficha solo desde el celular. Vos elegís cómo y qué info le vas a pedir.',
     side: <CustomFields />,
     show: <FichajesVisual />,
   },
   {
+    id: 'competiciones',
     icon: 'competicion',
-    tab: 'Competiciones',
     name: 'Competiciones',
     text: 'Organizá por temporada, división y categoría. Armá el fixture que quieras.',
     show: <FormatShowcase />,
   },
   {
+    id: 'planilla',
     icon: 'app',
-    tab: 'Planilla digital',
     name: 'Planilla digital',
     text: 'Carga de resultados por celular para árbitros y mesas de control.',
     show: <PlanillaShowcase />,
   },
   {
+    id: 'comunicacion',
     icon: 'comunidad',
-    tab: 'Comunicación',
     name: 'Comunicación',
     text: 'Configurá qué se comunica, cómo, cuándo y a quién: notificaciones, información visible y acceso de los usuarios.',
     show: <ComunicacionShowcase />,
   },
 ]
 
-// Soluciones: un módulo a la vez, acomodado de costado, con un carrusel de nombres abajo.
-// Todo entra en una pantalla.
-export default function Modules() {
-  const [active, setActive] = useState(0)
-  const m = modules[active]
-  const go = (step) => setActive((a) => (a + step + modules.length) % modules.length)
+const links = [
+  ...modules.map((m) => ({ href: `#${m.id}`, icon: m.icon, label: m.name === 'Fichajes a medida' ? 'Fichajes' : m.name })),
+  { href: '#tribunal', icon: 'tribunal', label: 'Tribunal IA' },
+]
 
+// Una solución: texto a la izquierda, animación a la derecha
+function SolutionSection({ m, dark }) {
   return (
-    <Section id="modulos" tight>
-      {/* Encabezado en una línea */}
-      <div className="flex items-end justify-between gap-6">
-        <div>
-          <Label>Tecnología Weball</Label>
-          <Title>Soluciones</Title>
-          <Reveal as="p" delay={200} className="mt-3 text-lg leading-relaxed text-bruma">
-            Como no somos los únicos, decidimos hacer la diferencia.
-          </Reveal>
-        </div>
-        {/* Ícono: el rayo de "hacer la diferencia" */}
-        <Reveal delay={300} className="hidden shrink-0 place-items-center rounded-full border-2 border-celeste p-4 text-celeste sm:grid">
-          <Icon name="rayo" className="h-10 w-10" />
-        </Reveal>
-      </div>
-
-      {/* El módulo elegido: texto a la izquierda, animación a la derecha */}
-      <div
-        key={active}
-        role="tabpanel"
-        aria-label={m.name}
-        className="format-enter mt-6 grid gap-8 border-t-[6px] border-celeste bg-marino-claro p-6 sm:p-8 lg:min-h-[464px] lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-12"
-      >
+    <section id={m.id} className={`scroll-mt-16 text-blanco ${dark ? 'bg-marino' : 'bg-marino-claro'}`}>
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:py-16">
         <div className="flex min-w-0 flex-col gap-6">
           <div>
-            <Icon name={m.icon} className="h-9 w-9 text-celeste" />
-            <h3 className="mt-4 text-3xl font-extrabold uppercase leading-none sm:text-4xl">{m.name}</h3>
-            <p className="mt-3 text-lg leading-relaxed text-bruma">{m.text}</p>
+            <Reveal className="flex items-center gap-3 text-celeste">
+              <Icon name={m.icon} className="h-8 w-8" />
+              <p className="text-sm font-medium uppercase tracking-[0.2em]">Soluciones Weball</p>
+            </Reveal>
+            <Reveal as="h2" delay={100} className="mt-5 text-4xl font-extrabold uppercase leading-none sm:text-5xl">
+              {m.name}
+            </Reveal>
+            <Reveal as="p" delay={200} className="mt-5 max-w-md text-xl leading-snug text-bruma">
+              {m.text}
+            </Reveal>
           </div>
-          {m.side}
+          {m.side && <Reveal delay={300}>{m.side}</Reveal>}
         </div>
-        <div className="min-w-0">{m.show}</div>
+        <Reveal delay={200} className="min-w-0">
+          {m.show}
+        </Reveal>
       </div>
+    </section>
+  )
+}
 
-      {/* Carrusel de módulos */}
-      <div className="mt-6 flex items-stretch gap-2">
-        <button
-          type="button"
-          onClick={() => go(-1)}
-          aria-label="Módulo anterior"
-          className="grid w-12 shrink-0 place-items-center border-2 border-linea text-xl font-bold text-celeste transition hover:border-celeste"
-        >
-          ‹
-        </button>
-        <ul className="flex min-w-0 flex-1 gap-2 overflow-x-auto" role="tablist" aria-label="Módulos de Weball">
-          {modules.map((mod, i) => {
-            const selected = i === active
-            return (
-              <li key={mod.tab} className="min-w-[10rem] flex-1">
-                <button
-                  type="button"
-                  role="tab"
-                  aria-selected={selected}
-                  onClick={() => setActive(i)}
-                  className={`flex h-full w-full items-center justify-center gap-2 border-b-4 px-3 py-3 font-extrabold uppercase tracking-wide transition ${
-                    selected
-                      ? 'border-celeste bg-celeste text-marino'
-                      : 'border-linea bg-marino-claro text-blanco hover:border-celeste'
-                  }`}
-                >
-                  <Icon name={mod.icon} className="h-5 w-5 shrink-0" />
-                  <span className="whitespace-nowrap">{mod.tab}</span>
-                </button>
-              </li>
-            )
-          })}
-        </ul>
-        <button
-          type="button"
-          onClick={() => go(1)}
-          aria-label="Módulo siguiente"
-          className="grid w-12 shrink-0 place-items-center border-2 border-linea text-xl font-bold text-celeste transition hover:border-celeste"
-        >
-          ›
-        </button>
-      </div>
-    </Section>
+export default function Modules() {
+  return (
+    <>
+      {/* Introducción: título, frase y accesos a cada solución */}
+      <section id="modulos" className="scroll-mt-16 border-b border-linea bg-marino text-blanco">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">
+          <div className="flex items-end justify-between gap-6">
+            <div>
+              <Label>Tecnología Weball</Label>
+              <Title>Soluciones</Title>
+              <Reveal as="p" delay={200} className="mt-3 text-lg leading-relaxed text-bruma">
+                Como no somos los únicos, decidimos hacer la diferencia.
+              </Reveal>
+            </div>
+            {/* Ícono: el rayo de "hacer la diferencia" */}
+            <Reveal delay={300} className="hidden shrink-0 place-items-center rounded-full border-2 border-celeste p-4 text-celeste sm:grid">
+              <Icon name="rayo" className="h-10 w-10" />
+            </Reveal>
+          </div>
+
+          <Reveal delay={300} className="-mx-4 mt-8 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+            <ul className="flex gap-2 sm:flex-wrap">
+              {links.map((l) => (
+                <li key={l.href} className="shrink-0">
+                  <a
+                    href={l.href}
+                    className="flex items-center gap-2 border-2 border-linea px-4 py-2.5 font-bold uppercase tracking-wide transition hover:border-celeste hover:bg-celeste hover:text-marino"
+                  >
+                    <Icon name={l.icon} className="h-5 w-5" />
+                    <span className="whitespace-nowrap">{l.label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      {modules.map((m, i) => (
+        <SolutionSection key={m.id} m={m} dark={i % 2 === 1} />
+      ))}
+    </>
   )
 }
