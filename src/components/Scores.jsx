@@ -31,9 +31,9 @@ function ClubWall() {
   return (
     <div>
       <p className="text-sm font-medium uppercase tracking-[0.2em] text-acero">Juegan en ligas con Weball</p>
-      <ul className="mt-6 grid grid-cols-3 gap-2 sm:grid-cols-7">
+      <ul className="mt-6 grid max-w-4xl grid-cols-3 gap-2 sm:grid-cols-7">
         {clubs.map((c) => (
-          <li key={c.file} className="bg-white" title={c.name}>
+          <li key={c.file} className="bg-white p-[12%]" title={c.name}>
             {/* Cada imagen ya viene recortada y centrada en un cuadrado blanco del mismo tamaño */}
             <img
               src={`./clubes/${c.file}.png`}
