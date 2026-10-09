@@ -89,6 +89,22 @@ body {
   animation: pulse-ring 3s ease-in-out infinite;
 }
 
+/* Formatos de torneo: entrada suave y barrita de tiempo en la pestaña activa */
+@keyframes format-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.format-enter {
+  animation: format-enter 0.5s ease both;
+}
+@keyframes format-progress {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.format-progress {
+  animation: format-progress linear both;
+}
+
 /* Quien pide menos movimiento ve todo quieto */
 @media (prefers-reduced-motion: reduce) {
   .reveal,
@@ -102,7 +118,8 @@ body {
     transition: none;
   }
   .marquee,
-  .pulse-ring {
+  .pulse-ring,
+  .format-enter {
     animation: none;
   }
 }

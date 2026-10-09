@@ -1,5 +1,5 @@
 import { Icon, Label, Section, Title } from './ui.jsx'
-import { Bracket } from './Illustrations.jsx'
+import { FormatShowcase } from './Illustrations.jsx'
 import { Reveal } from './motion.jsx'
 
 const modules = [
@@ -14,7 +14,7 @@ const modules = [
     name: 'Torneos a Medida',
     kicker: 'Módulo de competición',
     text: 'Organizá por temporada, divisiones y categorías para darle estructura a largo plazo a tu liga. Todos los formatos: liga, copa y 100% personalizados, a medida y en minutos.',
-    visual: <Bracket className="w-full max-w-xs" />,
+    visual: <FormatShowcase />,
   },
   {
     icon: 'app',
