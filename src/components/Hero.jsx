@@ -1,4 +1,5 @@
 import { Label } from './ui.jsx'
+import { CourtLines } from './Illustrations.jsx'
 
 // Números vigentes del manual de marca (informe de junio 2026 y confirmación de octubre 2026)
 const numbers = [
@@ -11,7 +12,9 @@ const numbers = [
 export default function Hero() {
   return (
     <section id="inicio" className="bg-marino pt-16">
-      <div className="mx-auto max-w-6xl px-4 pt-16 pb-16 sm:px-6 sm:pt-24 sm:pb-20">
+      <div className="relative overflow-hidden">
+      <CourtLines className="pointer-events-none absolute top-1/2 -right-28 h-[115%] -translate-y-1/2 opacity-30 sm:-right-16 lg:right-[max(1.5rem,calc((100vw-72rem)/2))] lg:h-[88%] lg:opacity-100" />
+      <div className="relative mx-auto max-w-6xl px-4 pt-16 pb-16 sm:px-6 sm:pt-24 sm:pb-20">
         <Label>Organizamos y conectamos al deporte amateur</Label>
 
         <h1 className="mt-6 max-w-4xl text-[2.75rem] font-extrabold uppercase leading-[0.95] sm:text-7xl lg:text-8xl">
@@ -37,6 +40,7 @@ export default function Hero() {
             Conocé los productos
           </a>
         </div>
+      </div>
       </div>
 
       <div className="border-t border-linea">

@@ -1,4 +1,5 @@
 import ProductSection from './ProductSection.jsx'
+import { AssociationDiagram } from './Illustrations.jsx'
 
 export default function Asociacion() {
   return (
@@ -15,6 +16,7 @@ export default function Asociacion() {
       ]}
       closing="Todos bajo el sistema oficial de la asociación"
       cta={{ label: 'Quiero Weball en mi asociación', href: '#contacto' }}
+      visual={<AssociationDiagram className="w-full max-w-md" />}
     />
   )
 }
