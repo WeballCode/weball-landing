@@ -224,8 +224,8 @@ export default function FormatShowcase() {
 
       {/* Abajo: recuadro celeste con el formato que se está viendo */}
       <div className="bg-celeste p-4 text-marino">
-        <div key={`t-${round}`} className="format-enter flex items-baseline gap-3">
-          <span className="text-3xl font-extrabold leading-none">{`0${index + 1}`}</span>
+        <div key={`t-${round}`} className="format-enter flex items-center gap-4">
+          <span className="text-5xl font-extrabold leading-none text-blanco">{`0${index + 1}`}</span>
           <div>
             <p className="text-lg font-extrabold uppercase leading-tight">{current.name}</p>
             <p className="text-sm font-medium leading-snug">{current.text}</p>
