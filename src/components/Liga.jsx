@@ -40,31 +40,19 @@ export default function Liga() {
 
   return (
     <Section id="liga" light>
-      {/* Encabezado: producto, título y botón */}
-      <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <Label tone="light" icon="liga">
-            Weball Liga
-          </Label>
-          <Title>Ligas</Title>
-        </div>
-        <Reveal delay={300}>
-          <a
-            href="#contacto"
-            className="inline-block bg-marino px-7 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:-translate-y-0.5 hover:bg-marino-claro"
-          >
-            Quiero Weball en mi liga
-          </a>
-        </Reveal>
-      </div>
+      {/* Encabezado: producto y título */}
+      <Label tone="light" icon="liga">
+        Weball Liga
+      </Label>
+      <Title>Ligas</Title>
 
       {/* Recuadro blanco: título, animación, pasos y cierre */}
-      <Reveal delay={200} className="mt-8 border-t-[6px] border-marino bg-blanco p-6 sm:p-8">
+      <Reveal delay={200} className="mt-6 border-t-[6px] border-marino bg-blanco p-6">
         <h3 className="text-2xl font-extrabold uppercase leading-none sm:text-3xl">Organizá tu liga en minutos</h3>
 
         <div
           ref={ref}
-          className="mx-auto mt-5 w-full max-w-xs"
+          className="mx-auto mt-4 w-full max-w-[17rem]"
           role="img"
           aria-label={`Weball Liga, paso ${index + 1}: ${steps[index].text}`}
         >
@@ -74,7 +62,7 @@ export default function Liga() {
         </div>
 
         {/* Los 6 pasos en una fila (en pantallas chicas, en grilla) */}
-        <ol className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:flex lg:items-stretch lg:gap-2">
+        <ol className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:flex lg:items-stretch lg:gap-2">
           {steps.map((s, i) => {
             const on = !reduced && i === index
             return (
@@ -93,9 +81,19 @@ export default function Liga() {
           })}
         </ol>
 
-        <p className="mt-6 border-t-4 border-marino pt-4 text-lg font-extrabold uppercase leading-tight">
+        <p className="mt-4 border-t-4 border-marino pt-3 text-lg font-extrabold uppercase leading-tight">
           Todo en un mismo lugar
         </p>
+      </Reveal>
+
+      {/* Botón al final, debajo del recuadro */}
+      <Reveal delay={300} className="mt-5 flex flex-col sm:items-start">
+        <a
+          href="#contacto"
+          className="bg-marino px-7 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:-translate-y-0.5 hover:bg-marino-claro"
+        >
+          Quiero Weball en mi liga
+        </a>
       </Reveal>
     </Section>
   )

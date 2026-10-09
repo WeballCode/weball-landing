@@ -37,7 +37,7 @@ export default function Products() {
   return (
     <Section id="productos" light>
       <Label tone="light">Weball</Label>
-      <Title>Nuestros productos</Title>
+      <Title>Una plataforma completa</Title>
       <Lead tone="light">Seas de una liga o una asociación, juegues o tengas una marca, Weball tiene algo para vos.</Lead>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

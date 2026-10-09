@@ -79,8 +79,6 @@ export default function Scores() {
         { value: '+400', label: 'Clubes' },
         { value: '+300', label: 'Árbitros' },
       ]}
-      cta={{ label: 'Sumá a tu liga', href: '#contacto' }}
-      ctaLeft
       aside={<ScoresFeed />}
       footer={<ClubWall />}
     />

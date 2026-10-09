@@ -65,7 +65,7 @@ export default function ScoresFeed() {
           href={COMMUNITY_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 self-start border-2 border-celeste px-6 py-3 font-bold uppercase tracking-wide text-celeste transition hover:bg-celeste hover:text-marino"
+          className="mt-6 self-start bg-celeste px-7 py-4 font-bold uppercase tracking-wide text-marino transition hover:-translate-y-0.5 hover:bg-celeste-claro"
         >
           Ver todos los partidos
         </a>

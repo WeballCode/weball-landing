@@ -16,7 +16,7 @@ const points = [
   },
   {
     title: 'Ya funciona',
-    text: 'Futsala y sus filiales y Handball Baires ya organizan su actividad con Weball.',
+    text: 'Ya se organizan +100 torneos y +35.000 partidos al año en Weball.',
   },
 ]
 

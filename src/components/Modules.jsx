@@ -14,6 +14,7 @@ const modules = [
     id: 'fichajes',
     icon: 'credencial',
     short: 'Fichajes',
+    kicker: 'Credencial digital',
     name: 'Fichajes a medida',
     text: 'El jugador se ficha solo desde el celular. Vos elegís cómo y qué info le vas a pedir.',
     side: <CustomFields />,
@@ -23,6 +24,7 @@ const modules = [
     id: 'competiciones',
     icon: 'competicion',
     short: 'Competiciones',
+    kicker: 'Fixtures & torneos',
     name: 'Competiciones',
     text: 'Organizá por temporada, división y categoría. Armá el fixture que quieras.',
     show: <FormatShowcase />,
@@ -31,6 +33,7 @@ const modules = [
     id: 'planilla',
     icon: 'app',
     short: 'Planilla digital',
+    kicker: 'Carga de resultados',
     name: 'Planilla digital',
     text: 'Árbitros y mesas de control cargan los resultados desde el celular.',
     show: <PlanillaShowcase />,
@@ -40,6 +43,7 @@ const modules = [
     id: 'tribunal',
     icon: 'tribunal',
     short: 'Tribunal IA',
+    kicker: 'Sanciones automáticas',
     name: 'Tribunal IA',
     text: 'Cargá tus reglamentos y dejá que nuestro agente se ocupe de sancionar.',
     show: <TribunalShowcase />,
@@ -49,6 +53,7 @@ const modules = [
     id: 'comunicacion',
     icon: 'comunidad',
     short: 'Comunicación',
+    kicker: 'Todos conectados',
     name: 'Comunicación',
     text: 'Configurá qué se comunica, cómo, cuándo y a quién.',
     show: <ComunicacionShowcase />,
@@ -58,13 +63,13 @@ const modules = [
 const links = modules.map((m) => ({ href: `#${m.id}`, icon: m.icon, label: m.short }))
 
 // Una solución: texto a la izquierda, animación a la derecha (mismo esquema que Tribunal IA)
-export function SolutionLayout({ id, tone, icon, name, text, side, show }) {
+function SolutionLayout({ id, tone, icon, kicker, name, text, side, show }) {
   return (
     <Section id={id} tone={tone}>
       <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
         <div className="flex min-w-0 flex-col">
           <Label tone={tone} icon={icon}>
-            Soluciones Weball
+            {kicker}
           </Label>
           <Title>{name}</Title>
           <Lead tone={tone}>{text}</Lead>

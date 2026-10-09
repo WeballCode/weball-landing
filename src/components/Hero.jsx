@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="relative overflow-hidden">
         <CourtLines className="pointer-events-none absolute top-1/2 -right-28 h-[115%] -translate-y-1/2 opacity-30 sm:-right-16 lg:right-[max(1.5rem,calc((100vw-72rem)/2))] lg:h-[88%] lg:opacity-100" />
         <div className="relative mx-auto max-w-6xl px-4 pt-16 pb-16 sm:px-6 sm:pt-24 sm:pb-20">
-          <Reveal as="p" className="text-sm font-medium uppercase tracking-[0.2em] text-celeste">
+          <Reveal as="p" className="text-xs font-medium uppercase tracking-[0.2em] text-celeste">
             Potenciamos al deporte amateur
           </Reveal>
 

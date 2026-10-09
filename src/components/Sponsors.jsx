@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import ProductSection from './ProductSection.jsx'
+import { whatsappLink } from '../links.js'
 import { SponsorsDrawing, sponsorScenes } from './SponsorsVisual.jsx'
 import { prefersReducedMotion, useInView } from './motion.jsx'
 
@@ -36,7 +37,11 @@ export default function Sponsors() {
       items={items}
       activeIndex={reduced ? undefined : index}
       closing="Participá y medí los resultados"
-      cta={{ label: 'Quiero ser sponsor', href: '#contacto' }}
+      cta={{
+        label: 'Quiero ser sponsor',
+        href: whatsappLink('Hola, quiero saber más de mi marca en Weball...'),
+        external: true,
+      }}
       visual={
         <div ref={ref} className="w-full max-w-md" role="img" aria-label={`Weball Sponsors: ${items[index].name}`}>
           <div key={round} className="format-enter">
