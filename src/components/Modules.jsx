@@ -1,5 +1,5 @@
 import { Icon, Label, Section, Title } from './ui.jsx'
-import { FormatShowcase } from './Illustrations.jsx'
+import FormatShowcase from './FormatShowcase.jsx'
 import { ComunicacionVisual, PlanillaVisual, TribunalVisual } from './ModuleVisuals.jsx'
 import { FichajesVisual } from './FichajeVisual.jsx'
 import CustomFields from './CustomFields.jsx'
@@ -19,8 +19,7 @@ const modules = [
     name: 'Torneos a Medida',
     kicker: 'Módulo de competición',
     text: 'Organizá por temporada, divisiones y categorías para darle estructura a largo plazo a tu liga.',
-    visual: <FormatShowcase />,
-    caption: 'Todos los formatos: liga, copa y 100% personalizados, a medida y en minutos.',
+    extra: <FormatShowcase />,
   },
   {
     icon: 'app',
@@ -80,7 +79,7 @@ export default function Modules() {
                 {m.caption}
               </p>
             )}
-            {m.extra}
+            {m.extra && <div className={m.visual ? '' : 'mt-auto pt-4'}>{m.extra}</div>}
           </div>
           </Reveal>
         ))}
