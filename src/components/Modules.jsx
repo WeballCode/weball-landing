@@ -47,10 +47,10 @@ export default function Modules() {
     <Section id="modulos">
       <Label>Tecnología Weball</Label>
       <Title>
-        Tecnología de punta <span className="text-celeste">para el deporte amateur</span>
+        Soluciones <span className="text-celeste">para el deporte</span>
       </Title>
       <Reveal as="p" delay={200} className="mt-6 max-w-2xl text-lg leading-relaxed text-bruma">
-        No somos cualquier startup. Estos son los módulos que hacen la diferencia en cada producto Weball.
+        Como no somos los únicos, decidimos hacer la diferencia.
       </Reveal>
 
       <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
