@@ -19,8 +19,8 @@ export default function Hero() {
         </h1>
 
         <p className="mt-8 max-w-2xl text-lg leading-relaxed text-bruma sm:text-xl">
-          Weball le da al deporte amateur el orden y la visibilidad que merece. Fichajes, torneos, partidos,
-          árbitros y tribunal en un solo sistema, y todo a la vista de jugadores, familias y público.
+          Weball le da al deporte amateur el orden y la visibilidad que merece. Organizamos ligas y asociaciones,
+          conectamos a jugadores, clubes y público, y sumamos a las marcas a la experiencia.
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row">
@@ -31,10 +31,10 @@ export default function Hero() {
             Quiero Weball en mi liga
           </a>
           <a
-            href="#producto"
+            href="#productos"
             className="border-2 border-blanco/70 px-8 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:bg-blanco hover:text-marino"
           >
-            Conocé el producto
+            Conocé los productos
           </a>
         </div>
       </div>

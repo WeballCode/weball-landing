@@ -1,11 +1,10 @@
-// Cambiá este mail por el de contacto real
-const EMAIL = 'hola@weball.me'
+import { EMAIL } from '../links.js'
 
 const options = [
-  { label: 'Soy de una liga', subject: 'Quiero Weball en mi liga' },
-  { label: 'Soy de un club', subject: 'Quiero Weball en mi club' },
-  { label: 'Juego en una liga', subject: 'Juego en una liga y quiero Weball' },
-  { label: 'Quiero invertir o ser sponsor', subject: 'Interés en invertir o ser sponsor de Weball' },
+  { label: 'Tengo una liga', subject: 'Quiero Weball Liga' },
+  { label: 'Soy de una asociación', subject: 'Quiero Weball Asociación' },
+  { label: 'Quiero ser sponsor', subject: 'Quiero Weball Sponsors' },
+  { label: 'Quiero invertir', subject: 'Interés en invertir en Weball' },
 ]
 
 export default function Contact() {
@@ -18,7 +17,7 @@ export default function Contact() {
             Te mostramos tu liga funcionando
           </h2>
           <p className="mt-6 text-lg leading-relaxed">
-            Contanos quién sos y te escribimos para mostrarte Weball con tu propia liga.
+            Contanos quién sos y te escribimos para mostrarte Weball en acción.
           </p>
           <p className="mt-6">
             O escribinos a{' '}

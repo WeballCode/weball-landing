@@ -1,10 +1,11 @@
 import { useState } from 'react'
 
 const links = [
-  { href: '#producto', label: 'Producto' },
-  { href: '#sistema', label: 'Sistema' },
-  { href: '#app', label: 'App' },
+  { href: '#liga', label: 'Liga' },
+  { href: '#scores', label: 'Scores' },
+  { href: '#asociacion', label: 'Asociación' },
   { href: '#sponsors', label: 'Sponsors' },
+  { href: '#modulos', label: 'Tecnología' },
   { href: '#inversores', label: 'Inversores' },
 ]
 
@@ -18,7 +19,7 @@ export default function Navbar() {
           <img src="./logo-blanco.png" alt="Weball" className="h-8 w-auto" />
         </a>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
             <a key={l.href} href={l.href} className="text-sm font-medium text-bruma transition hover:text-blanco">
               {l.label}
@@ -34,7 +35,7 @@ export default function Navbar() {
 
         <button
           type="button"
-          className="grid h-10 w-10 place-items-center border border-linea md:hidden"
+          className="grid h-10 w-10 place-items-center border border-linea lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           aria-expanded={open}
@@ -47,7 +48,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-linea bg-marino px-4 pb-6 md:hidden">
+        <div className="border-t border-linea bg-marino px-4 pb-6 lg:hidden">
           {links.map((l) => (
             <a
               key={l.href}

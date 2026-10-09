@@ -7,11 +7,11 @@ const points = [
   },
   {
     title: 'Crece desde adentro',
-    text: 'Cada liga que entra suma a sus clubes, y cada club suma a sus jugadores y sus familias.',
+    text: 'Cada asociación suma a sus ligas, cada liga a sus clubes, y cada club a sus jugadores y sus familias.',
   },
   {
     title: 'Las marcas lo financian',
-    text: 'Los sponsors venden dentro de la app y miden sus resultados. Eso financia el producto.',
+    text: 'Con Weball Sponsors, las marcas auspician, venden en la comunidad y miden sus resultados.',
   },
   {
     title: 'Ya funciona',
@@ -21,27 +21,27 @@ const points = [
 
 export default function Investors() {
   return (
-    <Section id="inversores">
-      <Label>Para inversores</Label>
+    <Section id="inversores" light>
+      <Label dark={false}>Para inversores</Label>
       <Title>
-        De aficionados a <span className="text-celeste">protagonistas</span>
+        De aficionados a <span className="text-celeste-profundo">protagonistas</span>
       </Title>
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-bruma">
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
         El deporte profesional tiene toda la tecnología. El amateur, donde juega la enorme mayoría, casi nada.
         Weball es la plataforma que le faltaba.
       </p>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2">
         {points.map((p, i) => (
-          <div key={p.title} className="flex min-h-52 flex-col gap-3 border-t-[6px] border-celeste bg-marino-claro p-8">
-            <span className="text-3xl font-extrabold text-celeste">0{i + 1}</span>
+          <div key={p.title} className="flex min-h-52 flex-col gap-3 border-t-[6px] border-marino bg-blanco p-8">
+            <span className="text-3xl font-extrabold text-celeste-profundo">0{i + 1}</span>
             <h3 className="text-2xl font-extrabold uppercase leading-none">{p.title}</h3>
-            <p className="leading-relaxed text-bruma">{p.text}</p>
+            <p className="leading-relaxed text-pizarra">{p.text}</p>
           </div>
         ))}
       </div>
 
-      <p className="mt-8 text-sm text-bruma">
+      <p className="mt-8 text-sm text-acero">
         Jugadores y árbitros: informe de junio de 2026. Clubes: octubre de 2026.
       </p>
     </Section>
