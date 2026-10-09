@@ -1,4 +1,4 @@
-import { Icon, Label, Section, Title } from './ui.jsx'
+import { Icon, Label, Lead, Section, Title } from './ui.jsx'
 import { Reveal } from './motion.jsx'
 
 const products = [
@@ -7,7 +7,7 @@ const products = [
     icon: 'liga',
     audience: 'Para ligas',
     name: 'Weball Liga',
-    text: 'Organizá tu liga en minutos. Todo lo que tu liga necesita para funcionar.',
+    text: 'Organizá tu liga en minutos.',
     featured: true,
   },
   {
@@ -15,34 +15,32 @@ const products = [
     icon: 'comunidad',
     audience: 'Para jugadores, clubes y público',
     name: 'Weball Scores',
-    text: 'Nuestra comunidad de ligas, clubes y deportistas. La visibilidad que tu torneo merece.',
+    text: 'Unimos a todas nuestras ligas, clubes y deportistas.',
   },
   {
     href: '#asociacion',
     icon: 'gestion',
     audience: 'Para asociaciones y federaciones',
     name: 'Weball Asociación',
-    text: 'Tu propio sistema y tu app, con todas tus ligas adentro.',
+    text: 'Sistema y app con marca propia, con todas sus ligas adentro.',
   },
   {
     href: '#sponsors',
     icon: 'inversor',
     audience: 'Para marcas',
     name: 'Weball Sponsors',
-    text: 'Formá parte de la experiencia popular amateur y medí los resultados.',
+    text: 'Formá parte de la experiencia popular amateur.',
   },
 ]
 
 export default function Products() {
   return (
     <Section id="productos" light>
-      <Label dark={false}>Weball</Label>
+      <Label tone="light">Weball</Label>
       <Title>Nuestros productos</Title>
-      <Reveal as="p" delay={200} className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
-        Seas de una liga o una asociación, juegues o tengas una marca, Weball tiene algo para vos.
-      </Reveal>
+      <Lead tone="light">Seas de una liga o una asociación, juegues o tengas una marca, Weball tiene algo para vos.</Lead>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {products.map((p, i) => (
           <Reveal key={p.name} delay={i * 120} className="flex">
           <a
@@ -55,7 +53,7 @@ export default function Products() {
             <p className={`text-xs font-medium uppercase tracking-[0.2em] ${p.featured ? 'text-marino' : 'text-acero'}`}>
               {p.audience}
             </p>
-            <h3 className="text-3xl font-extrabold uppercase leading-none">{p.name}</h3>
+            <h3 className="text-2xl font-extrabold uppercase leading-none">{p.name}</h3>
             <p className={`leading-relaxed ${p.featured ? 'text-marino' : 'text-pizarra'}`}>{p.text}</p>
             <span className="mt-auto font-bold uppercase tracking-wide">
               Conocé más <span aria-hidden="true" className="inline-block transition group-hover:translate-x-1">→</span>

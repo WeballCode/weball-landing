@@ -1,33 +1,52 @@
-// Piezas chicas que se repiten en todas las secciones, según el manual de marca
+// Piezas que se repiten en todas las secciones. Es el sistema único de la página:
+// etiqueta (chica, en mayúsculas espaciadas) → título (grande) → bajada (texto de apoyo).
 import { Reveal } from './motion.jsx'
 
-// Etiqueta: mayúsculas espaciadas, peso 500
-export function Label({ children, dark = true }) {
+// Tono de cada fondo: 'dark' (marino), 'darker' (marino claro), 'light' (niebla) o 'celeste'
+const toneBg = {
+  dark: 'bg-marino text-blanco',
+  darker: 'bg-marino-claro text-blanco',
+  light: 'bg-niebla text-marino',
+  celeste: 'bg-celeste text-marino',
+}
+const toneAccent = { dark: 'text-celeste', darker: 'text-celeste', light: 'text-celeste-profundo', celeste: 'text-marino' }
+const toneMuted = { dark: 'text-bruma', darker: 'text-bruma', light: 'text-pizarra', celeste: 'text-marino' }
+
+// Etiqueta: mayúsculas espaciadas, peso 500, con ícono opcional
+export function Label({ children, tone = 'dark', dark, icon }) {
+  const t = dark === false ? 'light' : tone
   return (
-    <Reveal as="p" className={`text-sm font-medium uppercase tracking-[0.2em] ${dark ? 'text-celeste' : 'text-acero'}`}>
-      {children}
+    <Reveal className={`flex items-center gap-3 ${toneAccent[t]}`}>
+      {icon && <Icon name={icon} className="h-7 w-7 shrink-0" />}
+      <p className="text-sm font-medium uppercase tracking-[0.2em]">{children}</p>
     </Reveal>
   )
 }
 
-// Título de sección: peso 800, mayúsculas, alineado a la izquierda
+// Título de sección: peso 800, mayúsculas, alineado a la izquierda. Mismo tamaño en toda la página.
 export function Title({ children, className = '' }) {
   return (
-    <Reveal as="h2" delay={100} className={`mt-4 text-4xl font-extrabold uppercase leading-none sm:text-6xl ${className}`}>
+    <Reveal as="h2" delay={100} className={`mt-4 text-4xl font-extrabold uppercase leading-none sm:text-5xl lg:text-6xl ${className}`}>
       {children}
     </Reveal>
   )
 }
 
-// Contenedor de sección con uno de los dos fondos de la marca
-// `tight` deja menos margen arriba y abajo, para secciones que tienen que entrar en una pantalla
-export function Section({ id, light = false, tight = false, children, className = '' }) {
+// Bajada: el texto que acompaña al título. Mismo tamaño en toda la página.
+export function Lead({ children, tone = 'dark', className = '' }) {
   return (
-    <section
-      id={id}
-      className={`scroll-mt-16 ${light ? 'bg-niebla text-marino' : 'bg-marino text-blanco'} ${className}`}
-    >
-      <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${tight ? 'py-12 lg:py-14' : 'py-16 lg:py-20'}`}>{children}</div>
+    <Reveal as="p" delay={200} className={`mt-5 max-w-xl text-lg leading-relaxed sm:text-xl ${toneMuted[tone]} ${className}`}>
+      {children}
+    </Reveal>
+  )
+}
+
+// Contenedor de sección. Todas usan el mismo margen y el mismo ancho.
+export function Section({ id, light = false, tone, children, className = '' }) {
+  const t = tone || (light ? 'light' : 'dark')
+  return (
+    <section id={id} className={`scroll-mt-16 ${toneBg[t]} ${className}`}>
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:py-16">{children}</div>
     </section>
   )
 }

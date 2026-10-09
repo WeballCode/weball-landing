@@ -4,7 +4,7 @@ import { SponsorsDrawing, sponsorScenes } from './SponsorsVisual.jsx'
 import { prefersReducedMotion, useInView } from './motion.jsx'
 
 const items = [
-  { name: 'Auspicio de secciones', text: 'Tablas, partidos y perfiles.' },
+  { name: 'Auspiciá secciones', text: 'Tablas, partidos y perfiles.' },
   { name: 'Activá tu perfil en la comunidad', text: 'Con tu tienda integrada.' },
   { name: 'Mirá tus métricas', text: 'Para medir tu alcance.' },
 ]
@@ -30,8 +30,8 @@ export default function Sponsors() {
     <ProductSection
       id="sponsors"
       icon="inversor"
-      audience="Para marcas"
-      name="Weball Sponsors"
+      audience="Weball Sponsors"
+      name="Marcas"
       title="Formá parte de la experiencia popular amateur."
       items={items}
       activeIndex={reduced ? undefined : index}

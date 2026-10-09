@@ -33,8 +33,8 @@ export default function Liga() {
       id="liga"
       light
       icon="liga"
-      audience="Para ligas"
-      name="Weball Liga"
+      audience="Weball Liga"
+      name="Ligas"
       title="Organizá tu liga en minutos."
       items={items}
       activeIndex={reduced ? undefined : index}

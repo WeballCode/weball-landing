@@ -1,5 +1,6 @@
 // Cinta celeste con los módulos de Weball pasando en loop
-const words = ['Fichajes', 'Torneos a medida', 'Planilla digital', 'Tribunal IA', 'Comunicación', 'Comunidad', 'Sponsors']
+// Mismos nombres y mismo orden que en la página
+const words = ['Fichajes', 'Competiciones', 'Planilla digital', 'Comunicación', 'Tribunal IA', 'Comunidad', 'Sponsors']
 
 function Row({ hidden = false }) {
   return (

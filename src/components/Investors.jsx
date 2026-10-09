@@ -1,4 +1,4 @@
-import { Label, Section, Title } from './ui.jsx'
+import { Label, Lead, Section, Title } from './ui.jsx'
 import { Reveal } from './motion.jsx'
 
 const points = [
@@ -23,20 +23,19 @@ const points = [
 export default function Investors() {
   return (
     <Section id="inversores" light>
-      <Label dark={false}>Para inversores</Label>
+      <Label tone="light">Inversores</Label>
       <Title>
         De aficionados a <span className="text-celeste-profundo">protagonistas</span>
       </Title>
-      <Reveal as="p" delay={200} className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
-        El deporte profesional tiene toda la tecnología. El amateur, donde juega la enorme mayoría, casi nada.
-        Weball es la plataforma que le faltaba.
-      </Reveal>
+      <Lead tone="light">
+        El deporte profesional tiene toda la tecnología. El amateur, donde juega la enorme mayoría, casi nada. Weball es la
+        plataforma que le faltaba.
+      </Lead>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {points.map((p, i) => (
           <Reveal key={p.title} delay={i * 100} className="flex">
             <div className="flex w-full flex-col gap-3 border-t-[6px] border-marino bg-blanco p-6 transition duration-300 hover:-translate-y-2">
-              <span className="text-3xl font-extrabold text-celeste-profundo">0{i + 1}</span>
               <h3 className="text-2xl font-extrabold uppercase leading-none">{p.title}</h3>
               <p className="leading-relaxed text-pizarra">{p.text}</p>
             </div>
@@ -44,9 +43,7 @@ export default function Investors() {
         ))}
       </div>
 
-      <p className="mt-8 text-sm text-acero">
-        Jugadores y árbitros: informe de junio de 2026. Clubes: octubre de 2026.
-      </p>
+      <p className="mt-8 text-sm text-acero">Cifras de la plataforma Weball, 2026.</p>
     </Section>
   )
 }

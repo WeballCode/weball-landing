@@ -1,4 +1,4 @@
-import { Icon, Section } from './ui.jsx'
+import { Label, Lead, Section, Title } from './ui.jsx'
 import { CountUp, Reveal } from './motion.jsx'
 
 // Sección de un producto Weball: nombre, promesa y lista numerada de lo que incluye
@@ -40,18 +40,13 @@ export default function ProductSection({
 
   return (
     <Section id={id} light={light}>
-      <div className="grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+      <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
         <div className="flex flex-col">
-          <Reveal className={`flex items-center gap-3 ${accent}`}>
-            <Icon name={icon} className="h-8 w-8" />
-            <p className="text-sm font-medium uppercase tracking-[0.2em]">{audience}</p>
-          </Reveal>
-          <Reveal as="h2" delay={100} className="mt-5 text-5xl font-extrabold uppercase leading-none sm:text-6xl">
-            {name}
-          </Reveal>
-          <Reveal as="p" delay={200} className={`mt-5 text-2xl font-bold leading-snug ${light ? 'text-marino' : 'text-blanco'}`}>
-            {title}
-          </Reveal>
+          <Label tone={light ? 'light' : 'dark'} icon={icon}>
+            {audience}
+          </Label>
+          <Title>{name}</Title>
+          <Lead tone={light ? 'light' : 'dark'}>{title}</Lead>
 
           {stats && (
             <dl className="mt-8 grid grid-cols-2 gap-x-6 sm:grid-cols-4 sm:gap-x-4">

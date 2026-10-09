@@ -35,13 +35,13 @@ export default function Hero() {
           <Reveal delay={600} className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a
               href="#contacto"
-              className="bg-celeste px-8 py-4 text-center font-bold uppercase tracking-wide text-marino transition hover:-translate-y-0.5 hover:bg-celeste-claro"
+              className="bg-celeste px-7 py-4 text-center font-bold uppercase tracking-wide text-marino transition hover:-translate-y-0.5 hover:bg-celeste-claro"
             >
               Quiero Weball en mi liga
             </a>
             <a
               href="#productos"
-              className="border-2 border-blanco/70 px-8 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:-translate-y-0.5 hover:bg-blanco hover:text-marino"
+              className="border-2 border-blanco/70 px-7 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:-translate-y-0.5 hover:bg-blanco hover:text-marino"
             >
               Conocé los productos
             </a>

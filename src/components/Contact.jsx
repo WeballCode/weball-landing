@@ -1,5 +1,6 @@
 import { WHATSAPP_LABEL, whatsappLink } from '../links.js'
 import { Reveal } from './motion.jsx'
+import { Label, Lead, Section, Title } from './ui.jsx'
 
 const options = [
   { label: 'Tengo una liga', message: 'Hola Weball, tengo una liga y quiero conocer Weball Liga.' },
@@ -10,17 +11,13 @@ const options = [
 
 export default function Contact() {
   return (
-    <section id="contacto" className="scroll-mt-16 bg-celeste text-marino">
-      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1fr_1fr] lg:gap-16">
-        <Reveal>
-          <p className="text-sm font-medium uppercase tracking-[0.2em]">Contacto</p>
-          <h2 className="mt-4 text-4xl font-extrabold uppercase leading-none sm:text-6xl">
-            Te mostramos tu liga funcionando
-          </h2>
-          <p className="mt-6 text-lg leading-relaxed">
-            Contanos quién sos por WhatsApp y te mostramos Weball en acción.
-          </p>
-          <p className="mt-6">
+    <Section id="contacto" tone="celeste">
+      <div className="grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-14">
+        <div>
+          <Label tone="celeste">Contacto</Label>
+          <Title>Te mostramos tu liga funcionando</Title>
+          <Lead tone="celeste">Contanos quién sos por WhatsApp y te mostramos Weball en acción.</Lead>
+          <Reveal as="p" delay={300} className="mt-5">
             O escribinos directo al{' '}
             <a
               href={whatsappLink('Hola Weball, quiero más información.')}
@@ -30,8 +27,8 @@ export default function Contact() {
             >
               {WHATSAPP_LABEL}
             </a>
-          </p>
-        </Reveal>
+          </Reveal>
+        </div>
 
         <ul className="flex flex-col">
           {options.map((o, i) => (
@@ -40,7 +37,7 @@ export default function Contact() {
                 href={whatsappLink(o.message)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex items-center justify-between gap-4 border-marino py-5 text-xl font-extrabold uppercase transition hover:pl-3 ${
+                className={`flex items-center justify-between gap-4 border-marino py-5 text-lg font-extrabold uppercase transition hover:pl-3 ${
                   i === 0 ? 'border-t-4' : 'border-t-2'
                 }`}
               >
@@ -51,6 +48,6 @@ export default function Contact() {
           ))}
         </ul>
       </div>
-    </section>
+    </Section>
   )
 }
