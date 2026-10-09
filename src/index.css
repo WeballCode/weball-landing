@@ -105,6 +105,16 @@ body {
   animation: format-progress linear both;
 }
 
+/* Fichajes: flash de la selfie (aparece y se apaga) */
+@keyframes flash {
+  0% { opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+.is-visible .flash {
+  animation: flash 0.6s ease-out 1.2s both;
+}
+
 /* Tribunal IA: barra que escanea el reglamento */
 @keyframes scan {
   0% { transform: translateY(0); opacity: 0; }
