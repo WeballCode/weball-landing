@@ -1,7 +1,7 @@
 import { Icon, Section } from './ui.jsx'
 
 // Sección de un producto Weball: nombre, promesa y lista numerada de lo que incluye
-export default function ProductSection({ id, light = false, icon, name, audience, title, items, closing, cta, visual }) {
+export default function ProductSection({ id, light = false, icon, name, audience, title, items, closing, cta, visual, stats }) {
   const muted = light ? 'text-pizarra' : 'text-bruma'
   const accent = light ? 'text-celeste-profundo' : 'text-celeste'
 
@@ -15,6 +15,22 @@ export default function ProductSection({ id, light = false, icon, name, audience
           </div>
           <h2 className="mt-6 text-5xl font-extrabold uppercase leading-none sm:text-7xl">{name}</h2>
           <p className={`mt-6 text-2xl font-bold leading-snug ${light ? 'text-marino' : 'text-blanco'}`}>{title}</p>
+
+          {stats && (
+            <dl className="mt-10 grid grid-cols-2 gap-x-6">
+              {stats.map((s, i) => (
+                <div
+                  key={s.label}
+                  className={`flex flex-col-reverse py-4 ${i < 2 ? 'border-t-4' : 'border-t-2'} ${
+                    light ? 'border-marino' : 'border-celeste'
+                  }`}
+                >
+                  <dt className={`mt-1 text-sm font-medium uppercase tracking-[0.15em] ${muted}`}>{s.label}</dt>
+                  <dd className="text-4xl font-extrabold tabular-nums sm:text-5xl">{s.value}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
 
           {visual && <div className="mt-12 lg:mt-auto lg:pt-12">{visual}</div>}
         </div>
