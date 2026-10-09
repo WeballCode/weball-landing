@@ -43,18 +43,18 @@ export default function CustomFields() {
   }, [inView, reduced, done, typed, current.length])
 
   return (
-    <div ref={ref} className="bg-celeste p-5 text-marino sm:p-6">
-      <p className="text-xs font-bold uppercase tracking-[0.2em]">Nuevo · Fichaje a medida</p>
-      <p className="mt-2 text-2xl font-extrabold uppercase leading-tight sm:text-3xl">Sumá los datos que tu liga necesite</p>
+    <div ref={ref} className="max-w-md bg-celeste p-4 text-marino">
+      <p className="text-[11px] font-bold uppercase tracking-[0.2em]">Nuevo · Fichaje a medida</p>
+      <p className="mt-1 text-lg font-extrabold uppercase leading-tight">Sumá los datos que quieras</p>
 
       {/* Campo donde se tipea */}
-      <div className="mt-5 flex items-stretch gap-2" aria-hidden="true">
-        <div className="flex min-w-0 flex-1 items-center border-2 border-marino bg-blanco px-3 py-2 font-bold">
+      <div className="mt-3 flex items-stretch gap-2 text-sm" aria-hidden="true">
+        <div className="flex min-w-0 flex-1 items-center border-2 border-marino bg-blanco px-2.5 py-1.5 font-bold">
           <span className="truncate">{done ? 'Lo que vos quieras' : current.slice(0, typed)}</span>
-          {!done && !reduced && <span className="caret ml-0.5 inline-block h-5 w-0.5 bg-marino" />}
+          {!done && !reduced && <span className="caret ml-0.5 inline-block h-4 w-0.5 bg-marino" />}
         </div>
         <span
-          className={`flex items-center bg-marino px-4 text-sm font-bold uppercase tracking-wide text-celeste transition ${
+          className={`flex items-center bg-marino px-3 text-xs font-bold uppercase tracking-wide text-celeste transition ${
             pressing ? 'scale-95' : ''
           }`}
         >
@@ -63,15 +63,15 @@ export default function CustomFields() {
       </div>
 
       {/* Datos sumados */}
-      <ul className="mt-4 flex min-h-20 flex-wrap content-start gap-2" aria-label="Datos que la liga puede pedir">
+      <ul className="mt-3 flex min-h-[3.75rem] flex-wrap content-start gap-1.5" aria-label="Datos que la liga puede pedir">
         {fields.slice(0, added).map((f) => (
-          <li key={f} className="chip-in flex items-center gap-1.5 bg-marino px-3 py-1.5 text-sm font-bold text-blanco">
+          <li key={f} className="chip-in flex items-center gap-1 bg-marino px-2 py-1 text-xs font-bold text-blanco">
             <span className="text-celeste" aria-hidden="true">+</span>
             {f}
           </li>
         ))}
         {done && (
-          <li className="chip-in flex items-center gap-1.5 border-2 border-marino px-3 py-1 text-sm font-extrabold uppercase">
+          <li className="chip-in flex items-center gap-1 border-2 border-marino px-2 py-0.5 text-xs font-extrabold uppercase">
             + Lo que vos quieras
           </li>
         )}
