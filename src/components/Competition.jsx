@@ -11,7 +11,7 @@ const formats = [
 
 const steps = [
   { title: 'Configurás', text: 'Elegís el formato, las categorías y las reglas de tu torneo.' },
-  { title: 'Programás', text: 'Los clubes acuerdan fecha, hora y sede de cada partido.' },
+  { title: 'Programás', text: 'Fecha, hora y sede de cada partido, y designación de árbitros.' },
   { title: 'Se juega', text: 'Árbitros y clubes cargan los resultados.' },
   { title: 'Todos lo ven', text: 'Tablas y estadísticas se actualizan en la app de tu liga.' },
 ]

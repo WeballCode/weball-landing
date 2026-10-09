@@ -4,7 +4,6 @@ export default function Credential() {
   return (
     <FeatureSection
       id="credencial"
-      light
       icon="credencial"
       tag="Credencial digital"
       title="Sabés quién juega"

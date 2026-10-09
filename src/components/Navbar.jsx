@@ -1,9 +1,10 @@
 import { useState } from 'react'
 
 const links = [
-  { href: '#para-quien', label: 'Para quién' },
   { href: '#producto', label: 'Producto' },
-  { href: '#competiciones', label: 'Competiciones' },
+  { href: '#sistema', label: 'Sistema' },
+  { href: '#app', label: 'App' },
+  { href: '#sponsors', label: 'Sponsors' },
   { href: '#inversores', label: 'Inversores' },
 ]
 
