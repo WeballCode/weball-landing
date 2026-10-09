@@ -65,10 +65,7 @@ export default function Modules() {
               m.featured ? 'border-marino bg-celeste text-marino' : 'border-celeste bg-marino-claro'
             }`}
           >
-            <div className="flex items-start justify-between gap-4">
-              <span className={`text-3xl font-extrabold ${m.featured ? 'text-marino' : 'text-celeste'}`}>0{i + 1}</span>
-              <Icon name={m.icon} className="h-9 w-9 shrink-0" />
-            </div>
+            <Icon name={m.icon} className={`h-9 w-9 shrink-0 ${m.featured ? 'text-marino' : 'text-celeste'}`} />
             <p className={`text-xs font-medium uppercase tracking-[0.2em] ${m.featured ? 'text-marino' : 'text-celeste'}`}>
               {m.kicker}
             </p>
