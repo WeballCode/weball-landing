@@ -20,13 +20,14 @@ export function Title({ children, className = '' }) {
 }
 
 // Contenedor de sección con uno de los dos fondos de la marca
-export function Section({ id, light = false, children, className = '' }) {
+// `tight` deja menos margen arriba y abajo, para secciones que tienen que entrar en una pantalla
+export function Section({ id, light = false, tight = false, children, className = '' }) {
   return (
     <section
       id={id}
       className={`scroll-mt-16 ${light ? 'bg-niebla text-marino' : 'bg-marino text-blanco'} ${className}`}
     >
-      <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-28">{children}</div>
+      <div className={`mx-auto max-w-6xl px-4 sm:px-6 ${tight ? 'py-12 lg:py-14' : 'py-16 lg:py-20'}`}>{children}</div>
     </section>
   )
 }

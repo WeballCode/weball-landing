@@ -79,6 +79,9 @@ body {
 .marquee {
   animation: marquee 40s linear infinite;
 }
+.marquee-slow {
+  animation: marquee 60s linear infinite;
+}
 
 /* Pulso suave del círculo central de la cancha */
 @keyframes pulse-ring {
@@ -176,6 +179,7 @@ body {
     transition: none;
   }
   .marquee,
+  .marquee-slow,
   .pulse-ring,
   .format-enter,
   .caret,

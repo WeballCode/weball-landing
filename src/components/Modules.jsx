@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Icon, Label, Section, Title } from './ui.jsx'
 import FormatShowcase from './FormatShowcase.jsx'
 import ComunicacionShowcase from './ComunicacionShowcase.jsx'
@@ -42,38 +43,72 @@ const modules = [
   },
 ]
 
+// Los 5 módulos en pestañas: se ve uno a la vez para que la sección entre en una pantalla.
 export default function Modules() {
-  return (
-    <Section id="modulos">
-      <Label>Tecnología Weball</Label>
-      <Title>
-        Soluciones
-      </Title>
-      <Reveal as="p" delay={200} className="mt-6 max-w-2xl text-lg leading-relaxed text-bruma">
-        Como no somos los únicos, decidimos hacer la diferencia.
-      </Reveal>
+  const [active, setActive] = useState(0)
+  const m = modules[active]
 
-      <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-6">
-        {modules.map((m, i) => (
-          <Reveal key={m.name} delay={(i % 3) * 120} className={`flex ${i < 2 ? 'lg:col-span-3' : 'lg:col-span-2'}`}>
-          <div
-            className={`flex min-h-72 w-full flex-col gap-4 border-t-[6px] p-7 transition duration-300 hover:-translate-y-2 sm:p-8 ${
-              m.featured ? 'border-marino bg-celeste text-marino' : 'border-celeste bg-marino-claro'
-            }`}
-          >
-            <Icon name={m.icon} className={`h-9 w-9 shrink-0 ${m.featured ? 'text-marino' : 'text-celeste'}`} />
-            <h3 className="text-3xl font-extrabold uppercase leading-none">{m.name}</h3>
-            <p className={`leading-relaxed ${m.featured ? 'text-marino' : 'text-bruma'}`}>{m.text}</p>
-            {m.visual && <div className="mt-auto pt-4">{m.visual}</div>}
-            {m.caption && (
-              <p className={`border-t-2 pt-4 font-bold leading-relaxed ${m.featured ? 'border-marino' : 'border-linea'}`}>
-                {m.caption}
-              </p>
-            )}
-            {m.extra && <div className={m.visual ? 'pt-4' : 'mt-auto pt-4'}>{m.extra}</div>}
-          </div>
+  return (
+    <Section id="modulos" tight>
+      <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:gap-14">
+        {/* Izquierda: título y lista de módulos */}
+        <div className="min-w-0">
+          <Label>Tecnología Weball</Label>
+          <Title>Soluciones</Title>
+          <Reveal as="p" delay={200} className="mt-5 max-w-md text-lg leading-relaxed text-bruma">
+            Como no somos los únicos, decidimos hacer la diferencia.
           </Reveal>
-        ))}
+
+          {/* En el celular las pestañas se deslizan de costado; en la compu van una abajo de la otra */}
+          <Reveal delay={300} className="-mx-4 mt-8 overflow-x-auto px-4 lg:mx-0 lg:overflow-visible lg:px-0">
+            <ul className="flex gap-2 lg:flex-col" role="tablist" aria-label="Módulos de Weball">
+              {modules.map((mod, i) => {
+                const selected = i === active
+                return (
+                  <li key={mod.name} className="shrink-0">
+                    <button
+                      type="button"
+                      role="tab"
+                      aria-selected={selected}
+                      onClick={() => setActive(i)}
+                      className={`flex w-full items-center gap-3 border-l-4 px-4 py-3 text-left font-extrabold uppercase tracking-wide transition ${
+                        selected
+                          ? 'border-celeste bg-celeste text-marino'
+                          : 'border-linea bg-marino-claro text-blanco hover:border-celeste'
+                      }`}
+                    >
+                      <Icon name={mod.icon} className="h-6 w-6 shrink-0" />
+                      <span className="whitespace-nowrap">{mod.name}</span>
+                      <span aria-hidden="true" className="ml-auto hidden lg:inline">
+                        {selected ? '→' : ''}
+                      </span>
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
+          </Reveal>
+        </div>
+
+        {/* Derecha: el módulo elegido */}
+        <div
+          key={active}
+          role="tabpanel"
+          aria-label={m.name}
+          className={`format-enter flex min-w-0 flex-col gap-5 border-t-[6px] p-6 sm:p-8 ${
+            m.featured ? 'border-marino bg-celeste text-marino' : 'border-celeste bg-marino-claro'
+          }`}
+        >
+          <div className="flex items-start gap-3">
+            <Icon name={m.icon} className={`mt-0.5 h-7 w-7 shrink-0 ${m.featured ? 'text-marino' : 'text-celeste'}`} />
+            <div>
+              <h3 className="text-2xl font-extrabold uppercase leading-none">{m.name}</h3>
+              <p className={`mt-2 leading-relaxed ${m.featured ? 'text-marino' : 'text-bruma'}`}>{m.text}</p>
+            </div>
+          </div>
+          {m.visual && <div>{m.visual}</div>}
+          {m.extra && <div>{m.extra}</div>}
+        </div>
       </div>
     </Section>
   )

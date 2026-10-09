@@ -32,10 +32,10 @@ export default function Investors() {
         Weball es la plataforma que le faltaba.
       </Reveal>
 
-      <div className="mt-12 grid gap-4 sm:grid-cols-2">
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {points.map((p, i) => (
-          <Reveal key={p.title} delay={(i % 2) * 120} className="flex">
-            <div className="flex min-h-52 w-full flex-col gap-3 border-t-[6px] border-marino bg-blanco p-8 transition duration-300 hover:-translate-y-2">
+          <Reveal key={p.title} delay={i * 100} className="flex">
+            <div className="flex w-full flex-col gap-3 border-t-[6px] border-marino bg-blanco p-6 transition duration-300 hover:-translate-y-2">
               <span className="text-3xl font-extrabold text-celeste-profundo">0{i + 1}</span>
               <h3 className="text-2xl font-extrabold uppercase leading-none">{p.title}</h3>
               <p className="leading-relaxed text-pizarra">{p.text}</p>

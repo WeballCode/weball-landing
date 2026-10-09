@@ -28,27 +28,39 @@ const clubs = [
   { name: 'C.P.', file: 'cp' },
 ]
 
+// Una fila de escudos que se desliza de costado en loop (ocupa poco alto)
+function ClubRow({ hidden = false }) {
+  return (
+    <ul className="flex shrink-0 gap-3 pr-3" aria-hidden={hidden || undefined}>
+      {clubs.map((c) => (
+        <li key={c.file} className="h-20 w-20 shrink-0 bg-white p-2.5" title={c.name}>
+          {/* Cada imagen ya viene recortada y centrada en un cuadrado blanco del mismo tamaño */}
+          <img
+            src={`./clubes/${c.file}.png`}
+            alt={hidden ? '' : c.name}
+            loading="lazy"
+            width="256"
+            height="256"
+            className="block h-full w-full object-contain"
+          />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 function ClubWall() {
   return (
     <div>
       <Reveal as="p" className="text-sm font-medium uppercase tracking-[0.2em] text-bruma">
         Juegan en ligas con Weball
       </Reveal>
-      <ul className="mt-6 grid max-w-4xl grid-cols-3 gap-2 sm:grid-cols-7">
-        {clubs.map((c, i) => (
-          <Reveal as="li" key={c.file} delay={(i % 7) * 60} className="group bg-white p-[12%]" title={c.name}>
-            {/* Cada imagen ya viene recortada y centrada en un cuadrado blanco del mismo tamaño */}
-            <img
-              src={`./clubes/${c.file}.png`}
-              alt={c.name}
-              loading="lazy"
-              width="256"
-              height="256"
-              className="block aspect-square w-full object-contain transition duration-300 group-hover:scale-110"
-            />
-          </Reveal>
-        ))}
-      </ul>
+      <div className="mt-5 overflow-hidden">
+        <div className="marquee-slow flex w-max hover:[animation-play-state:paused]">
+          <ClubRow />
+          <ClubRow hidden />
+        </div>
+      </div>
     </div>
   )
 }

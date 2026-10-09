@@ -46,25 +46,23 @@ export default function ProductSection({
             <Icon name={icon} className="h-8 w-8" />
             <p className="text-sm font-medium uppercase tracking-[0.2em]">{audience}</p>
           </Reveal>
-          <Reveal as="h2" delay={100} className="mt-6 text-5xl font-extrabold uppercase leading-none sm:text-7xl">
+          <Reveal as="h2" delay={100} className="mt-5 text-5xl font-extrabold uppercase leading-none sm:text-6xl">
             {name}
           </Reveal>
-          <Reveal as="p" delay={200} className={`mt-6 text-2xl font-bold leading-snug ${light ? 'text-marino' : 'text-blanco'}`}>
+          <Reveal as="p" delay={200} className={`mt-5 text-2xl font-bold leading-snug ${light ? 'text-marino' : 'text-blanco'}`}>
             {title}
           </Reveal>
 
           {stats && (
-            <dl className="mt-10 grid grid-cols-2 gap-x-6">
+            <dl className="mt-8 grid grid-cols-2 gap-x-6 sm:grid-cols-4 sm:gap-x-4">
               {stats.map((s, i) => (
                 <Reveal
                   key={s.label}
                   delay={250 + i * 100}
-                  className={`flex flex-col-reverse py-4 ${i < 2 ? 'border-t-4' : 'border-t-2'} ${
-                    light ? 'border-marino' : 'border-celeste'
-                  }`}
+                  className={`flex flex-col-reverse border-t-4 py-3 ${light ? 'border-marino' : 'border-celeste'}`}
                 >
-                  <dt className={`mt-1 text-sm font-medium uppercase tracking-[0.15em] ${muted}`}>{s.label}</dt>
-                  <dd className="text-4xl font-extrabold tabular-nums sm:text-5xl">
+                  <dt className={`mt-1 text-xs font-medium uppercase tracking-[0.15em] ${muted}`}>{s.label}</dt>
+                  <dd className="text-3xl font-extrabold tabular-nums xl:text-4xl">
                     <CountUp value={s.value} />
                   </dd>
                 </Reveal>
@@ -73,12 +71,12 @@ export default function ProductSection({
           )}
 
           {ctaLeft && button && (
-            <Reveal delay={500} className="mt-10 flex flex-col sm:items-start">
+            <Reveal delay={500} className="mt-8 flex flex-col sm:items-start">
               {button}
             </Reveal>
           )}
 
-          {visual && <div className="mt-12 lg:mt-auto lg:pt-12">{visual}</div>}
+          {visual && <div className="mt-8 lg:mt-auto lg:pt-8">{visual}</div>}
         </div>
 
         <div className="flex flex-col">
@@ -87,7 +85,7 @@ export default function ProductSection({
           ) : (
           <Reveal
             delay={150}
-            className={`flex flex-col border-t-[6px] p-7 sm:p-10 ${
+            className={`flex flex-col border-t-[6px] p-6 sm:p-8 ${
               light ? 'border-marino bg-blanco' : 'border-celeste bg-marino-claro'
             }`}
           >
@@ -108,13 +106,13 @@ export default function ProductSection({
                   as="li"
                   key={item.name}
                   delay={300 + i * 120}
-                  className={`${highlights ? 'py-2' : 'py-5'} ${
+                  className={`${highlights ? 'py-1' : 'py-4'} ${
                     i === 0 ? '' : light ? 'border-t-2 border-niebla' : 'border-t-2 border-linea'
                   }`}
                 >
                   {/* Si la sección marca un paso activo, ese paso se resalta en celeste */}
                   <div
-                    className={`flex gap-5 transition-colors duration-500 ${highlights ? '-mx-3 px-3 py-3' : ''} ${
+                    className={`flex gap-5 transition-colors duration-500 ${highlights ? '-mx-3 px-3 py-2.5' : ''} ${
                       highlights && i === activeIndex ? (light ? 'bg-celeste-claro' : 'bg-celeste text-marino') : ''
                     }`}
                   >
@@ -127,7 +125,7 @@ export default function ProductSection({
                       {i + 1}
                     </span>
                     <div>
-                      <p className="text-xl font-extrabold uppercase leading-tight">{item.name}</p>
+                      <p className="text-lg font-extrabold uppercase leading-tight">{item.name}</p>
                       {item.text && (
                         <p
                           className={`mt-1.5 leading-relaxed ${
@@ -163,7 +161,7 @@ export default function ProductSection({
         </div>
       </div>
 
-      {footer && <div className="mt-16">{footer}</div>}
+      {footer && <div className="mt-10">{footer}</div>}
     </Section>
   )
 }

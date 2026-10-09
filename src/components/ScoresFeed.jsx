@@ -34,7 +34,7 @@ export default function ScoresFeed() {
   })
 
   return (
-    <div ref={ref} className="flex flex-col border-t-[6px] border-celeste bg-marino-claro p-7 sm:p-10">
+    <div ref={ref} className="flex flex-col border-t-[6px] border-celeste bg-marino-claro p-6 sm:p-8">
       <div className="flex items-start justify-between gap-4">
         <p className="text-3xl font-extrabold uppercase leading-none">Partidos todos los días</p>
         <span className="flex shrink-0 items-center gap-1.5 bg-celeste px-2.5 py-1 text-xs font-bold uppercase tracking-wide text-marino">
@@ -43,11 +43,11 @@ export default function ScoresFeed() {
         </span>
       </div>
 
-      <ul className="mt-8 flex flex-col gap-2" aria-label="Últimos resultados de la comunidad">
+      <ul className="mt-6 flex flex-col gap-2" aria-label="Últimos resultados de la comunidad">
         {feed.map((m, i) => (
           <li
             key={m.key}
-            className={`flex items-center justify-between gap-3 px-4 py-3 ${i === 0 ? 'chip-in bg-celeste text-marino' : 'bg-marino text-blanco'}`}
+            className={`flex items-center justify-between gap-3 px-4 py-2.5 ${i === 0 ? 'chip-in bg-celeste text-marino' : 'bg-marino text-blanco'}`}
           >
             <div className="min-w-0">
               <p className={`text-xs font-bold uppercase tracking-[0.15em] ${i === 0 ? 'text-marino' : 'text-celeste'}`}>{m.league}</p>
