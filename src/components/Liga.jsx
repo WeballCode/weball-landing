@@ -4,6 +4,7 @@ export default function Liga() {
   return (
     <ProductSection
       id="liga"
+      light
       icon="liga"
       audience="Para ligas"
       name="Weball Liga"

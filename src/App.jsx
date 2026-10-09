@@ -20,11 +20,11 @@ export default function App() {
         <Hero />
         <Ticker />
         <Products />
+        <Modules />
         <Liga />
         <Scores />
         <Asociacion />
         <Sponsors />
-        <Modules />
         <Investors />
         <Contact />
       </main>

@@ -67,10 +67,13 @@ export function CourtLines({ className = '' }) {
 }
 
 // Esquema de una asociación con sus ligas y los clubes de cada liga. Se arma de a pasos.
-export function AssociationDiagram({ className = '' }) {
+export function AssociationDiagram({ className = '', light = false }) {
   const [ref, inView] = useInView({ threshold: 0.4 })
   const ligas = [70, 240, 410]
   const font = 'Roboto, Arial, sans-serif'
+  // Sobre fondo claro los bloques van en marino y los clubes en gris acero
+  const ligaFill = light ? '#032639' : '#0f3143'
+  const muted = light ? '#51606b' : '#b9cbd6'
 
   return (
     <svg
@@ -104,7 +107,7 @@ export function AssociationDiagram({ className = '' }) {
       {ligas.map((x, i) => (
         <g key={x}>
           <g className="pop" style={{ transitionDelay: `${900 + i * 150}ms` }}>
-            <rect x={x - 62} y="140" width="124" height="56" fill="#0f3143" />
+            <rect x={x - 62} y="140" width="124" height="56" fill={ligaFill} />
             <rect x={x - 62} y="140" width="124" height="5" fill="#3fb6ff" />
             <text x={x} y="175" textAnchor="middle" fill="#fbfbf8" fontFamily={font} fontSize="15" fontWeight="800" letterSpacing="1">
               {`LIGA ${i + 1}`}
@@ -120,13 +123,13 @@ export function AssociationDiagram({ className = '' }) {
               cy="256"
               r="16"
               fill="none"
-              stroke="#b9cbd6"
+              stroke={muted}
               strokeWidth="2.5"
             />
           ))}
         </g>
       ))}
-      <text x="240" y="296" textAnchor="middle" fill="#b9cbd6" fontFamily={font} fontSize="12" fontWeight="500" letterSpacing="3">
+      <text x="240" y="296" textAnchor="middle" fill={muted} fontFamily={font} fontSize="12" fontWeight="500" letterSpacing="3">
         CLUBES
       </text>
     </svg>

@@ -31,7 +31,7 @@ const clubs = [
 function ClubWall() {
   return (
     <div>
-      <Reveal as="p" className="text-sm font-medium uppercase tracking-[0.2em] text-acero">
+      <Reveal as="p" className="text-sm font-medium uppercase tracking-[0.2em] text-bruma">
         Juegan en ligas con Weball
       </Reveal>
       <ul className="mt-6 grid max-w-4xl grid-cols-3 gap-2 sm:grid-cols-7">
@@ -57,7 +57,6 @@ export default function Scores() {
   return (
     <ProductSection
       id="scores"
-      light
       icon="comunidad"
       audience="Para jugadores, clubes y público"
       name="Weball Scores"

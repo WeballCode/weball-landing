@@ -4,7 +4,6 @@ export default function Sponsors() {
   return (
     <ProductSection
       id="sponsors"
-      light
       icon="inversor"
       audience="Para marcas"
       name="Weball Sponsors"

@@ -5,6 +5,7 @@ export default function Asociacion() {
   return (
     <ProductSection
       id="asociacion"
+      light
       icon="gestion"
       audience="Para asociaciones y federaciones"
       name="Weball Asociación"
@@ -16,7 +17,7 @@ export default function Asociacion() {
       ]}
       closing="Todos bajo el sistema oficial de la asociación"
       cta={{ label: 'Quiero Weball en mi asociación', href: '#contacto' }}
-      visual={<AssociationDiagram className="w-full max-w-md" />}
+      visual={<AssociationDiagram light className="w-full max-w-md" />}
     />
   )
 }
