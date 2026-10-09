@@ -28,7 +28,7 @@ export default function Hero() {
             </Reveal>
           </h1>
 
-          <Reveal as="p" delay={450} className="mt-8 max-w-2xl text-lg leading-relaxed text-bruma sm:text-xl">
+          <Reveal as="p" delay={450} className="mt-8 max-w-xl text-balance text-lg leading-relaxed text-bruma sm:text-xl">
             El sistema de gestión y la aplicación que tu liga necesita para darle el salto de calidad que merece.
           </Reveal>
 
