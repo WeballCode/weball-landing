@@ -29,7 +29,7 @@ export default function Hero() {
           </h1>
 
           {/* El producto real: el sistema de gestión en la compu y la app en el celular */}
-          <Reveal delay={400} className="relative mt-7 w-full max-w-md pr-[11%]">
+          <Reveal delay={400} className="relative mt-7 w-full max-w-[24.75rem] pl-[11%]">
             <img
               src="./mockups/sistema.webp"
               alt="El sistema de gestión de Weball en una computadora"
@@ -42,7 +42,7 @@ export default function Hero() {
               alt="La app de resultados de Weball en un celular"
               width="420"
               height="872"
-              className="absolute right-0 bottom-0 h-auto w-[19%] drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
+              className="absolute left-0 bottom-0 h-auto w-[19%] drop-shadow-[0_8px_24px_rgba(0,0,0,0.45)]"
             />
           </Reveal>
 
