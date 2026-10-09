@@ -64,6 +64,9 @@ const paths = {
   app: 'M7 2h10v20H7zM11 18h2',
   comunidad: 'M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 11a3 3 0 1 0 0-6M3 20a6 6 0 0 1 12 0M15 14a6 6 0 0 1 6 6',
   rayo: 'M13 2L4 14h7l-1 8 9-12h-7l1-8z',
+  programar: 'M4 6h16v14H4zM4 10h16M8 3v5M16 3v5M8 14h3v3H8z',
+  envivo: 'M7 2h10v20H7zM11 18h2M10 9l4 2.5-4 2.5z',
+  mundo: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9M12 3c-2.5 2.5-3.5 5.5-3.5 9s1 6.5 3.5 9',
 }
 
 export function Icon({ name, className = 'h-7 w-7' }) {
