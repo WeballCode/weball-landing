@@ -10,7 +10,6 @@ const modules = [
   {
     icon: 'credencial',
     name: 'Fichajes a tu medida',
-    kicker: 'Inscripciones fáciles y rápidas',
     text: 'El jugador se ficha solo desde el celular, con la info que vos le pidas.',
     visual: <FichajesVisual />,
     extra: <CustomFields />,
@@ -18,21 +17,18 @@ const modules = [
   {
     icon: 'competicion',
     name: 'Tu torneo a medida',
-    kicker: 'Módulo de competición',
     text: 'Organizá por temporada, división y categoría. Armá el fixture que quieras.',
     extra: <FormatShowcase />,
   },
   {
     icon: 'app',
     name: 'Planilla digital',
-    kicker: 'Desde el celular',
     text: 'Carga de resultados vía celular para los árbitros y la mesa de control.',
     extra: <PlanillaShowcase />,
   },
   {
     icon: 'tribunal',
     name: 'Tribunal IA',
-    kicker: 'Tu agente de disciplina',
     text: 'Cargá tus reglamentos y dejá que nuestro agente se ocupe de sancionar. Podés ajustarlo y regular sus permisos. Generación automática de boletines, como las mejores ligas del mundo.',
     visual: <TribunalVisual />,
     featured: true,
@@ -40,7 +36,6 @@ const modules = [
   {
     icon: 'comunidad',
     name: 'Comunicación',
-    kicker: 'Vos decidís',
     text: 'Configurá qué se comunica, cómo, cuándo y a quién: notificaciones, información visible y acceso de los usuarios.',
     visual: <ComunicacionVisual />,
   },
@@ -66,9 +61,6 @@ export default function Modules() {
             }`}
           >
             <Icon name={m.icon} className={`h-9 w-9 shrink-0 ${m.featured ? 'text-marino' : 'text-celeste'}`} />
-            <p className={`text-xs font-medium uppercase tracking-[0.2em] ${m.featured ? 'text-marino' : 'text-celeste'}`}>
-              {m.kicker}
-            </p>
             <h3 className="text-3xl font-extrabold uppercase leading-none">{m.name}</h3>
             <p className={`leading-relaxed ${m.featured ? 'text-marino' : 'text-bruma'}`}>{m.text}</p>
             {m.visual && <div className="mt-auto pt-4">{m.visual}</div>}
