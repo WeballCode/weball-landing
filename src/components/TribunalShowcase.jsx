@@ -75,10 +75,13 @@ function CargaScreen() {
 }
 
 // 2. Llegan los informes arbitrales
+// Color de la tarjeta según la falta: roja o amarilla
+const ROJA = '#c81e1e'
+const AMARILLA = '#ffd60a'
 const reports = [
-  { title: 'INFORME · FECHA 7', faul: 'ROJA DIRECTA', min: "67'" },
-  { title: 'INFORME · FECHA 7', faul: 'AGRESIÓN', min: "81'" },
-  { title: 'INFORME · FECHA 7', faul: 'DOBLE AMARILLA', min: "52'" },
+  { title: 'INFORME · FECHA 7', faul: 'ROJA DIRECTA', min: "67'", card: ROJA },
+  { title: 'INFORME · FECHA 7', faul: 'AGRESIÓN', min: "81'", card: ROJA },
+  { title: 'INFORME · FECHA 7', faul: 'DOBLE AMARILLA', min: "52'", card: AMARILLA },
 ]
 
 function InformesScreen() {
@@ -98,7 +101,7 @@ function InformesScreen() {
         return (
           <g key={i} className="slide-in" style={{ animationDelay: `${300 + i * 500}ms` }}>
             <rect x={x} y={y} width="190" height="38" fill={MARINO} />
-            <rect x={x} y={y} width="6" height="38" fill={i === 1 ? '#c81e1e' : CELESTE} />
+            <rect x={x} y={y} width="6" height="38" fill={r.card} />
             <Text x={x + 14} y={y + 14} size={6.5} fill={CELESTE} spacing={1.2}>{r.title}</Text>
             <Text x={x + 14} y={y + 29} size={9} fill={BLANCO} spacing={0.6}>{r.faul}</Text>
             <Text x={x + 180} y={y + 29} size={9} fill={BLANCO} spacing={0} textAnchor="end">{r.min}</Text>
