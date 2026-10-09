@@ -312,7 +312,7 @@ export function FichajesVisual() {
   return (
     <div
       ref={ref}
-      className="w-full max-w-md"
+      className="w-full max-w-lg"
       role="img"
       aria-label="El fichaje desde el celular en 5 etapas: inicio, documentación, cuenta con los datos extra de la liga, pago y fin con la credencial digital"
     >
