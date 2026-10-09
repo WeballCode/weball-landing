@@ -24,7 +24,7 @@ const modules = [
   {
     icon: 'app',
     name: 'Planilla digital',
-    text: 'Carga de resultados vía celular para los árbitros y la mesa de control.',
+    text: 'Carga de resultados por celular para árbitros y mesas de control.',
     extra: <PlanillaShowcase />,
   },
   {
