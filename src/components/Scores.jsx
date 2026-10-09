@@ -1,5 +1,5 @@
 import ProductSection from './ProductSection.jsx'
-import { COMMUNITY_URL } from '../links.js'
+import ScoresFeed from './ScoresFeed.jsx'
 import { Reveal } from './motion.jsx'
 
 // Escudos de clubes que hoy juegan en ligas con Weball. Las imágenes están en public/clubes/.
@@ -58,21 +58,18 @@ export default function Scores() {
     <ProductSection
       id="scores"
       icon="comunidad"
-      audience="Para jugadores, clubes y público"
-      name="Weball Scores"
-      title="Nuestra comunidad de ligas, clubes y deportistas."
+      audience="Weball Scores"
+      name="Nuestra comunidad"
+      title="Unimos a todas nuestras ligas, clubes y deportistas."
       stats={[
         { value: '+35.000', label: 'Jugadores' },
         { value: '+5.000', label: 'Entrenadores' },
         { value: '+400', label: 'Clubes' },
         { value: '+300', label: 'Árbitros' },
       ]}
-      items={[
-        { name: 'Estadísticas de todos los torneos', text: 'Partidos, resultados y tablas.' },
-        { name: 'Perfiles de jugadores, cuerpo técnico y árbitros' },
-      ]}
-      closing="Dale a tu torneo la visibilidad que merece"
-      cta={COMMUNITY_URL ? { label: 'Entrá a We Are Weball', href: COMMUNITY_URL, external: true } : null}
+      cta={{ label: 'Sumá a tu liga', href: '#contacto' }}
+      ctaLeft
+      aside={<ScoresFeed />}
       footer={<ClubWall />}
     />
   )

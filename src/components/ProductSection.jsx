@@ -2,10 +2,40 @@ import { Icon, Section } from './ui.jsx'
 import { CountUp, Reveal } from './motion.jsx'
 
 // Sección de un producto Weball: nombre, promesa y lista numerada de lo que incluye
-export default function ProductSection({ id, light = false, icon, name, audience, title, items, closing, cta, visual, stats, footer, activeIndex }) {
+// `aside` reemplaza la lista de la derecha por otra pieza; `ctaLeft` pone el botón a la izquierda, debajo de las cifras.
+export default function ProductSection({
+  id,
+  light = false,
+  icon,
+  name,
+  audience,
+  title,
+  items = [],
+  closing,
+  cta,
+  visual,
+  stats,
+  footer,
+  activeIndex,
+  aside,
+  ctaLeft = false,
+}) {
   const highlights = activeIndex !== undefined
   const muted = light ? 'text-pizarra' : 'text-bruma'
   const accent = light ? 'text-celeste-profundo' : 'text-celeste'
+
+  const button = cta && (
+    <a
+      href={cta.href}
+      target={cta.external ? '_blank' : undefined}
+      rel={cta.external ? 'noopener noreferrer' : undefined}
+      className={`px-7 py-4 text-center font-bold uppercase tracking-wide transition hover:-translate-y-0.5 ${
+        light ? 'bg-marino text-blanco hover:bg-marino-claro' : 'bg-celeste text-marino hover:bg-celeste-claro'
+      }`}
+    >
+      {cta.label}
+    </a>
+  )
 
   return (
     <Section id={id} light={light}>
@@ -41,10 +71,19 @@ export default function ProductSection({ id, light = false, icon, name, audience
             </dl>
           )}
 
+          {ctaLeft && button && (
+            <Reveal delay={500} className="mt-10 flex flex-col sm:items-start">
+              {button}
+            </Reveal>
+          )}
+
           {visual && <div className="mt-12 lg:mt-auto lg:pt-12">{visual}</div>}
         </div>
 
         <div className="flex flex-col">
+          {aside ? (
+            <Reveal delay={150}>{aside}</Reveal>
+          ) : (
           <Reveal
             delay={150}
             className={`flex flex-col border-t-[6px] p-7 sm:p-10 ${
@@ -86,22 +125,12 @@ export default function ProductSection({ id, light = false, icon, name, audience
               {closing}
             </Reveal>
           </Reveal>
+          )}
 
           {/* El botón va debajo de los pasos */}
-          {cta && (
+          {!ctaLeft && button && (
             <Reveal delay={400 + items.length * 120} className="mt-6 flex flex-col sm:items-start">
-              <a
-                href={cta.href}
-                target={cta.external ? '_blank' : undefined}
-                rel={cta.external ? 'noopener noreferrer' : undefined}
-                className={`px-7 py-4 text-center font-bold uppercase tracking-wide transition hover:-translate-y-0.5 ${
-                  light
-                    ? 'bg-marino text-blanco hover:bg-marino-claro'
-                    : 'bg-celeste text-marino hover:bg-celeste-claro'
-                }`}
-              >
-                {cta.label}
-              </a>
+              {button}
             </Reveal>
           )}
         </div>
