@@ -44,8 +44,7 @@ export default function CustomFields() {
 
   return (
     <div ref={ref} className="w-full bg-celeste p-4 text-marino">
-      <p className="text-[11px] font-bold uppercase tracking-[0.2em]">Nuevo · Fichaje a medida</p>
-      <p className="mt-1 text-lg font-extrabold uppercase leading-tight">Sumá los datos que quieras</p>
+      <p className="text-lg font-extrabold uppercase leading-tight">Sumá los datos que vos quieras</p>
 
       {/* Campo donde se tipea */}
       <div className="mt-3 flex items-stretch gap-2 text-sm" aria-hidden="true">

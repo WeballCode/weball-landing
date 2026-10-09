@@ -8,9 +8,9 @@ import { Reveal } from './motion.jsx'
 const modules = [
   {
     icon: 'credencial',
-    name: 'Fichajes',
-    kicker: 'Dinámico y personalizado',
-    text: 'El jugador se ficha solo desde el celular, de la invitación a la credencial digital.',
+    name: 'Fichajes personalizados',
+    kicker: 'Fichajes',
+    text: 'El jugador se ficha solo desde el celular, con la info que vos le pidas.',
     visual: <FichajesVisual />,
     extra: <CustomFields />,
   },
