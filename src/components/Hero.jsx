@@ -16,7 +16,7 @@ export default function Hero() {
         <CourtLines className="pointer-events-none absolute top-1/2 -right-28 h-[115%] -translate-y-1/2 opacity-30 sm:-right-16 lg:right-[max(1.5rem,calc((100vw-72rem)/2))] lg:h-[88%] lg:opacity-100" />
         <div className="relative mx-auto max-w-6xl px-4 pt-16 pb-16 sm:px-6 sm:pt-24 sm:pb-20">
           <Reveal as="p" className="text-sm font-medium uppercase tracking-[0.2em] text-celeste">
-            Potenciamos el deporte amateur
+            Potenciamos al deporte amateur
           </Reveal>
 
           <h1 className="mt-6 max-w-4xl text-[2.75rem] font-extrabold uppercase leading-[0.95] sm:text-7xl lg:text-8xl">
@@ -29,7 +29,7 @@ export default function Hero() {
           </h1>
 
           <Reveal as="p" delay={450} className="mt-8 max-w-2xl text-lg leading-relaxed text-bruma sm:text-xl">
-            Organizá, mostrá y hacé crecer tu liga. Todo en un solo lugar.
+            El sistema de gestión y la aplicación que tu liga necesita para darle el salto de calidad que merece.
           </Reveal>
 
           <Reveal delay={600} className="mt-10 flex flex-col gap-3 sm:flex-row">
