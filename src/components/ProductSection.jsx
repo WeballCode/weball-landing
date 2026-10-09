@@ -115,13 +115,28 @@ export default function ProductSection({
                   {/* Si la sección marca un paso activo, ese paso se resalta en celeste */}
                   <div
                     className={`flex gap-5 transition-colors duration-500 ${highlights ? '-mx-3 px-3 py-3' : ''} ${
-                      highlights && i === activeIndex ? 'bg-celeste-claro' : ''
+                      highlights && i === activeIndex ? (light ? 'bg-celeste-claro' : 'bg-celeste text-marino') : ''
                     }`}
                   >
-                    <span className={`text-2xl font-extrabold leading-none ${accent}`}>{i + 1}</span>
+                    {/* Sobre fondo oscuro, el paso activo va en celeste con texto marino */}
+                    <span
+                      className={`text-2xl font-extrabold leading-none ${
+                        !light && highlights && i === activeIndex ? 'text-marino' : accent
+                      }`}
+                    >
+                      {i + 1}
+                    </span>
                     <div>
                       <p className="text-xl font-extrabold uppercase leading-tight">{item.name}</p>
-                      {item.text && <p className={`mt-1.5 leading-relaxed ${muted}`}>{item.text}</p>}
+                      {item.text && (
+                        <p
+                          className={`mt-1.5 leading-relaxed ${
+                            !light && highlights && i === activeIndex ? 'text-marino' : muted
+                          }`}
+                        >
+                          {item.text}
+                        </p>
+                      )}
                     </div>
                   </div>
                 </Reveal>
