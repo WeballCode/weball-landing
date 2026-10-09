@@ -141,10 +141,50 @@ function AgenteScreen() {
           <Text x="286" y={56 + i * 26} size={7} fill={CELESTE} spacing={0.5} textAnchor="end">{s.value}</Text>
         </g>
       ))}
-      {/* Boletín */}
-      <g className="pop" style={delay(2400)}>
-        <rect x="176" y="128" width="116" height="24" stroke={MARINO} strokeWidth="2" />
-        <Text x="234" y="144" size={8} textAnchor="middle" spacing={1.5}>BOLETÍN PUBLICADO</Text>
+    </>
+  )
+}
+
+// 4. La liga chequea y genera los boletines (el agente redacta el boletín completo)
+function BoletinScreen() {
+  return (
+    <>
+      {/* La liga revisa las sanciones */}
+      <Text className="pop" x="10" y="34" size={7} spacing={1.5}>REVISIÓN DE LA LIGA</Text>
+      {sanctions.map((s, i) => (
+        <g key={s.name}>
+          <g className="pop" style={delay(100 + i * 120)}>
+            <rect x="10" y={42 + i * 26} width="100" height="21" fill={MARINO} />
+            <Text x="18" y={56 + i * 26} size={7} fill={BLANCO} spacing={0.5}>{s.name}</Text>
+          </g>
+          <Check x={124} y={52.5 + i * 26} r={7} delayMs={500 + i * 300} />
+        </g>
+      ))}
+      <path className="draw" pathLength="1" style={delay(1400)} d="M140 84h18M150 76l8 8-8 8" stroke={MARINO} strokeWidth="2.5" />
+      {/* Boletín que redacta el agente */}
+      <rect className="draw" pathLength="1" style={delay(1500)} x="168" y="14" width="124" height="166" stroke={MARINO} strokeWidth="2.5" />
+      <g className="pop" style={delay(1700)}>
+        <rect x="168" y="14" width="124" height="26" fill={MARINO} />
+        <Text x="176" y="31" size={7.5} fill={CELESTE} spacing={1.2}>BOLETÍN · FECHA 7</Text>
+      </g>
+      {[100, 84, 96, 70, 92, 78, 88, 60].map((len, i) => (
+        <line
+          key={i}
+          className="draw"
+          pathLength="1"
+          style={delay(1900 + i * 180)}
+          x1="178"
+          y1={54 + i * 13}
+          x2={178 + len}
+          y2={54 + i * 13}
+          stroke={i % 3 === 0 ? MARINO : SOFT}
+          strokeWidth={i % 3 === 0 ? 3 : 2.5}
+        />
+      ))}
+      {/* Sello: redactado por IA */}
+      <g className="pop" style={delay(3500)}>
+        <circle cx="270" cy="160" r="14" fill={MARINO} />
+        <Text x="270" y="164" size={9} fill={CELESTE} spacing={0} textAnchor="middle">IA</Text>
       </g>
     </>
   )
@@ -153,7 +193,13 @@ function AgenteScreen() {
 const steps = [
   { name: 'Se carga el reglamento de los torneos', Screen: CargaScreen, ms: 3800 },
   { name: 'Llegan los informes arbitrales', Screen: InformesScreen, ms: 3600 },
-  { name: 'El agente los analiza y aplica las sanciones', Screen: AgenteScreen, ms: 4200 },
+  { name: 'El agente los analiza y aplica las sanciones', Screen: AgenteScreen, ms: 3800 },
+  {
+    name: 'La liga chequea y genera los boletines',
+    sub: 'Nuestro agente redacta el boletín completo.',
+    Screen: BoletinScreen,
+    ms: 5000,
+  },
 ]
 
 function Drawing({ index, play }) {
@@ -198,7 +244,10 @@ export default function TribunalShowcase() {
       <div className="bg-marino p-4 text-blanco">
         <div key={`t-${round}`} className="format-enter flex items-center gap-4">
           <span className="text-5xl font-extrabold leading-none text-celeste">{`0${index + 1}`}</span>
-          <p className="text-lg font-extrabold uppercase leading-tight">{current.name}</p>
+          <div>
+            <p className="text-lg font-extrabold uppercase leading-tight">{current.name}</p>
+            {current.sub && <p className="mt-1 text-sm font-medium leading-snug text-bruma">{current.sub}</p>}
+          </div>
         </div>
       </div>
     </div>
