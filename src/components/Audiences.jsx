@@ -1,36 +1,37 @@
+import { Icon, Label, Section, Title } from './ui.jsx'
+
 const audiences = [
   {
-    icon: '🏆',
-    title: 'Ligas y federaciones',
-    text: 'Armá torneos de cualquier formato, controlá quién juega y resolvé sanciones con criterio y en tiempo récord.',
+    icon: 'liga',
+    title: 'Ligas',
+    text: 'Organizá tu liga de punta a punta: fichajes, torneos, árbitros, partidos y sanciones, con tu propia app oficial.',
+    featured: true,
   },
   {
-    icon: '🛡️',
+    icon: 'club',
     title: 'Clubes',
-    text: 'Plantel, fichajes, documentación y comunicación con tus jugadores, todo desde una app pensada para dirigentes.',
+    text: 'Fichá a tus jugadores desde el celular, armá tus planteles y seguí cada partido. El club se organiza, la liga controla.',
   },
   {
-    icon: '⚽',
-    title: 'Jugadores',
-    text: 'Tu credencial en el celular, tus partidos, tus estadísticas y tu historial. Sin carnets de papel ni trámites.',
+    icon: 'jugador',
+    title: 'Jugadores y familias',
+    text: 'Tu credencial en el celular, tus partidos, tus estadísticas y los resultados de toda la liga en un solo lugar.',
   },
   {
-    icon: '📈',
-    title: 'Inversores y aliados',
-    text: 'Un mercado enorme y desatendido, listo para digitalizarse. Te contamos la oportunidad.',
+    icon: 'inversor',
+    title: 'Inversores y marcas',
+    text: 'Una comunidad que crece todas las semanas, y un lugar para las marcas dentro de la experiencia.',
     href: '#inversores',
   },
 ]
 
 export default function Audiences() {
   return (
-    <section id="para-quien" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-20 sm:px-6 sm:py-28">
-      <p className="text-sm font-semibold uppercase tracking-widest text-accent">Para quién es</p>
-      <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold tracking-tight sm:text-5xl">
-        Una plataforma, todos los protagonistas.
-      </h2>
-      <p className="mt-4 max-w-2xl text-lg text-slate-400">
-        Seas quien seas dentro del fútbol, Weball te resuelve algo hoy.
+    <Section id="para-quien" light>
+      <Label dark={false}>Para quién es</Label>
+      <Title>Una plataforma, todo el deporte amateur</Title>
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
+        Seas de una liga, de un club, juegues o quieras sumarte al proyecto, Weball tiene algo para vos.
       </p>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -40,15 +41,19 @@ export default function Audiences() {
             <Tag
               key={a.title}
               href={a.href}
-              className="group rounded-3xl border border-white/10 bg-white/[0.03] p-6 transition hover:border-brand/50 hover:bg-white/[0.06]"
+              className={`flex min-h-64 flex-col gap-4 border-t-[6px] p-7 transition ${
+                a.featured
+                  ? 'border-marino bg-celeste text-marino'
+                  : 'border-marino bg-blanco text-marino hover:bg-white'
+              }`}
             >
-              <span className="text-3xl" aria-hidden="true">{a.icon}</span>
-              <h3 className="mt-5 font-display text-xl font-semibold">{a.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-400">{a.text}</p>
+              <Icon name={a.icon} className="h-8 w-8" />
+              <h3 className="text-2xl font-extrabold uppercase leading-none">{a.title}</h3>
+              <p className={`leading-relaxed ${a.featured ? 'text-marino' : 'text-pizarra'}`}>{a.text}</p>
             </Tag>
           )
         })}
       </div>
-    </section>
+    </Section>
   )
 }

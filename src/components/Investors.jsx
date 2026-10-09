@@ -1,45 +1,49 @@
+import { Label, Section, Title } from './ui.jsx'
+
 const points = [
   {
-    title: 'Un mercado gigante y analógico',
-    text: 'Millones de personas juegan fútbol amateur todas las semanas, y la gran mayoría de las ligas todavía se gestiona con papel, planillas y WhatsApp.',
+    title: 'Un mercado enorme',
+    text: 'Millones de personas juegan deporte amateur todas las semanas, y la mayoría de las ligas todavía se organiza con papel, planillas y grupos de WhatsApp.',
   },
   {
-    title: 'Efecto red',
-    text: 'Cada liga que entra trae a sus clubes, y cada club trae a sus jugadores. La plataforma crece sola desde adentro.',
+    title: 'Crece desde adentro',
+    text: 'Cada liga que entra suma a sus clubes, y cada club suma a sus jugadores y sus familias.',
   },
   {
-    title: 'Datos únicos',
-    text: 'Partidos, jugadores, sanciones y estadísticas de un mundo que hoy no está digitalizado. Una base para nuevos servicios.',
+    title: 'Las marcas lo financian',
+    text: 'Los sponsors forman parte de la experiencia de la app y financian el producto.',
   },
   {
-    title: 'IA aplicada a un problema real',
-    text: 'No es IA por moda: resuelve uno de los dolores más grandes de cualquier liga, la disciplina.',
+    title: 'Ya funciona',
+    text: 'Futsala y sus filiales y Handball Baires ya organizan su actividad con Weball.',
   },
 ]
 
 export default function Investors() {
   return (
-    <section id="inversores" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-20 sm:px-6 sm:py-28">
-      <div className="max-w-3xl">
-        <p className="text-sm font-semibold uppercase tracking-widest text-accent">Para inversores</p>
-        <h2 className="mt-3 font-display text-3xl font-bold tracking-tight sm:text-5xl">
-          El fútbol amateur está listo para <span className="text-gradient">digitalizarse.</span>
-        </h2>
-        <p className="mt-5 text-lg leading-relaxed text-slate-400">
-          El fútbol profesional tiene toda la tecnología. El amateur, donde está la enorme mayoría de los que
-          juegan, casi nada. Weball es la infraestructura que le faltaba.
-        </p>
-      </div>
+    <Section id="inversores" light>
+      <Label dark={false}>Para inversores</Label>
+      <Title>
+        De aficionados a <span className="text-celeste-profundo">protagonistas</span>
+      </Title>
+      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
+        El deporte profesional tiene toda la tecnología. El amateur, donde juega la enorme mayoría, casi nada.
+        Weball es la plataforma que le faltaba.
+      </p>
 
-      <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2">
+      <div className="mt-12 grid gap-4 sm:grid-cols-2">
         {points.map((p, i) => (
-          <div key={p.title} className="bg-ink p-6 sm:p-8">
-            <span className="font-display text-sm font-semibold text-brand">0{i + 1}</span>
-            <h3 className="mt-3 font-display text-xl font-semibold">{p.title}</h3>
-            <p className="mt-2 leading-relaxed text-slate-400">{p.text}</p>
+          <div key={p.title} className="flex min-h-52 flex-col gap-3 border-t-[6px] border-marino bg-blanco p-8">
+            <span className="text-3xl font-extrabold text-celeste-profundo">0{i + 1}</span>
+            <h3 className="text-2xl font-extrabold uppercase leading-none">{p.title}</h3>
+            <p className="leading-relaxed text-pizarra">{p.text}</p>
           </div>
         ))}
       </div>
-    </section>
+
+      <p className="mt-8 text-sm text-acero">
+        Jugadores y árbitros: informe de junio de 2026. Clubes: octubre de 2026.
+      </p>
+    </Section>
   )
 }

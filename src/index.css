@@ -1,13 +1,26 @@
 @import "tailwindcss";
 
-/* Colores de marca: cambialos acá y se aplican en todo el sitio */
+/* Colores de marca (manual de marca v1): cambialos acá y se aplican en todo el sitio */
 @theme {
-  --color-brand: #7c5cff;
-  --color-brand-dark: #6342f5;
-  --color-accent: #c4f54a;
-  --color-ink: #07070d;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  /* Principales: marino 70%, blanco 20%, celeste 10% */
+  --color-marino: #032639;
+  --color-celeste: #3fb6ff;
+  --color-blanco: #fbfbf8;
+  /* Apoyo */
+  --color-marino-claro: #0f3143;
+  --color-niebla: #f1f4f6;
+  --color-celeste-claro: #bfe6ff;
+  --color-celeste-profundo: #0b6fcc;
+  /* Textos y líneas */
+  --color-bruma: #b9cbd6;
+  --color-pizarra: #3c4a54;
+  --color-acero: #51606b;
+  --color-linea: #365a70;
+
+  --color-brand: #032639;
+  --color-accent: #3fb6ff;
+
+  --font-sans: "Roboto", Arial, sans-serif;
 }
 
 html {
@@ -15,33 +28,5 @@ html {
 }
 
 body {
-  background: var(--color-ink);
-}
-
-/* Grilla sutil de fondo */
-.bg-grid {
-  background-image:
-    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-
-.text-gradient {
-  background: linear-gradient(90deg, #c4f54a 0%, #7c5cff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0) rotate(-3deg); }
-  50% { transform: translateY(-10px) rotate(-3deg); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-float { animation: none; transform: rotate(-3deg); }
+  background: var(--color-marino);
 }

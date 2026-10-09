@@ -1,12 +1,10 @@
-import Logo from './Logo.jsx'
-
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-10 text-sm text-slate-500 sm:flex-row sm:px-6">
-        <Logo />
-        <p>El sistema operativo del fútbol amateur.</p>
-        <p>© {new Date().getFullYear()} Weball</p>
+    <footer className="bg-marino">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-12 text-sm text-bruma sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <img src="./logo-blanco.png" alt="Weball" className="h-9 w-auto self-start" />
+        <p className="font-medium uppercase tracking-[0.2em]">Organizamos y conectamos al deporte amateur</p>
+        <p>© {new Date().getFullYear()} Weball Inc.</p>
       </div>
     </footer>
   )
