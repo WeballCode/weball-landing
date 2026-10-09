@@ -9,7 +9,7 @@ export default function Asociacion() {
       icon="gestion"
       audience="Weball Asociación"
       name="Federaciones"
-      title="Tené tu propio sistema y tu app, con todas tus ligas adentro."
+      title="Sistema y app con marca propia, con todas sus ligas adentro."
       items={[
         { name: 'Su gestión', text: 'Para que cada liga organice su actividad.' },
         { name: 'Su comunidad', text: 'De equipos, torneos y jugadores.' },
