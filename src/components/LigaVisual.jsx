@@ -71,35 +71,61 @@ function InscripcionScene() {
   )
 }
 
-// 2. Fichá a los jugadores y armá los planteles
-function PlantelesScene() {
-  const teams = [
-    { x: 20, color: MARINO, name: 'PLANTEL · ATL. UNIÓN' },
-    { x: 156, color: PROFUNDO, name: 'PLANTEL · DEP. NORTE' },
-  ]
+// Celular de 96 x 188, con la pantalla de x+8 a x+88
+function Phone({ x, y = 6 }) {
   return (
     <>
-      {teams.map((t, ti) => (
-        <g key={t.x}>
-          <rect className="draw" pathLength="1" style={delay(ti * 150)} x={t.x} y="12" width="124" height="176" stroke={MARINO} strokeWidth="2" />
-          <g className="pop" style={delay(200 + ti * 150)}>
-            <rect x={t.x} y="12" width="124" height="26" fill={t.color} />
-            <Text x={t.x + 8} y="29" size={7} fill={BLANCO} spacing={0.8}>{t.name}</Text>
-          </g>
-          {[0, 1, 2, 3, 4].map((p) => {
-            const y = 56 + p * 26
-            return (
-              <g key={p} className="pop" style={delay(500 + p * 300 + ti * 120)}>
-                <circle cx={t.x + 16} cy={y} r="7" fill={SUAVE} />
-                <circle cx={t.x + 16} cy={y - 2} r="2.6" fill={BLANCO} />
-                <line x1={t.x + 30} y1={y - 3} x2={t.x + 30 + [64, 52, 70, 46, 58][p]} y2={y - 3} stroke={MARINO} strokeWidth="2.5" />
-                <line x1={t.x + 30} y1={y + 4} x2={t.x + 30 + 28} y2={y + 4} stroke={SUAVE} strokeWidth="2" />
-                <Text x={t.x + 116} y={y + 3} size={8} fill={PROFUNDO} spacing={0} textAnchor="end">{[1, 4, 7, 9, 10][p]}</Text>
-              </g>
-            )
-          })}
-        </g>
+      <rect x={x} y={y} width="96" height="188" rx="14" fill={BLANCO} stroke={MARINO} strokeWidth="2.5" />
+      <line x1={x + 36} y1={y + 10} x2={x + 60} y2={y + 10} stroke={MARINO} strokeWidth="2.5" />
+    </>
+  )
+}
+
+// Rótulo al costado del celular: quién lo usa
+function Who({ x, y, icon, lines }) {
+  return (
+    <g className="pop">
+      {icon}
+      {lines.map((l, i) => (
+        <Text key={l} x={x} y={y + i * 12} size={8} fill={MARINO} spacing={1}>{l}</Text>
       ))}
+    </g>
+  )
+}
+
+// 2. Fichá a los jugadores y armá los planteles: el club lo hace desde el celular
+function PlantelesScene() {
+  const px = 168
+  return (
+    <>
+      <Who
+        x={24}
+        y={112}
+        icon={<Shield x={44} y={80} s={1.6} fill={MARINO} />}
+        lines={['EL CLUB ARMA', 'SU PLANTEL', 'DESDE EL CELULAR']}
+      />
+      <path className="draw" pathLength="1" style={delay(300)} d="M128 100h28M148 92l8 8-8 8" stroke={MARINO} strokeWidth="2.5" />
+      <Phone x={px} />
+      <g className="pop" style={delay(200)}>
+        <rect x={px + 8} y="26" width="80" height="20" fill={MARINO} />
+        <Text x={px + 14} y="39.5" size={6.5} fill={BLANCO} spacing={0.6}>PLANTEL · PRIMERA</Text>
+      </g>
+      {[0, 1, 2, 3, 4].map((p) => {
+        const y = 60 + p * 21
+        return (
+          <g key={p} className="pop" style={delay(500 + p * 320)}>
+            <circle cx={px + 17} cy={y} r="6" fill={SUAVE} />
+            <circle cx={px + 17} cy={y - 1.5} r="2.2" fill={BLANCO} />
+            <line x1={px + 28} y1={y - 2} x2={px + 28 + [42, 34, 46, 30, 38][p]} y2={y - 2} stroke={MARINO} strokeWidth="2.5" />
+            <line x1={px + 28} y1={y + 4} x2={px + 46} y2={y + 4} stroke={SUAVE} strokeWidth="2" />
+            <Text x={px + 86} y={y + 3} size={7.5} fill={PROFUNDO} spacing={0} textAnchor="end">{[1, 4, 7, 9, 10][p]}</Text>
+          </g>
+        )
+      })}
+      <g className="pop" style={delay(2300)}>
+        <rect x={px + 8} y="166" width="80" height="18" fill={CELESTE} />
+        <Text x={px + 48} y="178" size={6.5} fill={MARINO} spacing={0.8} textAnchor="middle">+ FICHAR JUGADOR</Text>
+      </g>
     </>
   )
 }
@@ -184,36 +210,55 @@ const teamsTable = [
   { name: 'LOS ANDES', pts: 4, after: 4 },
 ]
 
+// El árbitro carga el resultado desde el celular y la tabla se actualiza al costado
 function ResultadosScene({ on }) {
+  const [sent, setSent] = useState(false)
   const [updated, setUpdated] = useState(false)
   useEffect(() => {
     if (!on) return
-    const t = setTimeout(() => setUpdated(true), 1300)
-    return () => clearTimeout(t)
+    const t1 = setTimeout(() => setSent(true), 1300)
+    const t2 = setTimeout(() => setUpdated(true), 2000)
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
   }, [on])
 
   // Orden de la tabla antes y después del resultado
-  const order = updated
-    ? [...teamsTable].sort((a, b) => b.after - a.after)
-    : teamsTable
+  const order = updated ? [...teamsTable].sort((a, b) => b.after - a.after) : teamsTable
+  const px = 8
 
   return (
     <>
-      {/* Resultado que entra */}
-      <g className="pop">
-        <rect x="20" y="10" width="260" height="34" fill={MARINO} />
-        <Shield x={46} y={27} s={0.85} fill={PROFUNDO} />
-        <Text x="60" y="31" size={8} fill={BLANCO} spacing={0.5}>DEP. NORTE</Text>
-        <Text x="150" y="33" size={14} fill={CELESTE} spacing={0} textAnchor="middle">3 - 1</Text>
-        <Text x="240" y="31" size={8} fill={BLANCO} spacing={0.5} textAnchor="end">LOS ANDES</Text>
-        <Shield x={256} y={27} s={0.85} fill={ACERO} />
+      {/* Celular del árbitro */}
+      <Phone x={px} />
+      <g className="pop" style={delay(150)}>
+        <circle cx={px + 18} cy="34" r="5" stroke={MARINO} strokeWidth="1.8" />
+        <path d={`M${px + 23} 31h9v5h-9`} stroke={MARINO} strokeWidth="1.8" />
+        <Text x={px + 38} y="37" size={6.5} fill={PROFUNDO} spacing={1}>ÁRBITRO</Text>
       </g>
-      <g className="pop" style={delay(900)}>
-        <rect x="204" y="48" width="76" height="16" fill={CELESTE} />
-        <Text x="242" y="59.5" size={7} fill={MARINO} spacing={1.2} textAnchor="middle">PUBLICADO</Text>
+      <Text className="pop" style={delay(250)} x={px + 48} y="60" size={6.5} fill={ACERO} spacing={1} textAnchor="middle">RESULTADO FINAL</Text>
+      <g className="pop" style={delay(400)}>
+        <Shield x={px + 26} y={84} s={1} fill={PROFUNDO} />
+        <Text x={px + 26} y="106" size={6} fill={MARINO} spacing={0.3} textAnchor="middle">NORTE</Text>
+        <Shield x={px + 70} y={84} s={1} fill={ACERO} />
+        <Text x={px + 70} y="106" size={6} fill={MARINO} spacing={0.3} textAnchor="middle">ANDES</Text>
       </g>
+      <g className="pop" style={delay(700)}>
+        <Text x={px + 26} y="134" size={22} fill={MARINO} spacing={0} textAnchor="middle">3</Text>
+        <Text x={px + 48} y="130" size={12} fill={ACERO} spacing={0} textAnchor="middle">-</Text>
+        <Text x={px + 70} y="134" size={22} fill={MARINO} spacing={0} textAnchor="middle">1</Text>
+      </g>
+      <g className="pop" style={delay(1000)}>
+        <rect x={px + 8} y="166" width="80" height="18" fill={sent ? MARINO : CELESTE} style={{ transition: 'fill 0.3s' }} />
+        <Text x={px + 48} y="178" size={6.5} fill={sent ? CELESTE : MARINO} spacing={1} textAnchor="middle">
+          {sent ? 'ENVIADO ✓' : 'ENVIAR'}
+        </Text>
+      </g>
+      {/* Flecha a la tabla */}
+      <path className="draw" pathLength="1" style={delay(1400)} d="M112 100h14M120 94l6 6-6 6" stroke={MARINO} strokeWidth="2.5" />
       {/* Tabla */}
-      <Text className="pop" style={delay(300)} x="20" y="80" size={7.5} fill={PROFUNDO} spacing={1.5}>TABLA DE POSICIONES</Text>
+      <Text className="pop" style={delay(300)} x="134" y="44" size={7} fill={PROFUNDO} spacing={1.2}>TABLA DE POSICIONES</Text>
       {teamsTable.map((t) => {
         const pos = order.indexOf(t)
         const leader = pos === 0
@@ -221,17 +266,21 @@ function ResultadosScene({ on }) {
         return (
           <g
             key={t.name}
-            style={{ transform: `translateY(${pos * 28}px)`, transition: 'transform 0.7s cubic-bezier(0.3, 1.2, 0.5, 1)' }}
+            style={{ transform: `translateY(${pos * 27}px)`, transition: 'transform 0.7s cubic-bezier(0.3, 1.2, 0.5, 1)' }}
           >
             <g className="pop" style={delay(400 + teamsTable.indexOf(t) * 120)}>
-              <rect x="20" y="88" width="260" height="24" fill={leader ? CELESTE : BLANCO} stroke={leader ? 'none' : SUAVE} strokeWidth="1.5" />
-              <Text x="34" y="104" size={9} fill={MARINO} spacing={0} textAnchor="middle">{pos + 1}</Text>
-              <Text x="50" y="104" size={8.5} fill={MARINO} spacing={0.5}>{t.name}</Text>
-              <Text x="268" y="104" size={10} fill={MARINO} spacing={0} textAnchor="end">{pts}</Text>
+              <rect x="134" y="52" width="158" height="23" fill={leader ? CELESTE : BLANCO} stroke={leader ? 'none' : SUAVE} strokeWidth="1.5" />
+              <Text x="146" y="67.5" size={8.5} fill={MARINO} spacing={0} textAnchor="middle">{pos + 1}</Text>
+              <Text x="158" y="67.5" size={7.5} fill={MARINO} spacing={0.4}>{t.name}</Text>
+              <Text x="284" y="68" size={9.5} fill={MARINO} spacing={0} textAnchor="end">{pts}</Text>
             </g>
           </g>
         )
       })}
+      <g className="pop" style={delay(2400)}>
+        <rect x="214" y="166" width="78" height="18" fill={CELESTE} />
+        <Text x="253" y="178" size={7} fill={MARINO} spacing={1.2} textAnchor="middle">PUBLICADO</Text>
+      </g>
     </>
   )
 }
