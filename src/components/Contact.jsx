@@ -1,4 +1,5 @@
 import { WHATSAPP_LABEL, whatsappLink } from '../links.js'
+import { Reveal } from './motion.jsx'
 
 const options = [
   { label: 'Tengo una liga', message: 'Hola Weball, tengo una liga y quiero conocer Weball Liga.' },
@@ -11,7 +12,7 @@ export default function Contact() {
   return (
     <section id="contacto" className="scroll-mt-16 bg-celeste text-marino">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 py-20 sm:px-6 sm:py-28 lg:grid-cols-[1fr_1fr] lg:gap-16">
-        <div>
+        <Reveal>
           <p className="text-sm font-medium uppercase tracking-[0.2em]">Contacto</p>
           <h2 className="mt-4 text-4xl font-extrabold uppercase leading-none sm:text-6xl">
             Te mostramos tu liga funcionando
@@ -30,11 +31,11 @@ export default function Contact() {
               {WHATSAPP_LABEL}
             </a>
           </p>
-        </div>
+        </Reveal>
 
         <ul className="flex flex-col">
           {options.map((o, i) => (
-            <li key={o.label}>
+            <Reveal as="li" key={o.label} delay={150 + i * 100}>
               <a
                 href={whatsappLink(o.message)}
                 target="_blank"
@@ -46,7 +47,7 @@ export default function Contact() {
                 {o.label}
                 <span aria-hidden="true">→</span>
               </a>
-            </li>
+            </Reveal>
           ))}
         </ul>
       </div>

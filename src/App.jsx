@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
+import Ticker from './components/Ticker.jsx'
 import Products from './components/Products.jsx'
 import Liga from './components/Liga.jsx'
 import Scores from './components/Scores.jsx'
@@ -17,6 +18,7 @@ export default function App() {
       <Navbar />
       <main>
         <Hero />
+        <Ticker />
         <Products />
         <Liga />
         <Scores />

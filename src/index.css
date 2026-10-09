@@ -30,3 +30,79 @@ html {
 body {
   background: var(--color-marino);
 }
+
+/* ---------- Animaciones ---------- */
+
+/* Aparecer al entrar en pantalla */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Líneas que se dibujan solas (los elementos llevan pathLength="1") */
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.6, 0, 0.2, 1);
+}
+.is-visible .draw {
+  stroke-dashoffset: 0;
+}
+
+/* Elementos que aparecen creciendo */
+.pop {
+  opacity: 0;
+  transform: scale(0.6);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+.is-visible .pop {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cinta que pasa en loop */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Pulso suave del círculo central de la cancha */
+@keyframes pulse-ring {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.pulse-ring {
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+
+/* Quien pide menos movimiento ve todo quieto */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .pop {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .draw {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  .marquee,
+  .pulse-ring {
+    animation: none;
+  }
+}

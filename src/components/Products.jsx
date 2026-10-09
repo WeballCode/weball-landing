@@ -1,4 +1,5 @@
 import { Icon, Label, Section, Title } from './ui.jsx'
+import { Reveal } from './motion.jsx'
 
 const products = [
   {
@@ -37,16 +38,16 @@ export default function Products() {
     <Section id="productos" light>
       <Label dark={false}>Productos Weball</Label>
       <Title>Una plataforma, todo el deporte amateur</Title>
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
+      <Reveal as="p" delay={200} className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
         Seas de una liga, de una asociación, juegues o tengas una marca, Weball tiene un producto para vos.
-      </p>
+      </Reveal>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {products.map((p) => (
+        {products.map((p, i) => (
+          <Reveal key={p.name} delay={i * 120} className="flex">
           <a
-            key={p.name}
             href={p.href}
-            className={`group flex min-h-80 flex-col gap-4 border-t-[6px] border-marino p-7 transition ${
+            className={`group flex min-h-80 w-full flex-col gap-4 border-t-[6px] border-marino p-7 transition duration-300 hover:-translate-y-2 ${
               p.featured ? 'bg-celeste' : 'bg-blanco hover:bg-white'
             }`}
           >
@@ -60,6 +61,7 @@ export default function Products() {
               Conocé más <span aria-hidden="true" className="inline-block transition group-hover:translate-x-1">→</span>
             </span>
           </a>
+          </Reveal>
         ))}
       </div>
     </Section>

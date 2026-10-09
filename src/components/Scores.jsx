@@ -1,5 +1,6 @@
 import ProductSection from './ProductSection.jsx'
 import { COMMUNITY_URL } from '../links.js'
+import { Reveal } from './motion.jsx'
 
 // Escudos de clubes que hoy juegan en ligas con Weball. Las imágenes están en public/clubes/.
 // Para sumar uno: guardá la imagen ahí y agregá una línea con su nombre.
@@ -30,10 +31,12 @@ const clubs = [
 function ClubWall() {
   return (
     <div>
-      <p className="text-sm font-medium uppercase tracking-[0.2em] text-acero">Juegan en ligas con Weball</p>
+      <Reveal as="p" className="text-sm font-medium uppercase tracking-[0.2em] text-acero">
+        Juegan en ligas con Weball
+      </Reveal>
       <ul className="mt-6 grid max-w-4xl grid-cols-3 gap-2 sm:grid-cols-7">
-        {clubs.map((c) => (
-          <li key={c.file} className="bg-white p-[12%]" title={c.name}>
+        {clubs.map((c, i) => (
+          <Reveal as="li" key={c.file} delay={(i % 7) * 60} className="group bg-white p-[12%]" title={c.name}>
             {/* Cada imagen ya viene recortada y centrada en un cuadrado blanco del mismo tamaño */}
             <img
               src={`./clubes/${c.file}.png`}
@@ -41,9 +44,9 @@ function ClubWall() {
               loading="lazy"
               width="256"
               height="256"
-              className="block aspect-square w-full object-contain"
+              className="block aspect-square w-full object-contain transition duration-300 group-hover:scale-110"
             />
-          </li>
+          </Reveal>
         ))}
       </ul>
     </div>

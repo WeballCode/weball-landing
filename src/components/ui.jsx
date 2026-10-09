@@ -1,18 +1,21 @@
 // Piezas chicas que se repiten en todas las secciones, según el manual de marca
+import { Reveal } from './motion.jsx'
 
 // Etiqueta: mayúsculas espaciadas, peso 500
 export function Label({ children, dark = true }) {
   return (
-    <p className={`text-sm font-medium uppercase tracking-[0.2em] ${dark ? 'text-celeste' : 'text-acero'}`}>
+    <Reveal as="p" className={`text-sm font-medium uppercase tracking-[0.2em] ${dark ? 'text-celeste' : 'text-acero'}`}>
       {children}
-    </p>
+    </Reveal>
   )
 }
 
 // Título de sección: peso 800, mayúsculas, alineado a la izquierda
 export function Title({ children, className = '' }) {
   return (
-    <h2 className={`mt-4 text-4xl font-extrabold uppercase leading-none sm:text-6xl ${className}`}>{children}</h2>
+    <Reveal as="h2" delay={100} className={`mt-4 text-4xl font-extrabold uppercase leading-none sm:text-6xl ${className}`}>
+      {children}
+    </Reveal>
   )
 }
 

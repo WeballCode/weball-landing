@@ -1,4 +1,5 @@
 import { Label, Section, Title } from './ui.jsx'
+import { Reveal } from './motion.jsx'
 
 const points = [
   {
@@ -26,18 +27,20 @@ export default function Investors() {
       <Title>
         De aficionados a <span className="text-celeste-profundo">protagonistas</span>
       </Title>
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
+      <Reveal as="p" delay={200} className="mt-6 max-w-2xl text-lg leading-relaxed text-pizarra">
         El deporte profesional tiene toda la tecnología. El amateur, donde juega la enorme mayoría, casi nada.
         Weball es la plataforma que le faltaba.
-      </p>
+      </Reveal>
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2">
         {points.map((p, i) => (
-          <div key={p.title} className="flex min-h-52 flex-col gap-3 border-t-[6px] border-marino bg-blanco p-8">
-            <span className="text-3xl font-extrabold text-celeste-profundo">0{i + 1}</span>
-            <h3 className="text-2xl font-extrabold uppercase leading-none">{p.title}</h3>
-            <p className="leading-relaxed text-pizarra">{p.text}</p>
-          </div>
+          <Reveal key={p.title} delay={(i % 2) * 120} className="flex">
+            <div className="flex min-h-52 w-full flex-col gap-3 border-t-[6px] border-marino bg-blanco p-8 transition duration-300 hover:-translate-y-2">
+              <span className="text-3xl font-extrabold text-celeste-profundo">0{i + 1}</span>
+              <h3 className="text-2xl font-extrabold uppercase leading-none">{p.title}</h3>
+              <p className="leading-relaxed text-pizarra">{p.text}</p>
+            </div>
+          </Reveal>
         ))}
       </div>
 
