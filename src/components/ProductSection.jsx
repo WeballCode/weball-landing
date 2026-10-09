@@ -2,7 +2,8 @@ import { Icon, Section } from './ui.jsx'
 import { CountUp, Reveal } from './motion.jsx'
 
 // Sección de un producto Weball: nombre, promesa y lista numerada de lo que incluye
-export default function ProductSection({ id, light = false, icon, name, audience, title, items, closing, cta, visual, stats, footer }) {
+export default function ProductSection({ id, light = false, icon, name, audience, title, items, closing, cta, visual, stats, footer, activeIndex }) {
+  const highlights = activeIndex !== undefined
   const muted = light ? 'text-pizarra' : 'text-bruma'
   const accent = light ? 'text-celeste-profundo' : 'text-celeste'
 
@@ -56,14 +57,21 @@ export default function ProductSection({ id, light = false, icon, name, audience
                   as="li"
                   key={item.name}
                   delay={300 + i * 120}
-                  className={`flex gap-5 py-5 ${
+                  className={`${highlights ? 'py-2' : 'py-5'} ${
                     i === 0 ? '' : light ? 'border-t-2 border-niebla' : 'border-t-2 border-linea'
                   }`}
                 >
-                  <span className={`text-2xl font-extrabold leading-none ${accent}`}>{i + 1}</span>
-                  <div>
-                    <p className="text-xl font-extrabold uppercase leading-tight">{item.name}</p>
-                    {item.text && <p className={`mt-1.5 leading-relaxed ${muted}`}>{item.text}</p>}
+                  {/* Si la sección marca un paso activo, ese paso se resalta en celeste */}
+                  <div
+                    className={`flex gap-5 transition-colors duration-500 ${highlights ? '-mx-3 px-3 py-3' : ''} ${
+                      highlights && i === activeIndex ? 'bg-celeste-claro' : ''
+                    }`}
+                  >
+                    <span className={`text-2xl font-extrabold leading-none ${accent}`}>{i + 1}</span>
+                    <div>
+                      <p className="text-xl font-extrabold uppercase leading-tight">{item.name}</p>
+                      {item.text && <p className={`mt-1.5 leading-relaxed ${muted}`}>{item.text}</p>}
+                    </div>
                   </div>
                 </Reveal>
               ))}
