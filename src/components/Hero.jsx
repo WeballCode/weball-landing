@@ -6,7 +6,7 @@ const numbers = [
   { value: '+35.000', label: 'Jugadores' },
   { value: '+400', label: 'Clubes' },
   { value: '+300', label: 'Árbitros' },
-  { value: '+15.000', label: 'Partidos por semestre' },
+  { value: '+1.000', label: 'Partidos por semana' },
 ]
 
 export default function Hero() {
