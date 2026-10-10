@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { prefersReducedMotion, useInView } from './motion.jsx'
 
-const fields = ['Talle de zapatillas', 'Talle de remera', 'Dirección', 'Obra social', 'Contacto de emergencia']
+const fields = ['Talle de remera', 'Talle de zapatillas', 'Obra social']
 const TYPE_MS = 55
 const PAUSE_MS = 450
 const HOLD_MS = 2800
@@ -43,17 +43,17 @@ export default function CustomFields() {
   }, [inView, reduced, done, typed, current.length])
 
   return (
-    <div ref={ref} className="w-full bg-celeste p-4 text-marino">
+    <div ref={ref} className="w-full max-w-lg bg-celeste p-5 text-marino">
       <p className="text-lg font-extrabold uppercase leading-tight">Sumá los datos que vos quieras</p>
 
       {/* Campo donde se tipea */}
-      <div className="mt-3 flex items-stretch gap-2 text-sm" aria-hidden="true">
-        <div className="flex min-w-0 flex-1 items-center border-2 border-marino bg-blanco px-2.5 py-1.5 font-bold">
+      <div className="mt-4 flex items-stretch gap-2" aria-hidden="true">
+        <div className="flex min-w-0 flex-1 items-center border-2 border-marino bg-blanco px-3 py-2 text-base font-bold">
           <span className="truncate">{done ? 'Lo que vos quieras' : current.slice(0, typed)}</span>
-          {!done && !reduced && <span className="caret ml-0.5 inline-block h-4 w-0.5 bg-marino" />}
+          {!done && !reduced && <span className="caret ml-0.5 inline-block h-5 w-0.5 bg-marino" />}
         </div>
         <span
-          className={`flex items-center bg-marino px-3 text-xs font-bold uppercase tracking-wide text-celeste transition ${
+          className={`flex items-center bg-marino px-4 text-sm font-bold uppercase tracking-wide text-celeste transition ${
             pressing ? 'scale-95' : ''
           }`}
         >
@@ -62,15 +62,15 @@ export default function CustomFields() {
       </div>
 
       {/* Datos sumados */}
-      <ul className="mt-3 flex min-h-[3.75rem] flex-wrap content-start gap-1.5" aria-label="Datos que la liga puede pedir">
+      <ul className="mt-4 flex min-h-[4.5rem] flex-wrap content-start gap-2" aria-label="Datos que la liga puede pedir">
         {fields.slice(0, added).map((f) => (
-          <li key={f} className="chip-in flex items-center gap-1 bg-marino px-2 py-1 text-xs font-bold text-blanco">
+          <li key={f} className="chip-in flex items-center gap-1.5 bg-marino px-3 py-1.5 text-sm font-bold text-blanco">
             <span className="text-celeste" aria-hidden="true">+</span>
             {f}
           </li>
         ))}
         {done && (
-          <li className="chip-in flex items-center gap-1 border-2 border-marino px-2 py-0.5 text-xs font-extrabold uppercase">
+          <li className="chip-in flex items-center gap-1.5 border-2 border-marino px-3 py-1 text-sm font-extrabold uppercase">
             + Lo que vos quieras
           </li>
         )}

@@ -1,5 +1,5 @@
-// Animación de Fichajes: el flujo del nuevo sistema en 5 etapas, en el celular.
-// La etapa "Cuenta" destaca en celeste los datos extra que pide cada liga.
+// Animación de Fichajes: el flujo en 5 etapas, en un celular grande y con pocas cosas por pantalla
+// para que se lea bien. Al costado, el número y el nombre de la etapa.
 import { useEffect, useState } from 'react'
 import { prefersReducedMotion, useInView, usePlay } from './motion.jsx'
 
@@ -12,222 +12,166 @@ const BLANCO = '#fbfbf8'
 const FONT = 'Roboto, Arial, sans-serif'
 const delay = (ms) => ({ transitionDelay: `${ms}ms` })
 
-const Text = ({ children, size = 9, weight = 700, fill = BRUMA, spacing = 1.5, ...rest }) => (
+const Text = ({ children, size = 10, weight = 800, fill = BLANCO, spacing = 1, ...rest }) => (
   <text fontFamily={FONT} fontSize={size} fontWeight={weight} fill={fill} letterSpacing={spacing} {...rest}>
     {children}
   </text>
 )
 
-function Button({ x = 30, y = 182, w = 100, label, filled = true, delayMs = 0 }) {
+// Celular: x de 14 a 166, y de 6 a 274. Pantalla útil: x de 26 a 154, y de 50 a 262.
+const CX = 90
+
+function Button({ label, delayMs = 0 }) {
   return (
     <g className="pop" style={delay(delayMs)}>
-      <rect x={x} y={y} width={w} height="15" fill={filled ? CELESTE : 'none'} stroke={filled ? 'none' : BRUMA} strokeWidth="1.5" />
-      <Text x={x + w / 2} y={y + 10.5} size={6.5} weight={800} fill={filled ? MARINO : BRUMA} spacing={1} textAnchor="middle">
+      <rect x="26" y="236" width="128" height="24" fill={CELESTE} />
+      <Text x={CX} y="252" size={10} fill={MARINO} textAnchor="middle">
         {label}
       </Text>
     </g>
   )
 }
 
-function Check({ x, y, r = 4, delayMs = 0 }) {
+function Check({ x, y, r = 10, delayMs = 0 }) {
   return (
     <g className="pop" style={delay(delayMs)}>
       <circle cx={x} cy={y} r={r} fill={CELESTE} />
-      <path d={`M${x - r * 0.5} ${y}l${r * 0.35} ${r * 0.35} ${r * 0.65}-${r * 0.7}`} stroke={MARINO} strokeWidth="1.3" />
+      <path d={`M${x - r * 0.45} ${y}l${r * 0.32} ${r * 0.32} ${r * 0.6}-${r * 0.65}`} stroke={MARINO} strokeWidth="2.4" />
     </g>
   )
 }
 
-function Title({ children }) {
-  return (
-    <Text className="pop" x="80" y="54" size={7} weight={800} fill={CELESTE} spacing={1} textAnchor="middle">
-      {children}
-    </Text>
-  )
-}
-
-// Pantalla del celular: x de 30 a 130, y de 44 a 204
-
-// 1. Inicio: bienvenida y consentimientos
+// 1. Inicio: la invitación del club
 function InicioScreen() {
   return (
     <>
-      <Title>¡BIENVENIDO/A!</Title>
-      <Text className="pop" style={delay(150)} x="80" y="66" size={5.5} fill={BRUMA} spacing={0.6} textAnchor="middle">
-        TE INVITARON AL PLANTEL DE
+      <Text className="pop" x={CX} y="78" size={14} fill={CELESTE} textAnchor="middle">
+        ¡BIENVENIDO/A!
       </Text>
-      <path className="draw" pathLength="1" style={delay(250)} d="M70 74l10-4 10 4v8c0 6-4 10-10 12-6-2-10-6-10-12z" stroke={CELESTE} strokeWidth="1.8" />
-      <Text className="pop" style={delay(400)} x="80" y="106" size={7} weight={800} fill={BLANCO} spacing={1} textAnchor="middle">
-        EQUIPO
+      <path className="draw" pathLength="1" style={delay(200)} d="M70 102l20-8 20 8v16c0 12-8 20-20 24-12-4-20-12-20-24z" stroke={CELESTE} strokeWidth="3" />
+      <Text className="pop" style={delay(500)} x={CX} y="168" size={11} weight={700} fill={BRUMA} spacing={0.5} textAnchor="middle">
+        Te invitaron al
       </Text>
-      {/* Consentimientos */}
-      {[0, 1].map((i) => {
-        const y = 118 + i * 28
-        return (
-          <g key={i}>
-            <rect className="draw" pathLength="1" style={delay(500 + i * 150)} x="30" y={y} width="100" height="22" stroke={LINE} strokeWidth="1.5" />
-            <rect x="36" y={y + 6.5} width="9" height="9" stroke={BRUMA} strokeWidth="1.3" />
-            <g className="pop" style={delay(1000 + i * 400)}>
-              <rect x="36" y={y + 6.5} width="9" height="9" fill={CELESTE} />
-              <path d={`M38 ${y + 11}l2 2 3.5-4`} stroke={MARINO} strokeWidth="1.3" />
-            </g>
-            <line className="draw" pathLength="1" style={delay(650 + i * 150)} x1="51" y1={y + 8} x2="122" y2={y + 8} stroke={BRUMA} strokeOpacity="0.7" strokeWidth="2" />
-            <line className="draw" pathLength="1" style={delay(700 + i * 150)} x1="51" y1={y + 15} x2="104" y2={y + 15} stroke={BRUMA} strokeOpacity="0.7" strokeWidth="2" />
-          </g>
-        )
-      })}
-      <Button label="COMENZAR" delayMs={1700} />
+      <Text className="pop" style={delay(600)} x={CX} y="186" size={13} textAnchor="middle">
+        PLANTEL DEL CLUB
+      </Text>
+      <Button label="COMENZAR" delayMs={1000} />
     </>
   )
 }
 
-// 2. Documentación: DNI, selfie y revisión de datos
+// 2. Documentación: DNI y selfie
 function DocumentacionScreen() {
   return (
     <>
-      <Title>TU DOCUMENTACIÓN</Title>
-      {/* DNI frente y dorso */}
-      {[0, 1].map((i) => {
-        const x = 32 + i * 50
-        return (
-          <g key={i}>
-            <rect className="draw" pathLength="1" style={delay(100 + i * 150)} x={x} y="62" width="46" height="30" stroke={LINE} strokeWidth="1.5" strokeDasharray="1" />
-            <g className="pop" style={delay(300 + i * 150)}>
-              <rect x={x + 12} y="69" width="22" height="15" stroke={BRUMA} strokeWidth="1.3" />
-              <circle cx={x + 18} cy="75" r="2.2" fill={BRUMA} />
-              <path d={`M${x + 23} 73h8M${x + 23} 77h8M${x + 23} 81h5`} stroke={BRUMA} strokeWidth="1.1" />
-            </g>
-            <Check x={x + 42} y={65} r={4} delayMs={600 + i * 250} />
-          </g>
-        )
-      })}
-      {/* Selfie */}
-      <circle className="draw" pathLength="1" style={delay(900)} cx="80" cy="120" r="20" stroke={LINE} strokeWidth="1.8" />
-      <g className="pop" style={delay(1100)}>
-        <circle cx="80" cy="115" r="6.5" fill={BRUMA} />
-        <path d="M68 134a12 10 0 0 1 24 0" fill={BRUMA} />
+      <Text className="pop" x={CX} y="74" size={11} fill={CELESTE} spacing={1.5} textAnchor="middle">
+        TU DOCUMENTO
+      </Text>
+      <g className="pop" style={delay(200)}>
+        <rect x="46" y="86" width="88" height="56" stroke={BRUMA} strokeWidth="2.5" />
+        <circle cx="66" cy="110" r="8" fill={BRUMA} />
+        <path d="M56 128a10 8 0 0 1 20 0M86 104h36M86 114h36M86 124h24" stroke={BRUMA} strokeWidth="2.5" />
       </g>
-      <circle className="pop flash" style={delay(1300)} cx="80" cy="120" r="20" fill={BLANCO} />
-      <Check x={96} y={104} r={5} delayMs={1500} />
-      {/* Revisión */}
-      {[64, 48].map((len, i) => (
-        <g key={i}>
-          <line className="draw" pathLength="1" style={delay(1600 + i * 120)} x1="34" y1={152 + i * 10} x2={34 + len} y2={152 + i * 10} stroke={BLANCO} strokeWidth="2.5" />
-        </g>
-      ))}
-      <Check x={124} y={156} r={4.5} delayMs={1900} />
-      <Button label="CONTINUAR" delayMs={2000} />
+      <Check x={134} y={88} delayMs={700} />
+      <Text className="pop" style={delay(900)} x={CX} y="170" size={11} fill={CELESTE} spacing={1.5} textAnchor="middle">
+        TU SELFIE
+      </Text>
+      <g className="pop" style={delay(1100)}>
+        <circle cx={CX} cy="200" r="20" fill={MARINO_CLARO} stroke={BRUMA} strokeWidth="2.5" />
+        <circle cx={CX} cy="194" r="7" fill={BRUMA} />
+        <path d={`M${CX - 12} 214a12 9 0 0 1 24 0`} fill={BRUMA} />
+      </g>
+      <Check x={112} y={184} delayMs={1500} />
+      <Button label="CONTINUAR" delayMs={1700} />
     </>
   )
 }
 
-// 3. Cuenta: WhatsApp, mail y los datos extra de la liga (destacados en celeste)
+// 3. Cuenta: los datos extra que pide la liga, en celeste
 function CuentaScreen() {
   const extras = [
-    { label: 'TALLE DE ZAPATILLAS', value: '42' },
-    { label: 'TALLE DE REMERA', value: 'M' },
-    { label: 'DIRECCIÓN', value: '' },
+    { label: 'REMERA', value: 'M' },
+    { label: 'ZAPATILLAS', value: '42' },
   ]
   return (
     <>
-      <Title>TU CUENTA</Title>
-      {/* WhatsApp */}
-      <g className="pop" style={delay(100)}>
-        <rect x="30" y="62" width="11" height="11" stroke={BRUMA} strokeWidth="1.3" />
-        <path d="M33 70l1-2a3.5 3.5 0 1 1 1.3 1.3z" fill={BRUMA} />
-      </g>
-      <Text className="pop" style={delay(100)} x="46" y="66" size={5.5} fill={BRUMA} spacing={0.8}>WHATSAPP</Text>
-      <line className="draw" pathLength="1" style={delay(200)} x1="46" y1="72" x2="104" y2="72" stroke={BLANCO} strokeWidth="2.5" />
-      {/* Mail */}
-      <g className="pop" style={delay(350)}>
-        <rect x="30" y="81" width="11" height="9" stroke={BRUMA} strokeWidth="1.3" />
-        <path d="M30 81l5.5 4.5 5.5-4.5" stroke={BRUMA} strokeWidth="1.2" />
-      </g>
-      <Text className="pop" style={delay(350)} x="46" y="85" size={5.5} fill={BRUMA} spacing={0.8}>MAIL</Text>
-      <line className="draw" pathLength="1" style={delay(450)} x1="46" y1="91" x2="118" y2="91" stroke={BLANCO} strokeWidth="2.5" />
-      {/* Más datos: bloque celeste lleno */}
-      <g className="format-enter" style={{ animationDelay: '800ms' }}>
-        <rect x="28" y="100" width="104" height="76" fill={CELESTE} />
-        <Text x="34" y="112" size={6} weight={800} fill={MARINO} spacing={1.2}>MÁS DATOS DE TU LIGA</Text>
+      <Text className="pop" x={CX} y="74" size={11} fill={CELESTE} spacing={1.5} textAnchor="middle">
+        TU CUENTA
+      </Text>
+      <Text className="pop" style={delay(150)} x="30" y="98" size={9} weight={700} fill={BRUMA} spacing={0.8}>
+        WHATSAPP
+      </Text>
+      <line className="draw" pathLength="1" style={delay(250)} x1="30" y1="108" x2="140" y2="108" stroke={BLANCO} strokeWidth="3" />
+      <g className="format-enter" style={{ animationDelay: '600ms' }}>
+        <rect x="26" y="124" width="128" height="100" fill={CELESTE} />
+        <Text x="34" y="142" size={9} fill={MARINO} spacing={1}>
+          MÁS DATOS DE TU LIGA
+        </Text>
       </g>
       {extras.map((e, i) => {
-        const y = 126 + i * 17
+        const y = 168 + i * 30
         return (
-          <g key={e.label} className="pop" style={delay(1200 + i * 350)}>
-            <rect x="34" y={y - 6} width="8" height="8" fill={MARINO} />
-            <path d={`M38 ${y - 4.5}v5M35.5 ${y - 2}h5`} stroke={CELESTE} strokeWidth="1.3" />
-            <Text x="46" y={y + 1} size={5.5} weight={800} fill={MARINO} spacing={0.6}>{e.label}</Text>
-            {e.value ? (
-              <Text x="126" y={y + 1.5} size={7} weight={800} fill={MARINO} spacing={0} textAnchor="end">{e.value}</Text>
-            ) : (
-              <line x1="104" y1={y - 1} x2="126" y2={y - 1} stroke={MARINO} strokeWidth="2.5" />
-            )}
-            <line x1="34" y1={y + 6} x2="126" y2={y + 6} stroke={MARINO} strokeOpacity="0.35" strokeWidth="1" />
+          <g key={e.label} className="pop" style={delay(1000 + i * 400)}>
+            <Text x="34" y={y} size={10} fill={MARINO} spacing={0.6}>
+              + {e.label}
+            </Text>
+            <Text x="146" y={y + 1} size={13} fill={MARINO} spacing={0} textAnchor="end">
+              {e.value}
+            </Text>
+            <line x1="34" y1={y + 9} x2="146" y2={y + 9} stroke={MARINO} strokeOpacity="0.35" strokeWidth="1.2" />
           </g>
         )
       })}
-      <Button label="CONTINUAR" delayMs={2500} />
+      <Button label="CONTINUAR" delayMs={1900} />
     </>
   )
 }
 
-// 4. Pago: revisión, seguro y medio de pago
+// 4. Pago: medio de pago y aprobación
 function PagoScreen() {
   return (
     <>
-      <Title>PAGO DEL FICHAJE</Title>
-      {/* Resumen */}
-      <Text className="pop" style={delay(100)} x="30" y="68" size={5.5} fill={BRUMA} spacing={0.8}>RESUMEN</Text>
-      <line className="draw" pathLength="1" style={delay(200)} x1="30" y1="76" x2="96" y2="76" stroke={BLANCO} strokeWidth="2.5" />
-      <line className="draw" pathLength="1" style={delay(300)} x1="30" y1="84" x2="80" y2="84" stroke={BLANCO} strokeWidth="2.5" />
-      {/* Seguro */}
-      <rect className="draw" pathLength="1" style={delay(400)} x="30" y="94" width="100" height="24" stroke={LINE} strokeWidth="1.5" />
-      <path className="draw" pathLength="1" style={delay(500)} d="M38 100l6-2.5 6 2.5v4.5c0 3.5-2.5 6-6 7-3.5-1-6-3.5-6-7z" stroke={CELESTE} strokeWidth="1.5" />
-      <Text className="pop" style={delay(600)} x="56" y="109" size={6} weight={800} fill={BLANCO} spacing={1}>SEGURO</Text>
-      {/* Interruptor que se prende */}
-      <rect x="104" y="101" width="20" height="10" rx="5" stroke={LINE} strokeWidth="1.3" />
-      <g className="pop" style={delay(1000)}>
-        <rect x="104" y="101" width="20" height="10" rx="5" fill={CELESTE} />
-        <circle cx="119" cy="106" r="3.5" fill={MARINO} />
+      <Text className="pop" x={CX} y="74" size={11} fill={CELESTE} spacing={1.5} textAnchor="middle">
+        PAGO DEL FICHAJE
+      </Text>
+      <g className="format-enter" style={{ animationDelay: '300ms' }}>
+        <rect x="34" y="92" width="112" height="70" fill={MARINO_CLARO} stroke={CELESTE} strokeWidth="2" />
+        <rect x="44" y="104" width="18" height="13" fill={CELESTE} />
+        <line x1="44" y1="138" x2="120" y2="138" stroke={BRUMA} strokeWidth="3" />
+        <line x1="44" y1="148" x2="84" y2="148" stroke={BRUMA} strokeWidth="2.5" />
       </g>
-      {/* Medio de pago */}
-      <Text className="pop" style={delay(1100)} x="30" y="132" size={5.5} fill={BRUMA} spacing={0.8}>MEDIO DE PAGO</Text>
-      <g className="format-enter" style={{ animationDelay: '1300ms' }}>
-        <rect x="30" y="138" width="70" height="38" fill={MARINO_CLARO} stroke={CELESTE} strokeWidth="1.5" />
-        <rect x="36" y="146" width="11" height="8" fill={CELESTE} />
-        <line x1="36" y1="164" x2="78" y2="164" stroke={BRUMA} strokeWidth="2.5" />
-        <line x1="36" y1="170" x2="58" y2="170" stroke={BRUMA} strokeWidth="2" />
-      </g>
-      <Check x={112} y={157} r={6} delayMs={1800} />
-      <Button label="PAGAR" delayMs={2000} />
+      <Check x={CX} y={192} r={13} delayMs={1100} />
+      <Text className="pop" style={delay(1300)} x={CX} y="222" size={11} fill={CELESTE} textAnchor="middle">
+        PAGO APROBADO
+      </Text>
+      <Button label="CONTINUAR" delayMs={1600} />
     </>
   )
 }
 
-// 5. Fin: fichaje completado y credencial lista
+// 5. Fin: la credencial digital
 function FinScreen() {
   return (
     <>
-      <g className="pop">
-        <circle cx="80" cy="64" r="15" fill={CELESTE} />
-        <path d="M73 64l5 5 9-10" stroke={MARINO} strokeWidth="2.5" />
-      </g>
-      <Text className="pop" style={delay(200)} x="80" y="94" size={7} weight={800} fill={CELESTE} spacing={1} textAnchor="middle">
+      <Check x={CX} y={78} r={14} />
+      <Text className="pop" style={delay(200)} x={CX} y="112" size={11} fill={CELESTE} textAnchor="middle">
         ¡FICHAJE COMPLETADO!
       </Text>
       <g className="format-enter" style={{ animationDelay: '500ms' }}>
-        <rect x="28" y="104" width="104" height="70" fill={MARINO_CLARO} stroke={CELESTE} strokeWidth="1.5" />
-        <Text x="35" y="115" size={5.5} weight={800} fill={CELESTE} spacing={1.2}>CREDENCIAL DIGITAL</Text>
-        <rect x="35" y="121" width="24" height="31" fill={LINE} />
-        <circle cx="47" cy="132" r="5" fill={BRUMA} />
-        <path d="M38 152a9 8 0 0 1 18 0" fill={BRUMA} />
-        <line x1="65" y1="126" x2="118" y2="126" stroke={BLANCO} strokeWidth="2.5" />
-        <line x1="65" y1="134" x2="104" y2="134" stroke={BLANCO} strokeWidth="2.5" />
-        <Text x="65" y="146" size={4.5} fill={BRUMA} spacing={0.6}>VÁLIDO HASTA</Text>
-        <line x1="65" y1="151" x2="92" y2="151" stroke={BRUMA} strokeWidth="2" />
-        <circle cx="122" cy="164" r="6" fill={BLANCO} />
-        <Text x="122" y="166.5" size={5.5} weight={800} fill={MARINO} spacing={0} textAnchor="middle">We</Text>
-        <path d="M35 163h40" stroke={LINE} strokeWidth="2" />
+        <rect x="26" y="126" width="128" height="96" fill={MARINO_CLARO} stroke={CELESTE} strokeWidth="2" />
+        <Text x="34" y="142" size={8} fill={CELESTE} spacing={1.2}>
+          CREDENCIAL DIGITAL
+        </Text>
+        <rect x="34" y="152" width="34" height="44" fill={LINE} />
+        <circle cx="51" cy="167" r="7" fill={BRUMA} />
+        <path d="M39 196a12 10 0 0 1 24 0" fill={BRUMA} />
+        <line x1="76" y1="160" x2="144" y2="160" stroke={BLANCO} strokeWidth="3.5" />
+        <line x1="76" y1="172" x2="126" y2="172" stroke={BLANCO} strokeWidth="3.5" />
+        <line x1="76" y1="186" x2="110" y2="186" stroke={BRUMA} strokeWidth="2.5" />
+        <circle cx="140" cy="208" r="8" fill={BLANCO} />
+        <Text x="140" y="211.5" size={7} fill={MARINO} spacing={0} textAnchor="middle">
+          We
+        </Text>
       </g>
       <Button label="FINALIZAR" delayMs={1100} />
     </>
@@ -235,59 +179,39 @@ function FinScreen() {
 }
 
 const stages = [
-  { title: 'INICIO', subs: ['Bienvenida', 'Consentimientos'], Screen: InicioScreen, ms: 3000 },
-  { title: 'DOCUMENTACIÓN', subs: ['DNI', 'Selfie', 'Revisión'], Screen: DocumentacionScreen, ms: 3200 },
-  { title: 'CUENTA', subs: ['WhatsApp', 'Mail', 'Más datos'], highlight: 'Más datos', Screen: CuentaScreen, ms: 4200 },
-  { title: 'PAGO', subs: ['Revisión', 'Seguro', 'Medio de pago'], Screen: PagoScreen, ms: 3200 },
-  { title: 'FIN', subs: ['¡Fichaje completado!'], Screen: FinScreen, ms: 3000 },
+  { title: 'INICIO', lines: ['La invitación', 'del club.'], Screen: InicioScreen, ms: 3000 },
+  { title: 'DOCUMENTACIÓN', lines: ['DNI y selfie.'], Screen: DocumentacionScreen, ms: 3400 },
+  { title: 'CUENTA', lines: ['Y los datos que', 'pida tu liga.'], Screen: CuentaScreen, ms: 4000 },
+  { title: 'PAGO', lines: ['Del fichaje', 'y el seguro.'], Screen: PagoScreen, ms: 3200 },
+  { title: 'FIN', lines: ['Credencial', 'digital lista.'], Screen: FinScreen, ms: 3200 },
 ]
-const STEP_GAP = 72 / (stages.length - 1)
-
-// Etiquetas de los sub-pasos al costado del celular
-function Subs({ stage }) {
-  let x = 160
-  let y = 132
-  return stage.subs.map((s) => {
-    const w = s.length * 5.2 + 12
-    if (x + w > 300) {
-      x = 160
-      y += 18
-    }
-    const hl = s === stage.highlight
-    const el = (
-      <g key={s}>
-        <rect x={x} y={y} width={w} height="14" fill={hl ? CELESTE : 'none'} stroke={hl ? 'none' : LINE} strokeWidth="1.3" />
-        <Text x={x + w / 2} y={y + 9.8} size={7.5} weight={hl ? 800 : 700} fill={hl ? MARINO : BRUMA} spacing={0} textAnchor="middle">
-          {s}
-        </Text>
-      </g>
-    )
-    x += w + 5
-    return el
-  })
-}
+const STEP_GAP = 88 / (stages.length - 1)
 
 function Stage({ index, play }) {
   const on = usePlay(play)
   const stage = stages[index]
   const { Screen } = stage
   return (
-    <svg viewBox="0 0 300 220" className={`h-auto w-full ${on ? 'is-visible' : ''}`} fill="none" aria-hidden="true">
+    <svg viewBox="0 0 330 280" className={`h-auto w-full ${on ? 'is-visible' : ''}`} fill="none" aria-hidden="true">
       {/* Celular */}
-      <rect x="20" y="6" width="120" height="208" rx="16" stroke={LINE} strokeWidth="2.5" />
-      <line x1="66" y1="16" x2="94" y2="16" stroke={LINE} strokeWidth="2.5" />
+      <rect x="14" y="6" width="152" height="268" rx="18" stroke={LINE} strokeWidth="3" />
+      <line x1="72" y1="18" x2="108" y2="18" stroke={LINE} strokeWidth="3" />
       {/* Indicador de etapas */}
-      <line x1="44" y1="32" x2="116" y2="32" stroke={LINE} strokeWidth="1.5" />
-      <line x1="44" y1="32" x2={44 + index * STEP_GAP} y2="32" stroke={CELESTE} strokeWidth="1.5" />
+      <line x1="46" y1="38" x2="134" y2="38" stroke={LINE} strokeWidth="2" />
+      <line x1="46" y1="38" x2={46 + index * STEP_GAP} y2="38" stroke={CELESTE} strokeWidth="2" />
       {stages.map((_, i) => (
-        <circle key={i} cx={44 + i * STEP_GAP} cy="32" r="3.5" fill={i <= index ? CELESTE : MARINO_CLARO} stroke={i <= index ? 'none' : LINE} strokeWidth="1.5" />
+        <circle key={i} cx={46 + i * STEP_GAP} cy="38" r="4.5" fill={i <= index ? CELESTE : MARINO_CLARO} stroke={i <= index ? 'none' : LINE} strokeWidth="2" />
       ))}
       <Screen />
-      {/* Etapa al costado */}
+      {/* Etapa al costado: número, nombre y una línea */}
       <g className="format-enter">
-        <Text x="160" y="90" size={24} weight={800} fill={CELESTE} spacing={0}>{`0${index + 1}`}</Text>
-        <Text x="160" y="114" size={12} weight={800} fill={BLANCO} spacing={1}>{stage.title}</Text>
-        <Subs stage={stage} />
+        <Text x="186" y="128" size={34} fill={CELESTE} spacing={0}>{`0${index + 1}`}</Text>
+        <Text x="186" y="154" size={15} fill={BLANCO} spacing={1}>{stage.title}</Text>
+        {stage.lines.map((l, i) => (
+          <Text key={l} x="186" y={176 + i * 15} size={11.5} weight={400} fill={BRUMA} spacing={0}>
+            {l}
+          </Text>
+        ))}
       </g>
     </svg>
   )
@@ -299,7 +223,6 @@ export function FichajesVisual() {
   const [index, setIndex] = useState(reduced ? 2 : 0)
   const [round, setRound] = useState(0)
 
-  // Cada etapa dura lo suyo; "Cuenta" un poco más para que se lean los datos extra
   useEffect(() => {
     if (!inView || reduced) return
     const timer = setTimeout(() => {
@@ -312,9 +235,9 @@ export function FichajesVisual() {
   return (
     <div
       ref={ref}
-      className="w-full max-w-md"
+      className="w-full max-w-lg"
       role="img"
-      aria-label="El fichaje desde el celular en 5 etapas: inicio, documentación, cuenta con los datos extra de la liga, pago y fin con la credencial digital"
+      aria-label="El fichaje desde el celular en 5 etapas: inicio, documentación, cuenta con los datos extra de la liga, pago y credencial digital"
     >
       <Stage key={round} index={index} play={inView} />
     </div>
