@@ -74,7 +74,7 @@ export default function Liga() {
       <Title>Ligas</Title>
       <Lead tone="light">Organizá tu liga en minutos. Todo en un mismo lugar.</Lead>
 
-      <div ref={ref} className="mt-6 grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+      <div ref={ref} className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
         {/* Paso a paso, con el botón al final */}
         <div>
         <ol className="flex flex-col">
@@ -143,7 +143,7 @@ export default function Liga() {
         {/* La animación del paso, grande */}
         <Reveal
           delay={200}
-          className="order-first border-t-[6px] border-marino bg-blanco p-5 sm:p-7 lg:order-none"
+          className="order-first flex flex-col border-t-[6px] border-marino bg-blanco p-5 sm:p-7 lg:order-none"
           role="img"
           aria-label={`Weball Liga, paso ${index + 1}: ${steps[index].title}`}
         >
@@ -153,7 +153,7 @@ export default function Liga() {
               {`Paso 0${index + 1} · ${steps[index].stage}`}
             </span>
           </div>
-          <div key={round} className="format-enter">
+          <div key={round} className="format-enter flex flex-1 items-center">
             <LigaDrawing index={index} play={inView} />
           </div>
         </Reveal>
