@@ -9,6 +9,8 @@ const numbers = [
   { value: '+1.000', label: 'Partidos por semana' },
 ]
 
+const trust = ['Funciona en celular, tablet y compu', 'Los equipos se inscriben con un link', 'Resultados publicados al instante']
+
 export default function Hero() {
   return (
     <section id="inicio" className="bg-marino pt-16">
@@ -63,6 +65,18 @@ export default function Hero() {
             >
               Conocé los productos
             </a>
+          </Reveal>
+
+          {/* Frases de confianza, con un tilde cada una */}
+          <Reveal as="ul" delay={750} className="mt-6 flex flex-col gap-2 text-sm text-bruma sm:flex-row sm:flex-wrap sm:gap-x-6">
+            {trust.map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <svg viewBox="0 0 16 16" className="h-4 w-4 shrink-0 text-celeste" aria-hidden="true">
+                  <path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {t}
+              </li>
+            ))}
           </Reveal>
         </div>
       </div>

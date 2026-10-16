@@ -8,7 +8,9 @@ import Asociacion from './components/Asociacion.jsx'
 import Sponsors from './components/Sponsors.jsx'
 import Modules from './components/Modules.jsx'
 import Investors from './components/Investors.jsx'
+import Faq from './components/Faq.jsx'
 import Contact from './components/Contact.jsx'
+import WhatsAppButton from './components/WhatsAppButton.jsx'
 import Footer from './components/Footer.jsx'
 
 // Las secciones alternan fondo marino y claro, como pide el manual de marca
@@ -26,9 +28,11 @@ export default function App() {
         <Asociacion />
         <Sponsors />
         <Investors />
+        <Faq />
         <Contact />
       </main>
       <Footer />
+      <WhatsAppButton />
     </div>
   )
 }
