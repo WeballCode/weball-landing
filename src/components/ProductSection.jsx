@@ -49,7 +49,7 @@ export default function ProductSection({
           <Lead tone={light ? 'light' : 'dark'}>{title}</Lead>
 
           {stats && (
-            <dl className="mt-8 grid grid-cols-2 gap-x-6 sm:grid-cols-4 sm:gap-x-4">
+            <dl className="mt-8 grid max-w-md grid-cols-2 gap-x-8 gap-y-2">
               {stats.map((s, i) => (
                 <Reveal
                   key={s.label}
