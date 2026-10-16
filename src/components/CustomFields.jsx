@@ -42,18 +42,21 @@ export default function CustomFields() {
     return () => clearTimeout(timer)
   }, [inView, reduced, done, typed, current.length])
 
+  // Cuatro lugares fijos: se ven punteados y se van llenando, así no queda espacio vacío
+  const slots = [...fields, 'Lo que vos quieras']
+
   return (
-    <div ref={ref} className="w-full max-w-lg bg-celeste p-5 text-marino">
-      <p className="text-lg font-extrabold uppercase leading-tight">Sumá los datos que vos quieras</p>
+    <div ref={ref} className="w-full max-w-lg border-t-4 border-celeste bg-marino p-5">
+      <p className="text-sm font-bold uppercase tracking-[0.15em] text-celeste">Sumá los datos que vos quieras</p>
 
       {/* Campo donde se tipea */}
-      <div className="mt-4 flex items-stretch gap-2" aria-hidden="true">
-        <div className="flex min-w-0 flex-1 items-center border-2 border-marino bg-blanco px-3 py-2 text-base font-bold">
+      <div className="mt-3 flex items-stretch gap-2" aria-hidden="true">
+        <div className="flex min-w-0 flex-1 items-center bg-blanco px-3 py-2 text-base font-bold text-marino">
           <span className="truncate">{done ? 'Lo que vos quieras' : current.slice(0, typed)}</span>
           {!done && !reduced && <span className="caret ml-0.5 inline-block h-5 w-0.5 bg-marino" />}
         </div>
         <span
-          className={`flex items-center bg-marino px-4 text-sm font-bold uppercase tracking-wide text-celeste transition ${
+          className={`flex items-center bg-celeste px-4 text-sm font-bold uppercase tracking-wide text-marino transition ${
             pressing ? 'scale-95' : ''
           }`}
         >
@@ -62,18 +65,30 @@ export default function CustomFields() {
       </div>
 
       {/* Datos sumados */}
-      <ul className="mt-4 flex min-h-[4.5rem] flex-wrap content-start gap-2" aria-label="Datos que la liga puede pedir">
-        {fields.slice(0, added).map((f) => (
-          <li key={f} className="chip-in flex items-center gap-1.5 bg-marino px-3 py-1.5 text-sm font-bold text-blanco">
-            <span className="text-celeste" aria-hidden="true">+</span>
-            {f}
-          </li>
-        ))}
-        {done && (
-          <li className="chip-in flex items-center gap-1.5 border-2 border-marino px-3 py-1 text-sm font-extrabold uppercase">
-            + Lo que vos quieras
-          </li>
-        )}
+      <ul className="mt-3 grid grid-cols-2 gap-2" aria-label="Datos que la liga puede pedir">
+        {slots.map((f, i) => {
+          const last = i === slots.length - 1
+          const filled = last ? done : i < added
+          return (
+            <li
+              key={f}
+              className={`flex h-10 min-w-0 items-center gap-1.5 px-3 text-sm font-bold ${
+                !filled
+                  ? 'border-2 border-dashed border-linea'
+                  : last
+                    ? 'chip-in border-2 border-celeste uppercase text-celeste'
+                    : 'chip-in bg-celeste-claro text-marino'
+              }`}
+            >
+              {filled && (
+                <>
+                  <span className={last ? '' : 'text-celeste-profundo'} aria-hidden="true">+</span>
+                  <span className="truncate">{f}</span>
+                </>
+              )}
+            </li>
+          )
+        })}
       </ul>
     </div>
   )

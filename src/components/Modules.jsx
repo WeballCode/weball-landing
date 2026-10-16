@@ -17,13 +17,9 @@ const modules = [
     kicker: 'Credencial digital',
     name: 'Fichajes a medida',
     text: 'El jugador se ficha solo desde el celular. Vos elegís cómo y qué info le vas a pedir.',
-    // El recuadro celeste va debajo de la animación
-    show: (
-      <div className="flex flex-col gap-6">
-        <FichajesVisual />
-        <CustomFields />
-      </div>
-    ),
+    // Los datos extra van debajo del texto; el celular con el paso a paso, a la derecha
+    side: <CustomFields />,
+    show: <FichajesVisual />,
   },
   {
     id: 'competiciones',

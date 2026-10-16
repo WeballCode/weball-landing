@@ -105,7 +105,7 @@ function CuentaScreen() {
       <g className="format-enter" style={{ animationDelay: '600ms' }}>
         <rect x="26" y="124" width="128" height="100" fill={CELESTE} />
         <Text x="34" y="142" size={9} fill={MARINO} spacing={1}>
-          MÁS DATOS DE TU LIGA
+          DATOS DE TU LIGA
         </Text>
       </g>
       {extras.map((e, i) => {
