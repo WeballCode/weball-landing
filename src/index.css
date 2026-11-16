@@ -224,3 +224,15 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .tap { animation: none; }
 }
+
+/* El antes y el después: una línea tacha lo de "antes" al aparecer */
+.strike {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 0 2px;
+  transition: background-size 0.6s ease;
+}
+.revealed .strike {
+  background-size: 100% 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .strike { transition: none; background-size: 100% 2px; }
+}

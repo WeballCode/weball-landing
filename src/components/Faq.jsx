@@ -65,7 +65,7 @@ export default function Faq() {
   const [open, setOpen] = useState(0)
 
   return (
-    <Section id="preguntas">
+    <Section id="preguntas" tone="darker">
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
         <div>
           <Label>Dudas</Label>

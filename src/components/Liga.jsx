@@ -132,12 +132,16 @@ export default function Liga() {
           })}
         </ol>
 
-        <Reveal delay={300} className="mt-5 flex flex-col sm:items-start">
+        <Reveal delay={300} className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
           <a
             href="#contacto"
             className="bg-marino px-7 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:-translate-y-0.5 hover:bg-marino-claro"
           >
             Quiero Weball en mi liga
+          </a>
+          {/* Cada herramienta en detalle, en su propia página */}
+          <a href="./soluciones.html" className="text-center text-sm font-bold uppercase tracking-wide whitespace-nowrap text-celeste-profundo transition hover:text-marino">
+            Ver soluciones →
           </a>
         </Reveal>
         </div>

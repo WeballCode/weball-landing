@@ -1,16 +1,21 @@
 import { useEffect, useState } from 'react'
 
+// Las anclas (#) son secciones de la página principal; las que terminan en .html son páginas aparte
 const links = [
-  { href: '#modulos', label: 'Soluciones' },
-  { href: '#tribunal', label: 'Tribunal IA' },
   { href: '#liga', label: 'Liga' },
-  { href: '#scores', label: 'Scores' },
+  { href: '#tribunal', label: 'Tribunal IA' },
+  { href: '#scores', label: 'Comunidad' },
   { href: '#asociacion', label: 'Asociación' },
   { href: '#sponsors', label: 'Sponsors' },
-  { href: '#inversores', label: 'Inversores' },
+  { href: './soluciones.html', label: 'Soluciones', page: 'soluciones' },
+  { href: './inversores.html', label: 'Inversores', page: 'inversores' },
 ]
 
-export default function Navbar() {
+export default function Navbar({ page = 'inicio' }) {
+  const home = page === 'inicio'
+  // Desde otra página, las secciones de la principal se abren con ./#seccion
+  const hrefOf = (l) => (l.href.startsWith('#') && !home ? `./${l.href}` : l.href)
+  const current = (l) => l.page === page
   const [open, setOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
 
@@ -34,13 +39,18 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <a href="#inicio" aria-label="Weball, inicio">
+        <a href={home ? '#inicio' : './'} aria-label="Weball, inicio">
           <img src="./logo-blanco.png" alt="Weball" className="h-8 w-auto" />
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
-            <a key={l.href} href={l.href} className="text-sm font-medium text-bruma transition hover:text-blanco">
+            <a
+              key={l.href}
+              href={hrefOf(l)}
+              aria-current={current(l) ? 'page' : undefined}
+              className={`text-sm font-medium transition hover:text-blanco ${current(l) ? 'text-celeste' : 'text-bruma'}`}
+            >
               {l.label}
             </a>
           ))}
@@ -73,7 +83,8 @@ export default function Navbar() {
           {links.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={hrefOf(l)}
+              aria-current={current(l) ? 'page' : undefined}
               onClick={() => setOpen(false)}
               className="block border-b border-linea py-4 text-lg font-bold uppercase text-blanco"
             >

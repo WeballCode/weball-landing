@@ -97,7 +97,7 @@ export default function Modules() {
           <div>
             <Label>Tecnología Weball</Label>
             <Title>Soluciones</Title>
-            <Lead>Como no somos los únicos, decidimos hacer la diferencia.</Lead>
+            <Lead>Cada herramienta que tu liga necesita, pensada para el deporte amateur.</Lead>
           </div>
           {/* Ícono: el rayo de "hacer la diferencia" */}
           <Reveal delay={300} className="hidden shrink-0 place-items-center rounded-full border-2 border-celeste p-4 text-celeste sm:grid">
@@ -127,4 +127,10 @@ export default function Modules() {
       ))}
     </>
   )
+}
+
+// Tribunal IA solo, para la página principal (es lo que nadie más tiene)
+export function TribunalSection() {
+  const m = modules.find((x) => x.id === 'tribunal')
+  return <SolutionLayout {...m} />
 }

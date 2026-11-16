@@ -53,10 +53,10 @@ export default function Hero() {
               Quiero Weball en mi liga
             </a>
             <a
-              href="#productos"
+              href="#liga"
               className="border-2 border-blanco/70 px-7 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:-translate-y-0.5 hover:bg-blanco hover:text-marino"
             >
-              Conocé los productos
+              Mirá cómo funciona
             </a>
           </Reveal>
 
