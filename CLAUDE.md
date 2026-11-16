@@ -40,7 +40,10 @@ Nunca dejes cambios sin pushear: si no está pusheado, el socio no lo ve.
 
 ## Estructura
 
-- `src/App.jsx` — arma la página juntando las secciones, en orden.
+- `src/App.jsx` — arma la página principal juntando las secciones, en orden.
+- Páginas aparte: `soluciones.html` (`src/soluciones.jsx`) e `inversores.html` (`src/inversores.jsx`).
+  Todas usan `src/components/Page.jsx` (menú, contacto, pie). Para sumar otra página: su `.html` en la
+  raíz, su `src/<nombre>.jsx`, y agregarla en `build.rollupOptions.input` de `vite.config.js`.
 - `src/components/` — una sección por archivo (`Hero.jsx`, `Footer.jsx`, ...). Para agregar
   una sección nueva, creá su archivo acá y sumala en `App.jsx`.
 - `public/` — imágenes, logos, favicon.
