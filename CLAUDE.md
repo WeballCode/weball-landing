@@ -49,7 +49,7 @@ Nunca dejes cambios sin pushear: si no está pusheado, el socio no lo ve.
 
 - Diseño **mobile-first** y responsive: la mayoría lo va a ver desde el celular.
 - Que se vea profesional y moderno: buen espaciado, tipografía grande en títulos, contraste.
-- Página única (landing). Navegación con anclas (`#seccion`), sin router.
+- Sin router. En la principal se navega con anclas (`#seccion`); desde otra página, con `./#seccion`.
 - No agregues dependencias si no hacen falta. Si agregás una, usá `npm install` para que
   se actualice `package-lock.json` (el deploy usa `npm ci` y falla si no coinciden).
 - Formularios: no hay backend. Si piden un formulario de contacto, usá un servicio externo
