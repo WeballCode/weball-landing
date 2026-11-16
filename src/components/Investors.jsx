@@ -24,7 +24,7 @@ export default function Investors() {
   return (
     <Section id="inversores" light>
       <Label tone="light">Inversores</Label>
-      <Title>
+      <Title as="h1">
         De aficionados a <span className="text-celeste-profundo">protagonistas</span>
       </Title>
       <Lead tone="light">

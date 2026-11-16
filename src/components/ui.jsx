@@ -24,9 +24,10 @@ export function Label({ children, tone = 'dark', dark, icon }) {
 }
 
 // Título de sección: peso 800, mayúsculas, alineado a la izquierda. Mismo tamaño en toda la página.
-export function Title({ children, className = '' }) {
+// `as="h1"` para el título principal de una página (uno solo por página, ayuda a Google)
+export function Title({ children, className = '', as = 'h2' }) {
   return (
-    <Reveal as="h2" delay={100} className={`mt-4 text-4xl font-extrabold uppercase leading-none sm:text-5xl lg:text-6xl ${className}`}>
+    <Reveal as={as} delay={100} className={`mt-4 text-4xl font-extrabold uppercase leading-none sm:text-5xl lg:text-6xl ${className}`}>
       {children}
     </Reveal>
   )

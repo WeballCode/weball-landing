@@ -24,7 +24,7 @@ export default function Hero() {
           <h1 className="mt-5 max-w-4xl text-[2.75rem] font-extrabold uppercase leading-[0.95] sm:text-6xl lg:text-7xl">
             <Reveal as="span" delay={150} className="block">
               Llevá tu liga al
-            </Reveal>
+            </Reveal>{' '}
             <Reveal as="span" delay={300} className="block text-celeste">
               próximo nivel.
             </Reveal>

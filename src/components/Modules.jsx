@@ -96,7 +96,7 @@ export default function Modules() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <Label>Tecnología Weball</Label>
-            <Title>Soluciones</Title>
+            <Title as="h1">Soluciones</Title>
             <Lead>Cada herramienta que tu liga necesita, pensada para el deporte amateur.</Lead>
           </div>
           {/* Ícono: el rayo de "hacer la diferencia" */}
