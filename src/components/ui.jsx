@@ -76,3 +76,29 @@ export function Icon({ name, className = 'h-7 w-7' }) {
     </svg>
   )
 }
+
+// Aviso de que los pasos se pueden tocar: una manito que "toca" en loop y una frase corta
+export function TapHint({ children = 'Tocá cada paso para verlo' }) {
+  return (
+    <p className="flex items-center gap-2 text-sm font-medium text-acero">
+      <svg viewBox="0 0 24 24" className="tap h-5 w-5 text-celeste-profundo" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V11m0-1.5a1.5 1.5 0 0 1 3 0V11m0-.5a1.5 1.5 0 0 1 3 0V15a6 6 0 0 1-6 6h-1a6 6 0 0 1-4.7-2.3L4 16a1.5 1.5 0 0 1 2.3-1.9L9 16.5" />
+      </svg>
+      {children}
+    </p>
+  )
+}
+
+// Cuadradito con "+" al costado de cada paso: gira y se pinta cuando el paso está abierto
+export function ToggleMark({ open }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`ml-auto grid h-7 w-7 shrink-0 place-items-center self-center border-2 text-lg leading-none transition ${
+        open ? 'border-celeste bg-celeste text-marino' : 'border-bruma text-celeste-profundo group-hover:border-celeste-profundo'
+      }`}
+    >
+      <span className={`transition-transform duration-300 ${open ? 'rotate-45' : ''}`}>+</span>
+    </span>
+  )
+}

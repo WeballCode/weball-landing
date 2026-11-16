@@ -210,3 +210,17 @@ body {
     transform: translate(var(--dx), var(--dy));
   }
 }
+
+/* Manito que invita a tocar los pasos */
+@keyframes tap {
+  0%, 60%, 100% { transform: none; }
+  70% { transform: translateY(2px) scale(0.88); }
+  80% { transform: none; }
+}
+.tap {
+  animation: tap 2.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tap { animation: none; }
+}

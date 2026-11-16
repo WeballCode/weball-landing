@@ -1,7 +1,7 @@
 // Weball Asociación: a la izquierda lo que hace cada liga (avanza solo, como en Ligas);
 // a la derecha, la asociación con sus ligas y clubes conectada a su propia app, que cambia en cada paso.
 import { useEffect, useState } from 'react'
-import { Label, Lead, Section, Title } from './ui.jsx'
+import { Label, Lead, Section, TapHint, Title, ToggleMark } from './ui.jsx'
 import { Reveal, prefersReducedMotion, useInView, usePlay } from './motion.jsx'
 
 const MARINO = '#032639'
@@ -263,7 +263,10 @@ export default function Asociacion() {
           <Title>Federaciones</Title>
           <Lead tone="light">Sistema y app con marca propia, con todas sus ligas adentro.</Lead>
 
-          <p className="mt-6 text-xs font-bold uppercase tracking-[0.2em] text-celeste-profundo">Cada liga de la asociación</p>
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-celeste-profundo">Cada liga de la asociación</p>
+            <TapHint />
+          </div>
           <ol className="mt-3 flex flex-col">
             {steps.map((s, i) => {
               const on = i === index
@@ -273,7 +276,7 @@ export default function Asociacion() {
                     type="button"
                     onClick={() => go(i)}
                     aria-expanded={on}
-                    className={`flex w-full items-baseline gap-4 py-2.5 text-left transition ${on ? '' : 'hover:text-celeste-profundo'}`}
+                    className={`group flex w-full cursor-pointer items-baseline gap-4 py-2.5 text-left transition ${on ? '' : 'hover:text-celeste-profundo'}`}
                   >
                     <span className={`text-2xl font-extrabold tabular-nums ${on ? 'text-celeste-profundo' : 'text-acero'}`}>
                       {`0${i + 1}`}
@@ -281,6 +284,7 @@ export default function Asociacion() {
                     <span className={`text-lg font-extrabold uppercase leading-tight ${on ? 'text-marino' : 'text-pizarra'}`}>
                       {s.title}
                     </span>
+                    <ToggleMark open={on} />
                   </button>
                   <div className={`grid transition-all duration-500 ${on ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                     <div className="overflow-hidden pl-12">

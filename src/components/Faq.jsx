@@ -41,7 +41,7 @@ function Item({ f, open, onToggle, i }) {
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className="flex w-full items-center justify-between gap-4 py-4 text-left text-lg font-extrabold leading-snug transition hover:text-celeste"
+        className="flex w-full cursor-pointer items-center justify-between gap-4 py-4 text-left text-lg font-extrabold leading-snug transition hover:text-celeste"
       >
         {f.q}
         <span

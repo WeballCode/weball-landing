@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { LigaDrawing, ligaScenes } from './LigaVisual.jsx'
-import { Icon, Label, Lead, Section, Title } from './ui.jsx'
+import { Icon, Label, Lead, Section, TapHint, Title, ToggleMark } from './ui.jsx'
 import { Reveal, prefersReducedMotion, useInView } from './motion.jsx'
 
 // Paso a paso de Weball Liga: cada paso tiene su etapa, su título, una frase y dos puntos.
@@ -74,10 +74,11 @@ export default function Liga() {
       <Title>Ligas</Title>
       <Lead tone="light">Organizá tu liga en minutos. Todo en un mismo lugar.</Lead>
 
-      <div ref={ref} className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+      <div ref={ref} className="mt-4 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
         {/* Paso a paso, con el botón al final */}
         <div>
-        <ol className="flex flex-col">
+        <TapHint />
+        <ol className="mt-2 flex flex-col">
           {steps.map((s, i) => {
             const on = i === index
             return (
@@ -86,7 +87,7 @@ export default function Liga() {
                   type="button"
                   onClick={() => go(i)}
                   aria-expanded={on}
-                  className={`flex w-full items-baseline gap-4 py-2.5 text-left transition ${on ? '' : 'hover:text-celeste-profundo'}`}
+                  className={`group flex w-full cursor-pointer items-baseline gap-4 py-2 text-left transition ${on ? '' : 'hover:text-celeste-profundo'}`}
                 >
                   <span className={`text-2xl font-extrabold tabular-nums ${on ? 'text-celeste-profundo' : 'text-acero'}`}>
                     {`0${i + 1}`}
@@ -98,6 +99,7 @@ export default function Liga() {
                       {s.title}
                     </span>
                   </span>
+                  <ToggleMark open={on} />
                 </button>
 
                 {/* El paso activo se abre con su frase, sus puntos y una barrita de tiempo */}
