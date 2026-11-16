@@ -8,6 +8,7 @@ const links = [
   { href: '#asociacion', label: 'Asociación' },
   { href: '#sponsors', label: 'Sponsors' },
   { href: './soluciones.html', label: 'Soluciones', page: 'soluciones' },
+  { href: './precios.html', label: 'Precios', page: 'precios' },
   { href: './inversores.html', label: 'Inversores', page: 'inversores' },
 ]
 

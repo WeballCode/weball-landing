@@ -13,6 +13,7 @@ export default defineConfig({
       input: {
         main: 'index.html',
         soluciones: 'soluciones.html',
+        precios: 'precios.html',
         inversores: 'inversores.html',
       },
     },

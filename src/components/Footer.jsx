@@ -7,6 +7,7 @@ export default function Footer() {
         {/* Las páginas aparte, a mano desde cualquier lado */}
         <nav className="flex gap-6 font-bold uppercase tracking-wide">
           <a href="./soluciones.html" className="transition hover:text-blanco">Soluciones</a>
+          <a href="./precios.html" className="transition hover:text-blanco">Precios</a>
           <a href="./inversores.html" className="transition hover:text-blanco">Inversores</a>
         </nav>
         <p>© {new Date().getFullYear()} Weball Inc.</p>
