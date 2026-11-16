@@ -30,7 +30,18 @@ export default function Hero() {
             </Reveal>
           </h1>
 
-          <Reveal as="p" delay={450} className="mt-6 max-w-xl text-balance text-lg leading-relaxed text-bruma sm:text-xl">
+          {/* El producto real: el sistema de gestión en la compu y la app en el celular */}
+          <Reveal delay={400} className="mt-6 w-full max-w-md">
+            <img
+              src="./mockups/plataforma.webp"
+              alt="El sistema de gestión de Weball en una compu y la app en un celular"
+              width="2000"
+              height="1125"
+              className="block h-auto w-full"
+            />
+          </Reveal>
+
+          <Reveal as="p" delay={450} className="mt-4 max-w-xl text-balance text-lg leading-relaxed text-bruma sm:text-xl">
             El sistema de gestión y la aplicación que tu liga necesita para dar el salto de calidad.
           </Reveal>
 
