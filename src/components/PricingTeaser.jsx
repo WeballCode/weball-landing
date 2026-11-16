@@ -12,7 +12,7 @@ export default function PricingTeaser() {
             Precios
           </Label>
           <Title>Depende del tamaño de tu liga</Title>
-          <Lead tone="light">El precio es por jugador, así que crece con tu liga. Y lo paga cada jugador al activar su credencial.</Lead>
+          <Lead tone="light">El precio es por jugador, así que crece con tu liga. Lo paga cada jugador al activar su credencial, o la liga, si prefiere.</Lead>
           <Reveal delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="./precios.html"

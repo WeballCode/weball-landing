@@ -19,9 +19,15 @@ export default function PriceCard({ tone = 'dark', children }) {
           <path d="M3 5h18v14H3zM7 10a2 2 0 1 0 4 0 2 2 0 0 0-4 0M6 16c.5-1.5 1.7-2 3-2s2.5.5 3 2M14 9h4M14 13h4" />
         </svg>
         <p className="leading-relaxed text-bruma">
-          Lo paga <strong className="text-blanco">cada jugador</strong> cuando activa su credencial digital de juego.
+          Lo paga <strong className="text-blanco">cada jugador</strong> cuando activa su credencial digital de juego. Si la
+          liga prefiere, lo puede pagar ella.
         </p>
       </div>
+      <p className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-sm font-bold uppercase tracking-wide text-celeste">
+        <span>Incluye todo</span>
+        <span>En dólares</span>
+        <span>En Argentina, por Mercado Pago</span>
+      </p>
       {children}
     </div>
   )

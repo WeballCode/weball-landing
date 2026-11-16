@@ -29,6 +29,10 @@ const faqs = [
     a: 'Las marcas auspician tablas, partidos y perfiles dentro de la app, venden en la comunidad y miden sus resultados.',
   },
   {
+    q: '¿Cuánto cuesta?',
+    a: 'USD 6 por jugador al año (USD 0,50 por mes), con todo incluido. Lo paga cada jugador al activar su credencial digital, o la liga, si prefiere. En Argentina se paga por Mercado Pago.',
+  },
+  {
     q: '¿Cómo arrancamos?',
     a: 'Escribinos, te mostramos Weball funcionando con el formato de tu liga y te dejamos todo listo para empezar.',
   },

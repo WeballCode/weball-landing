@@ -24,11 +24,19 @@ const includes = [
 const faqs = [
   {
     q: '¿Quién paga?',
-    a: 'Cada jugador, cuando activa su credencial digital de juego desde el celular.',
+    a: 'Cada jugador, cuando activa su credencial digital de juego desde el celular. Si la liga prefiere, lo puede pagar ella por sus jugadores.',
   },
   {
     q: '¿Cuánto cuesta?',
     a: `USD ${usd(PRICE_YEAR)} por jugador al año, que equivale a USD ${usd(PRICE_MONTH, 2)} por mes.`,
+  },
+  {
+    q: '¿Qué incluye?',
+    a: 'Todo: fichajes, credencial digital, torneos, planilla digital, Tribunal IA, comunicación y la app de tu liga. No hay extras.',
+  },
+  {
+    q: '¿Cómo se paga?',
+    a: 'El precio es en dólares. En Argentina se paga por Mercado Pago.',
   },
   {
     q: '¿Por qué depende del tamaño de la liga?',
@@ -87,8 +95,8 @@ export default function Pricing() {
             <Label icon="credencial">Precios</Label>
             <Title as="h1">Un precio simple, que crece con tu liga</Title>
             <Lead>
-              Depende del tamaño de tu liga: se paga por jugador. Y no lo pone la liga: lo paga cada jugador al activar su
-              credencial digital de juego.
+              Depende del tamaño de tu liga: se paga por jugador. Lo paga cada jugador al activar su credencial digital
+              de juego, o la liga, si prefiere hacerse cargo.
             </Lead>
           </div>
           <Reveal delay={200}>
@@ -120,7 +128,7 @@ export default function Pricing() {
             <Title>¿Cuánto es para tu liga?</Title>
             <Lead tone="light">Mové la barra con la cantidad de jugadores de tu liga.</Lead>
 
-            <p className="mt-10 text-xs font-bold uppercase tracking-[0.2em] text-celeste-profundo">Qué incluye</p>
+            <p className="mt-10 text-xs font-bold uppercase tracking-[0.2em] text-celeste-profundo">Qué incluye: todo</p>
             <ul className="mt-3 grid gap-x-6 sm:grid-cols-2">
               {includes.map((t) => (
                 <li key={t} className="flex items-center gap-2 border-t-2 border-blanco py-3 font-bold">
@@ -142,7 +150,7 @@ export default function Pricing() {
       <Section id="dudas-precios">
         <Label>Dudas</Label>
         <Title>Sobre el precio</Title>
-        <dl className="mt-10 grid gap-4 lg:grid-cols-3">
+        <dl className="mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
           {faqs.map((f, i) => (
             <Reveal key={f.q} delay={i * 100} className="border-t-4 border-linea pt-5">
               <dt className="text-lg font-extrabold">{f.q}</dt>
