@@ -11,8 +11,11 @@ export default function PricingTeaser() {
           <Label tone="light" icon="credencial">
             Precios
           </Label>
-          <Title>Depende del tamaño de tu liga</Title>
-          <Lead tone="light">El precio es por jugador, así que crece con tu liga. Lo paga cada jugador al activar su credencial, o la liga, si prefiere.</Lead>
+          <Title>Sin costo fijo para tu liga</Title>
+          <Lead tone="light">
+            Weball completo se paga por jugador, así que depende del tamaño de tu liga: cada jugador paga USD 6 al año con su
+            credencial, o la liga, si prefiere. Si sólo necesitás algunos procesos, te cotizamos esos.
+          </Lead>
           <Reveal delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row">
             <a
               href="./precios.html"

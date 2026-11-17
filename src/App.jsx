@@ -3,14 +3,14 @@ import Hero from './components/Hero.jsx'
 import Ticker from './components/Ticker.jsx'
 import Problem from './components/Problem.jsx'
 import Liga from './components/Liga.jsx'
+import Modular from './components/Modular.jsx'
+import Leagues from './components/Leagues.jsx'
 import { TribunalSection } from './components/Modules.jsx'
-import Scores from './components/Scores.jsx'
-import Asociacion from './components/Asociacion.jsx'
-import Sponsors from './components/Sponsors.jsx'
 import PricingTeaser from './components/PricingTeaser.jsx'
 import Faq from './components/Faq.jsx'
 
-// Página principal, corta y directa. Las soluciones, los precios y los inversores tienen su propia página.
+// Página principal: Weball como el sistema de las grandes ligas.
+// Los procesos en detalle, los precios y los inversores tienen su propia página.
 export default function App() {
   return (
     <Page page="inicio">
@@ -18,10 +18,9 @@ export default function App() {
       <Ticker />
       <Problem />
       <Liga />
+      <Modular />
+      <Leagues />
       <TribunalSection />
-      <Scores />
-      <Asociacion />
-      <Sponsors />
       <PricingTeaser />
       <Faq />
     </Page>

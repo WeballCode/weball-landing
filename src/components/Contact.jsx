@@ -3,9 +3,10 @@ import { Reveal } from './motion.jsx'
 import { Label, Lead, Section, Title } from './ui.jsx'
 
 const options = [
-  { label: 'Tengo una liga', message: 'Hola Weball, tengo una liga y quiero conocer Weball Liga.' },
-  { label: 'Soy de una asociación', message: 'Hola Weball, soy de una asociación y quiero conocer Weball Asociación.' },
-  { label: 'Quiero ser sponsor', message: 'Hola Weball, quiero conocer Weball Sponsors.' },
+  { label: 'Tengo una liga grande', message: 'Hola Weball, tengo una liga grande y quiero ver Weball funcionando.' },
+  { label: 'Quiero sólo algunos procesos', message: 'Hola Weball, quiero consultar por algunos procesos para mi liga.' },
+  { label: 'Soy de una federación', message: 'Hola Weball, soy de una federación y quiero conocer Weball.' },
+  { label: 'Quiero ser sponsor', message: 'Hola Weball, quiero ser sponsor en Weball.' },
   { label: 'Quiero invertir', message: 'Hola Weball, me interesa invertir en Weball.' },
 ]
 
@@ -16,7 +17,7 @@ export default function Contact() {
         <div>
           <Label tone="celeste">Contacto</Label>
           <Title>Te mostramos tu liga funcionando</Title>
-          <Lead tone="celeste">Contanos quién sos por WhatsApp y te mostramos Weball en acción.</Lead>
+          <Lead tone="celeste">Contanos cuántos jugadores tiene tu liga y qué procesos querés resolver. Te mostramos Weball con el formato de tu liga.</Lead>
           <Reveal as="p" delay={300} className="mt-5">
             Escribinos al{' '}
             <a

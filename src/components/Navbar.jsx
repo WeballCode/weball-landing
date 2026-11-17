@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 
 // Las anclas (#) son secciones de la página principal; las que terminan en .html son páginas aparte
 const links = [
-  { href: '#liga', label: 'Liga' },
+  { href: '#procesos', label: 'Procesos' },
+  { href: '#integraciones', label: 'Integraciones' },
+  { href: '#ligas', label: 'Ligas' },
   { href: '#tribunal', label: 'Tribunal IA' },
-  { href: '#scores', label: 'Comunidad' },
-  { href: '#asociacion', label: 'Asociación' },
-  { href: '#sponsors', label: 'Sponsors' },
   { href: './soluciones.html', label: 'Soluciones', page: 'soluciones' },
   { href: './precios.html', label: 'Precios', page: 'precios' },
   { href: './inversores.html', label: 'Inversores', page: 'inversores' },

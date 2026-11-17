@@ -188,12 +188,11 @@ function ProgramacionScene() {
               <Shield x={120} y={y + 16} s={0.75} fill={[PROFUNDO, ACERO, MARINO, PROFUNDO][i]} />
               <Text x="138" y={y + 19.5} size={7} fill={MARINO} spacing={0.8}>{m.court}</Text>
             </g>
-            {/* Árbitro designado */}
+            {/* El club propone y la liga aprueba */}
             <g className="pop" style={delay(1200 + i * 350)}>
               <rect x="208" y={y + 6} width="66" height="20" fill={CELESTE} />
-              <circle cx="219" cy={y + 16} r="4.5" stroke={MARINO} strokeWidth="1.6" />
-              <path d={`M223 ${y + 13}h8v5h-8`} stroke={MARINO} strokeWidth="1.6" />
-              <Text x="236" y={y + 19.5} size={6.5} fill={MARINO} spacing={0.5}>ÁRBITRO</Text>
+              <path d={`M215 ${y + 16}l3 3 6-6`} stroke={MARINO} strokeWidth="1.8" />
+              <Text x="229" y={y + 19.5} size={6.5} fill={MARINO} spacing={0.5}>APROBADO</Text>
             </g>
           </g>
         )
@@ -320,13 +319,129 @@ function PublicadoScene({ on }) {
     </>
   )
 }
+// Planillas: la lista de buena fe, con el suspendido tachado
+function PlanillaScene() {
+  const players = [
+    { n: 1, w: 46 },
+    { n: 4, w: 38 },
+    { n: 7, w: 50, out: true },
+    { n: 9, w: 34 },
+    { n: 10, w: 42 },
+  ]
+  return (
+    <>
+      <g className="pop">
+        <rect x="40" y="8" width="220" height="186" fill={BLANCO} stroke={MARINO} strokeWidth="2" />
+        <rect x="40" y="8" width="220" height="28" fill={MARINO} />
+        <Text x="52" y="26" size={8} fill={BLANCO} spacing={1}>PLANILLA · FECHA 7</Text>
+        <Shield x={232} y={22} s={0.7} fill={CELESTE} />
+        <Text x="52" y="52" size={6.5} fill={PROFUNDO} spacing={1.2}>LISTA DE BUENA FE</Text>
+      </g>
+      {players.map((p, i) => {
+        const y = 70 + i * 22
+        return (
+          <g key={p.n} className="pop" style={delay(250 + i * 180)}>
+            <Text x="58" y={y + 3} size={8} fill={p.out ? ACERO : PROFUNDO} spacing={0} textAnchor="middle">{p.n}</Text>
+            <line x1="72" y1={y} x2={72 + p.w * 2} y2={y} stroke={p.out ? SUAVE : MARINO} strokeWidth="3" />
+            <line x1="72" y1={y + 9} x2="244" y2={y + 9} stroke={SUAVE} strokeWidth="1" />
+          </g>
+        )
+      })}
+      {/* El suspendido aparece tachado solo */}
+      <path className="draw" pathLength="1" style={delay(1400)} d="M52 114h120" stroke="#c81e1e" strokeWidth="2.5" />
+      <g className="pop" style={delay(1700)}>
+        <rect x="182" y="105" width="66" height="18" fill="#c81e1e" />
+        <Text x="215" y="117" size={6.5} fill={BLANCO} spacing={0.8} textAnchor="middle">SUSPENDIDO</Text>
+      </g>
+    </>
+  )
+}
 
+// Árbitros: cada partido con su árbitro, sin choques, confirmado por WhatsApp
+function ArbitrosScene() {
+  const rows = [
+    { hour: '15:00', court: 'CANCHA 1', ref: 'J. PÉREZ' },
+    { hour: '17:00', court: 'CANCHA 2', ref: 'M. GÓMEZ' },
+    { hour: '19:00', court: 'CANCHA 1', ref: 'L. DÍAZ' },
+    { hour: '21:00', court: 'CANCHA 3', ref: 'J. PÉREZ' },
+  ]
+  return (
+    <>
+      <Text className="pop" x="20" y="22" size={8} fill={PROFUNDO} spacing={1.5}>DESIGNACIONES · SÁBADO</Text>
+      {rows.map((r, i) => {
+        const y = 34 + i * 40
+        return (
+          <g key={i}>
+            <g className="pop" style={delay(200 + i * 200)}>
+              <rect x="20" y={y} width="260" height="32" fill={BLANCO} stroke={SUAVE} strokeWidth="1.5" />
+              <rect x="20" y={y} width="44" height="32" fill={MARINO} />
+              <Text x="42" y={y + 20} size={9} fill={BLANCO} spacing={0} textAnchor="middle">{r.hour}</Text>
+              <Text x="74" y={y + 14} size={6.5} fill={ACERO} spacing={0.8}>{r.court}</Text>
+              <circle cx="80" cy={y + 22} r="4" stroke={MARINO} strokeWidth="1.6" />
+              <Text x="90" y={y + 25} size={7.5} fill={MARINO} spacing={0.4}>{r.ref}</Text>
+            </g>
+            {/* Confirmado por WhatsApp */}
+            <g className="pop" style={delay(1200 + i * 350)}>
+              <rect x="190" y={y + 6} width="84" height="20" fill={CELESTE} />
+              <path d={`M197 ${y + 16}l3 3 6-6`} stroke={MARINO} strokeWidth="1.8" />
+              <Text x="211" y={y + 19.5} size={6.5} fill={MARINO} spacing={0.5}>CONFIRMADO</Text>
+            </g>
+          </g>
+        )
+      })}
+    </>
+  )
+}
+
+// Tribunal: la IA lee el informe y propone la sanción con su artículo; el tribunal la aprueba
+function TribunalScene() {
+  return (
+    <>
+      <g className="pop">
+        <rect x="16" y="20" width="110" height="150" fill={BLANCO} stroke={MARINO} strokeWidth="2" />
+        <Text x="26" y="40" size={7} fill={PROFUNDO} spacing={1.2}>INFORME ARBITRAL</Text>
+        {[54, 66, 78, 90, 102, 114].map((y, i) => (
+          <line key={y} x1="26" y1={y} x2={[110, 96, 112, 88, 104, 70][i]} y2={y} stroke={SUAVE} strokeWidth="2.5" />
+        ))}
+        <rect x="26" y="128" width="90" height="30" fill="#ffd60a" />
+        <Text x="71" y="147" size={7} fill={MARINO} spacing={0.6} textAnchor="middle">EXPULSIÓN · 7</Text>
+      </g>
+      <path className="draw" pathLength="1" style={delay(400)} d="M134 96h26M152 88l8 8-8 8" stroke={MARINO} strokeWidth="2.5" />
+      <g className="pop" style={delay(700)}>
+        <rect x="168" y="44" width="116" height="104" fill={MARINO} />
+        <Text x="178" y="62" size={6.5} fill={CELESTE} spacing={1.2}>LA IA PROPONE</Text>
+        <Text x="178" y="84" size={10} fill={BLANCO} spacing={0.4}>ART. 34</Text>
+        <Text x="178" y="104" size={12} fill={BLANCO} spacing={0}>2 FECHAS</Text>
+        <line x1="178" y1="116" x2="274" y2="116" stroke="#365a70" strokeWidth="1.5" />
+        <Text x="178" y="134" size={6.5} fill="#b9cbd6" spacing={0.6}>SEGÚN TU REGLAMENTO</Text>
+      </g>
+      <g className="pop" style={delay(1600)}>
+        <rect x="168" y="156" width="116" height="24" fill={CELESTE} />
+        <path d="M178 168l3 3 6-6" stroke={MARINO} strokeWidth="1.8" />
+        <Text x="193" y="171.5" size={7} fill={MARINO} spacing={0.6}>EL TRIBUNAL APRUEBA</Text>
+      </g>
+    </>
+  )
+}
 
 export const ligaScenes = [InscripcionScene, PlantelesScene, FixtureScene, ProgramacionScene, EnVivoScene, PublicadoScene]
 
-export function LigaDrawing({ index, play }) {
+// Los 8 procesos de una liga, en el mismo orden que la lista de la página principal
+export const processScenes = [
+  PlantelesScene,
+  FixtureScene,
+  ProgramacionScene,
+  PlanillaScene,
+  ArbitrosScene,
+  EnVivoScene,
+  TribunalScene,
+  PublicadoScene,
+]
+
+// `scenes` elige el juego de dibujos: los 6 pasos de Ligas (por defecto) o los 8 procesos
+export function LigaDrawing({ index, play, scenes = ligaScenes }) {
   const on = usePlay(play)
-  const Scene = ligaScenes[index]
+  const Scene = scenes[index]
   return (
     <svg viewBox="0 0 300 200" className={`h-auto w-full ${on ? 'is-visible' : ''}`} fill="none" aria-hidden="true">
       <Scene on={on} />

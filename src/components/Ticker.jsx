@@ -1,14 +1,16 @@
-// Cinta celeste "Hecho para…": a quién va dirigido Weball, pasando en loop
+// Cinta celeste "Juegan en Weball": las ligas que hoy usan Weball, pasando en loop
 const words = [
-  'Federaciones',
-  'Asociaciones',
-  'Ligas',
-  'Clubes',
-  'Árbitros',
-  'Delegados',
-  'Jugadores',
-  'Familias',
-  'Marcas',
+  'FUTSALA',
+  'FUTSALA Colombia',
+  'FUTSALA Uruguay',
+  'FUTSALA Chile',
+  'Córdoba',
+  'Tucumán',
+  'Bahía Blanca',
+  'Salta',
+  'BAFI',
+  'Superliga Handball',
+  'Edmonton Futsal League',
 ]
 
 function Row({ hidden = false }) {
@@ -29,9 +31,9 @@ function Row({ hidden = false }) {
 export default function Ticker() {
   return (
     <div className="flex items-stretch bg-celeste text-marino">
-      {/* Rótulo fijo a la izquierda; los destinatarios pasan detrás */}
+      {/* Rótulo fijo a la izquierda; las ligas pasan detrás */}
       <p className="relative z-10 flex shrink-0 items-center bg-marino px-4 text-sm font-bold uppercase tracking-[0.2em] text-celeste sm:px-6">
-        Hecho para
+        Juegan en Weball
       </p>
       <div className="min-w-0 flex-1 overflow-hidden py-4">
         <div className="marquee flex w-max">

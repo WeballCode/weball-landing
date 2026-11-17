@@ -44,9 +44,9 @@ const modules = [
     id: 'tribunal',
     icon: 'tribunal',
     short: 'Tribunal IA',
-    kicker: 'Sanciones automáticas',
+    kicker: 'Lo que nadie más tiene',
     name: 'Tribunal IA',
-    text: 'Cargá tus reglamentos y dejá que nuestro agente se ocupe de sancionar.',
+    text: 'El agente lee cada informe arbitral y propone la sanción con el artículo de tu reglamento. El tribunal decide y publica el boletín.',
     show: <TribunalShowcase />,
     tone: 'celeste',
   },
@@ -97,7 +97,7 @@ export default function Modules() {
           <div>
             <Label>Tecnología Weball</Label>
             <Title as="h1">Soluciones</Title>
-            <Lead>Cada herramienta que tu liga necesita, pensada para el deporte amateur.</Lead>
+            <Lead>Cada proceso en detalle, pensado para ligas con miles de jugadores.</Lead>
           </div>
           {/* Ícono: el rayo de "hacer la diferencia" */}
           <Reveal delay={300} className="hidden shrink-0 place-items-center rounded-full border-2 border-celeste p-4 text-celeste sm:grid">

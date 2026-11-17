@@ -16,7 +16,7 @@ const points = [
   },
   {
     title: 'Ya funciona',
-    text: 'Ya se organizan +100 torneos y +35.000 partidos al año en Weball.',
+    text: 'Ya juegan +50.000 jugadores y +600 clubes, con +85.000 partidos jugados en cuatro países.',
   },
 ]
 

@@ -39,6 +39,10 @@ const faqs = [
     a: 'El precio es en dólares. En Argentina se paga por Mercado Pago.',
   },
   {
+    q: '¿Y si sólo necesito algunos procesos?',
+    a: 'Cada proceso se contrata por separado. Contanos cuáles te faltan y te cotizamos esos.',
+  },
+  {
     q: '¿Por qué depende del tamaño de la liga?',
     a: 'Porque el precio es por jugador: una liga con más jugadores suma más credenciales activas.',
   },
@@ -46,7 +50,7 @@ const faqs = [
 
 // Calculadora: según los jugadores de la liga, cuánto suman las credenciales al año y al mes
 function Calculator() {
-  const [players, setPlayers] = useState(500)
+  const [players, setPlayers] = useState(5000)
   return (
     <div className="border-t-[6px] border-marino bg-blanco p-6 sm:p-8">
       <label htmlFor="jugadores" className="text-xs font-bold uppercase tracking-[0.2em] text-celeste-profundo">
@@ -56,16 +60,16 @@ function Calculator() {
       <input
         id="jugadores"
         type="range"
-        min="50"
-        max="5000"
-        step="50"
+        min="1000"
+        max="50000"
+        step="500"
         value={players}
         onChange={(e) => setPlayers(Number(e.target.value))}
         className="mt-5 w-full cursor-pointer accent-celeste-profundo"
       />
       <div className="flex justify-between text-xs font-medium text-acero">
-        <span>50</span>
-        <span>5.000</span>
+        <span>1.000</span>
+        <span>50.000</span>
       </div>
 
       <dl className="mt-6 grid grid-cols-2 gap-4 border-t-2 border-niebla pt-5">
@@ -93,10 +97,10 @@ export default function Pricing() {
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
           <div>
             <Label icon="credencial">Precios</Label>
-            <Title as="h1">Un precio simple, que crece con tu liga</Title>
+            <Title as="h1">Sin costo fijo para tu liga</Title>
             <Lead>
-              Depende del tamaño de tu liga: se paga por jugador. Lo paga cada jugador al activar su credencial digital
-              de juego, o la liga, si prefiere hacerse cargo.
+              Weball completo se paga por jugador, así que depende del tamaño de tu liga. Lo paga cada jugador al activar su
+              credencial digital de juego, o la liga, si prefiere. Si sólo necesitás algunos procesos, te cotizamos esos.
             </Lead>
           </div>
           <Reveal delay={200}>

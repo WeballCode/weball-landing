@@ -49,7 +49,7 @@ function ClubRow({ hidden = false }) {
   )
 }
 
-function ClubWall() {
+export function ClubWall() {
   return (
     <div>
       <Reveal as="p" className="text-sm font-medium uppercase tracking-[0.2em] text-bruma">
