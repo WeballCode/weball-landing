@@ -58,8 +58,11 @@ export default function Problem() {
               <span aria-hidden="true" className="grid h-6 w-6 shrink-0 place-items-center border-2 border-linea text-sm font-bold">
                 ×
               </span>
-              <span className="strike text-lg" style={{ transitionDelay: `${500 + i * 120}ms` }}>
-                {r.before}
+              {/* El texto va adentro de otro span para que, si ocupa dos líneas, la línea tache cada una */}
+              <span className="text-lg">
+                <span className="strike" style={{ transitionDelay: `${500 + i * 120}ms` }}>
+                  {r.before}
+                </span>
               </span>
             </div>
             {/* Después: en blanco con su tilde celeste y el link a su proceso */}
