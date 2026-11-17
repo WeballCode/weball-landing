@@ -1,80 +1,21 @@
-import { useEffect, useRef, useState } from 'react'
-import { procesos, procesoHref, nn } from '../procesos.js'
-import { Icon } from './ui.jsx'
+import { useEffect, useState } from 'react'
 
-// Menú: "Procesos" despliega los 8 procesos; el resto son páginas aparte.
-// Inversores queda en el pie de página: el menú es para las ligas.
+// Las anclas (#) son secciones de la página principal; las que terminan en .html son páginas aparte
 const links = [
-  { href: './tribunal.html', label: 'Tribunal IA', page: 'tribunal' },
-  { href: './ligas.html', label: 'Ligas', page: 'ligas' },
+  { href: '#liga', label: 'Liga' },
+  { href: '#tribunal', label: 'Tribunal IA' },
+  { href: '#scores', label: 'Comunidad' },
+  { href: '#asociacion', label: 'Asociación' },
+  { href: '#sponsors', label: 'Sponsors' },
+  { href: './soluciones.html', label: 'Soluciones', page: 'soluciones' },
   { href: './precios.html', label: 'Precios', page: 'precios' },
+  { href: './inversores.html', label: 'Inversores', page: 'inversores' },
 ]
-const processPages = ['soluciones', ...procesos.map((p) => p.slug).filter((s) => s !== 'tribunal')]
-
-function ProcessMenu({ page }) {
-  const [open, setOpen] = useState(false)
-  const ref = useRef(null)
-  const current = processPages.includes(page)
-
-  // Se cierra al hacer clic afuera o con Escape
-  useEffect(() => {
-    if (!open) return
-    const onClick = (e) => !ref.current?.contains(e.target) && setOpen(false)
-    const onKey = (e) => e.key === 'Escape' && setOpen(false)
-    document.addEventListener('mousedown', onClick)
-    document.addEventListener('keydown', onKey)
-    return () => {
-      document.removeEventListener('mousedown', onClick)
-      document.removeEventListener('keydown', onKey)
-    }
-  }, [open])
-
-  return (
-    <div ref={ref} className="relative" onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={() => setOpen(!open)}
-        className={`flex items-center gap-1.5 text-sm font-medium transition hover:text-blanco ${current ? 'text-celeste' : 'text-bruma'}`}
-      >
-        Procesos
-        <span aria-hidden="true" className={`text-xs transition ${open ? 'rotate-180' : ''}`}>
-          ▾
-        </span>
-      </button>
-      {open && (
-        <div className="absolute top-full left-1/2 w-[36rem] -translate-x-1/2 pt-4">
-          <div className="border-t-4 border-celeste bg-marino-claro p-3 shadow-2xl">
-            <ul className="grid grid-cols-2 gap-px">
-              {procesos.map((p, i) => (
-                <li key={p.slug}>
-                  <a
-                    href={procesoHref(p.slug)}
-                    aria-current={p.slug === page ? 'page' : undefined}
-                    className={`flex items-center gap-3 px-3 py-2.5 transition hover:bg-marino ${p.slug === page ? 'text-celeste' : 'text-blanco'}`}
-                  >
-                    <span className="text-sm font-extrabold tabular-nums text-celeste">{nn(i)}</span>
-                    <Icon name={p.icon} className="h-5 w-5 shrink-0 text-bruma" />
-                    <span className="text-sm font-bold leading-tight">{p.name}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <a
-              href="./soluciones.html"
-              className="mt-2 block border-t border-linea px-3 pt-3 pb-1 text-sm font-bold uppercase tracking-wide text-celeste transition hover:text-blanco"
-            >
-              Ver los 8 procesos y cómo se conectan →
-            </a>
-          </div>
-        </div>
-      )}
-    </div>
-  )
-}
 
 export default function Navbar({ page = 'inicio' }) {
   const home = page === 'inicio'
+  // Desde otra página, las secciones de la principal se abren con ./#seccion
+  const hrefOf = (l) => (l.href.startsWith('#') && !home ? `./${l.href}` : l.href)
   const current = (l) => l.page === page
   const [open, setOpen] = useState(false)
   const [hidden, setHidden] = useState(false)
@@ -104,11 +45,10 @@ export default function Navbar({ page = 'inicio' }) {
         </a>
 
         <div className="hidden items-center gap-7 lg:flex">
-          <ProcessMenu page={page} />
           {links.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={hrefOf(l)}
               aria-current={current(l) ? 'page' : undefined}
               className={`text-sm font-medium transition hover:text-blanco ${current(l) ? 'text-celeste' : 'text-bruma'}`}
             >
@@ -140,27 +80,11 @@ export default function Navbar({ page = 'inicio' }) {
       </nav>
 
       {open && (
-        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto border-t border-linea bg-marino px-4 pb-6 lg:hidden">
-          <p className="pt-5 pb-2 text-xs font-medium uppercase tracking-[0.2em] text-celeste">Procesos</p>
-          <ul>
-            {procesos.map((p, i) => (
-              <li key={p.slug}>
-                <a
-                  href={procesoHref(p.slug)}
-                  aria-current={p.slug === page ? 'page' : undefined}
-                  onClick={() => setOpen(false)}
-                  className={`flex items-center gap-3 border-b border-linea py-3 font-bold ${p.slug === page ? 'text-celeste' : 'text-blanco'}`}
-                >
-                  <span className="w-6 text-sm font-extrabold tabular-nums text-celeste">{nn(i)}</span>
-                  {p.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+        <div className="border-t border-linea bg-marino px-4 pb-6 lg:hidden">
           {links.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={hrefOf(l)}
               aria-current={current(l) ? 'page' : undefined}
               onClick={() => setOpen(false)}
               className="block border-b border-linea py-4 text-lg font-bold uppercase text-blanco"

@@ -77,17 +77,19 @@ export function Reveal({ as: Tag = 'div', delay = 0, className = '', style, chil
   )
 }
 
-// Número que cuenta desde cero al aparecer: recibe textos como "+35.000".
-// Arranca mostrando el número final (así lo ve Google y quien no hace scroll) y cuenta desde cero
-// cuando entra en pantalla, al mismo tiempo que su bloque aparece (Reveal), así el salto no se ve.
+// Número que cuenta desde cero al aparecer: recibe textos como "+35.000"
 export function CountUp({ value, duration = 1600 }) {
   const prefix = value.match(/^\D*/)[0]
   const target = parseInt(value.replace(/\D/g, ''), 10)
-  const [ref, inView] = useInView()
-  const [n, setN] = useState(target)
+  const [ref, inView] = useInView({ threshold: 0.5 })
+  const [n, setN] = useState(0)
 
   useEffect(() => {
-    if (!inView || prefersReducedMotion()) return
+    if (!inView) return
+    if (prefersReducedMotion()) {
+      setN(target)
+      return
+    }
     let frame
     const start = performance.now()
     const tick = (now) => {

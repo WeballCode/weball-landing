@@ -40,30 +40,14 @@ Nunca dejes cambios sin pushear: si no está pusheado, el socio no lo ve.
 
 ## Estructura
 
-El sitio se presenta como **"el sistema de las grandes ligas"** (ligas de más de 1.000 jugadores),
-organizado en **8 procesos** que se pueden contratar por separado.
-
 - `src/App.jsx` — arma la página principal juntando las secciones, en orden.
-- `src/procesos.js` — la lista de los 8 procesos (nombre, ícono, frase). De acá salen el menú, la
-  cadena de la principal, el pie y el selector "Contratá sólo lo que te falta" (`Modular.jsx`).
-- Páginas de proceso: `fichajes.html`, `fixture.html`, `programacion.html`, `planillas.html`,
-  `arbitros.html`, `resultados.html`, `tribunal.html`, `comunicacion.html`. Las 8 usan la misma
-  entrada `src/proceso.jsx` (que elige su animación) y la plantilla `src/components/ProcessPage.jsx`.
-  **Los textos de cada una están en `src/procesos/<nombre>.js`.**
-- `ligas.html` (`src/ligas.jsx` + `src/components/Ligas.jsx`) — FUTSALA y sus filiales, BAFI,
-  handball y Edmonton. **Las cifras y textos de las ligas están en `src/ligas.js`** (también las usa
-  la principal). Logos en `public/ligas/`.
-- Otras páginas: `soluciones.html` (los 8 procesos), `precios.html` (el precio se cambia en
-  `src/components/pricing.js`) e `inversores.html`. Todas usan `src/components/Page.jsx` (menú,
-  contacto, pie). Para sumar otra página: su `.html` en la raíz, su `src/<nombre>.jsx`, y agregarla a
-  la lista `pages` de `vite.config.js`.
+- Páginas aparte: `soluciones.html` (`src/soluciones.jsx`), `precios.html` (`src/precios.jsx`) e
+  `inversores.html` (`src/inversores.jsx`). El precio se cambia en `src/components/pricing.js`.
+  Todas usan `src/components/Page.jsx` (menú, contacto, pie). Para sumar otra página: su `.html` en la
+  raíz, su `src/<nombre>.jsx`, y agregarla en `build.rollupOptions.input` de `vite.config.js`.
 - `src/components/` — una sección por archivo (`Hero.jsx`, `Footer.jsx`, ...). Para agregar
   una sección nueva, creá su archivo acá y sumala en `App.jsx`.
 - `public/` — imágenes, logos, favicon.
-
-**Sólo lo que existe.** Los textos de procesos y ligas cuentan sólo lo que Weball hace hoy (verificado
-en noviembre de 2026). Antes de sumar una función o una cifra, confirmala con el equipo técnico: no
-prometas cosas que todavía no están (por ejemplo, métricas para sponsors o cobro online del fichaje).
 
 ## Criterios
 
@@ -74,3 +58,13 @@ prometas cosas que todavía no están (por ejemplo, métricas para sponsors o co
   se actualice `package-lock.json` (el deploy usa `npm ci` y falla si no coinciden).
 - Formularios: no hay backend. Si piden un formulario de contacto, usá un servicio externo
   (por ejemplo Formspree) o un link a WhatsApp / mailto, y explicá qué hace falta.
+
+## Versión 2 (carpeta `v2/`)
+
+En `v2/` está la nueva versión del sitio ("el sistema de las grandes ligas", con una página por cada uno
+de los 8 procesos). Se publica aparte, en la ruta **`/v2/`**, y no toca nada de la raíz: tiene su propio
+código (`v2/src/`), sus páginas (`v2/*.html`) y sus imágenes (`v2/public/`).
+
+- Si te piden cambios en "la versión nueva", "la V2" o en `/v2/`, trabajá **sólo** dentro de `v2/`
+  (sus instrucciones están en `v2/CLAUDE.md`). Si no, no la toques.
+- `npm run dev:v2` la levanta en local; `npm run build` compila las dos (la raíz y `dist/v2`).

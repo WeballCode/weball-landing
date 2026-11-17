@@ -196,9 +196,9 @@ function BoletinScreen() {
 const steps = [
   { name: 'Se carga el reglamento de los torneos', Screen: CargaScreen, ms: 3800 },
   { name: 'Llegan los informes arbitrales', Screen: InformesScreen, ms: 3600 },
-  { name: 'El agente los analiza y propone las sanciones', Screen: AgenteScreen, ms: 3800 },
+  { name: 'El agente los analiza y aplica las sanciones', Screen: AgenteScreen, ms: 3800 },
   {
-    name: 'El tribunal decide y publica el boletín',
+    name: 'La liga chequea y genera los boletines',
     sub: 'Nuestro agente redacta el boletín completo.',
     Screen: BoletinScreen,
     ms: 5000,

@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+/* Colores de marca (manual de marca v1): cambialos acá y se aplican en todo el sitio */
+@theme {
+  /* Principales: marino 70%, blanco 20%, celeste 10% */
+  --color-marino: #032639;
+  --color-celeste: #3fb6ff;
+  --color-blanco: #fbfbf8;
+  /* Apoyo */
+  --color-marino-claro: #0f3143;
+  --color-niebla: #f1f4f6;
+  --color-celeste-claro: #bfe6ff;
+  --color-celeste-profundo: #0b6fcc;
+  /* Textos y líneas */
+  --color-bruma: #b9cbd6;
+  --color-pizarra: #3c4a54;
+  --color-acero: #51606b;
+  --color-linea: #365a70;
+
+  --color-brand: #032639;
+  --color-accent: #3fb6ff;
+
+  --font-sans: "Roboto", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-marino);
+}
+
+/* ---------- Animaciones ---------- */
+
+/* Aparecer al entrar en pantalla */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Líneas que se dibujan solas (los elementos llevan pathLength="1") */
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.6, 0, 0.2, 1);
+}
+.is-visible .draw {
+  stroke-dashoffset: 0;
+}
+
+/* Elementos que aparecen creciendo */
+.pop {
+  opacity: 0;
+  transform: scale(0.6);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+.is-visible .pop {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cinta que pasa en loop */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+.marquee-slow {
+  animation: marquee 60s linear infinite;
+}
+
+/* Pulso suave del círculo central de la cancha */
+@keyframes pulse-ring {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+.pulse-ring {
+  animation: pulse-ring 3s ease-in-out infinite;
+}
+
+/* Barrita de tiempo del paso activo (Weball Liga) */
+@keyframes step-progress {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.step-progress {
+  animation: step-progress linear both;
+}
+
+/* Entrada suave de una escena nueva */
+@keyframes format-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.format-enter {
+  animation: format-enter 0.5s ease both;
+}
+
+/* Fichajes: flash de la selfie (aparece y se apaga) */
+@keyframes flash {
+  0% { opacity: 0; }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+.is-visible .flash {
+  animation: flash 0.6s ease-out 1.2s both;
+}
+
+/* Fichaje a medida: cursor que titila y etiquetas que entran saltando */
+@keyframes caret {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.caret {
+  animation: caret 0.9s step-end infinite;
+}
+@keyframes chip-in {
+  0% { opacity: 0; transform: translateY(-14px) scale(0.85); }
+  60% { opacity: 1; transform: translateY(2px) scale(1.04); }
+  100% { opacity: 1; transform: none; }
+}
+.chip-in {
+  animation: chip-in 0.45s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+/* Personalizado: bolillas que salen del bombo y caen en su grupo */
+@keyframes drop {
+  0% { transform: translate(0, 0); opacity: 1; }
+  35% { transform: translate(0, -14px); }
+  100% { transform: translate(var(--dx), var(--dy)); opacity: 1; }
+}
+.drop {
+  opacity: 0;
+}
+.is-visible .drop {
+  animation: drop 0.6s cubic-bezier(0.5, 0, 0.5, 1) both;
+}
+
+/* Tribunal IA: informes que entran deslizándose desde la izquierda */
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: none; }
+}
+.slide-in {
+  opacity: 0;
+}
+.is-visible .slide-in {
+  animation: slide-in 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Tribunal IA: el círculo del agente late */
+@keyframes ping {
+  0%, 44% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.9; transform: scale(1); }
+  80%, 100% { opacity: 0; transform: scale(1.5); }
+}
+.ping {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ping 1.8s ease-out infinite;
+}
+
+/* Quien pide menos movimiento ve todo quieto */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .pop {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .draw {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  .marquee,
+  .marquee-slow,
+  .pulse-ring,
+  .format-enter,
+  .caret,
+  .chip-in {
+    animation: none;
+  }
+  .ping {
+    display: none;
+  }
+  .slide-in,
+  .is-visible .slide-in {
+    animation: none;
+    opacity: 1;
+  }
+  .drop,
+  .is-visible .drop {
+    animation: none;
+    opacity: 1;
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+
+/* Manito que invita a tocar los pasos */
+@keyframes tap {
+  0%, 60%, 100% { transform: none; }
+  70% { transform: translateY(2px) scale(0.88); }
+  80% { transform: none; }
+}
+.tap {
+  animation: tap 2.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+@media (prefers-reduced-motion: reduce) {
+  .tap { animation: none; }
+}
+
+/* El antes y el después: una línea tacha lo de "antes" al aparecer */
+.strike {
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 0 2px;
+  transition: background-size 0.6s ease;
+}
+.revealed .strike {
+  background-size: 100% 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .strike { transition: none; background-size: 100% 2px; }
+}

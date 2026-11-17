@@ -1,0 +1,144 @@
+import { Icon, Label, Lead, Section, Title } from './ui.jsx'
+import FormatShowcase from './FormatShowcase.jsx'
+import ComunicacionShowcase from './ComunicacionShowcase.jsx'
+import PlanillaShowcase from './PlanillaShowcase.jsx'
+import TribunalShowcase from './TribunalShowcase.jsx'
+import { FichajesVisual } from './FichajeVisual.jsx'
+import CustomFields from './CustomFields.jsx'
+import { Reveal } from './motion.jsx'
+
+// Cada solución tiene su propia sección. Alternan marino claro y marino (las animaciones están
+// pensadas para fondo oscuro), salvo Tribunal IA, que va en celeste.
+const modules = [
+  {
+    id: 'fichajes',
+    icon: 'credencial',
+    short: 'Fichajes',
+    kicker: 'Credencial digital',
+    name: 'Fichajes a medida',
+    text: 'El jugador se ficha solo desde el celular. Vos elegís cómo y qué info le vas a pedir.',
+    // Los datos extra van debajo del texto; el celular con el paso a paso, a la derecha
+    side: <CustomFields />,
+    show: <FichajesVisual />,
+  },
+  {
+    id: 'competiciones',
+    icon: 'competicion',
+    short: 'Competiciones',
+    kicker: 'Fixtures & torneos',
+    name: 'Competiciones',
+    text: 'Organizá por temporada, división y categoría. Armá el fixture que quieras.',
+    show: <FormatShowcase />,
+  },
+  {
+    id: 'planilla',
+    icon: 'app',
+    short: 'Planilla digital',
+    kicker: 'Carga de resultados',
+    name: 'Planilla digital',
+    text: 'Árbitros y mesas de control cargan los resultados desde el celular.',
+    show: <PlanillaShowcase />,
+  },
+  {
+    // Tribunal IA va en celeste para que se destaque
+    id: 'tribunal',
+    icon: 'tribunal',
+    short: 'Tribunal IA',
+    kicker: 'Lo que nadie más tiene',
+    name: 'Tribunal IA',
+    text: 'El agente lee cada informe arbitral y propone la sanción con el artículo de tu reglamento. El tribunal decide y publica el boletín.',
+    side: (
+      <a
+        href="./tribunal.html"
+        className="inline-block bg-marino px-7 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:-translate-y-0.5 hover:bg-marino-claro"
+      >
+        Ver cómo funciona
+      </a>
+    ),
+    show: <TribunalShowcase />,
+    tone: 'celeste',
+  },
+  {
+    id: 'comunicacion',
+    icon: 'comunidad',
+    short: 'Comunicación',
+    kicker: 'Todos conectados',
+    name: 'Comunicación',
+    text: 'Configurá qué se comunica, cómo, cuándo y a quién.',
+    show: <ComunicacionShowcase />,
+  },
+]
+
+const links = modules.map((m) => ({ href: `#${m.id}`, icon: m.icon, label: m.short }))
+
+// Una solución: texto a la izquierda, animación a la derecha (mismo esquema que Tribunal IA)
+function SolutionLayout({ id, tone, icon, kicker, name, text, side, show }) {
+  return (
+    <Section id={id} tone={tone}>
+      <div className="grid items-center gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+        <div className="flex min-w-0 flex-col">
+          <Label tone={tone} icon={icon}>
+            {kicker}
+          </Label>
+          <Title>{name}</Title>
+          <Lead tone={tone}>{text}</Lead>
+          {side && (
+            <Reveal delay={300} className="mt-8">
+              {side}
+            </Reveal>
+          )}
+        </div>
+        <Reveal delay={200} className="min-w-0">
+          {show}
+        </Reveal>
+      </div>
+    </Section>
+  )
+}
+
+export default function Modules() {
+  return (
+    <>
+      {/* Introducción: título, frase y accesos a cada solución */}
+      <Section id="modulos" className="border-b border-linea">
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <Label>Tecnología Weball</Label>
+            <Title as="h1">Soluciones</Title>
+            <Lead>Cada herramienta que tu liga necesita, pensada para el deporte amateur.</Lead>
+          </div>
+          {/* Ícono: el rayo de "hacer la diferencia" */}
+          <Reveal delay={300} className="hidden shrink-0 place-items-center rounded-full border-2 border-celeste p-4 text-celeste sm:grid">
+            <Icon name="rayo" className="h-10 w-10" />
+          </Reveal>
+        </div>
+
+        <Reveal delay={300} className="-mx-4 mt-8 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          <ul className="flex gap-2 sm:flex-wrap">
+            {links.map((l) => (
+              <li key={l.href} className="shrink-0">
+                <a
+                  href={l.href}
+                  className="flex items-center gap-2 border-2 border-linea px-4 py-2.5 font-bold uppercase tracking-wide transition hover:border-celeste hover:bg-celeste hover:text-marino"
+                >
+                  <Icon name={l.icon} className="h-5 w-5" />
+                  <span className="whitespace-nowrap">{l.label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </Section>
+
+      {modules.map((m, i) => (
+        <SolutionLayout key={m.id} {...m} tone={m.tone || (i % 2 === 0 ? 'darker' : 'dark')} />
+      ))}
+    </>
+  )
+}
+
+// Tribunal IA solo, para la página principal (es lo que nadie más tiene)
+export function TribunalSection() {
+  const m = modules.find((x) => x.id === 'tribunal')
+  return <SolutionLayout {...m} />
+}

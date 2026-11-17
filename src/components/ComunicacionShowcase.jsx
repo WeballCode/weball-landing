@@ -10,7 +10,7 @@ const sections = [
     rows: [
       { label: 'Resultado final del partido', on: true },
       { label: 'Cambio de horario o cancha', on: true },
-      { label: 'Aviso 1 hora antes del partido', on: true },
+      { label: 'Recordatorio 24 h antes', on: false },
       { label: 'Sanciones del tribunal', on: true },
     ],
   },

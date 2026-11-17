@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Comunicación y marketing para ligas · Weball</title>
-    <meta name="description" content="Notificaciones a cada jugador, la web y la app de tu liga, noticias, transmisiones y sponsors que auspician competencias y miden sus resultados." />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="https://weball.me/comunicacion.html" />
+    <title>Precios · Weball</title>
+    <meta name="description" content="Cuánto cuesta Weball para tu liga: precio por jugador, Weball completo o sólo los procesos que te faltan." />
+    <!-- V2 en preparación: convive con el sitio actual, así que no se indexa (cuando reemplace a la raíz, pasar a "index, follow") -->
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://weball.me/v2/precios.html" />
     <meta name="theme-color" content="#032639" />
 
     <!-- Íconos: el de la pestaña y el que queda si se guarda la web en la pantalla del celu -->
@@ -17,9 +18,9 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Weball" />
     <meta property="og:locale" content="es_AR" />
-    <meta property="og:url" content="https://weball.me/comunicacion.html" />
-    <meta property="og:title" content="Comunicación y marketing · Weball" />
-    <meta property="og:description" content="Notificaciones a cada jugador, la web y la app de tu liga, noticias, transmisiones y sponsors que auspician competencias y miden sus resultados." />
+    <meta property="og:url" content="https://weball.me/v2/precios.html" />
+    <meta property="og:title" content="Precios · Weball" />
+    <meta property="og:description" content="Cuánto cuesta Weball para tu liga: precio por jugador, Weball completo o sólo los procesos que te faltan." />
     <meta property="og:image" content="https://weball.me/compartir.jpg?v=3" />
     <meta property="og:image:secure_url" content="https://weball.me/compartir.jpg?v=3" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -27,8 +28,8 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Logo de Weball, el sistema de gestión en la compu y la app en el celular" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Comunicación y marketing · Weball" />
-    <meta name="twitter:description" content="Notificaciones a cada jugador, la web y la app de tu liga, noticias, transmisiones y sponsors que auspician competencias y miden sus resultados." />
+    <meta name="twitter:title" content="Precios · Weball" />
+    <meta name="twitter:description" content="Cuánto cuesta Weball para tu liga: precio por jugador, Weball completo o sólo los procesos que te faltan." />
     <meta name="twitter:image" content="https://weball.me/compartir.jpg?v=3" />
 
     <!-- Datos de Weball para Google: nombre, logo y contacto -->
@@ -40,8 +41,8 @@
             "@type": "Organization",
             "@id": "https://weball.me/#organizacion",
             "name": "Weball",
-            "url": "https://weball.me/",
-            "logo": "https://weball.me/isotipo.png",
+            "url": "https://weball.me/v2/",
+            "logo": "https://weball.me/v2/isotipo.png",
             "description": "Sistema de gestión y app para grandes ligas deportivas amateur.",
             "contactPoint": {
               "@type": "ContactPoint",
@@ -53,9 +54,9 @@
           },
           {
             "@type": "WebSite",
-            "@id": "https://weball.me/#sitio",
+            "@id": "https://weball.me/v2/#sitio",
             "name": "Weball",
-            "url": "https://weball.me/",
+            "url": "https://weball.me/v2/",
             "inLanguage": "es-AR",
             "publisher": { "@id": "https://weball.me/#organizacion" }
           }
@@ -71,7 +72,7 @@
     />
   </head>
   <body>
-    <div id="root" data-proceso="comunicacion"></div>
-    <script type="module" src="/src/proceso.jsx"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/precios.jsx"></script>
   </body>
 </html>

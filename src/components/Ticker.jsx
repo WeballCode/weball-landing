@@ -1,10 +1,20 @@
-// Cinta celeste con las ligas que juegan en Weball, pasando en loop. Los nombres están en src/ligas.js.
-import { nombres } from '../ligas.js'
+// Cinta celeste "Hecho para…": a quién va dirigido Weball, pasando en loop
+const words = [
+  'Federaciones',
+  'Asociaciones',
+  'Ligas',
+  'Clubes',
+  'Árbitros',
+  'Delegados',
+  'Jugadores',
+  'Familias',
+  'Marcas',
+]
 
 function Row({ hidden = false }) {
   return (
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
-      {nombres.map((w) => (
+      {words.map((w) => (
         <li key={w} className="flex items-center whitespace-nowrap">
           <span className="px-6 text-lg font-extrabold uppercase tracking-wide sm:text-xl">{w}</span>
           <svg viewBox="0 0 12 12" className="h-3 w-3" aria-hidden="true">
@@ -18,10 +28,10 @@ function Row({ hidden = false }) {
 
 export default function Ticker() {
   return (
-    <a href="./ligas.html" className="flex items-stretch bg-celeste text-marino" aria-label="Ver las ligas que juegan en Weball">
-      {/* Rótulo fijo a la izquierda; las ligas pasan detrás */}
+    <div className="flex items-stretch bg-celeste text-marino">
+      {/* Rótulo fijo a la izquierda; los destinatarios pasan detrás */}
       <p className="relative z-10 flex shrink-0 items-center bg-marino px-4 text-sm font-bold uppercase tracking-[0.2em] text-celeste sm:px-6">
-        Juegan en Weball
+        Hecho para
       </p>
       <div className="min-w-0 flex-1 overflow-hidden py-4">
         <div className="marquee flex w-max">
@@ -29,6 +39,6 @@ export default function Ticker() {
           <Row hidden />
         </div>
       </div>
-    </a>
+    </div>
   )
 }
