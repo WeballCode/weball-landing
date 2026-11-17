@@ -1,0 +1,49 @@
+import { Label, Lead, Section, Title } from './ui.jsx'
+import { Reveal } from './motion.jsx'
+
+const points = [
+  {
+    title: 'Un mercado enorme',
+    text: 'Millones juegan cada semana y la mayoría de las ligas sigue con papel, planillas y WhatsApp.',
+  },
+  {
+    title: 'Empieza por las grandes',
+    text: 'Weball está hecho para ligas de más de 1.000 jugadores. Cada una trae sus clubes, y cada club, sus jugadores y familias.',
+  },
+  {
+    title: 'Las marcas lo financian',
+    text: 'Con Weball Sponsors, las marcas auspician competiciones y ofrecen beneficios a jugadores y familias dentro de la app.',
+  },
+  {
+    title: 'Ya funciona',
+    text: 'Más de 67.000 jugadores fichados, 1.200 clubes y 90.000 partidos jugados en ligas de cuatro países.',
+  },
+]
+
+export default function Investors() {
+  return (
+    <Section id="inversores" light>
+      <Label tone="light">Inversores</Label>
+      <Title as="h1">
+        De aficionados a <span className="text-celeste-profundo">protagonistas</span>
+      </Title>
+      <Lead tone="light">
+        El deporte profesional tiene toda la tecnología. El amateur, donde juega la enorme mayoría, casi nada. Weball es la
+        plataforma que le faltaba.
+      </Lead>
+
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {points.map((p, i) => (
+          <Reveal key={p.title} delay={i * 100} className="flex">
+            <div className="flex w-full flex-col gap-3 border-t-[6px] border-marino bg-blanco p-6 transition duration-300 hover:-translate-y-2">
+              <h3 className="text-2xl font-extrabold uppercase leading-none">{p.title}</h3>
+              <p className="leading-relaxed text-pizarra">{p.text}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      <p className="mt-8 text-sm text-acero">Cifras de las ligas que usan Weball, noviembre de 2026.</p>
+    </Section>
+  )
+}

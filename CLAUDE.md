@@ -58,3 +58,13 @@ Nunca dejes cambios sin pushear: si no está pusheado, el socio no lo ve.
   se actualice `package-lock.json` (el deploy usa `npm ci` y falla si no coinciden).
 - Formularios: no hay backend. Si piden un formulario de contacto, usá un servicio externo
   (por ejemplo Formspree) o un link a WhatsApp / mailto, y explicá qué hace falta.
+
+## Versión 2 (carpeta `v2/`)
+
+En `v2/` está la nueva versión del sitio ("el sistema de las grandes ligas", con una página por cada uno
+de los 8 procesos). Se publica aparte, en la ruta **`/v2/`**, y no toca nada de la raíz: tiene su propio
+código (`v2/src/`), sus páginas (`v2/*.html`) y sus imágenes (`v2/public/`).
+
+- Si te piden cambios en "la versión nueva", "la V2" o en `/v2/`, trabajá **sólo** dentro de `v2/`
+  (sus instrucciones están en `v2/CLAUDE.md`). Si no, no la toques.
+- `npm run dev:v2` la levanta en local; `npm run build` compila las dos (la raíz y `dist/v2`).

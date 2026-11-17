@@ -1,4 +1,6 @@
 @import "tailwindcss";
+/* La V2 (carpeta v2/) tiene su propio CSS: el sitio de la raíz no lee sus clases */
+@source not "../v2";
 
 /* Colores de marca (manual de marca v1): cambialos acá y se aplican en todo el sitio */
 @theme {

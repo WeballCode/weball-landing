@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es-AR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ligas que usan Weball · FUTSALA, BAFI, Edmonton</title>
+    <meta name="description" content="FUTSALA y sus filiales en Argentina, Colombia, Uruguay y Chile, BAFI, Edmonton en Canadá y el handball: cómo Weball se adapta a cada liga y a sus datos." />
+    <!-- V2 en preparación: convive con el sitio actual, así que no se indexa (cuando reemplace a la raíz, pasar a "index, follow") -->
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href="https://weball.me/v2/ligas.html" />
+    <meta name="theme-color" content="#032639" />
+
+    <!-- Íconos: el de la pestaña y el que queda si se guarda la web en la pantalla del celu -->
+    <link rel="icon" type="image/png" href="./isotipo.png" />
+    <link rel="apple-touch-icon" href="./icono-app.png" />
+
+    <!-- Vista previa al compartir el link (WhatsApp, redes). La imagen necesita la dirección completa. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Weball" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:url" content="https://weball.me/v2/ligas.html" />
+    <meta property="og:title" content="Ligas que usan Weball" />
+    <meta property="og:description" content="FUTSALA y sus filiales en Argentina, Colombia, Uruguay y Chile, BAFI, Edmonton en Canadá y el handball: cómo Weball se adapta a cada liga y a sus datos." />
+    <meta property="og:image" content="https://weball.me/compartir.jpg?v=3" />
+    <meta property="og:image:secure_url" content="https://weball.me/compartir.jpg?v=3" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo de Weball, el sistema de gestión en la compu y la app en el celular" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ligas que usan Weball" />
+    <meta name="twitter:description" content="FUTSALA y sus filiales en Argentina, Colombia, Uruguay y Chile, BAFI, Edmonton en Canadá y el handball: cómo Weball se adapta a cada liga y a sus datos." />
+    <meta name="twitter:image" content="https://weball.me/compartir.jpg?v=3" />
+
+    <!-- Datos de Weball para Google: nombre, logo y contacto -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://weball.me/#organizacion",
+            "name": "Weball",
+            "url": "https://weball.me/v2/",
+            "logo": "https://weball.me/v2/isotipo.png",
+            "description": "Sistema de gestión y app para grandes ligas deportivas amateur.",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+54 11 7073 6993",
+              "contactType": "sales",
+              "areaServed": ["AR", "UY", "CL", "CO", "CA"],
+              "availableLanguage": ["Spanish", "English"]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://weball.me/v2/#sitio",
+            "name": "Weball",
+            "url": "https://weball.me/v2/",
+            "inLanguage": "es-AR",
+            "publisher": { "@id": "https://weball.me/#organizacion" }
+          }
+        ]
+      }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/ligas.jsx"></script>
+  </body>
+</html>
