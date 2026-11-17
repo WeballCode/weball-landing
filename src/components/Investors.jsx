@@ -7,16 +7,16 @@ const points = [
     text: 'Millones juegan cada semana y la mayoría de las ligas sigue con papel, planillas y WhatsApp.',
   },
   {
-    title: 'Crece desde adentro',
-    text: 'Cada asociación trae sus ligas; cada liga, sus clubes; cada club, sus jugadores y familias.',
+    title: 'Empieza por las grandes',
+    text: 'Weball está hecho para ligas de más de 1.000 jugadores. Cada una trae sus clubes, y cada club, sus jugadores y familias.',
   },
   {
     title: 'Las marcas lo financian',
-    text: 'Con Weball Sponsors, las marcas auspician, venden en la comunidad y miden sus resultados.',
+    text: 'Con Weball Sponsors, las marcas auspician competiciones y ofrecen beneficios a jugadores y familias dentro de la app.',
   },
   {
     title: 'Ya funciona',
-    text: 'Ya se organizan +100 torneos y +35.000 partidos al año en Weball.',
+    text: 'Más de 67.000 jugadores fichados, 1.200 clubes y 90.000 partidos jugados en ligas de cuatro países.',
   },
 ]
 
@@ -43,7 +43,7 @@ export default function Investors() {
         ))}
       </div>
 
-      <p className="mt-8 text-sm text-acero">Cifras de la plataforma Weball, 2026.</p>
+      <p className="mt-8 text-sm text-acero">Cifras de las ligas que usan Weball, noviembre de 2026.</p>
     </Section>
   )
 }

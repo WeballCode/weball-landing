@@ -12,13 +12,16 @@ const steps = [
   { title: 'A jugar toda la temporada', text: 'Con su credencial digital, resultados en vivo y la app de la liga.' },
 ]
 
+// Los 8 procesos de Weball completo
 const includes = [
-  'Fichaje desde el celular',
-  'Credencial digital de juego',
-  'Fixtures y torneos',
-  'Planilla digital y resultados en vivo',
+  'Fichajes y credencial digital',
+  'Fixture y tablas',
+  'Programación de partidos',
+  'Planillas impresas y digitales',
+  'Asignación de árbitros',
+  'Carga de resultados',
   'Tribunal IA',
-  'App de tu liga para jugadores y familias',
+  'App, web y avisos de tu liga',
 ]
 
 const faqs = [
@@ -32,7 +35,11 @@ const faqs = [
   },
   {
     q: '¿Qué incluye?',
-    a: 'Todo: fichajes, credencial digital, torneos, planilla digital, Tribunal IA, comunicación y la app de tu liga. No hay extras.',
+    a: 'Weball completo incluye los 8 procesos: fichajes, fixture, programación, planillas, árbitros, resultados, Tribunal IA y comunicación, con la app y la web de tu liga. No hay extras.',
+  },
+  {
+    q: '¿Puedo contratar sólo algunos procesos?',
+    a: 'Sí. Cada proceso se contrata por separado y se conecta con el sistema que ya usás. Escribinos y te cotizamos los que necesites.',
   },
   {
     q: '¿Cómo se paga?',
@@ -46,7 +53,7 @@ const faqs = [
 
 // Calculadora: según los jugadores de la liga, cuánto suman las credenciales al año y al mes
 function Calculator() {
-  const [players, setPlayers] = useState(500)
+  const [players, setPlayers] = useState(1500)
   return (
     <div className="border-t-[6px] border-marino bg-blanco p-6 sm:p-8">
       <label htmlFor="jugadores" className="text-xs font-bold uppercase tracking-[0.2em] text-celeste-profundo">
@@ -128,7 +135,7 @@ export default function Pricing() {
             <Title>¿Cuánto es para tu liga?</Title>
             <Lead tone="light">Mové la barra con la cantidad de jugadores de tu liga.</Lead>
 
-            <p className="mt-10 text-xs font-bold uppercase tracking-[0.2em] text-celeste-profundo">Qué incluye: todo</p>
+            <p className="mt-10 text-xs font-bold uppercase tracking-[0.2em] text-celeste-profundo">Weball completo: los 8 procesos</p>
             <ul className="mt-3 grid gap-x-6 sm:grid-cols-2">
               {includes.map((t) => (
                 <li key={t} className="flex items-center gap-2 border-t-2 border-blanco py-3 font-bold">

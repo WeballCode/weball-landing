@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://weballcode.github.io/weball-landing/sitemap.xml
+Sitemap: https://weball.me/sitemap.xml

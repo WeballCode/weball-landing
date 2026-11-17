@@ -44,9 +44,17 @@ const modules = [
     id: 'tribunal',
     icon: 'tribunal',
     short: 'Tribunal IA',
-    kicker: 'Sanciones automáticas',
+    kicker: 'Lo que nadie más tiene',
     name: 'Tribunal IA',
-    text: 'Cargá tus reglamentos y dejá que nuestro agente se ocupe de sancionar.',
+    text: 'El agente lee cada informe arbitral y propone la sanción con el artículo de tu reglamento. El tribunal decide y publica el boletín.',
+    side: (
+      <a
+        href="./tribunal.html"
+        className="inline-block bg-marino px-7 py-4 text-center font-bold uppercase tracking-wide text-blanco transition hover:-translate-y-0.5 hover:bg-marino-claro"
+      >
+        Ver cómo funciona
+      </a>
+    ),
     show: <TribunalShowcase />,
     tone: 'celeste',
   },

@@ -68,6 +68,12 @@ const paths = {
   programar: 'M4 6h16v14H4zM4 10h16M8 3v5M16 3v5M8 14h3v3H8z',
   envivo: 'M7 2h10v20H7zM11 18h2M10 9l4 2.5-4 2.5z',
   mundo: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9s-1 6.5-3.5 9M12 3c-2.5 2.5-3.5 5.5-3.5 9s1 6.5 3.5 9',
+  // V2: planilla, árbitro (silbato), resultados (marcador), conectar (eslabones) y escala (barras)
+  planilla: 'M9 3h6v3H9zM7 4.5H5V21h14V4.5h-2M8 11h8M8 15h8M8 19h5',
+  arbitro: 'M8 20a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM8 10h13v4h-8M4 5l2 2M8 3v3M12 5l-2 2',
+  resultados: 'M3 6h18v12H3zM12 6v12M6.5 10v4M15.5 10h2.5v4h-2.5z',
+  conectar: 'M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1',
+  escala: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
 }
 
 export function Icon({ name, className = 'h-7 w-7' }) {
