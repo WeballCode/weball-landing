@@ -1,13 +1,15 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-linea bg-marino-hondo">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-bruma sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <div className="flex items-center gap-4">
-          <img src="./logo-blanco.png" alt="Weball" className="h-7 w-auto" />
-          <span className="hidden h-5 w-px bg-linea sm:block" />
-          <span>Organizá tu liga con tu IA favorita</span>
+    <footer className="bg-fondo">
+      <div className="mx-auto max-w-6xl px-5 py-8 text-xs leading-relaxed text-gris sm:px-6">
+        <p className="border-b border-borde pb-4">
+          Gemini, ChatGPT y Claude son marcas de sus respectivos dueños. Los clubes del ejemplo juegan en ligas que usan Weball; los resultados y
+          horarios que se muestran son ilustrativos.
+        </p>
+        <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <span className="logo-marino block h-5 w-[43px]" aria-label="Weball" role="img" />
+          <p>© {new Date().getFullYear()} Weball Inc. Organizá tu liga con tu IA favorita.</p>
         </div>
-        <p>© {new Date().getFullYear()} Weball Inc.</p>
       </div>
     </footer>
   )

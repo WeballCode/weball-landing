@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Reveal } from './motion.jsx'
-import { Label, Section, Title } from './ui.jsx'
+import { Section, Title } from './ui.jsx'
 
 const faqs = [
   {
@@ -34,33 +34,28 @@ const faqs = [
 ]
 
 export default function Faq() {
-  const [open, setOpen] = useState(0)
+  const [open, setOpen] = useState(-1)
   return (
-    <Section id="preguntas">
-      <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
-        <div>
-          <Label>Preguntas frecuentes</Label>
-          <Title>Lo que nos preguntan siempre.</Title>
-        </div>
-        <ul>
-          {faqs.map((f, i) => (
-            <Reveal as="li" key={f.q} delay={i * 50} className="border-t border-linea last:border-b">
-              <button
-                type="button"
-                onClick={() => setOpen(open === i ? -1 : i)}
-                aria-expanded={open === i}
-                className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left text-lg font-bold transition hover:text-celeste"
-              >
-                {f.q}
-                <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border border-linea text-celeste transition ${open === i ? 'rotate-45' : ''}`} aria-hidden="true">
-                  +
-                </span>
-              </button>
-              {open === i && <p className="msg-in pb-6 leading-relaxed text-bruma">{f.a}</p>}
-            </Reveal>
-          ))}
-        </ul>
-      </div>
+    <Section id="preguntas" tone="fondo">
+      <Title>Preguntas frecuentes.</Title>
+      <ul className="mx-auto mt-14 max-w-3xl">
+        {faqs.map((f, i) => (
+          <Reveal as="li" key={f.q} delay={i * 50} className="border-b border-borde">
+            <button
+              type="button"
+              onClick={() => setOpen(open === i ? -1 : i)}
+              aria-expanded={open === i}
+              className="flex w-full cursor-pointer items-center justify-between gap-4 py-6 text-left text-xl font-semibold tracking-tight sm:text-2xl"
+            >
+              {f.q}
+              <span className={`text-3xl font-light text-gris transition duration-300 ${open === i ? 'rotate-45' : ''}`} aria-hidden="true">
+                +
+              </span>
+            </button>
+            {open === i && <p className="msg-in pb-7 text-[1.1rem] leading-relaxed text-gris">{f.a}</p>}
+          </Reveal>
+        ))}
+      </ul>
     </Section>
   )
 }

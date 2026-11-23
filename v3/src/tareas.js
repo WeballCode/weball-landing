@@ -1,114 +1,112 @@
-// Las 4 tareas que la liga le pide a su IA. De acá salen el chat de la portada y la sección "Qué le podés pedir".
-// Los equipos y números son de ejemplo.
+// Las 4 tareas que la liga le pide a su IA. De acá salen:
+//  - el chat del celular y la pantalla del panel en la portada (Showcase.jsx),
+//  - las tarjetas de "Cuatro pedidos" (Tareas.jsx).
+// Los clubes son reales (juegan en ligas con Weball, escudos en public/clubes/); los resultados y horarios son de ejemplo.
+
+export const clubes = {
+  boca: { nombre: 'Boca Juniors', escudo: 'boca-juniors' },
+  river: { nombre: 'River Plate', escudo: 'river-plate' },
+  racing: { nombre: 'Racing Club', escudo: 'racing' },
+  independiente: { nombre: 'Independiente', escudo: 'independiente' },
+  sanlorenzo: { nombre: 'San Lorenzo', escudo: 'san-lorenzo' },
+  huracan: { nombre: 'Huracán', escudo: 'huracan' },
+  velez: { nombre: 'Vélez Sarsfield', escudo: 'velez' },
+  estudiantes: { nombre: 'Estudiantes', escudo: 'estudiantes' },
+  banfield: { nombre: 'Banfield', escudo: 'banfield' },
+  platense: { nombre: 'Platense', escudo: 'platense' },
+  ferro: { nombre: 'Ferro Carril Oeste', escudo: 'ferro' },
+  allboys: { nombre: 'All Boys', escudo: 'all-boys' },
+}
+
+// Todos los escudos, para la cinta de "ligas que ya usan Weball"
+export const escudos = [
+  'boca-juniors', 'river-plate', 'racing', 'independiente', 'san-lorenzo', 'huracan', 'velez', 'estudiantes',
+  'banfield', 'platense', 'ferro', 'all-boys', 'deportivo-moron', 'kimberley', 'san-martin-futsal', '17-de-agosto',
+  'amigos-de-villa-luro', 'pacifico',
+]
 
 export const tareas = [
   {
     slug: 'inscripcion',
     corto: 'Equipos',
-    titulo: 'Inscribí equipos y fichá jugadores',
-    texto:
-      'Pasale la lista de inscriptos como la tengas: un formulario, una planilla o un mensaje. Tu IA crea los equipos en el torneo y ficha a cada jugador en su club.',
-    ejemplos: [
-      'Inscribí a los 16 equipos que se anotaron en el formulario.',
-      'Fichá a los jugadores de esta planilla en Club Norte.',
-      '¿Qué equipos todavía no tienen 10 jugadores fichados?',
-    ],
+    titulo: 'Equipos y fichajes.',
+    texto: 'Pasale la lista como la tengas: un formulario, una planilla o un mensaje. Los equipos quedan inscriptos y los jugadores, fichados en su club.',
+    ejemplo: 'Inscribí a los equipos del formulario y fichá a sus jugadores.',
     chat: {
-      pedido: 'Inscribí a los 16 equipos que se anotaron en el formulario y fichá a sus jugadores.',
-      confirma: 'Voy a crear 16 equipos en el Apertura y fichar 214 jugadores. ¿Confirmo?',
-      pasos: ['Leyendo las 16 inscripciones', 'Creando los equipos en el Apertura', 'Fichando 214 jugadores'],
-      respuesta: '¡Listo! 16 equipos inscriptos y 214 jugadores fichados.',
-      resultado: {
-        tipo: 'lista',
-        filas: [
-          ['Club Norte', '15 jugadores'],
-          ['Halcones FC', '14 jugadores'],
-          ['Unión del Sur', '13 jugadores'],
-          ['+ 13 equipos más', ''],
-        ],
-        nota: '2 jugadores ya estaban fichados en otro club: te los dejé marcados para revisar.',
-      },
+      pedido: 'Inscribí a los 16 equipos del formulario y fichá a sus jugadores.',
+      confirma: 'Voy a inscribir 16 equipos en el Apertura y fichar 214 jugadores. ¿Confirmo?',
+      pasos: ['Leyendo las inscripciones', 'Inscribiendo los equipos', 'Fichando 214 jugadores'],
+      respuesta: 'Listo: 16 equipos inscriptos y 214 jugadores fichados. 2 ya estaban en otro club, te los marqué para revisar.',
+    },
+    panel: {
+      pestaña: 'Equipos',
+      vista: 'equipos',
+      filas: [
+        ['boca', 15], ['river', 14], ['racing', 15], ['independiente', 13], ['sanlorenzo', 14], ['huracan', 12],
+      ],
     },
   },
   {
     slug: 'torneo',
     corto: 'Fixture',
-    titulo: 'Armá torneos y fixtures',
-    texto:
-      'Decile el formato con tus palabras: zonas, ruedas, playoffs, interzonales. Tu IA arma el torneo y genera el fixture completo, fecha por fecha.',
-    ejemplos: [
-      'Armá el Apertura: 2 zonas de 8, una rueda y después cuartos.',
-      'Generá el fixture de la Sub 15 con los mismos equipos que el año pasado.',
-      'Pasá la fecha 4 de la zona A al fin de semana siguiente.',
-    ],
+    titulo: 'Torneos y fixtures.',
+    texto: 'Decile el formato con tus palabras: zonas, ruedas, playoffs. El torneo queda armado y el fixture, completo, fecha por fecha.',
+    ejemplo: 'Armá el Apertura: 2 zonas de 8, una rueda y después cuartos.',
     chat: {
-      pedido: 'Armá el Apertura: 2 zonas de 8, todos contra todos a una rueda, y después cuartos de final.',
-      confirma: 'Creo el torneo con zonas A y B, 7 fechas por zona y playoffs desde cuartos. ¿Confirmo?',
-      pasos: ['Creando el torneo Apertura', 'Sorteando las zonas A y B', 'Generando 7 fechas · 56 partidos'],
-      respuesta: 'Listo. Así queda la fecha 1 de la zona A:',
-      resultado: {
-        tipo: 'partidos',
-        filas: [
-          ['Club Norte', 'Halcones FC'],
-          ['Unión del Sur', 'Atlético Plaza'],
-          ['Los Tigres', 'Deportivo Oeste'],
-          ['San Martín', 'Juventud Unida'],
-        ],
-      },
+      pedido: 'Armá el Apertura: 2 zonas de 8, una rueda y después cuartos de final.',
+      confirma: 'Creo zonas A y B, 7 fechas cada una y playoffs desde cuartos. ¿Confirmo?',
+      pasos: ['Creando el torneo', 'Sorteando las zonas', 'Generando 56 partidos'],
+      respuesta: 'Listo, el fixture está armado. Te muestro la fecha 1 de la zona A.',
+    },
+    panel: {
+      pestaña: 'Partidos',
+      vista: 'partidos',
+      filas: [
+        ['boca', 'river'], ['racing', 'independiente'], ['sanlorenzo', 'huracan'], ['velez', 'estudiantes'], ['banfield', 'platense'], ['ferro', 'allboys'],
+      ],
     },
   },
   {
     slug: 'programacion',
     corto: 'Partidos',
-    titulo: 'Programá los partidos',
-    texto:
-      'Contale qué canchas y horarios tenés. Tu IA asigna día, hora y cancha a cada partido, sin que un equipo juegue dos veces a la misma hora.',
-    ejemplos: [
-      'Programá la fecha 1 el sábado de 9 a 18, en las canchas 1 a 4.',
-      'La cancha 2 no está disponible el domingo: reprogramá esos partidos.',
-      'Pasá a Club Norte al último horario, que viajan de lejos.',
-    ],
+    titulo: 'Programación.',
+    texto: 'Contale qué canchas y horarios tenés. Cada partido queda con día, hora y cancha, sin que un equipo juegue dos veces a la vez.',
+    ejemplo: 'Programá la fecha 1 el sábado de 9 a 18, en las canchas 1 a 4.',
     chat: {
-      pedido: 'Programá la fecha 1 el sábado de 9 a 18 en las canchas 1 a 4, sin superponer equipos.',
-      confirma: 'Asigno horario y cancha a los 8 partidos de la fecha 1. ¿Confirmo?',
-      pasos: ['Revisando canchas y horarios libres', 'Asignando los 8 partidos', 'Chequeando que no haya choques'],
-      respuesta: 'Listo, sábado programado y sin choques:',
-      resultado: {
-        tipo: 'horarios',
-        filas: [
-          ['09:00', 'Cancha 1', 'Club Norte vs Halcones FC'],
-          ['09:00', 'Cancha 2', 'Unión del Sur vs Atl. Plaza'],
-          ['10:30', 'Cancha 1', 'Los Tigres vs Dep. Oeste'],
-          ['10:30', 'Cancha 2', 'San Martín vs Juv. Unida'],
-        ],
-      },
+      pedido: 'Programá la fecha 1 el sábado de 9 a 18 en las canchas 1 a 4.',
+      confirma: 'Asigno día, hora y cancha a los 8 partidos de la fecha 1. ¿Confirmo?',
+      pasos: ['Revisando canchas libres', 'Asignando horarios', 'Chequeando choques'],
+      respuesta: 'Listo, sábado programado y sin choques de horario.',
+    },
+    panel: {
+      pestaña: 'Partidos',
+      vista: 'programacion',
+      filas: [
+        ['09:00', 'Cancha 1', 'boca', 'river'], ['09:00', 'Cancha 2', 'racing', 'independiente'], ['10:30', 'Cancha 1', 'sanlorenzo', 'huracan'],
+        ['10:30', 'Cancha 2', 'velez', 'estudiantes'], ['12:00', 'Cancha 1', 'banfield', 'platense'], ['12:00', 'Cancha 3', 'ferro', 'allboys'],
+      ],
     },
   },
   {
     slug: 'resultados',
     corto: 'Resultados',
-    titulo: 'Cargá y publicá los resultados',
-    texto:
-      'Pasale los resultados como te llegan. Tu IA los carga, actualiza las tablas y los publica para que jugadores y familias los vean al instante.',
-    ejemplos: [
-      'Cargá los resultados de la fecha 1 y publicalos.',
-      'Halcones ganó 3 a 1: cargalo y actualizá la tabla.',
-      '¿Qué partidos del sábado todavía no tienen resultado?',
-    ],
+    titulo: 'Resultados y tablas.',
+    texto: 'Pasale los resultados como te llegan. Se cargan, la tabla se actualiza y se publica para jugadores y familias al instante.',
+    ejemplo: 'Cargá los resultados de la fecha 1 y publicalos.',
     chat: {
-      pedido: 'Cargá los resultados de la fecha 1 y publicalos: Norte 3-1 Halcones, Unión 2-2 Plaza…',
+      pedido: 'Cargá los resultados de la fecha y publicalos: Boca 3-1 River, Racing 2-2 Independiente…',
       confirma: 'Cargo los 8 resultados y publico la fecha. ¿Confirmo?',
-      pasos: ['Cargando 8 resultados', 'Actualizando la tabla de posiciones', 'Publicando la fecha'],
-      respuesta: 'Publicado. Así quedó la tabla de la zona A:',
-      resultado: {
-        tipo: 'tabla',
-        filas: [
-          ['1', 'Club Norte', '3'],
-          ['2', 'Los Tigres', '3'],
-          ['3', 'Unión del Sur', '1'],
-          ['4', 'Atlético Plaza', '1'],
-        ],
-      },
+      pasos: ['Cargando 8 resultados', 'Actualizando la tabla', 'Publicando en la app y la web'],
+      respuesta: 'Publicado. La tabla ya está actualizada.',
+    },
+    panel: {
+      pestaña: 'Clasificación',
+      vista: 'tabla',
+      // club, Pts, PJ, G, E, P, GF, GC
+      filas: [
+        ['boca', 3, 1, 1, 0, 0, 3, 1], ['velez', 3, 1, 1, 0, 0, 2, 0], ['banfield', 3, 1, 1, 0, 0, 4, 3],
+        ['racing', 1, 1, 0, 1, 0, 2, 2], ['independiente', 1, 1, 0, 1, 0, 2, 2], ['river', 0, 1, 0, 0, 1, 1, 3],
+      ],
     },
   },
 ]

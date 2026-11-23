@@ -1,57 +1,94 @@
 @import "tailwindcss";
 
-/* Colores de marca (manual de marca v1): los mismos que el resto del sitio */
+/* Estética clara, inspirada en cómo comunica Apple: blanco, gris muy suave, texto casi negro,
+   títulos grandes y un solo color de acción. Los colores de Weball siguen presentes en el panel y los acentos. */
 @theme {
+  /* Base */
+  --color-tinta: #1d1d1f;
+  --color-gris: #6e6e73;
+  --color-gris-claro: #86868b;
+  --color-fondo: #f5f5f7;
+  --color-borde: #d2d2d7;
+  --color-blanco: #ffffff;
+  --color-negro: #000000;
+
+  /* Acción (botones y links) */
+  --color-accion: #0b6fcc;
+  --color-accion-hover: #0a63b8;
+
+  /* Marca Weball */
   --color-marino: #032639;
   --color-celeste: #3fb6ff;
-  --color-blanco: #fbfbf8;
-  --color-marino-claro: #0f3143;
-  --color-marino-hondo: #021a28;
-  --color-niebla: #f1f4f6;
   --color-celeste-claro: #bfe6ff;
-  --color-celeste-profundo: #0b6fcc;
-  --color-bruma: #b9cbd6;
-  --color-pizarra: #3c4a54;
-  --color-acero: #51606b;
-  --color-linea: #365a70;
-  --color-verde: #4ade80;
 
-  --font-sans: "Roboto", Arial, sans-serif;
-  --font-mono: "Roboto Mono", ui-monospace, monospace;
+  /* Panel real de Weball */
+  --color-panel: #0e1e4f;
+  --color-panel-claro: #f6f7fb;
+  --color-panel-linea: #e9ebf2;
+  --color-verde: #34c759;
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
+  background: var(--color-blanco);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  letter-spacing: -0.011em;
+}
+
+/* Texto con el degradé de la IA */
+.texto-ia {
+  background: linear-gradient(90deg, #0b6fcc, #3fb6ff 30%, #8b5cf6 65%, #ec4899);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Logo de Weball en color marino (el archivo es blanco: se usa como máscara) */
+.logo-marino {
   background: var(--color-marino);
-  color: var(--color-blanco);
+  -webkit-mask: url("/logo-blanco.png") no-repeat left center / contain;
+  mask: url("/logo-blanco.png") no-repeat left center / contain;
 }
 
 /* Aparecer al entrar en pantalla */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(32px);
   transition:
-    opacity 0.7s ease,
-    transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 0.9s ease,
+    transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .reveal.revealed {
   opacity: 1;
   transform: none;
 }
 
-/* Mensajes del chat que entran */
+/* Mensajes y filas que entran */
 @keyframes msg-in {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
   to { opacity: 1; transform: none; }
 }
 .msg-in {
   animation: msg-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
-/* Cursor que titila */
+/* Fila nueva en el panel: entra y queda resaltada un momento */
+@keyframes fila-nueva {
+  0% { opacity: 0; transform: translateY(6px); background: rgba(63, 182, 255, 0.18); }
+  40% { opacity: 1; transform: none; background: rgba(63, 182, 255, 0.18); }
+  100% { background: transparent; }
+}
+.fila-nueva {
+  animation: fila-nueva 1.6s ease both;
+}
+
 @keyframes caret {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
@@ -60,7 +97,6 @@ body {
   animation: caret 0.9s step-end infinite;
 }
 
-/* Ruedita de "trabajando" */
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -68,42 +104,43 @@ body {
   animation: spin 0.8s linear infinite;
 }
 
-/* Barrita de tiempo de la escena activa */
-@keyframes step-progress {
-  from { width: 0; }
-  to { width: 100%; }
+/* Puntitos de "escribiendo…" */
+@keyframes dot {
+  0%, 80%, 100% { opacity: 0.25; transform: none; }
+  40% { opacity: 1; transform: translateY(-2px); }
 }
-.step-progress {
-  animation: step-progress linear both;
-}
-
-/* Brillo suave detrás del chat */
-@keyframes glow {
-  0%, 100% { opacity: 0.55; }
-  50% { opacity: 0.9; }
-}
-.glow {
-  animation: glow 6s ease-in-out infinite;
+.dot {
+  animation: dot 1.2s ease-in-out infinite;
 }
 
-/* Lo de "antes" se tacha al aparecer */
-.strike {
-  background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 0 2px;
-  transition: background-size 0.6s ease 0.3s;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
+/* Borde luminoso que gira alrededor de la barra de la IA */
+@property --giro {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
-.revealed .strike {
-  background-size: 100% 2px;
+@keyframes girar {
+  to { --giro: 360deg; }
+}
+.borde-ia {
+  background: conic-gradient(from var(--giro), #3fb6ff, #8b5cf6, #ec4899, #f59e0b, #3fb6ff);
+  animation: girar 6s linear infinite;
 }
 
-/* Rango (calculadora) con los colores de marca */
+/* Escudos que pasan en loop */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee {
+  animation: marquee 50s linear infinite;
+}
+
 input[type="range"] {
-  accent-color: var(--color-celeste);
+  accent-color: var(--color-accion);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .msg-in, .caret, .spin, .step-progress, .glow { animation: none; }
-  .strike { transition: none; background-size: 100% 2px; }
+  .msg-in, .fila-nueva, .caret, .spin, .dot, .borde-ia, .marquee { animation: none; }
 }

@@ -1,75 +1,38 @@
 import { tareas } from '../tareas.js'
+import { Escalado } from './Dispositivos.jsx'
 import { Reveal } from './motion.jsx'
-import { Label, Lead, Section, Title } from './ui.jsx'
+import { TablaPanel } from './Panel.jsx'
+import { Lead, Section, Title } from './ui.jsx'
 
-// Íconos de línea, uno por tarea
-const iconos = {
-  inscripcion: (
-    <>
-      <circle cx="9" cy="8" r="3.2" />
-      <path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" />
-      <path d="M18 8v6M15 11h6" />
-    </>
-  ),
-  torneo: (
-    <>
-      <path d="M4 5h5v4H4zM4 15h5v4H4zM15 10h5v4h-5z" />
-      <path d="M9 7h3v10H9M12 12h3" />
-    </>
-  ),
-  programacion: (
-    <>
-      <rect x="3.5" y="5" width="17" height="15" rx="2" />
-      <path d="M3.5 10h17M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2" />
-    </>
-  ),
-  resultados: (
-    <>
-      <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
-    </>
-  ),
-}
-
+// Cuatro tarjetas grandes: qué pedís, un ejemplo en burbuja y cómo queda en el panel real de Weball.
 export default function Tareas() {
   return (
-    <Section id="tareas">
-      <Label>Qué le podés pedir</Label>
-      <Title>Toda la gestión de tu liga, en 4 pedidos.</Title>
-      <Lead>
-        Escribile a tu IA como le escribirías a alguien de tu equipo. Weball hace el trabajo, con los datos de tu liga, y queda todo
-        cargado en el sistema.
-      </Lead>
+    <Section id="tareas" tone="fondo">
+      <Title>Cuatro pedidos. Toda tu liga.</Title>
+      <Lead>Lo que más tiempo le lleva a una liga, resuelto con un mensaje.</Lead>
 
-      <ol className="mt-14 grid gap-5 md:grid-cols-2">
+      <div className="mt-16 grid gap-5 md:grid-cols-2">
         {tareas.map((t, i) => (
-          <Reveal
-            as="li"
-            key={t.slug}
-            delay={(i % 2) * 120}
-            className="group flex flex-col rounded-2xl border border-linea bg-marino-claro p-6 transition hover:border-celeste/60 sm:p-8"
-          >
-            <div className="flex items-center justify-between">
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-celeste/10 text-celeste">
-                <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  {iconos[t.slug]}
-                </svg>
-              </span>
-              <span className="font-mono text-4xl font-medium text-blanco/10 transition group-hover:text-celeste/40">0{i + 1}</span>
+          <Reveal key={t.slug} delay={(i % 2) * 120} className="flex flex-col overflow-hidden rounded-[1.75rem] bg-white">
+            <div className="px-7 pt-8 sm:px-10 sm:pt-10">
+              <p className="text-sm font-semibold text-gris-claro">0{i + 1}</p>
+              <h3 className="mt-1 text-[1.9rem] leading-tight font-bold tracking-tight">{t.titulo}</h3>
+              <p className="mt-3 text-[1.05rem] leading-relaxed text-gris">{t.texto}</p>
+              <p className="mt-6 ml-auto w-fit max-w-[90%] rounded-[20px] rounded-br-[6px] bg-[#0a84ff] px-4 py-2.5 text-[15px] leading-snug text-white">
+                {t.ejemplo}
+              </p>
             </div>
-            <h3 className="mt-6 text-2xl font-extrabold leading-tight">{t.titulo}</h3>
-            <p className="mt-3 leading-relaxed text-bruma">{t.texto}</p>
-
-            <p className="mt-6 text-xs font-bold uppercase tracking-[0.18em] text-celeste">Por ejemplo</p>
-            <ul className="mt-3 flex flex-col gap-2">
-              {t.ejemplos.map((e) => (
-                <li key={e} className="rounded-xl rounded-bl-sm border border-linea bg-marino px-4 py-2.5 text-[0.95rem] leading-snug">
-                  “{e}”
-                </li>
-              ))}
-            </ul>
+            {/* El resultado, tal como queda en Weball */}
+            <div className="relative mt-6 flex-1 px-7 sm:px-10">
+              <div className="h-full rounded-t-2xl border border-b-0 border-black/[0.06] bg-fondo p-3 pb-0">
+                <Escalado ancho={760} className="max-h-[230px] rounded-t-xl">
+                  <TablaPanel panel={t.panel} />
+                </Escalado>
+              </div>
+            </div>
           </Reveal>
         ))}
-      </ol>
+      </div>
     </Section>
   )
 }
