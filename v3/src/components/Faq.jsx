@@ -1,0 +1,66 @@
+import { useState } from 'react'
+import { Reveal } from './motion.jsx'
+import { Label, Section, Title } from './ui.jsx'
+
+const faqs = [
+  {
+    q: '¿Qué IA necesito?',
+    a: 'La que ya uses. Weball se conecta a los asistentes de IA que aceptan conectores. Te ayudamos a dejarlo andando en la tuya.',
+  },
+  {
+    q: '¿Tengo que saber de tecnología?',
+    a: 'No. Si sabés mandar un mensaje, sabés usarlo. Le pedís las cosas con tus palabras y la IA se encarga del resto.',
+  },
+  {
+    q: '¿Es seguro? ¿La IA puede romper algo?',
+    a: 'Tu IA entra con tu usuario y sólo puede hacer lo que tus permisos le permiten. Antes de crear, cambiar o borrar algo te pregunta, y no hace nada sin tu confirmación.',
+  },
+  {
+    q: '¿Y si se equivoca?',
+    a: 'Todo lo que hace queda cargado en Weball, a la vista. Lo revisás y lo corregís desde el panel, o le pedís a la IA que lo arregle.',
+  },
+  {
+    q: '¿Puedo seguir usando el panel de Weball?',
+    a: 'Sí. La IA es otra forma de usar Weball, no la única. Podés combinar las dos como más te sirva.',
+  },
+  {
+    q: '¿Sirve para mi deporte y mi formato?',
+    a: 'Weball lo usan ligas de futsal y de handball, con zonas, ruedas, playoffs y categorías. Contanos tu formato y te mostramos cómo queda.',
+  },
+  {
+    q: '¿Cómo arrancamos?',
+    a: 'Escribinos. Te mostramos Weball funcionando con tu IA y con el formato de tu liga, y te dejamos todo listo para empezar.',
+  },
+]
+
+export default function Faq() {
+  const [open, setOpen] = useState(0)
+  return (
+    <Section id="preguntas">
+      <div className="grid gap-10 lg:grid-cols-[1fr_1.6fr]">
+        <div>
+          <Label>Preguntas frecuentes</Label>
+          <Title>Lo que nos preguntan siempre.</Title>
+        </div>
+        <ul>
+          {faqs.map((f, i) => (
+            <Reveal as="li" key={f.q} delay={i * 50} className="border-t border-linea last:border-b">
+              <button
+                type="button"
+                onClick={() => setOpen(open === i ? -1 : i)}
+                aria-expanded={open === i}
+                className="flex w-full cursor-pointer items-center justify-between gap-4 py-5 text-left text-lg font-bold transition hover:text-celeste"
+              >
+                {f.q}
+                <span className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border border-linea text-celeste transition ${open === i ? 'rotate-45' : ''}`} aria-hidden="true">
+                  +
+                </span>
+              </button>
+              {open === i && <p className="msg-in pb-6 leading-relaxed text-bruma">{f.a}</p>}
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </Section>
+  )
+}

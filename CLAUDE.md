@@ -68,3 +68,8 @@ código (`v2/src/`), sus páginas (`v2/*.html`) y sus imágenes (`v2/public/`).
 - Si te piden cambios en "la versión nueva", "la V2" o en `/v2/`, trabajá **sólo** dentro de `v2/`
   (sus instrucciones están en `v2/CLAUDE.md`). Si no, no la toques.
 - `npm run dev:v2` la levanta en local; `npm run build` compila las dos (la raíz y `dist/v2`).
+
+## Versión 3 (carpeta `v3/`)
+
+Landing nueva **"Organizá tu liga con tu IA favorita"**, publicada en **`/v3/`**. Mismo esquema que la V2:
+si piden cambios en "la landing de IA", "la V3" o `/v3/`, trabajá sólo dentro de `v3/` (ver `v3/CLAUDE.md`).
