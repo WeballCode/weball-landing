@@ -1,6 +1,39 @@
+import { useEffect, useState } from 'react'
 import ChatDemo from './ChatDemo.jsx'
-import { Reveal } from './motion.jsx'
+import { prefersReducedMotion, Reveal } from './motion.jsx'
 import { Check } from './ui.jsx'
+
+// Las IAs que van pasando en el título. Para sumar otra, agregala a la lista.
+const IAS = ['Gemini', 'ChatGPT', 'Claude']
+
+// "con Gemini." → "con ChatGPT." → "con Claude." en loop.
+// Todas las palabras ocupan el mismo lugar (el de la más larga), así el título no salta.
+function PalabraQueCambia() {
+  const [i, setI] = useState(0)
+  useEffect(() => {
+    if (prefersReducedMotion()) return
+    const id = setInterval(() => setI((n) => (n + 1) % IAS.length), 2200)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <span className="relative inline-grid overflow-hidden align-bottom text-celeste" aria-label={`${IAS.join(', ')}.`}>
+      {IAS.map((ia, n) => (
+        <span
+          key={ia}
+          aria-hidden="true"
+          className="col-start-1 row-start-1 pb-[0.08em] whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)]"
+          style={{
+            opacity: n === i ? 1 : 0,
+            transform: n === i ? 'none' : `translateY(${n === (i + IAS.length - 1) % IAS.length ? '-0.7em' : '0.7em'})`,
+          }}
+        >
+          {ia}.
+        </span>
+      ))}
+    </span>
+  )
+}
 
 const confianza = ['Sin aprender otro sistema', 'Vos confirmás cada cambio', 'Se publica en la app y la web de tu liga']
 
@@ -30,8 +63,8 @@ export default function Hero() {
             <Reveal as="span" delay={120} className="block">
               Organizá tu liga
             </Reveal>
-            <Reveal as="span" delay={240} className="block text-celeste">
-              con tu IA favorita.
+            <Reveal as="span" delay={240} className="block">
+              con <PalabraQueCambia />
             </Reveal>
           </h1>
 

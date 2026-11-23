@@ -5,7 +5,7 @@ import { Label, Section, Title } from './ui.jsx'
 const faqs = [
   {
     q: '¿Qué IA necesito?',
-    a: 'La que ya uses. Weball se conecta a los asistentes de IA que aceptan conectores. Te ayudamos a dejarlo andando en la tuya.',
+    a: 'La que ya uses: Gemini, ChatGPT o Claude, para arrancar. Te ayudamos a dejar Weball conectado a la tuya.',
   },
   {
     q: '¿Tengo que saber de tecnología?',
