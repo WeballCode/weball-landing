@@ -31,9 +31,9 @@ export const tareas = [
     corto: 'Equipos',
     titulo: 'Equipos y fichajes.',
     texto: 'Pasale la lista como la tengas: un formulario, una planilla o un mensaje. Los equipos quedan inscriptos y los jugadores, fichados en su club.',
-    ejemplo: 'Inscribí a todos los equipos del formulario 2027 al Torneo Apertura 2027. Fichá a todos sus jugadores.',
+    ejemplo: 'Inscribí a todos estos equipos del formulario y fichá a todos sus jugadores.',
     chat: {
-      pedido: 'Inscribí a todos los equipos del formulario 2027 al Torneo Apertura 2027. Fichá a todos sus jugadores.',
+      pedido: 'Inscribí a todos estos equipos del formulario y fichá a todos sus jugadores.',
       confirma: 'Voy a inscribir 20 equipos en el Apertura 2027 y fichar 268 jugadores. ¿Confirmo?',
       pasos: ['Leyendo las inscripciones', 'Inscribiendo los equipos', 'Fichando 268 jugadores'],
       respuesta: 'Listo: 20 equipos inscriptos y 268 jugadores fichados. 2 ya estaban en otro club, te los marqué para revisar.',
@@ -51,19 +51,21 @@ export const tareas = [
     corto: 'Fixture',
     titulo: 'Torneos y fixtures.',
     texto: 'Decile el formato con tus palabras: grupos, fases, copas. El torneo queda armado y el fixture, completo, fecha por fecha.',
-    ejemplo: 'Armá el Apertura 2027 en dos fases. La primera de dos grupos de 10 y luego una copa que empieza desde octavos de final.',
+    ejemplo: 'Armá el torneo en dos fases. Una con dos grupos de 10 y luego playoffs desde 4tos.',
     chat: {
-      pedido: 'Armá el Apertura 2027 en dos fases. La primera de dos grupos de 10 y luego una copa que empieza desde octavos de final.',
-      confirma: 'Creo los grupos A y B de 10 equipos (9 fechas cada uno) y una copa desde octavos de final. ¿Confirmo?',
-      pasos: ['Creando el torneo', 'Sorteando los grupos', 'Generando 105 partidos'],
-      respuesta: 'Listo, el fixture está armado. Te muestro la fecha 1 del grupo A.',
+      pedido: 'Armá el torneo en dos fases. Una con dos grupos de 10 y luego playoffs desde 4tos.',
+      confirma: 'Creo los grupos A y B de 10 equipos (9 fechas cada uno) y playoffs desde cuartos con los 4 primeros de cada grupo. ¿Confirmo?',
+      pasos: ['Creando el torneo', 'Sorteando los grupos', 'Generando 97 partidos'],
+      respuesta: 'Listo, el torneo está armado. Te muestro el cuadro con las dos fases.',
     },
     panel: {
       pestaña: 'Partidos',
-      vista: 'partidos',
-      filas: [
-        ['boca', 'river'], ['racing', 'independiente'], ['sanlorenzo', 'huracan'], ['velez', 'estudiantes'], ['banfield', 'platense'], ['ferro', 'allboys'],
+      vista: 'fases',
+      grupos: [
+        { nombre: 'Grupo A', clubes: ['boca', 'river', 'racing', 'independiente', 'sanlorenzo'] },
+        { nombre: 'Grupo B', clubes: ['huracan', 'velez', 'estudiantes', 'banfield', 'platense'] },
       ],
+      cuartos: [['1º Grupo A', '4º Grupo B'], ['2º Grupo B', '3º Grupo A'], ['1º Grupo B', '4º Grupo A'], ['2º Grupo A', '3º Grupo B']],
     },
   },
   {

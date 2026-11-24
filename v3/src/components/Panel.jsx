@@ -88,6 +88,65 @@ function Contenido({ panel, listo }) {
       </>
     )
   }
+  if (vista === 'fases') {
+    // Cuadro del torneo: fase 1 con los dos grupos y fase 2 con los playoffs desde cuartos
+    const { grupos, cuartos } = panel
+    const aparece = (i) => (listo ? { className: 'fila-nueva', style: { animationDelay: i * 110 + "ms" } } : { className: 'opacity-0' })
+    const Cruce = ({ a, b, i }) => (
+      <div {...aparece(i)}>
+        <div className="w-[140px] rounded-lg border border-panel-linea bg-[#f7f8fb] px-3 py-2 text-[14px] leading-tight text-[#1f2433]">
+          <p>{a}</p>
+          <p className="mt-0.5">{b}</p>
+        </div>
+      </div>
+    )
+    return (
+      <>
+        <Encabezado cols="grid-cols-[250px_1fr]">
+          <span>Fase 1 · Grupos</span><span className="pl-6">Fase 2 · Playoffs</span>
+        </Encabezado>
+        <div className="grid grid-cols-[250px_1fr] px-5 py-5">
+          <div className="flex flex-col gap-3">
+            {grupos.map((g, i) => (
+              <div key={g.nombre} {...aparece(i)}>
+                <div className="rounded-xl border border-panel-linea p-3">
+                  <p className="flex items-baseline justify-between text-[16px] font-semibold text-[#1f2433]">
+                    {g.nombre}<span className="text-[12px] font-normal text-[#8a90a2]">10 equipos · 9 fechas</span>
+                  </p>
+                  <div className="mt-2.5 flex items-center gap-1">
+                    {g.clubes.map((id) => <Escudo key={id} id={id} size={30} />)}
+                    <span className="ml-1 text-[14px] font-semibold text-[#8a90a2]">+5</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <p className="text-[14px] text-[#8a90a2]">Pasan los 4 primeros de cada grupo</p>
+          </div>
+          <div className="flex items-stretch gap-3 pl-6 text-[13px] font-semibold text-[#8a90a2]">
+            <div className="flex flex-col">
+              <p>Cuartos</p>
+              <div className="mt-2 flex flex-1 flex-col justify-between gap-2">
+                {cuartos.map(([a, b], i) => <Cruce key={a} a={a} b={b} i={2 + i} />)}
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <p>Semis</p>
+              <div className="mt-2 flex flex-1 flex-col justify-around">
+                <Cruce a="Ganador C1" b="Ganador C2" i={6} />
+                <Cruce a="Ganador C3" b="Ganador C4" i={7} />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <p>Final</p>
+              <div className="mt-2 flex flex-1 flex-col justify-center">
+                <Cruce a="Ganador S1" b="Ganador S2" i={8} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    )
+  }
   if (vista === 'programacion') {
     const cols = 'grid-cols-[110px_80px_110px_1fr]'
     return (
@@ -136,7 +195,7 @@ export function TablaPanel({ panel }) {
 
 export default function Panel({ panel, listo = true }) {
   const pestañas = ['Equipos', 'Partidos', 'Clasificación', 'Estadísticas', 'Configuración']
-  const vacio = { equipos: 'Inscribiendo equipos…', partidos: 'Generando el fixture…', programacion: 'Programando la fecha…', tabla: 'Cargando resultados…' }
+  const vacio = { equipos: 'Inscribiendo equipos…', partidos: 'Generando el fixture…', fases: 'Armando las fases…', programacion: 'Programando la fecha…', tabla: 'Cargando resultados…' }
   return (
     <div className="flex bg-white text-left font-[Inter,Roboto,Arial,sans-serif]" style={{ height: 800 }}>
       {/* Barra lateral */}
