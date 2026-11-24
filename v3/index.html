@@ -3,29 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weball · Organizá tu liga con Gemini, ChatGPT o Claude</title>
-    <meta name="description" content="Weball es la primera plataforma que te deja organizar tu liga con tu IA favorita: inscribí equipos, fichá jugadores, armá torneos y fixtures, programá partidos y publicá resultados pidiéndolo en palabras." />
-    <!-- V3 en preparación: convive con el sitio actual, así que no se indexa (cuando reemplace a la raíz, pasar a "index, follow") -->
-    <link rel="canonical" href="https://weball.me/v3/" />
+    <!-- Esta landing es la página principal del sitio (también se publica en /v3/, con la misma dirección canónica) -->
+    <title>Weball · Organizá tu liga con ChatGPT, Claude, Gemini o tu IA favorita</title>
+    <meta name="description" content="Organizá tu liga con tu IA: inscripciones, fichajes, fixtures, programación de partidos, resultados, tribunal y árbitros con un mensaje. +40.000 jugadores y +500 clubes ya juegan con Weball." />
+    <meta name="keywords" content="organizar liga, gestión de ligas, liga de fútbol, liga de futsal, fixture, inscripción de equipos, fichajes, tribunal de disciplina, árbitros, ChatGPT, Claude, Gemini, IA" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://weballcode.github.io/weball-landing/" />
     <meta name="theme-color" content="#fbfbf8" />
 
     <link rel="icon" type="image/png" href="./isotipo.png" />
     <link rel="apple-touch-icon" href="./icono-app.png" />
 
-    <!-- Vista previa al compartir el link (WhatsApp, redes) -->
+    <!-- Vista previa al compartir el link (WhatsApp, redes). La imagen necesita la dirección completa. -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Weball" />
     <meta property="og:locale" content="es_AR" />
-    <meta property="og:url" content="https://weball.me/v3/" />
+    <meta property="og:url" content="https://weballcode.github.io/weball-landing/" />
     <meta property="og:title" content="Weball · Organizá tu liga con tu IA favorita" />
-    <meta property="og:description" content="Inscribí equipos, armá el fixture, programá la fecha y publicá resultados pidiéndoselo a tu IA. Menos horas de gestión, más liga." />
-    <meta property="og:image" content="https://weball.me/compartir.jpg?v=3" />
+    <meta property="og:description" content="Inscripciones, fixtures, programación y resultados: pedíselo a ChatGPT, Claude o Gemini y Weball lo hace. Menos horas de gestión, más liga." />
+    <meta property="og:image" content="https://weballcode.github.io/weball-landing/compartir.jpg?v=3" />
+    <meta property="og:image:secure_url" content="https://weballcode.github.io/weball-landing/compartir.jpg?v=3" />
+    <meta property="og:image:type" content="image/jpeg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Logo de Weball, el sistema de gestión en la compu y la app en el celular" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Weball · Organizá tu liga con tu IA favorita" />
-    <meta name="twitter:description" content="Inscribí equipos, armá el fixture, programá la fecha y publicá resultados pidiéndoselo a tu IA." />
-    <meta name="twitter:image" content="https://weball.me/compartir.jpg?v=3" />
+    <meta name="twitter:description" content="Inscripciones, fixtures, programación y resultados: pedíselo a tu IA y Weball lo hace." />
+    <meta name="twitter:image" content="https://weballcode.github.io/weball-landing/compartir.jpg?v=3" />
+
+    <!-- Datos para buscadores (las preguntas frecuentes se suman desde Faq.jsx) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://weballcode.github.io/weball-landing/#organizacion",
+            "name": "Weball",
+            "url": "https://weballcode.github.io/weball-landing/",
+            "logo": "https://weballcode.github.io/weball-landing/isotipo.png",
+            "description": "La plataforma para organizar ligas deportivas con tu IA favorita.",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+54 11 7073 6993",
+              "contactType": "sales",
+              "areaServed": "AR",
+              "availableLanguage": "Spanish"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://weballcode.github.io/weball-landing/#sitio",
+            "name": "Weball",
+            "url": "https://weballcode.github.io/weball-landing/",
+            "inLanguage": "es-AR",
+            "publisher": { "@id": "https://weballcode.github.io/weball-landing/#organizacion" }
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Weball",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web, Android, iOS",
+            "url": "https://weballcode.github.io/weball-landing/",
+            "description": "Organizá tu liga con ChatGPT, Claude, Gemini o tu IA favorita: inscripciones, fichajes, torneos y fixtures, programación de partidos, resultados y tablas, tribunal de disciplina, árbitros y administración.",
+            "publisher": { "@id": "https://weballcode.github.io/weball-landing/#organizacion" }
+          }
+        ]
+      }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

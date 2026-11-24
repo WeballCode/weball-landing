@@ -6,10 +6,11 @@ import { Lead, Section, Title } from './ui.jsx'
 // Cifras de las ligas clientes (las pasó el socio en noviembre de 2026)
 const totales = [
   { value: '+40.000', label: 'jugadores fichados' },
-  { value: '+1.500', label: 'partidos por semana' },
-  { value: '+500', label: 'clubes' },
+  { value: '+3.500', label: 'entrenadores' },
   { value: '+400', label: 'árbitros' },
+  { value: '+500', label: 'clubes' },
   { value: '+150', label: 'torneos' },
+  { value: '+1.500', label: 'partidos por semana' },
 ]
 
 function Cinta({ oculta }) {
@@ -35,9 +36,9 @@ export default function Ligas() {
         <img src="./ligas/bafi-blanco.png" alt="BAFI" className="h-14 w-auto sm:h-16" />
       </Reveal>
 
-      <dl className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 text-center sm:grid-cols-3 lg:grid-cols-5">
+      <dl className="mt-16 mx-auto grid max-w-4xl grid-cols-2 gap-x-6 gap-y-10 text-center sm:grid-cols-3">
         {totales.map((n, i) => (
-          <Reveal key={n.label} delay={i * 100} className={`flex flex-col-reverse ${i === 0 ? 'col-span-2 sm:col-span-1' : ''}`}>
+          <Reveal key={n.label} delay={i * 100} className="flex flex-col-reverse">
             <dt className="mt-1 text-bruma">{n.label}</dt>
             <dd className="text-[2.6rem] font-bold tracking-tight tabular-nums sm:text-5xl">
               <CountUp value={n.value} />

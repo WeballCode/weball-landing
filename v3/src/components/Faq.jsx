@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Reveal } from './motion.jsx'
 import { Section, Title } from './ui.jsx'
 
@@ -33,7 +33,23 @@ const faqs = [
   },
 ]
 
+// Datos para buscadores: las mismas preguntas, en el formato que entiende Google (FAQPage)
+function useFaqParaBuscadores() {
+  useEffect(() => {
+    const s = document.createElement('script')
+    s.type = 'application/ld+json'
+    s.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    })
+    document.head.appendChild(s)
+    return () => s.remove()
+  }, [])
+}
+
 export default function Faq() {
+  useFaqParaBuscadores()
   const [open, setOpen] = useState(-1)
   return (
     <Section id="preguntas" tone="fondo">
