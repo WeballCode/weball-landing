@@ -17,7 +17,7 @@ function PalabraQueCambia() {
   }, [])
 
   return (
-    <span className="relative inline-grid text-left align-baseline" aria-label={`${IAS.join(', ')}.`}>
+    <span className="relative inline-grid text-left align-baseline [clip-path:inset(0_-50%)]" aria-label={`${IAS.join(', ')}.`}>
       {IAS.map((ia, n) => (
         <span
           key={ia}
