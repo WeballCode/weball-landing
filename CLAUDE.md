@@ -30,6 +30,10 @@ Después de **cada** cambio que pida, sin esperar a que te lo diga:
 
 Nunca dejes cambios sin pushear: si no está pusheado, el socio no lo ve.
 
+**Ojo con master:** sólo la rama de trabajo tiene permiso para publicar en GitHub Pages. Un push a master
+también dispara el workflow, que falla y además **cancela** la publicación de la rama si está en curso.
+Por eso: pusheá primero la rama, esperá a que la publicación termine bien y recién ahí pusheá a master.
+
 ## Stack
 
 - **React 19 + Vite** (JavaScript, archivos `.jsx`). Sin TypeScript.
