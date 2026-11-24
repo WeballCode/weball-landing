@@ -11,10 +11,9 @@ import Contacto from './components/Contacto.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppButton from './components/WhatsAppButton.jsx'
 
-// Landing V3: "Organizá tu liga con tu IA favorita". Estructura inspirada en Apple, con el manual de marca de Weball:
-// Roboto, marino y niebla alternados, celeste como acento, colores planos, títulos en mayúsculas.
-// Portada (marino) → con qué IA (niebla) → Escribís (marino) → 4 pedidos (niebla) → cómo funciona (marino) → control (niebla)
-// → ligas (marino) → ahorro (niebla) → preguntas (marino) → contacto (celeste, el destacado).
+// Landing V3: "Organizá tu liga con tu IA favorita", con estética clara inspirada en Apple.
+// Portada (notebook con el panel + celular con la IA) → con qué IA funciona → "Escribís. Weball lo hace." →
+// los 4 pedidos → cómo funciona y control → calculadora de ahorro → ligas que ya usan Weball → preguntas → contacto.
 export default function App() {
   return (
     <>
@@ -25,8 +24,8 @@ export default function App() {
         <Escribis />
         <Tareas />
         <ComoFunciona />
-        <Ligas />
         <Ahorro />
+        <Ligas />
         <Faq />
         <Contacto />
       </main>

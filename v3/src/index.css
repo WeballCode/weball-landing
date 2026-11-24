@@ -1,10 +1,7 @@
 @import "tailwindcss";
 
-/* Paleta y letra del manual de marca de Weball (v1, octubre 2026):
-   - Marino 70%, blanco 20%, celeste 10%. Fondos marino y niebla alternados; el celeste es un toque.
-   - Colores planos: sin degradados.
-   - Palabra destacada: sobre marino, en celeste; sobre claro, en celeste profundo. Texto sobre celeste, siempre marino.
-   - Una sola letra: Roboto (sin Roboto, Arial). */
+/* Estética clara inspirada en cómo comunica Apple, con la paleta de Weball (manual de marca v1):
+   marino para textos y fondos oscuros, blanco de marca, niebla para fondos suaves y celeste como acento. */
 @theme {
   /* Paleta Weball */
   --color-marino: #032639;
@@ -22,20 +19,19 @@
   /* Usos (apuntan a la paleta) */
   --color-white: #fbfbf8;
   --color-tinta: #032639;
-  --color-gris: #3c4a54;
+  --color-gris: #51606b;
   --color-gris-claro: #51606b;
   --color-fondo: #f1f4f6;
   --color-borde: #b9cbd6;
   --color-accion: #0b6fcc;
   --color-accion-hover: #032639;
 
-  /* Panel del sistema (manual, "Sistema · Web en PC"): color de contexto marino por defecto */
-  --color-panel: #032639;
-  --color-panel-claro: #f4f6f8;
-  --color-panel-linea: #e3e8ec;
-  --color-activo: #419c3b;
+  /* Panel real de Weball (se deja igual que el sistema) */
+  --color-panel: #0e1e4f;
+  --color-panel-claro: #f6f7fb;
+  --color-panel-linea: #e9ebf2;
 
-  --font-sans: "Roboto", Arial, sans-serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 html {
@@ -44,17 +40,22 @@ html {
 }
 
 body {
-  background: var(--color-marino);
-  color: var(--color-blanco);
+  background: var(--color-blanco);
+  color: var(--color-tinta);
   font-family: var(--font-sans);
+  letter-spacing: -0.011em;
 }
 
-/* Palabra destacada: celeste profundo sobre claro, celeste sobre marino (color plano) */
+/* Texto con el degradé de la IA */
 .texto-ia {
-  color: var(--color-celeste-profundo);
+  background: linear-gradient(90deg, #0b6fcc, #3fb6ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
+/* Sobre fondo marino, el degradé va de celeste a celeste claro */
 .bg-marino .texto-ia {
-  color: var(--color-celeste);
+  background-image: linear-gradient(90deg, #3fb6ff, #bfe6ff);
 }
 
 /* Logo de Weball en color marino (el archivo es blanco: se usa como máscara) */
@@ -120,14 +121,18 @@ body {
   animation: dot 1.2s ease-in-out infinite;
 }
 
-/* Barra de la IA: borde celeste plano que late suave */
-@keyframes latido {
-  0%, 100% { border-color: var(--color-celeste); }
-  50% { border-color: var(--color-linea); }
+/* Borde luminoso que gira alrededor de la barra de la IA */
+@property --giro {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes girar {
+  to { --giro: 360deg; }
 }
 .borde-ia {
-  border: 2px solid var(--color-celeste);
-  animation: latido 2.4s ease-in-out infinite;
+  background: conic-gradient(from var(--giro), #3fb6ff, #bfe6ff, #0b6fcc, #fbfbf8, #3fb6ff);
+  animation: girar 6s linear infinite;
 }
 
 /* Escudos que pasan en loop */

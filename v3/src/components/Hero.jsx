@@ -16,7 +16,7 @@ function PalabraQueCambia() {
   }, [])
 
   return (
-    <span className="relative inline-grid overflow-hidden text-left align-bottom" aria-label={`${IAS.join(', ')}.`}>
+    <span className="relative inline-grid overflow-hidden align-bottom" aria-label={`${IAS.join(', ')}.`}>
       {IAS.map((ia, n) => (
         <span
           key={ia}
@@ -36,14 +36,13 @@ function PalabraQueCambia() {
 
 export default function Hero() {
   return (
-    // La portada es tapa: va centrada y sobre marino, el fondo por defecto de la marca
-    <section id="inicio" className="overflow-hidden bg-marino pt-16 text-blanco">
+    <section id="inicio" className="overflow-hidden bg-white pt-12">
       <div className="mx-auto max-w-6xl px-5 pt-16 pb-24 text-center sm:px-6 sm:pt-24 sm:pb-32">
-        <Reveal as="p" className="text-sm font-medium tracking-[0.2em] text-celeste uppercase">
+        <Reveal as="p" className="texto-ia text-[1.1rem] font-semibold sm:text-xl">
           Weball + IA
         </Reveal>
 
-        <h1 className="mx-auto mt-3 max-w-5xl text-[1.95rem] leading-[0.95] font-extrabold uppercase sm:text-7xl lg:text-[5.4rem]">
+        <h1 className="mx-auto mt-3 max-w-5xl text-[2.9rem] leading-[1.02] font-bold tracking-[-0.035em] sm:text-7xl lg:text-[5.5rem]">
           <Reveal as="span" delay={100} className="block">
             Organizá tu liga
           </Reveal>
@@ -52,7 +51,7 @@ export default function Hero() {
           </Reveal>
         </h1>
 
-        <Reveal as="p" delay={320} className="mx-auto mt-6 max-w-2xl text-[1.2rem] leading-relaxed text-bruma text-pretty sm:text-[1.4rem]">
+        <Reveal as="p" delay={320} className="mx-auto mt-6 max-w-2xl text-[1.2rem] leading-relaxed font-medium text-gris text-pretty sm:text-[1.4rem]">
           Inscripciones, fixture, programación y resultados. Pedíselo a tu IA con tus palabras, y Weball lo hace.
         </Reveal>
 

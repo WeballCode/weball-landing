@@ -1,26 +1,28 @@
 // Las 4 tareas que la liga le pide a su IA. De acá salen:
 //  - el chat del celular y la pantalla del panel en la portada (Showcase.jsx),
 //  - las tarjetas de "Cuatro pedidos" (Tareas.jsx).
-// Clubes reales que juegan en ligas con Weball (escudos en public/clubes/). Por el manual de marca, NUNCA clubes de primera,
-// ni escudos de AFA o CONMEBOL. Los resultados y horarios son de ejemplo.
+// Los clubes son reales (juegan en ligas con Weball, escudos en public/clubes/); los resultados y horarios son de ejemplo.
 
 export const clubes = {
+  boca: { nombre: 'Boca Juniors', escudo: 'boca-juniors' },
+  river: { nombre: 'River Plate', escudo: 'river-plate' },
+  racing: { nombre: 'Racing Club', escudo: 'racing' },
+  independiente: { nombre: 'Independiente', escudo: 'independiente' },
+  sanlorenzo: { nombre: 'San Lorenzo', escudo: 'san-lorenzo' },
+  huracan: { nombre: 'Huracán', escudo: 'huracan' },
+  velez: { nombre: 'Vélez Sarsfield', escudo: 'velez' },
+  estudiantes: { nombre: 'Estudiantes', escudo: 'estudiantes' },
+  banfield: { nombre: 'Banfield', escudo: 'banfield' },
+  platense: { nombre: 'Platense', escudo: 'platense' },
   ferro: { nombre: 'Ferro Carril Oeste', escudo: 'ferro' },
   allboys: { nombre: 'All Boys', escudo: 'all-boys' },
-  moron: { nombre: 'Deportivo Morón', escudo: 'deportivo-moron' },
-  kimberley: { nombre: 'Kimberley', escudo: 'kimberley' },
-  sanmartin: { nombre: 'San Martín Futsal', escudo: 'san-martin-futsal' },
-  agosto: { nombre: '17 de Agosto', escudo: '17-de-agosto' },
-  villaluro: { nombre: 'Amigos de Villa Luro', escudo: 'amigos-de-villa-luro' },
-  pacifico: { nombre: 'Pacífico', escudo: 'pacifico' },
-  csdp: { nombre: 'C.S.D.P.', escudo: 'csdp' },
-  ca: { nombre: 'C.A.', escudo: 'ca' },
 }
 
 // Todos los escudos, para la cinta de "ligas que ya usan Weball"
 export const escudos = [
-  'ferro', 'all-boys', 'deportivo-moron', 'kimberley', 'san-martin-futsal', '17-de-agosto',
-  'amigos-de-villa-luro', 'pacifico', 'csdp', 'ca', 'cp',
+  'boca-juniors', 'river-plate', 'racing', 'independiente', 'san-lorenzo', 'huracan', 'velez', 'estudiantes',
+  'banfield', 'platense', 'ferro', 'all-boys', 'deportivo-moron', 'kimberley', 'san-martin-futsal', '17-de-agosto',
+  'amigos-de-villa-luro', 'pacifico',
 ]
 
 export const tareas = [
@@ -40,7 +42,7 @@ export const tareas = [
       pestaña: 'Equipos',
       vista: 'equipos',
       filas: [
-        ['ferro', 15], ['allboys', 14], ['moron', 15], ['kimberley', 13], ['sanmartin', 14], ['agosto', 12],
+        ['boca', 15], ['river', 14], ['racing', 15], ['independiente', 13], ['sanlorenzo', 14], ['huracan', 12],
       ],
     },
   },
@@ -60,7 +62,7 @@ export const tareas = [
       pestaña: 'Partidos',
       vista: 'partidos',
       filas: [
-        ['ferro', 'allboys'], ['moron', 'kimberley'], ['sanmartin', 'agosto'], ['villaluro', 'pacifico'], ['csdp', 'ca'],
+        ['boca', 'river'], ['racing', 'independiente'], ['sanlorenzo', 'huracan'], ['velez', 'estudiantes'], ['banfield', 'platense'], ['ferro', 'allboys'],
       ],
     },
   },
@@ -72,7 +74,7 @@ export const tareas = [
     ejemplo: 'Programá la fecha 1 el sábado de 9 a 18, en las canchas 1 a 4.',
     chat: {
       pedido: 'Programá la fecha 1 el sábado de 9 a 18 en las canchas 1 a 4.',
-      confirma: 'Asigno día, hora y cancha a los partidos de la fecha 1. ¿Confirmo?',
+      confirma: 'Asigno día, hora y cancha a los 8 partidos de la fecha 1. ¿Confirmo?',
       pasos: ['Revisando canchas libres', 'Asignando horarios', 'Chequeando choques'],
       respuesta: 'Listo, sábado programado y sin choques de horario.',
     },
@@ -80,8 +82,8 @@ export const tareas = [
       pestaña: 'Partidos',
       vista: 'programacion',
       filas: [
-        ['09:00', 'Cancha 1', 'ferro', 'allboys'], ['09:00', 'Cancha 2', 'moron', 'kimberley'], ['10:30', 'Cancha 1', 'sanmartin', 'agosto'],
-        ['10:30', 'Cancha 2', 'villaluro', 'pacifico'], ['12:00', 'Cancha 1', 'csdp', 'ca'],
+        ['09:00', 'Cancha 1', 'boca', 'river'], ['09:00', 'Cancha 2', 'racing', 'independiente'], ['10:30', 'Cancha 1', 'sanlorenzo', 'huracan'],
+        ['10:30', 'Cancha 2', 'velez', 'estudiantes'], ['12:00', 'Cancha 1', 'banfield', 'platense'], ['12:00', 'Cancha 3', 'ferro', 'allboys'],
       ],
     },
   },
@@ -92,7 +94,7 @@ export const tareas = [
     texto: 'Pasale los resultados como te llegan. Se cargan, la tabla se actualiza y se publica para jugadores y familias al instante.',
     ejemplo: 'Cargá los resultados de la fecha 1 y publicalos.',
     chat: {
-      pedido: 'Cargá los resultados de la fecha y publicalos: Ferro 3-1 All Boys, Morón 2-2 Kimberley…',
+      pedido: 'Cargá los resultados de la fecha y publicalos: Boca 3-1 River, Racing 2-2 Independiente…',
       confirma: 'Cargo los 8 resultados y publico la fecha. ¿Confirmo?',
       pasos: ['Cargando 8 resultados', 'Actualizando la tabla', 'Publicando en la app y la web'],
       respuesta: 'Publicado. La tabla ya está actualizada.',
@@ -102,8 +104,8 @@ export const tareas = [
       vista: 'tabla',
       // club, Pts, PJ, G, E, P, GF, GC
       filas: [
-        ['ferro', 3, 1, 1, 0, 0, 3, 1], ['sanmartin', 3, 1, 1, 0, 0, 2, 0], ['villaluro', 3, 1, 1, 0, 0, 4, 3],
-        ['moron', 1, 1, 0, 1, 0, 2, 2], ['kimberley', 1, 1, 0, 1, 0, 2, 2], ['allboys', 0, 1, 0, 0, 1, 1, 3],
+        ['boca', 3, 1, 1, 0, 0, 3, 1], ['velez', 3, 1, 1, 0, 0, 2, 0], ['banfield', 3, 1, 1, 0, 0, 4, 3],
+        ['racing', 1, 1, 0, 1, 0, 2, 2], ['independiente', 1, 1, 0, 1, 0, 2, 2], ['river', 0, 1, 0, 0, 1, 1, 3],
       ],
     },
   },

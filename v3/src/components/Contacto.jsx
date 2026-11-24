@@ -1,5 +1,6 @@
 import { WHATSAPP_LABEL, whatsappLink } from '../links.js'
 import { Reveal } from './motion.jsx'
+import { Link } from './ui.jsx'
 
 const opciones = [
   { label: 'Quiero probarlo con mi liga', message: 'Hola Weball, quiero probar organizar mi liga con mi IA.' },
@@ -7,42 +8,36 @@ const opciones = [
   { label: 'Tengo una federación con varias ligas', message: 'Hola Weball, tengo una federación con varias ligas y quiero conocer Weball con IA.' },
 ]
 
-// Cierre: el bloque celeste destacado de la página. Sobre celeste, todo el texto va en marino.
 export default function Contacto() {
   return (
-    <section id="contacto" className="scroll-mt-16 bg-celeste text-marino">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-24 sm:px-6 sm:py-32 lg:grid-cols-[1.1fr_1fr] lg:items-end">
-        <div>
-          <Reveal as="p" className="text-sm font-medium tracking-[0.2em] uppercase">
-            Contacto
-          </Reveal>
-          <Reveal as="h2" delay={80} className="mt-4 text-[2.6rem] leading-[0.98] font-extrabold uppercase text-balance sm:text-6xl">
-            Te mostramos tu liga funcionando.
-          </Reveal>
-          <Reveal as="p" delay={160} className="mt-5 max-w-xl text-[1.2rem] leading-relaxed">
-            Con tu IA, tus equipos y tu formato. Escribinos al{' '}
-            <a href={whatsappLink('Hola Weball, quiero más información.')} target="_blank" rel="noopener noreferrer" className="font-bold underline underline-offset-4">
-              {WHATSAPP_LABEL}
-            </a>
-            .
-          </Reveal>
-        </div>
+    <section id="contacto" className="scroll-mt-12 bg-white">
+      <div className="mx-auto max-w-6xl px-5 py-24 text-center sm:px-6 sm:py-32">
+        <Reveal as="h2" className="mx-auto max-w-4xl text-[2.8rem] leading-[1.03] font-bold tracking-[-0.035em] text-balance sm:text-7xl">
+          Menos horas de gestión. <span className="texto-ia">Más liga.</span>
+        </Reveal>
+        <Reveal as="p" delay={100} className="mx-auto mt-6 max-w-2xl text-[1.2rem] leading-relaxed font-medium text-gris sm:text-[1.35rem]">
+          Te mostramos tu liga funcionando con tu IA, con tus equipos y tu formato.
+        </Reveal>
 
-        <ul className="flex flex-col">
-          {opciones.map((o, i) => (
-            <Reveal as="li" key={o.label} delay={150 + i * 100}>
-              <a
-                href={whatsappLink(o.message)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center justify-between gap-4 border-marino py-5 text-lg font-extrabold uppercase transition hover:pl-3 ${i === 0 ? 'border-t-4' : 'border-t-2'}`}
-              >
-                {o.label}
-                <span aria-hidden="true">→</span>
-              </a>
-            </Reveal>
+        <Reveal delay={200} className="mt-10 flex flex-col items-center gap-3">
+          <a
+            href={whatsappLink(opciones[0].message)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-full bg-celeste px-8 py-4 text-lg font-semibold text-marino transition hover:bg-celeste-claro"
+          >
+            Escribinos por WhatsApp
+          </a>
+          <p className="text-sm text-gris">{WHATSAPP_LABEL}</p>
+        </Reveal>
+
+        <Reveal delay={300} className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-8">
+          {opciones.slice(1).map((o) => (
+            <Link key={o.label} href={whatsappLink(o.message)} target="_blank" rel="noopener noreferrer">
+              {o.label}
+            </Link>
           ))}
-        </ul>
+        </Reveal>
       </div>
     </section>
   )

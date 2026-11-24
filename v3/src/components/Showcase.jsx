@@ -28,9 +28,9 @@ function Chat({ c, t }) {
   const enviado = t >= T.enviado
 
   return (
-    <div className="flex flex-col bg-white " style={{ height: 720 }}>
+    <div className="flex flex-col bg-white font-[Inter,system-ui,sans-serif]" style={{ height: 720 }}>
       {/* Barra de estado e isla */}
-      <div className="relative flex h-12 items-center justify-between px-7 pt-1 text-[14px] font-medium text-marino">
+      <div className="relative flex h-12 items-center justify-between px-7 pt-1 text-[14px] font-semibold text-marino">
         <span>9:30</span>
         <span className="absolute top-2.5 left-1/2 h-[30px] w-[100px] -translate-x-1/2 rounded-full bg-marino" />
         <span className="flex items-center gap-1.5">
@@ -40,11 +40,11 @@ function Chat({ c, t }) {
       </div>
 
       {/* Encabezado del chat */}
-      <div className="flex flex-col items-center gap-1 border-b border-marino/10 pt-2 pb-3">
-        <span className="grid h-11 w-11 place-items-center rounded-full bg-celeste">
-          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="#032639"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z" /></svg>
+      <div className="flex flex-col items-center gap-1 border-b border-black/5 pt-2 pb-3">
+        <span className="grid h-11 w-11 place-items-center rounded-full bg-[conic-gradient(from_180deg,#3fb6ff,#0b6fcc,#032639,#bfe6ff,#3fb6ff)]">
+          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="white"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z" /></svg>
         </span>
-        <span className="text-[13px] font-medium text-marino">Tu IA</span>
+        <span className="text-[13px] font-semibold text-marino">Tu IA</span>
         <span className="flex items-center gap-1 text-[11px] text-celeste-profundo">
           <span className="h-1.5 w-1.5 rounded-full bg-celeste" /> Conectada a Weball
         </span>
@@ -62,7 +62,7 @@ function Chat({ c, t }) {
         {t >= T.si && <Burbuja yo>Sí, dale.</Burbuja>}
         {t >= T.paso && (
           <div className="msg-in w-[86%] rounded-2xl border border-marino/10 bg-niebla px-3.5 py-3 text-[13px]">
-            <p className="mb-2 flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-wide text-acero">
+            <p className="mb-2 flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wide text-acero">
               <img src="./isotipo.png" alt="" className="h-4 w-4" /> Weball
             </p>
             <ul className="flex flex-col gap-1.5">
@@ -150,7 +150,7 @@ export default function Showcase() {
 
       {/* Selector de tareas, estilo control segmentado */}
       <div className="mt-10 flex justify-center sm:mt-20">
-        <div className="inline-flex rounded-full bg-marino-claro p-1 ring-1 ring-linea" role="tablist" aria-label="Qué le pedís a tu IA">
+        <div className="inline-flex rounded-full bg-fondo p-1" role="tablist" aria-label="Qué le pedís a tu IA">
           {tareas.map((x, i) => (
             <button
               key={x.slug}
@@ -159,7 +159,7 @@ export default function Showcase() {
               aria-selected={i === escena}
               onClick={() => elegir(i)}
               className={`relative rounded-full px-3.5 py-2 text-[13px] font-medium transition sm:px-5 sm:text-sm ${
-                i === escena ? 'bg-blanco text-marino' : 'text-bruma hover:text-blanco'
+                i === escena ? 'bg-white text-tinta shadow-[0_1px_4px_rgba(0,0,0,0.12)]' : 'text-gris hover:text-tinta'
               }`}
             >
               {x.corto}
