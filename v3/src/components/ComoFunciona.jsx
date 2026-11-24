@@ -4,7 +4,7 @@ import { Lead, Section, Title } from './ui.jsx'
 const pasos = [
   { titulo: 'Conectá.', texto: 'Sumá Weball a tu IA una sola vez. Te lo hacemos nosotros.' },
   { titulo: 'Pedí.', texto: 'Escribile lo que necesitás, con tus palabras.' },
-  { titulo: 'Confirmá.', texto: 'Ves y controlás lo que hace tu IA. Confirmás, y queda todo cargado y publicado.' },
+  { titulo: 'Confirmá.', texto: 'Controlá lo que hace la IA. Luego se carga y se publica todo solo.' },
 ]
 
 const control = [
