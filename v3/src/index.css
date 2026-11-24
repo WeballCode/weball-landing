@@ -1,31 +1,35 @@
 @import "tailwindcss";
 
-/* Estética clara, inspirada en cómo comunica Apple: blanco, gris muy suave, texto casi negro,
-   títulos grandes y un solo color de acción. Los colores de Weball siguen presentes en el panel y los acentos. */
+/* Estética clara inspirada en cómo comunica Apple, con la paleta de Weball (manual de marca v1):
+   marino para textos y fondos oscuros, blanco de marca, niebla para fondos suaves y celeste como acento. */
 @theme {
-  /* Base */
-  --color-tinta: #1d1d1f;
-  --color-gris: #6e6e73;
-  --color-gris-claro: #86868b;
-  --color-fondo: #f5f5f7;
-  --color-borde: #d2d2d7;
-  --color-blanco: #ffffff;
-  --color-negro: #000000;
-
-  /* Acción (botones y links) */
-  --color-accion: #0b6fcc;
-  --color-accion-hover: #0a63b8;
-
-  /* Marca Weball */
+  /* Paleta Weball */
   --color-marino: #032639;
+  --color-marino-claro: #0f3143;
   --color-celeste: #3fb6ff;
   --color-celeste-claro: #bfe6ff;
+  --color-celeste-profundo: #0b6fcc;
+  --color-blanco: #fbfbf8;
+  --color-niebla: #f1f4f6;
+  --color-bruma: #b9cbd6;
+  --color-pizarra: #3c4a54;
+  --color-acero: #51606b;
+  --color-linea: #365a70;
 
-  /* Panel real de Weball */
+  /* Usos (apuntan a la paleta) */
+  --color-white: #fbfbf8;
+  --color-tinta: #032639;
+  --color-gris: #51606b;
+  --color-gris-claro: #51606b;
+  --color-fondo: #f1f4f6;
+  --color-borde: #b9cbd6;
+  --color-accion: #0b6fcc;
+  --color-accion-hover: #032639;
+
+  /* Panel real de Weball (se deja igual que el sistema) */
   --color-panel: #0e1e4f;
   --color-panel-claro: #f6f7fb;
   --color-panel-linea: #e9ebf2;
-  --color-verde: #34c759;
 
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", Roboto, Arial, sans-serif;
 }
@@ -44,10 +48,14 @@ body {
 
 /* Texto con el degradé de la IA */
 .texto-ia {
-  background: linear-gradient(90deg, #0b6fcc, #3fb6ff 30%, #8b5cf6 65%, #ec4899);
+  background: linear-gradient(90deg, #0b6fcc, #3fb6ff);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+/* Sobre fondo marino, el degradé va de celeste a celeste claro */
+.bg-marino .texto-ia {
+  background-image: linear-gradient(90deg, #3fb6ff, #bfe6ff);
 }
 
 /* Logo de Weball en color marino (el archivo es blanco: se usa como máscara) */
@@ -123,7 +131,7 @@ body {
   to { --giro: 360deg; }
 }
 .borde-ia {
-  background: conic-gradient(from var(--giro), #3fb6ff, #8b5cf6, #ec4899, #f59e0b, #3fb6ff);
+  background: conic-gradient(from var(--giro), #3fb6ff, #bfe6ff, #0b6fcc, #fbfbf8, #3fb6ff);
   animation: girar 6s linear infinite;
 }
 

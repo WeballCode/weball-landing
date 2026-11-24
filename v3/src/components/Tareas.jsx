@@ -18,13 +18,13 @@ export default function Tareas() {
               <p className="text-sm font-semibold text-gris-claro">0{i + 1}</p>
               <h3 className="mt-1 text-[1.9rem] leading-tight font-bold tracking-tight">{t.titulo}</h3>
               <p className="mt-3 text-[1.05rem] leading-relaxed text-gris">{t.texto}</p>
-              <p className="mt-6 ml-auto w-fit max-w-[90%] rounded-[20px] rounded-br-[6px] bg-[#0a84ff] px-4 py-2.5 text-[15px] leading-snug text-white">
+              <p className="mt-6 ml-auto w-fit max-w-[90%] rounded-[20px] rounded-br-[6px] bg-celeste-profundo px-4 py-2.5 text-[15px] leading-snug text-white">
                 {t.ejemplo}
               </p>
             </div>
             {/* El resultado, tal como queda en Weball */}
             <div className="relative mt-6 flex-1 px-7 sm:px-10">
-              <div className="h-full rounded-t-2xl border border-b-0 border-black/[0.06] bg-fondo p-3 pb-0">
+              <div className="h-full rounded-t-2xl border border-b-0 border-marino/10 bg-fondo p-3 pb-0">
                 <Escalado ancho={760} className="max-h-[230px] rounded-t-xl">
                   <TablaPanel panel={t.panel} />
                 </Escalado>

@@ -24,7 +24,7 @@ export default function Contacto() {
             href={whatsappLink(opciones[0].message)}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full bg-accion px-8 py-4 text-lg font-medium text-white transition hover:bg-accion-hover"
+            className="rounded-full bg-celeste px-8 py-4 text-lg font-semibold text-marino transition hover:bg-celeste-claro"
           >
             Escribinos por WhatsApp
           </a>

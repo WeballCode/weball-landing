@@ -54,7 +54,7 @@ export default function ComoFunciona() {
         <div className="mt-16 grid gap-5 md:grid-cols-3">
           {control.map((c, i) => (
             <Reveal key={c.titulo} delay={i * 120} className="rounded-[1.75rem] bg-white p-8 sm:p-10">
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-[#e8f2fc] text-accion">
+              <span className="grid h-12 w-12 place-items-center rounded-full bg-celeste-claro/60 text-celeste-profundo">
                 <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d={c.icono} />
                 </svg>

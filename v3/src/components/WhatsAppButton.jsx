@@ -19,7 +19,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escribinos por WhatsApp"
-      className={`fixed right-4 bottom-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-accion text-white shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition duration-300 hover:scale-105 hover:bg-accion-hover sm:right-6 sm:bottom-6 ${
+      className={`fixed right-4 bottom-4 z-40 grid h-14 w-14 place-items-center rounded-full bg-celeste text-marino shadow-[0_8px_24px_rgba(0,0,0,0.2)] transition duration-300 hover:scale-105 hover:bg-celeste-claro sm:right-6 sm:bottom-6 ${
         show ? 'translate-y-0 opacity-100' : 'pointer-events-none translate-y-4 opacity-0'
       }`}
     >

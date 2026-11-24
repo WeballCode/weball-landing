@@ -5,7 +5,7 @@ import { Reveal } from './motion.jsx'
 const tonos = {
   blanco: 'bg-white text-tinta',
   fondo: 'bg-fondo text-tinta',
-  negro: 'bg-black text-white',
+  negro: 'bg-marino text-blanco',
 }
 
 export function Section({ id, tone = 'blanco', className = '', children }) {
@@ -30,7 +30,7 @@ export function Lead({ children, tone, className = '' }) {
     <Reveal
       as="p"
       delay={100}
-      className={`mx-auto mt-5 max-w-2xl text-center text-[1.2rem] leading-relaxed font-medium text-pretty sm:text-[1.35rem] ${tone === 'negro' ? 'text-[#a1a1a6]' : 'text-gris'} ${className}`}
+      className={`mx-auto mt-5 max-w-2xl text-center text-[1.2rem] leading-relaxed font-medium text-pretty sm:text-[1.35rem] ${tone === 'negro' ? 'text-bruma' : 'text-gris'} ${className}`}
     >
       {children}
     </Reveal>
@@ -40,7 +40,7 @@ export function Lead({ children, tone, className = '' }) {
 // Botón pastilla principal y link con flecha
 export function Boton({ href, children, className = '' }) {
   return (
-    <a href={href} className={`inline-flex items-center justify-center rounded-full bg-accion px-6 py-3 text-[1.05rem] font-medium text-white transition hover:bg-accion-hover ${className}`}>
+    <a href={href} className={`inline-flex items-center justify-center rounded-full bg-celeste px-6 py-3 text-[1.05rem] font-semibold text-marino transition hover:bg-celeste-claro ${className}`}>
       {children}
     </a>
   )

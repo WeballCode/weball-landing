@@ -36,7 +36,7 @@ function BarraIA() {
       {/* Resplandor */}
       <div className="borde-ia absolute -inset-4 rounded-full opacity-50 blur-2xl" aria-hidden="true" />
       <div className="borde-ia relative rounded-full p-[2px]">
-        <div className="flex items-center gap-3 rounded-full bg-[#111] px-5 py-4 text-left sm:px-7 sm:py-5">
+        <div className="flex items-center gap-3 rounded-full bg-marino-claro px-5 py-4 text-left sm:px-7 sm:py-5">
           <svg viewBox="0 0 24 24" className="h-5 w-5 shrink-0 text-white/70" fill="currentColor" aria-hidden="true">
             <path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z" />
           </svg>
@@ -64,7 +64,7 @@ export default function Escribis() {
         {columnas.map((c, i) => (
           <Reveal key={c.titulo} delay={i * 120}>
             <h3 className="text-xl font-semibold">{c.titulo}</h3>
-            <p className="mx-auto mt-2 max-w-xs leading-relaxed text-[#a1a1a6]">{c.texto}</p>
+            <p className="mx-auto mt-2 max-w-xs leading-relaxed text-bruma">{c.texto}</p>
           </Reveal>
         ))}
       </div>

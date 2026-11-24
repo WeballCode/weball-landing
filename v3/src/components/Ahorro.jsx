@@ -43,7 +43,7 @@ export default function Ahorro() {
           </Control>
           <div>
             <p className="font-medium">¿Cuánto le pasarías a tu IA?</p>
-            <div className="mt-3 grid grid-cols-3 gap-1 rounded-full bg-black/[0.06] p-1">
+            <div className="mt-3 grid grid-cols-3 gap-1 rounded-full bg-marino/[0.07] p-1">
               {[25, 50, 75].map((p) => (
                 <button
                   key={p}

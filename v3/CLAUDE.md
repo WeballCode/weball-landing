@@ -10,4 +10,4 @@ Las reglas generales (idioma, cómo publicar, diseño) están en el `CLAUDE.md` 
 - La calculadora de ahorro (`components/Ahorro.jsx`) usa los números que pone cada liga; no promete un porcentaje.
 - Imágenes en `v3/public/`. Se compila con `vite.v3.config.js` (en la raíz); `npm run dev:v3` la levanta en local.
 - Lleva `noindex` mientras conviva con el sitio de la raíz.
-- Estética clara inspirada en Apple (blanco, gris `fondo`, títulos grandes, botones pastilla). El panel de Weball se replica en `Panel.jsx`.
+- Estética clara inspirada en Apple pero con la **paleta de Weball** (marino, blanco #fbfbf8, niebla, celeste como acento; botones celeste con texto marino). Los colores están en `src/index.css`. El panel de Weball se replica en `Panel.jsx` con sus colores reales.

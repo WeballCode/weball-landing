@@ -35,7 +35,7 @@ export default function Ligas() {
       <dl className="mt-16 grid gap-10 text-center sm:grid-cols-3">
         {totales.map((n, i) => (
           <Reveal key={n.label} delay={i * 120} className="flex flex-col-reverse">
-            <dt className="mt-1 text-[#a1a1a6]">{n.label}</dt>
+            <dt className="mt-1 text-bruma">{n.label}</dt>
             <dd className="text-5xl font-bold tracking-tight tabular-nums sm:text-6xl">
               <CountUp value={n.value} />
             </dd>

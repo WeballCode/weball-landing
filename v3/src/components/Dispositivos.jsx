@@ -34,13 +34,13 @@ export function Escalado({ ancho, className = '', children }) {
 export function Notebook({ children, className = '' }) {
   return (
     <div className={className}>
-      <div className="rounded-t-[1.4rem] bg-[#1d1d1f] p-[1.6%] pb-[1.2%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)] ring-1 ring-black/10">
+      <div className="rounded-t-[1.4rem] bg-[#032639] p-[1.6%] pb-[1.2%] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.35)] ring-1 ring-black/10">
         <div className="overflow-hidden rounded-[0.35rem] bg-white">
           <Escalado ancho={1280}>{children}</Escalado>
         </div>
       </div>
-      <div className="relative mx-[-6%] h-[0.9rem] rounded-b-[1.2rem] bg-gradient-to-b from-[#d9d9de] to-[#a9a9b0] sm:h-[1.1rem]">
-        <span className="absolute top-0 left-1/2 h-[45%] w-[14%] -translate-x-1/2 rounded-b-lg bg-[#b9b9bf]" />
+      <div className="relative mx-[-6%] h-[0.9rem] rounded-b-[1.2rem] bg-gradient-to-b from-[#dfe7ec] to-[#9fb3c0] sm:h-[1.1rem]">
+        <span className="absolute top-0 left-1/2 h-[45%] w-[14%] -translate-x-1/2 rounded-b-lg bg-bruma" />
       </div>
     </div>
   )
@@ -49,7 +49,7 @@ export function Notebook({ children, className = '' }) {
 // Celular: marco redondeado con isla arriba
 export function Celular({ children, className = '' }) {
   return (
-    <div className={`rounded-[3.2rem] bg-[#1d1d1f] p-[3.2%] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.45)] ring-1 ring-white/10 ${className}`}>
+    <div className={`rounded-[3.2rem] bg-[#032639] p-[3.2%] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.45)] ring-1 ring-white/10 ${className}`}>
       <div className="relative overflow-hidden rounded-[2.75rem] bg-white">
         <Escalado ancho={360}>{children}</Escalado>
       </div>
