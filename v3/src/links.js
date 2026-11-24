@@ -18,3 +18,33 @@ export const AGENDA_URL = 'https://calendly.com/julian-weball/30min'
 export const agendaLink = AGENDA_URL || whatsappLink('Hola Weball, quiero agendar una prueba de Weball con mi liga.')
 // "Contactar": WhatsApp con un saludo ya escrito
 export const contactoLink = whatsappLink('Hola Weball, quiero hacer una consulta.')
+
+// Abre la agenda de Calendly en una ventana encima de la web (sin salir de la página).
+// El código de Calendly se descarga recién la primera vez que alguien toca el botón.
+// Si no carga (sin internet, bloqueador), el link sigue funcionando y abre Calendly en otra pestaña.
+let calendly
+function cargarCalendly() {
+  if (!calendly) {
+    calendly = new Promise((ok, error) => {
+      const css = document.createElement('link')
+      css.rel = 'stylesheet'
+      css.href = 'https://assets.calendly.com/assets/external/widget.css'
+      document.head.appendChild(css)
+      const js = document.createElement('script')
+      js.src = 'https://assets.calendly.com/assets/external/widget.js'
+      js.async = true
+      js.onload = () => ok(window.Calendly)
+      js.onerror = error
+      document.head.appendChild(js)
+    })
+  }
+  return calendly
+}
+
+export function abrirAgenda(e) {
+  if (!AGENDA_URL) return
+  e.preventDefault()
+  cargarCalendly()
+    .then((Calendly) => Calendly.initPopupWidget({ url: `${AGENDA_URL}?hide_gdpr_banner=1&primary_color=3fb6ff` }))
+    .catch(() => window.open(AGENDA_URL, '_blank', 'noopener'))
+}

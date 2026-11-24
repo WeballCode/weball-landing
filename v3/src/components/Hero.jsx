@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Showcase from './Showcase.jsx'
 import { prefersReducedMotion, Reveal } from './motion.jsx'
-import { agendaLink, contactoLink } from '../links.js'
+import { abrirAgenda, agendaLink, contactoLink } from '../links.js'
 import { Boton } from './ui.jsx'
 
 // Las IAs que van pasando en el título. Para sumar otra, agregala a la lista.
@@ -57,7 +57,7 @@ export default function Hero() {
         </Reveal>
 
         <Reveal delay={440} className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Boton href={agendaLink} target="_blank" rel="noopener noreferrer">Probar con mi liga</Boton>
+          <Boton href={agendaLink} onClick={abrirAgenda} target="_blank" rel="noopener noreferrer">Probar con mi liga</Boton>
           <Boton href={contactoLink} target="_blank" rel="noopener noreferrer" claro>Contactar</Boton>
         </Reveal>
 

@@ -1,4 +1,4 @@
-import { WHATSAPP_LABEL, agendaLink, contactoLink, whatsappLink } from '../links.js'
+import { WHATSAPP_LABEL, abrirAgenda, agendaLink, contactoLink, whatsappLink } from '../links.js'
 import { Reveal } from './motion.jsx'
 import { Boton, Link } from './ui.jsx'
 
@@ -21,7 +21,7 @@ export default function Contacto() {
 
         <Reveal delay={200} className="mt-10 flex flex-col items-center gap-3">
           <div className="flex flex-col items-center gap-3 sm:flex-row">
-            <Boton href={agendaLink} target="_blank" rel="noopener noreferrer" className="px-8 py-4 text-lg">Probar con mi liga</Boton>
+            <Boton href={agendaLink} onClick={abrirAgenda} target="_blank" rel="noopener noreferrer" className="px-8 py-4 text-lg">Probar con mi liga</Boton>
             <Boton href={contactoLink} target="_blank" rel="noopener noreferrer" claro className="px-8 py-4 text-lg">Contactar</Boton>
           </div>
           <p className="text-sm text-gris">WhatsApp {WHATSAPP_LABEL}</p>
