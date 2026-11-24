@@ -368,8 +368,7 @@ export default function PanelVivo({ slug, d }) {
           <span className="grid h-8 w-8 place-items-center rounded-full bg-[#dcedfb] text-[13px] font-bold" style={{ color: AZUL }}>J</span>
         </div>
 
-        {/* Contenido en una columna más angosta: en la portada el celular tapa la parte derecha del panel */}
-        <div className="w-full max-w-[930px] flex-1 overflow-hidden px-5 pt-3">
+        <div className="flex-1 overflow-hidden px-5 pt-3">
           <p className="text-[12px]" style={{ color: '#5b6275' }}>Torneo Apertura / 2027 / Masculino / Primera</p>
 
           {/* Encabezado del torneo con sus pestañas */}

@@ -142,12 +142,12 @@ export default function Showcase() {
     <div ref={ref}>
       <div className="relative mx-auto max-w-5xl">
         {/* Notebook con el panel real */}
-        <Notebook className="mx-[4%] sm:mr-[18%] sm:ml-[3%]">
+        <Notebook className="mx-[4%] sm:mr-[25%] sm:ml-0">
           <PanelVivo key={k} slug={tarea.slug} d={t - LISTO} />
         </Notebook>
 
         {/* Celular con la IA, adelante a la derecha */}
-        <div className="relative z-10 mx-auto -mt-16 w-[66%] max-w-[300px] sm:absolute sm:right-0 sm:bottom-[-6%] sm:mt-0 sm:w-[27%] sm:max-w-none">
+        <div className="relative z-10 mx-auto -mt-16 w-[66%] max-w-[300px] sm:absolute sm:right-0 sm:bottom-[-6%] sm:mt-0 sm:w-[25%] sm:max-w-none">
           <Celular>
             <Chat key={k} c={tarea.chat} t={t} />
           </Celular>
