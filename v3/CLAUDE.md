@@ -20,4 +20,4 @@ https://claude.ai/artifact/98BMzgJu3MJgY88pFkHcWi — la estructura es tipo Appl
 - Logo: blanco sobre marino; nunca menos de **96 px** de ancho.
 - **Sin escudos de clubes de primera**, ni de AFA o CONMEBOL. Capturas del producto, sin pantallas inventadas.
 - Voz: voseo, verbo primero, frases cortas. No decir "gratis", "en minutos" ni "para todo tipo de liga". Cada número, con fuente y fecha.
-- El panel replicado () usa los colores del sistema del manual: marino por defecto, estados en verde #419C3B, bordes #E3E8EC.
+- El panel replicado (`Panel.jsx`) usa los colores del sistema del manual: marino por defecto, estados en verde #419C3B, bordes #E3E8EC.
