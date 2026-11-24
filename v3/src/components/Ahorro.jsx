@@ -1,105 +1,94 @@
-import { useState } from 'react'
+import { tareas } from '../tareas.js'
 import { Reveal } from './motion.jsx'
 import { Lead, Section, Title } from './ui.jsx'
 
-// Calculadora simple: la liga pone cuántos equipos tiene y cuánto vale una hora de quien organiza.
-// Para cada una de las 4 tareas mostramos cuántas horas lleva hoy, a mano, y cuántas con Weball + IA.
-// Supuestos (estimaciones, ajustalos acá): 2 torneos por año, 30 fechas por año, 15 jugadores por equipo,
-// un partido por cada dos equipos en cada fecha.
-const FECHAS = 30
-const TORNEOS = 2
-
-function calcular(equipos) {
-  const partidos = equipos / 2 // por fecha
-  return [
-    // Hoy: ~40 min por equipo (inscripción + 15 fichas). Con IA: ~2 min por equipo para revisar.
-    { tarea: 'Inscripciones y fichajes', hoy: (equipos * 40) / 60, ia: (equipos * 2) / 60 },
-    // Hoy: 8 h por torneo + 5 min por equipo. Con IA: 15 min por torneo.
-    { tarea: 'Fixtures', hoy: TORNEOS * (8 + (equipos * 5) / 60), ia: TORNEOS * 0.25 },
-    // Hoy: 3 min por partido cada fecha. Con IA: 15 min por fecha.
-    { tarea: 'Programaciones', hoy: (FECHAS * partidos * 3) / 60, ia: FECHAS * 0.25 },
-    // Hoy: 3 min por partido (cargar y publicar). Con IA: 20 min por fecha.
-    { tarea: 'Resultados', hoy: (FECHAS * partidos * 3) / 60, ia: (FECHAS * 20) / 60 },
-  ]
-}
-
-const fmt = (n) => Math.round(n).toLocaleString('es-AR')
-
-function Control({ label, valor, children }) {
-  return (
-    <label className="block">
-      <span className="flex items-baseline justify-between gap-4">
-        <span className="font-medium">{label}</span>
-        <span className="text-lg font-semibold tabular-nums">{valor}</span>
-      </span>
-      {children}
-    </label>
-  )
+// Antes y después, tarea por tarea: cómo se hace hoy a mano (pasos y horas aproximadas para una liga
+// de unos 20 equipos) y el pedido que lo reemplaza. Los pedidos salen de tareas.js (los mismos de las tarjetas).
+const manual = {
+  inscripcion: {
+    horas: '~10 h por torneo',
+    pasos: [
+      'Juntar los formularios de cada equipo por WhatsApp o mail.',
+      'Pasar a mano los datos de cada equipo y de cada jugador.',
+      'Revisar quién ya está fichado en otro club.',
+      'Cargarlos uno por uno en el sistema.',
+    ],
+  },
+  torneo: {
+    horas: '~6 h por torneo',
+    pasos: [
+      'Armar los grupos en una planilla.',
+      'Calcular fechas y cruces para que nadie se repita.',
+      'Dibujar el cuadro de playoffs.',
+      'Pasar cada partido al sistema.',
+    ],
+  },
+  programacion: {
+    horas: '~3 h por fecha',
+    pasos: [
+      'Pedir a cada sede las canchas y horarios libres.',
+      'Encajar los partidos sin que un equipo juegue dos veces a la vez.',
+      'Rehacer todo cuando un club pide un cambio.',
+      'Avisarle a cada club su día y horario.',
+    ],
+  },
+  resultados: {
+    horas: '~2 h por fecha',
+    pasos: [
+      'Juntar las planillas de cada cancha.',
+      'Cargar resultados, goles y tarjetas.',
+      'Actualizar las tablas.',
+      'Publicarlo en la web y las redes.',
+    ],
+  },
 }
 
 export default function Ahorro() {
-  const [equipos, setEquipos] = useState(40)
-  const [valorHora, setValorHora] = useState(8000)
-
-  const filas = calcular(equipos)
-  const hoy = filas.reduce((s, f) => s + f.hoy, 0)
-  const ia = filas.reduce((s, f) => s + f.ia, 0)
-  const horas = hoy - ia
-  const maximo = Math.max(...filas.map((f) => f.hoy))
-
   return (
     <Section id="ahorro">
       <Title>Ahorrás tiempo. Ahorrás plata.</Title>
-      <Lead>Poné los números de tu liga y fijate cuánto ahorrás con nosotros.</Lead>
+      <Lead>Así se hace hoy cada tarea de tu liga, y así se hace con Weball.</Lead>
 
-      <Reveal delay={150} className="mx-auto mt-16 max-w-5xl overflow-hidden rounded-[1.75rem] bg-fondo">
-        <div className="grid gap-8 p-7 sm:grid-cols-2 sm:gap-10 sm:p-10">
-          <Control label="Equipos en tu liga" valor={equipos}>
-            <input type="range" min="8" max="200" step="2" value={equipos} onChange={(e) => setEquipos(+e.target.value)} className="mt-3 w-full" />
-          </Control>
-          <Control label="Lo que pagás por hora de gestión" valor={`$ ${fmt(valorHora)}`}>
-            <input type="range" min="2000" max="30000" step="500" value={valorHora} onChange={(e) => setValorHora(+e.target.value)} className="mt-3 w-full" />
-          </Control>
-        </div>
+      <div className="mx-auto mt-16 flex max-w-5xl flex-col gap-5">
+        {tareas.map((t, i) => {
+          const m = manual[t.slug]
+          return (
+            <Reveal key={t.slug} delay={80} className="grid overflow-hidden rounded-[1.75rem] bg-fondo md:grid-cols-2">
+              {/* Hoy, a mano */}
+              <div className="p-7 sm:p-10">
+                <p className="text-sm font-semibold text-gris-claro">0{i + 1}</p>
+                <h3 className="mt-1 text-[1.7rem] leading-tight font-bold tracking-tight">{t.titulo}</h3>
+                <div className="mt-6 flex items-baseline justify-between gap-3">
+                  <p className="text-sm font-semibold tracking-wide text-gris uppercase">Hoy, a mano</p>
+                  <p className="text-lg font-bold text-tinta tabular-nums">{m.horas}</p>
+                </div>
+                <ul className="mt-3 flex flex-col gap-2.5">
+                  {m.pasos.map((p) => (
+                    <li key={p} className="flex gap-3 text-[1.02rem] leading-snug text-gris">
+                      <span className="mt-[0.45em] h-1.5 w-1.5 shrink-0 rounded-full bg-marino/30" aria-hidden="true" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-        <div className="bg-white p-7 sm:m-2 sm:rounded-[1.4rem] sm:p-10">
-          {/* Comparación tarea por tarea: barra gris = hoy, barra celeste = con Weball */}
-          <div className="flex items-center gap-5 text-xs font-medium text-gris">
-            <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-marino/20" />Hoy, a mano</span>
-            <span className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-celeste" />Con Weball + IA</span>
-          </div>
-          <ul className="mt-6 flex flex-col gap-5">
-            {filas.map((f) => (
-              <li key={f.tarea}>
+              {/* Con Weball: un pedido */}
+              <div className="flex flex-col justify-center bg-white p-7 sm:p-10 md:m-2 md:rounded-[1.4rem]">
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="font-semibold">{f.tarea}</span>
-                  <span className="text-sm text-gris tabular-nums">
-                    {fmt(f.hoy)} h → <b className="text-tinta">{fmt(Math.max(f.ia, 1))} h</b>
-                  </span>
+                  <p className="texto-ia text-sm font-semibold tracking-wide uppercase">Con Weball + IA</p>
+                  <p className="texto-ia text-lg font-bold tabular-nums">~5 min</p>
                 </div>
-                <div className="mt-2 flex flex-col gap-1">
-                  <span className="block h-2 rounded-full bg-marino/15 transition-all duration-500" style={{ width: `${(f.hoy / maximo) * 100}%` }} />
-                  <span className="block h-2 min-w-2 rounded-full bg-celeste transition-all duration-500" style={{ width: `${(f.ia / maximo) * 100}%` }} />
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-10 grid gap-6 border-t border-marino/10 pt-8 sm:grid-cols-2">
-            <div>
-              <p className="text-sm font-medium text-gris">Horas que ahorrás por año</p>
-              <p className="mt-1 text-[2.1rem] leading-tight font-bold tracking-tight tabular-nums sm:text-6xl">{fmt(horas)} h</p>
-            </div>
-            <div>
-              <p className="text-sm font-medium text-gris">Plata que ahorrás por año</p>
-              <p className="texto-ia mt-1 text-[2.1rem] leading-tight font-bold tracking-tight tabular-nums sm:text-6xl">$ {fmt(horas * valorHora)}</p>
-            </div>
-          </div>
-          <p className="mt-6 text-xs text-gris-claro">
-            Estimación con {TORNEOS} torneos y {FECHAS} fechas por año, y 15 jugadores por equipo. De {fmt(hoy)} horas de gestión pasás a {fmt(ia)}.
-          </p>
-        </div>
-      </Reveal>
+                <p className="mt-5 ml-auto w-fit max-w-[95%] rounded-[20px] rounded-br-[6px] bg-celeste-profundo px-4 py-3 text-[1.05rem] leading-snug text-white">
+                  {t.ejemplo}
+                </p>
+                <p className="mt-4 text-[1.02rem] leading-snug text-gris">
+                  Confirmás, y queda cargado y publicado.
+                </p>
+              </div>
+            </Reveal>
+          )
+        })}
+      </div>
     </Section>
   )
 }
