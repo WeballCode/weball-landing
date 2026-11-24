@@ -64,7 +64,7 @@ function Contenido({ panel, listo }) {
             <span className="text-[#8a90a2]">{i + 1}</span>
             <span className="flex items-center gap-3"><Escudo id={id} />{clubes[id].nombre}</span>
             <span>{n} fichados</span>
-            <span><span className="rounded-full bg-[#e7f7ec] px-2.5 py-1 text-[12px] font-semibold text-[#1f8a3e]">Inscripto</span></span>
+            <span><span className="rounded-[4px] bg-activo px-2.5 py-1 text-[12px] font-medium text-white">Inscripto</span></span>
           </Fila>
         ))}
       </>
@@ -98,7 +98,7 @@ function Contenido({ panel, listo }) {
         {filas.map(([h, c, a, b], i) => (
           <Fila key={a} listo={listo} i={i} className={cols}>
             <span>Sáb 14/3</span>
-            <span className="font-semibold">{h}</span>
+            <span className="font-medium">{h}</span>
             <span className="text-[#5b6275]">{c}</span>
             <span className="flex items-center gap-2.5"><Escudo id={a} size={22} />{clubes[a].nombre}<span className="px-1 text-[#8a90a2]">vs</span><Escudo id={b} size={22} />{clubes[b].nombre}</span>
           </Fila>
@@ -128,7 +128,7 @@ function Contenido({ panel, listo }) {
 // Sólo la tabla del panel (para las tarjetas de "Cuatro pedidos")
 export function TablaPanel({ panel }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-panel-linea bg-white text-left font-[Inter,Roboto,Arial,sans-serif]" style={{ width: 760 }}>
+    <div className="overflow-hidden rounded-lg border border-panel-linea bg-white text-left " style={{ width: 760 }}>
       <Contenido panel={panel} listo />
     </div>
   )
@@ -138,7 +138,7 @@ export default function Panel({ panel, listo = true }) {
   const pestañas = ['Equipos', 'Partidos', 'Clasificación', 'Estadísticas', 'Configuración']
   const vacio = { equipos: 'Inscribiendo equipos…', partidos: 'Generando el fixture…', programacion: 'Programando la fecha…', tabla: 'Cargando resultados…' }
   return (
-    <div className="flex bg-white text-left font-[Inter,Roboto,Arial,sans-serif]" style={{ height: 800 }}>
+    <div className="flex bg-white text-left " style={{ height: 800 }}>
       {/* Barra lateral */}
       <aside className="flex w-[68px] shrink-0 flex-col items-center gap-2 bg-panel py-4">
         <span className="mb-4 grid h-11 w-11 place-items-center rounded-full bg-white">
@@ -165,7 +165,7 @@ export default function Panel({ panel, listo = true }) {
             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="7" /><path d="M20 20l-4-4" /></svg>
             Buscar <span className="ml-auto text-[11px]">Ctrl+K</span>
           </span>
-          <span className="flex items-center gap-1.5 rounded-full bg-[#eef6ff] px-3 py-1.5 text-[12px] font-semibold text-[#0b6fcc]">
+          <span className="flex items-center gap-1.5 rounded-full bg-[#e3f0f7] px-3 py-1.5 text-[12px] font-medium text-[#0b6fcc]">
             <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="currentColor"><path d="M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4z" /></svg>
             IA conectada
           </span>
@@ -176,11 +176,11 @@ export default function Panel({ panel, listo = true }) {
           <div className="border-b border-panel-linea bg-white px-6 pt-4">
             <p className="text-[11px] text-[#8a90a2]">Apertura 2027 / 2027 / <b className="text-[#1f2433]">Primera</b></p>
             <div className="mt-3 flex items-center gap-4">
-              <span className="grid h-14 w-14 place-items-center rounded-xl border border-panel-linea bg-white">
+              <span className="grid h-14 w-14 place-items-center rounded-lg border border-panel-linea bg-white">
                 <svg viewBox="0 0 24 24" className="h-8 w-8 text-panel" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d={iconos[ACTIVO]} /></svg>
               </span>
               <div>
-                <p className="text-[13px] font-semibold text-[#1f2433]">Torneo Apertura 2027</p>
+                <p className="text-[13px] font-medium text-[#1f2433]">Torneo Apertura 2027</p>
                 <p className="text-[19px] font-bold text-[#1f2433]">Primera</p>
                 <p className="text-[11px] text-[#8a90a2]">Futsal</p>
               </div>
@@ -196,12 +196,12 @@ export default function Panel({ panel, listo = true }) {
 
           <div className="px-6 pt-5">
             <div className="flex items-center gap-2">
-              <span className="rounded-md bg-panel px-4 py-2 text-[13px] font-semibold text-white">Zona A</span>
+              <span className="rounded-md bg-panel px-4 py-2 text-[13px] font-medium text-white">Zona A</span>
               <span className="rounded-md border border-panel-linea bg-white px-4 py-2 text-[13px] text-[#1f2433]">Zona B</span>
               <span className="rounded-md border border-panel-linea bg-white px-4 py-2 text-[13px] text-[#1f2433]">Playoffs</span>
-              <span className="ml-auto rounded-md bg-panel px-4 py-2 text-[13px] font-semibold text-white">+ Nuevo</span>
+              <span className="ml-auto rounded-md bg-panel px-4 py-2 text-[13px] font-medium text-white">+ Nuevo</span>
             </div>
-            <div className="relative mt-4 overflow-hidden rounded-xl border border-panel-linea bg-white" style={{ minHeight: 44 + 56 * 6 + 2 }}>
+            <div className="relative mt-4 overflow-hidden rounded-lg border border-panel-linea bg-white" style={{ minHeight: 44 + 56 * 6 + 2 }}>
               <Contenido panel={panel} listo={listo} />
               {!listo && <Vacio texto={vacio[panel.vista]} />}
             </div>
