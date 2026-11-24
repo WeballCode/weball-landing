@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import Showcase from './Showcase.jsx'
 import { prefersReducedMotion, Reveal } from './motion.jsx'
-import { Boton, Link } from './ui.jsx'
+import { agendaLink, contactoLink } from '../links.js'
+import { Boton } from './ui.jsx'
 
 // Las IAs que van pasando en el título. Para sumar otra, agregala a la lista.
 const IAS = ['Gemini', 'ChatGPT', 'Claude']
@@ -50,17 +51,14 @@ export default function Hero() {
             con <PalabraQueCambia />
           </Reveal>
         </h1>
-        <Reveal as="p" delay={260} className="mt-3 text-[1.6rem] leading-tight font-bold tracking-[-0.02em] sm:text-[2.2rem]">
-          O con tu IA favorita.
-        </Reveal>
 
         <Reveal as="p" delay={320} className="mx-auto mt-6 max-w-2xl text-[1.2rem] leading-relaxed font-medium text-gris text-pretty sm:text-[1.4rem]">
           Inscripciones. Fixtures. Programaciones de partidos. Carga de resultados. Pedile todo a tu IA y Weball lo hace.
         </Reveal>
 
-        <Reveal delay={440} className="mt-8 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-7">
-          <Boton href="#contacto">Probalo con tu liga</Boton>
-          <Link href="#como-funciona">Mirá cómo funciona</Link>
+        <Reveal delay={440} className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <Boton href={agendaLink} target="_blank" rel="noopener noreferrer">Probar con mi liga</Boton>
+          <Boton href={contactoLink} target="_blank" rel="noopener noreferrer" claro>Contactar</Boton>
         </Reveal>
 
         <Reveal delay={300} className="mt-16 sm:mt-24">

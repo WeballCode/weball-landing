@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { agendaLink } from '../links.js'
 
 const links = [
   { href: '#toda-tu-liga', label: 'Qué le pedís' },
@@ -26,8 +27,8 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <a href="#contacto" className="rounded-full bg-celeste px-3.5 py-1 text-[13px] font-semibold text-marino transition hover:bg-celeste-claro">
-            Probalo
+          <a href={agendaLink} target="_blank" rel="noopener noreferrer" className="rounded-full bg-celeste px-3.5 py-1 text-[13px] font-semibold text-marino transition hover:bg-celeste-claro">
+            Probar con mi liga
           </a>
           <button
             type="button"

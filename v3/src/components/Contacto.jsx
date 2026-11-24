@@ -1,6 +1,6 @@
-import { WHATSAPP_LABEL, whatsappLink } from '../links.js'
+import { WHATSAPP_LABEL, agendaLink, contactoLink, whatsappLink } from '../links.js'
 import { Reveal } from './motion.jsx'
-import { Link } from './ui.jsx'
+import { Boton, Link } from './ui.jsx'
 
 const opciones = [
   { label: 'Quiero probarlo con mi liga', message: 'Hola Weball, quiero probar organizar mi liga con mi IA.' },
@@ -20,15 +20,11 @@ export default function Contacto() {
         </Reveal>
 
         <Reveal delay={200} className="mt-10 flex flex-col items-center gap-3">
-          <a
-            href={whatsappLink(opciones[0].message)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full bg-celeste px-8 py-4 text-lg font-semibold text-marino transition hover:bg-celeste-claro"
-          >
-            Escribinos por WhatsApp
-          </a>
-          <p className="text-sm text-gris">{WHATSAPP_LABEL}</p>
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <Boton href={agendaLink} target="_blank" rel="noopener noreferrer" className="px-8 py-4 text-lg">Probar con mi liga</Boton>
+            <Boton href={contactoLink} target="_blank" rel="noopener noreferrer" claro className="px-8 py-4 text-lg">Contactar</Boton>
+          </div>
+          <p className="text-sm text-gris">WhatsApp {WHATSAPP_LABEL}</p>
         </Reveal>
 
         <Reveal delay={300} className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-8">

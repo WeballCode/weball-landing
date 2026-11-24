@@ -38,9 +38,13 @@ export function Lead({ children, tone, className = '' }) {
 }
 
 // Botón pastilla principal y link con flecha
-export function Boton({ href, children, className = '' }) {
+export function Boton({ href, children, className = '', claro = false, ...rest }) {
   return (
-    <a href={href} className={`inline-flex items-center justify-center rounded-full bg-celeste px-6 py-3 text-[1.05rem] font-semibold text-marino transition hover:bg-celeste-claro ${className}`}>
+    <a
+      href={href}
+      className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-[1.05rem] font-semibold transition ${claro ? 'bg-white text-marino ring-1 ring-marino/15 hover:bg-fondo' : 'bg-celeste text-marino hover:bg-celeste-claro'} ${className}`}
+      {...rest}
+    >
       {children}
     </a>
   )
