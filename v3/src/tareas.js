@@ -1,6 +1,6 @@
 // Las 4 tareas que la liga le pide a su IA. De acá salen:
 //  - el chat del celular y la pantalla del panel en la portada (Showcase.jsx),
-//  - las tarjetas de "Cuatro pedidos" (Tareas.jsx).
+//  - las tarjetas de "Armá tu liga en 4 pedidos" (Tareas.jsx).
 // Los clubes son reales (juegan en ligas con Weball, escudos en public/clubes/); los resultados y horarios son de ejemplo.
 
 export const clubes = {
@@ -31,12 +31,12 @@ export const tareas = [
     corto: 'Equipos',
     titulo: 'Equipos y fichajes.',
     texto: 'Pasale la lista como la tengas: un formulario, una planilla o un mensaje. Los equipos quedan inscriptos y los jugadores, fichados en su club.',
-    ejemplo: 'Inscribí a los equipos del formulario y fichá a sus jugadores.',
+    ejemplo: 'Inscribí a todos los equipos del formulario 2027 al Torneo Apertura 2027. Fichá a todos sus jugadores.',
     chat: {
-      pedido: 'Inscribí a los 16 equipos del formulario y fichá a sus jugadores.',
-      confirma: 'Voy a inscribir 16 equipos en el Apertura y fichar 214 jugadores. ¿Confirmo?',
-      pasos: ['Leyendo las inscripciones', 'Inscribiendo los equipos', 'Fichando 214 jugadores'],
-      respuesta: 'Listo: 16 equipos inscriptos y 214 jugadores fichados. 2 ya estaban en otro club, te los marqué para revisar.',
+      pedido: 'Inscribí a todos los equipos del formulario 2027 al Torneo Apertura 2027. Fichá a todos sus jugadores.',
+      confirma: 'Voy a inscribir 20 equipos en el Apertura 2027 y fichar 268 jugadores. ¿Confirmo?',
+      pasos: ['Leyendo las inscripciones', 'Inscribiendo los equipos', 'Fichando 268 jugadores'],
+      respuesta: 'Listo: 20 equipos inscriptos y 268 jugadores fichados. 2 ya estaban en otro club, te los marqué para revisar.',
     },
     panel: {
       pestaña: 'Equipos',
@@ -50,13 +50,13 @@ export const tareas = [
     slug: 'torneo',
     corto: 'Fixture',
     titulo: 'Torneos y fixtures.',
-    texto: 'Decile el formato con tus palabras: zonas, ruedas, playoffs. El torneo queda armado y el fixture, completo, fecha por fecha.',
-    ejemplo: 'Armá el Apertura: 2 zonas de 8, una rueda y después cuartos.',
+    texto: 'Decile el formato con tus palabras: grupos, fases, copas. El torneo queda armado y el fixture, completo, fecha por fecha.',
+    ejemplo: 'Armá el Apertura 2027 en dos fases. La primera de dos grupos de 10 y luego una copa que empieza desde octavos de final.',
     chat: {
-      pedido: 'Armá el Apertura: 2 zonas de 8, una rueda y después cuartos de final.',
-      confirma: 'Creo zonas A y B, 7 fechas cada una y playoffs desde cuartos. ¿Confirmo?',
-      pasos: ['Creando el torneo', 'Sorteando las zonas', 'Generando 56 partidos'],
-      respuesta: 'Listo, el fixture está armado. Te muestro la fecha 1 de la zona A.',
+      pedido: 'Armá el Apertura 2027 en dos fases. La primera de dos grupos de 10 y luego una copa que empieza desde octavos de final.',
+      confirma: 'Creo los grupos A y B de 10 equipos (9 fechas cada uno) y una copa desde octavos de final. ¿Confirmo?',
+      pasos: ['Creando el torneo', 'Sorteando los grupos', 'Generando 105 partidos'],
+      respuesta: 'Listo, el fixture está armado. Te muestro la fecha 1 del grupo A.',
     },
     panel: {
       pestaña: 'Partidos',
@@ -69,7 +69,7 @@ export const tareas = [
   {
     slug: 'programacion',
     corto: 'Partidos',
-    titulo: 'Programación.',
+    titulo: 'Programaciones.',
     texto: 'Contale qué canchas y horarios tenés. Cada partido queda con día, hora y cancha, sin que un equipo juegue dos veces a la vez.',
     ejemplo: 'Programá la fecha 1 el sábado de 9 a 18, en las canchas 1 a 4.',
     chat: {

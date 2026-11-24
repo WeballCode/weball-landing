@@ -16,12 +16,12 @@ function PalabraQueCambia() {
   }, [])
 
   return (
-    <span className="relative inline-grid overflow-hidden align-bottom" aria-label={`${IAS.join(', ')}.`}>
+    <span className="relative inline-grid text-left align-baseline" aria-label={`${IAS.join(', ')}.`}>
       {IAS.map((ia, n) => (
         <span
           key={ia}
           aria-hidden="true"
-          className="texto-ia col-start-1 row-start-1 pb-[0.1em] whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)]"
+          className="texto-ia col-start-1 row-start-1 pb-[0.12em] whitespace-nowrap transition-all duration-500 ease-[cubic-bezier(0.2,0.7,0.2,1)]"
           style={{
             opacity: n === i ? 1 : 0,
             transform: n === i ? 'none' : `translateY(${n === (i + IAS.length - 1) % IAS.length ? '-0.6em' : '0.6em'})`,
@@ -52,7 +52,7 @@ export default function Hero() {
         </h1>
 
         <Reveal as="p" delay={320} className="mx-auto mt-6 max-w-2xl text-[1.2rem] leading-relaxed font-medium text-gris text-pretty sm:text-[1.4rem]">
-          Inscripciones, fixture, programación y resultados. Pedíselo a tu IA con tus palabras, y Weball lo hace.
+          Inscripciones. Fixtures. Programaciones de partidos. Carga de resultados. Pedile todo a tu IA y Weball lo hace.
         </Reveal>
 
         <Reveal delay={440} className="mt-8 flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-7">

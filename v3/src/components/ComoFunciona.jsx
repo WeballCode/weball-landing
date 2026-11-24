@@ -2,9 +2,9 @@ import { Reveal } from './motion.jsx'
 import { Lead, Section, Title } from './ui.jsx'
 
 const pasos = [
-  { titulo: 'Conectá.', texto: 'Sumás Weball a tu IA una sola vez, en un par de minutos. Te acompañamos.' },
-  { titulo: 'Pedí.', texto: 'Escribile lo que necesitás, en español y con tus palabras.' },
-  { titulo: 'Confirmá.', texto: 'Tu IA te cuenta qué va a hacer. Decís que sí, y queda cargado y publicado.' },
+  { titulo: 'Conectá.', texto: 'Sumá Weball a tu IA una sola vez. Te lo hacemos nosotros.' },
+  { titulo: 'Pedí.', texto: 'Escribile lo que necesitás, con tus palabras.' },
+  { titulo: 'Confirmá.', texto: 'Ves y controlás lo que hace tu IA. Confirmás, y queda todo cargado y publicado.' },
 ]
 
 const control = [
@@ -20,7 +20,7 @@ const control = [
   },
   {
     titulo: 'Todo a la vista.',
-    texto: 'Lo que hace queda en Weball. Lo revisás y lo corregís desde el panel cuando quieras.',
+    texto: 'Todo lo que hace lo ves en Weball. Lo revisás y lo corregís cuando quieras.',
     icono: 'M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12zM12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z',
   },
 ]

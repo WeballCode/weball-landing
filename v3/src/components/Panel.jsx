@@ -79,7 +79,7 @@ function Contenido({ panel, listo }) {
         </Encabezado>
         {filas.map(([a, b], i) => (
           <Fila key={a} listo={listo} i={i} className={cols}>
-            <span className="text-[#8a90a2]">Zona A</span>
+            <span className="text-[#8a90a2]">Grupo A</span>
             <span className="flex items-center justify-end gap-3">{clubes[a].nombre}<Escudo id={a} /></span>
             <span className="text-center text-[12px] font-bold text-[#8a90a2]">VS</span>
             <span className="flex items-center gap-3"><Escudo id={b} />{clubes[b].nombre}</span>
@@ -125,7 +125,7 @@ function Contenido({ panel, listo }) {
   )
 }
 
-// Sólo la tabla del panel (para las tarjetas de "Cuatro pedidos")
+// Sólo la tabla del panel (para las tarjetas de "Armá tu liga en 4 pedidos")
 export function TablaPanel({ panel }) {
   return (
     <div className="overflow-hidden rounded-xl border border-panel-linea bg-white text-left font-[Inter,Roboto,Arial,sans-serif]" style={{ width: 760 }}>
@@ -196,8 +196,8 @@ export default function Panel({ panel, listo = true }) {
 
           <div className="px-6 pt-5">
             <div className="flex items-center gap-2">
-              <span className="rounded-md bg-panel px-4 py-2 text-[13px] font-semibold text-white">Zona A</span>
-              <span className="rounded-md border border-panel-linea bg-white px-4 py-2 text-[13px] text-[#1f2433]">Zona B</span>
+              <span className="rounded-md bg-panel px-4 py-2 text-[13px] font-semibold text-white">Grupo A</span>
+              <span className="rounded-md border border-panel-linea bg-white px-4 py-2 text-[13px] text-[#1f2433]">Grupo B</span>
               <span className="rounded-md border border-panel-linea bg-white px-4 py-2 text-[13px] text-[#1f2433]">Playoffs</span>
               <span className="ml-auto rounded-md bg-panel px-4 py-2 text-[13px] font-semibold text-white">+ Nuevo</span>
             </div>
