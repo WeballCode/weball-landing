@@ -142,7 +142,7 @@ export default function Showcase() {
     <div ref={ref}>
       <div className="relative mx-auto max-w-5xl">
         {/* Notebook con el panel real */}
-        <Notebook className="mx-[4%] sm:mr-[25%] sm:ml-0">
+        <Notebook className="mx-[4%] sm:mr-[21%] sm:ml-0">
           <PanelVivo key={k} slug={tarea.slug} d={t - LISTO} />
         </Notebook>
 
