@@ -5,9 +5,11 @@ import { Lead, Section, Title } from './ui.jsx'
 
 // Cifras de las ligas clientes (las pasó el socio en noviembre de 2026)
 const totales = [
+  { value: '+40.000', label: 'jugadores fichados' },
+  { value: '+1.500', label: 'partidos por semana' },
   { value: '+500', label: 'clubes' },
-  { value: '1.500', label: 'partidos por semana' },
-  { value: '40.000', label: 'jugadores fichados' },
+  { value: '+400', label: 'árbitros' },
+  { value: '+150', label: 'torneos' },
 ]
 
 function Cinta({ oculta }) {
@@ -30,14 +32,14 @@ export default function Ligas() {
 
       <Reveal delay={150} className="mt-12 flex items-center justify-center gap-10 sm:gap-14">
         <img src="./ligas/futsala-blanco.png" alt="FUTSALA" className="h-8 w-auto sm:h-10" />
-        <img src="./ligas/bafi.png" alt="BAFI" className="h-16 w-auto sm:h-20" />
+        <img src="./ligas/bafi-blanco.png" alt="BAFI" className="h-14 w-auto sm:h-16" />
       </Reveal>
 
-      <dl className="mt-16 grid gap-10 text-center sm:grid-cols-3">
+      <dl className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 text-center sm:grid-cols-3 lg:grid-cols-5">
         {totales.map((n, i) => (
-          <Reveal key={n.label} delay={i * 120} className="flex flex-col-reverse">
+          <Reveal key={n.label} delay={i * 100} className={`flex flex-col-reverse ${i === 0 ? 'col-span-2 sm:col-span-1' : ''}`}>
             <dt className="mt-1 text-bruma">{n.label}</dt>
-            <dd className="text-5xl font-bold tracking-tight tabular-nums sm:text-6xl">
+            <dd className="text-[2.6rem] font-bold tracking-tight tabular-nums sm:text-5xl">
               <CountUp value={n.value} />
             </dd>
           </Reveal>

@@ -1,9 +1,9 @@
-import { clubes } from '../tareas.js'
+import { clubes, tareas } from '../tareas.js'
 import { Reveal } from './motion.jsx'
 import { Lead, Section, Title } from './ui.jsx'
 
-// "Toda tu liga, en una conversación": además de las 4 tareas, todo lo demás que le podés pedir a tu IA
-// (sale de la campaña de Instagram: tribunal, árbitros, administración…). Cada tarjeta: área, un pedido y cómo queda.
+// "Toda tu liga, en una conversación": todo lo que le podés pedir a tu IA, una tarjeta por área (área, un pedido y cómo queda).
+// Las 4 primeras usan los mismos pedidos que la animación de la portada (tareas.js); el resto sale de la campaña de Instagram.
 
 function Chip({ children, color = 'verde' }) {
   const estilos = {
@@ -19,36 +19,47 @@ function Escudo({ id }) {
   return <img src={`./clubes/${clubes[id].escudo}.png`} alt={clubes[id].nombre} className="h-8 w-8 object-contain" />
 }
 
+const [inscripcion, torneo, programacion, resultados] = tareas
+
 const areas = [
   {
-    titulo: 'Fichajes',
-    pedido: 'Fichá a Lucía Pérez en Platense.',
+    titulo: 'Equipos y fichajes',
+    pedido: inscripcion.ejemplo,
     visual: (
       <>
-        <span className="grid h-8 w-8 place-items-center rounded-full bg-marino/[0.07]">
-          <svg viewBox="0 0 24 24" className="h-4 w-4 text-gris" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="8" r="4" /><path d="M4 21c0-4 4-6 8-6s8 2 8 6" /></svg>
-        </span>
-        <Chip>Fichaje aprobado</Chip>
+        <Chip>20 equipos inscriptos</Chip>
+        <Chip>268 fichados</Chip>
       </>
     ),
   },
   {
-    titulo: 'Torneos',
-    pedido: 'Armá la Copa con eliminación directa.',
+    titulo: 'Torneos y fixtures',
+    pedido: torneo.ejemplo,
     visual: (
-      <span className="flex items-center gap-1.5 text-[13px] font-semibold text-gris">
-        <Chip color="azul">Octavos</Chip>›<Chip color="azul">Cuartos</Chip>›<Chip color="azul">Final</Chip>
+      <span className="flex flex-wrap items-center gap-1.5 text-[13px] font-semibold text-gris">
+        <Chip color="azul">Grupos A y B</Chip>›<Chip color="azul">Cuartos</Chip>›<Chip color="azul">Final</Chip>
       </span>
     ),
   },
   {
-    titulo: 'Resultados',
-    pedido: 'Cargá el resultado del partido de las 21.',
+    titulo: 'Programaciones',
+    pedido: programacion.ejemplo,
     visual: (
       <>
-        <Escudo id="racing" />
-        <span className="rounded-lg bg-marino px-3 py-1 text-[15px] font-bold tracking-widest text-white tabular-nums">2 : 1</span>
-        <Escudo id="independiente" />
+        <Chip color="azul">Sáb 09:00 · Cancha 1</Chip>
+        <Chip>Sin choques</Chip>
+      </>
+    ),
+  },
+  {
+    titulo: 'Resultados y tablas',
+    pedido: resultados.ejemplo,
+    visual: (
+      <>
+        <Escudo id="boca" />
+        <span className="rounded-lg bg-marino px-3 py-1 text-[15px] font-bold tracking-widest text-white tabular-nums">3 : 1</span>
+        <Escudo id="river" />
+        <Chip>Publicado</Chip>
       </>
     ),
   },
@@ -98,21 +109,20 @@ export default function Conversacion() {
       <Title>
         Toda tu liga, <span className="texto-ia">en una conversación.</span>
       </Title>
-      <Lead>Además de armar el torneo, tu IA te ayuda con todo lo que pasa en la liga cada semana.</Lead>
+      <Lead>Lo que más tiempo le lleva a tu liga, resolvelo con un mensaje.</Lead>
 
-      <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {areas.map((a, i) => (
-          <Reveal key={a.titulo} delay={(i % 3) * 100} className="flex flex-col rounded-[1.5rem] border border-marino/10 bg-white p-7">
+          <Reveal key={a.titulo} delay={(i % 4) * 100} className="flex flex-col rounded-[1.5rem] border border-marino/10 bg-white p-7">
             <h3 className="text-[1.35rem] font-bold tracking-tight">{a.titulo}</h3>
             <p className="mt-1.5 text-[1.02rem] leading-snug text-gris">“{a.pedido}”</p>
             <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-5">{a.visual}</div>
           </Reveal>
         ))}
+        <Reveal delay={300} className="grid place-items-center rounded-[1.5rem] bg-celeste p-7">
+          <span className="text-[1.6rem] font-bold tracking-tight text-marino">…y mucho más</span>
+        </Reveal>
       </div>
-
-      <Reveal className="mt-10 text-center">
-        <span className="inline-block rounded-full bg-celeste px-6 py-3 text-lg font-bold text-marino">…y mucho más</span>
-      </Reveal>
     </Section>
   )
 }

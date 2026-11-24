@@ -3,7 +3,7 @@ import { Reveal } from './motion.jsx'
 import { Lead, Section, Title } from './ui.jsx'
 
 // Antes y después, tarea por tarea: cómo se hace hoy a mano (3 pasos) y el pedido que lo reemplaza.
-// Los pedidos salen de tareas.js (los mismos de las tarjetas de "Armá tu liga en 4 pedidos").
+// Los pedidos salen de tareas.js (los mismos de la portada y de "Toda tu liga").
 const manual = {
   inscripcion: [
     'Juntar los formularios de cada equipo por WhatsApp o mail.',

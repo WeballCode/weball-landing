@@ -1,5 +1,4 @@
 import { clubes, fecha1, grupoA, grupoB } from '../tareas.js'
-import { iconos } from './Panel.jsx'
 
 // El panel de Weball dentro de la notebook de la portada, copiado del panel real (pantallas de un torneo).
 // Se dibuja a 1280 × 800. `slug` dice qué tarea se está mostrando y `d` cuántos milisegundos pasaron desde que
@@ -8,6 +7,19 @@ import { iconos } from './Panel.jsx'
 //  - torneo: Configuración › Fixture sin fases → aparecen las fases → Clasificación por fase (grupo A y playoffs).
 //  - programacion: Partidos de la fecha 1 "Pendiente" sin día ni hora → pasan a "Programado".
 //  - resultados: los mismos partidos "Programado" → "Finalizado" con resultado → Clasificación actualizada.
+
+// Íconos de la barra lateral (el 4º, torneos, es el activo)
+const iconos = [
+  'M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z', // inicio
+  'M4 20c0-3 3-5 6-5s6 2 6 5M10 12a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM17 11h4M19 9v4', // fichajes
+  'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z', // clubes
+  'M7 4h10v4a5 5 0 0 1-10 0zM5 5H3v2a3 3 0 0 0 3 3M19 5h2v2a3 3 0 0 1-3 3M12 13v4M8 21h8M9 17h6', // torneos
+  'M4 6h16v14H4zM4 10h16M9 3v4M15 3v4', // programación
+  'M5 12a7 7 0 1 0 14 0 7 7 0 0 0-14 0zM12 8v4l3 2', // partidos
+  'M4 20l6-6M14 4l6 6-8 8-6-6z', // tribunal
+  'M12 3l1.8 4.6L18 9l-4.2 1.4L12 15l-1.8-4.6L6 9l4.2-1.4zM18 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z', // IA
+  'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18', // web
+]
 
 // Momentos (en ms desde que la IA terminó) en que se cambia de pantalla
 export const CAMBIOS = { torneoTabla: 3500, torneoPlayoffs: 6500, resultadosTabla: 3800 }

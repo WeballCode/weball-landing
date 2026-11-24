@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const links = [
-  { href: '#tareas', label: 'Qué le pedís' },
+  { href: '#toda-tu-liga', label: 'Qué le pedís' },
   { href: '#como-funciona', label: 'Cómo funciona' },
   { href: '#ahorro', label: 'Cuánto ahorrás' },
   { href: '#ligas', label: 'Ligas' },

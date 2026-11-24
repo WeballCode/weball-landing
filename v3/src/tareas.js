@@ -1,6 +1,5 @@
-// Las 4 tareas que la liga le pide a su IA. De acá salen:
-//  - el chat del celular y la pantalla del panel en la portada (Showcase.jsx),
-//  - las tarjetas de "Armá tu liga en 4 pedidos" (Tareas.jsx).
+// Las 4 tareas que la liga le pide a su IA. De acá salen el chat del celular de la portada (Showcase.jsx),
+// la barra que escribe sola (Escribis.jsx), las tarjetas de "Toda tu liga" (Conversacion.jsx) y "Ahorrás tiempo" (Ahorro.jsx).
 // Los clubes son reales (juegan en ligas con Weball, escudos en public/clubes/); los resultados y horarios son de ejemplo.
 
 export const clubes = {
