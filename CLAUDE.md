@@ -71,5 +71,5 @@ código (`v2/src/`), sus páginas (`v2/*.html`) y sus imágenes (`v2/public/`).
 
 ## Versión 3 (carpeta `v3/`)
 
-Landing nueva **"Organizá tu liga con tu IA favorita"**, publicada en **`/v3/`**. Mismo esquema que la V2:
+Landing **"Organizá tu liga con tu IA favorita"**. **Es la página principal del sitio** (se compila en la raíz con `vite.principal.config.js`) y además sigue en **`/v3/`**. El `index.html` / `src/App.jsx` de la raíz es la landing anterior y ya no se publica; las páginas aparte (soluciones, precios, inversores) siguen igual. Si piden cambios en "la página principal", es la V3. Mismo esquema que la V2:
 si piden cambios en "la landing de IA", "la V3" o `/v3/`, trabajá sólo dentro de `v3/` (ver `v3/CLAUDE.md`).

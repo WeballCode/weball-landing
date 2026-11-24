@@ -7,11 +7,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   base: './',
   plugins: [react(), tailwindcss()],
-  // Además de la principal, el sitio tiene páginas aparte: cada una es un .html en la raíz
+  // La principal ahora es la landing de IA (v3/, ver vite.principal.config.js). Acá se compilan
+  // las páginas aparte: cada una es un .html en la raíz. index.html (landing anterior) ya no se publica.
   build: {
     rollupOptions: {
       input: {
-        main: 'index.html',
         soluciones: 'soluciones.html',
         precios: 'precios.html',
         inversores: 'inversores.html',

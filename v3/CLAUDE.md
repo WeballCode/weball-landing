@@ -1,4 +1,4 @@
-# Weball — Landing V3 (ruta /v3/)
+# Weball — Landing V3 (página principal del sitio, y también en /v3/)
 
 Landing de **"Organizá tu liga con tu IA favorita"**: Weball conectado a la IA de la liga para
 1) inscribir equipos y fichar jugadores, 2) armar torneos y fixtures, 3) programar partidos y
