@@ -257,7 +257,7 @@ const estados = {
 }
 
 function Partidos({ estadoFila }) {
-  const cols = 'grid-cols-[150px_1fr_60px_120px_150px]'
+  const cols = 'grid-cols-[110px_1fr_36px_130px_100px_90px]'
   return (
     <>
       <Opciones items={['Grupo A', 'Grupo B', 'Playoffs']} activo="Grupo A" />
@@ -268,7 +268,7 @@ function Partidos({ estadoFila }) {
           <span className="text-[12px]" style={{ color: GRIS }}>Grupo A · 5 partidos</span>
         </div>
         <div className={`grid ${cols} border-y px-5 py-2.5 text-[12px] font-bold`} style={{ borderColor: LINEA, color: TINTA }}>
-          <span>Partido</span><span /><span /><span>Categoría</span><span>Sede</span>
+          <span>Estado</span><span>Partido</span><span /><span>Día y hora</span><span>Sede</span><span>Categoría</span>
         </div>
         {fecha1.map((m, i) => {
           const estado = estadoFila(i)
@@ -279,7 +279,6 @@ function Partidos({ estadoFila }) {
             <div key={`${m.a}-${estado}`} className={`grid ${cols} items-center border-b px-5 ${estado !== 'Pendiente' ? 'fila-cambia' : ''}`} style={{ height: 64, borderColor: LINEA, color: TINTA }}>
               <span>
                 <span className="inline-block rounded px-2.5 py-1 text-[11px] font-bold" style={{ background: e.fondo, color: e.texto }}>{estado}</span>
-                <span className="mt-1 block text-[11px]" style={{ color: GRIS }}>{conDia ? `Sáb 14/03 · ${m.hora}` : 'Sin día ni hora'}</span>
               </span>
               <span className="flex flex-col gap-1 text-[13px] font-semibold">
                 <span className="flex items-center gap-2"><Escudo id={m.a} size={20} />{clubes[m.a].nombre}</span>
@@ -289,8 +288,9 @@ function Partidos({ estadoFila }) {
                 <span>{fin ? m.ga : '–'}</span>
                 <span>{fin ? m.gb : '–'}</span>
               </span>
+              <span className="text-[13px]" style={{ color: conDia ? TINTA : GRIS }}>{conDia ? `Sáb 14/03 · ${m.hora}` : 'Sin día ni hora'}</span>
+              <span className="text-[13px]" style={{ color: conDia ? TINTA : GRIS }}>{conDia ? m.cancha : 'Sin sede'}</span>
               <span className="text-[13px]">Primera</span>
-              <span className="text-[13px]" style={{ color: conDia ? TINTA : GRIS }}>{conDia ? m.cancha : '—'}</span>
             </div>
           )
         })}
@@ -368,7 +368,8 @@ export default function PanelVivo({ slug, d }) {
           <span className="grid h-8 w-8 place-items-center rounded-full bg-[#dcedfb] text-[13px] font-bold" style={{ color: AZUL }}>J</span>
         </div>
 
-        <div className="flex-1 overflow-hidden px-5 pt-3">
+        {/* Contenido en una columna más angosta: en la portada el celular tapa la parte derecha del panel */}
+        <div className="w-full max-w-[930px] flex-1 overflow-hidden px-5 pt-3">
           <p className="text-[12px]" style={{ color: '#5b6275' }}>Torneo Apertura / 2027 / Masculino / Primera</p>
 
           {/* Encabezado del torneo con sus pestañas */}
