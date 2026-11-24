@@ -19,17 +19,13 @@ export const agendaLink = AGENDA_URL || whatsappLink('Hola Weball, quiero agenda
 // "Contactar": WhatsApp con un saludo ya escrito
 export const contactoLink = whatsappLink('Hola Weball, quiero hacer una consulta.')
 
-// Abre la agenda de Calendly en una ventana encima de la web (sin salir de la página).
-// El código de Calendly se descarga recién la primera vez que alguien toca el botón.
-// Si no carga (sin internet, bloqueador), el link sigue funcionando y abre Calendly en otra pestaña.
+// Agenda: todo pasa en nuestra ventana (AgendaModal.jsx), con pasos como lazo.us:
+// 1) tus datos, 2) Calendly adentro de la ventana con esos datos ya cargados, 3) confirmación.
+// El código de Calendly se descarga recién cuando alguien abre la ventana.
 let calendly
-function cargarCalendly() {
+export function cargarCalendly() {
   if (!calendly) {
     calendly = new Promise((ok, error) => {
-      const css = document.createElement('link')
-      css.rel = 'stylesheet'
-      css.href = 'https://assets.calendly.com/assets/external/widget.css'
-      document.head.appendChild(css)
       const js = document.createElement('script')
       js.src = 'https://assets.calendly.com/assets/external/widget.js'
       js.async = true
@@ -41,19 +37,20 @@ function cargarCalendly() {
   return calendly
 }
 
-// "Probar con mi liga": primero abre nuestra ventana para dejar los datos (AgendaModal.jsx), como hace lazo.us
+// Los botones "Probar con mi liga" abren la ventana (si no hay agenda configurada, siguen al WhatsApp)
 export function abrirAgenda(e) {
   if (!AGENDA_URL) return
   e.preventDefault()
   window.dispatchEvent(new Event('abrir-agenda'))
 }
 
-// Después de completar los datos: abre Calendly encima de la web, con nombre y email ya cargados
-export function abrirCalendly({ nombre, apellido, email, liga }) {
-  // Los datos van en el link, que es como Calendly los precarga.
-  // a1 = primera pregunta extra del evento en Calendly (si la creás, ej. "¿Cómo se llama tu liga?", llega completa)
+// Link de Calendly con los datos precargados.
+// a1 = primera pregunta extra del evento en Calendly (si la creás, ej. "¿Cómo se llama tu liga?", llega completa)
+export function urlCalendly({ nombre, apellido, email, liga }) {
   const datos = new URLSearchParams({
     hide_gdpr_banner: '1',
+    hide_landing_page_details: '1',
+    hide_event_type_details: '1',
     primary_color: '3fb6ff',
     name: `${nombre} ${apellido}`.trim(),
     first_name: nombre,
@@ -61,8 +58,5 @@ export function abrirCalendly({ nombre, apellido, email, liga }) {
     email,
   })
   if (liga) datos.set('a1', liga)
-  const url = `${AGENDA_URL}?${datos}`
-  cargarCalendly()
-    .then((Calendly) => Calendly.initPopupWidget({ url }))
-    .catch(() => window.open(url, '_blank', 'noopener'))
+  return `${AGENDA_URL}?${datos}`
 }
