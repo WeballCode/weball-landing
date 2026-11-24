@@ -6,6 +6,7 @@ const links = [
   { href: '#como-funciona', label: 'Cómo funciona' },
   { href: '#ahorro', label: 'Cuánto ahorrás' },
   { href: '#ligas', label: 'Ligas' },
+  { href: '#comunidad', label: 'Comunidad' },
   { href: '#preguntas', label: 'Preguntas' },
 ]
 

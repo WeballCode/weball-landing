@@ -9,8 +9,8 @@ export function whatsappLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
 }
 
-// Comunidad We Are Weball (Weball Scores): página con todos los partidos
-export const COMMUNITY_URL = 'https://we-are-weball.com/partidos'
+// Comunidad: We Are Weball (Weball Scores), con los partidos, resultados y tablas de todas las ligas
+export const COMUNIDAD_URL = 'https://we-are-weball.com'
 
 // Agenda para "Probar con mi liga": link de Calendly (cuenta de Julián). Para cambiarla, pegá otro link acá
 // (Calendly o Google Calendar). Si queda vacío, el botón abre WhatsApp con un mensaje para coordinar la prueba.

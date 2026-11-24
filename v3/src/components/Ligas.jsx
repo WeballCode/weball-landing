@@ -1,4 +1,3 @@
-import { COMMUNITY_URL } from '../links.js'
 import { escudos } from '../tareas.js'
 import { CountUp, Reveal } from './motion.jsx'
 import { Lead, Section, Title } from './ui.jsx'
@@ -54,23 +53,6 @@ export default function Ligas() {
           <Cinta oculta />
         </div>
       </div>
-
-      {/* Comunidad: We Are Weball, donde se ve la actividad de todas las ligas */}
-      <Reveal className="mx-auto mt-20 max-w-4xl rounded-[1.75rem] bg-marino-claro p-8 text-center sm:p-12">
-        <p className="texto-ia text-sm font-semibold tracking-wide uppercase">We Are Weball</p>
-        <h3 className="mt-3 text-3xl font-bold tracking-tight text-balance sm:text-4xl">Una comunidad que juega todas las semanas.</h3>
-        <p className="mx-auto mt-3 max-w-2xl text-[1.1rem] leading-relaxed text-bruma text-pretty">
-          Jugadores, clubes y familias siguen los partidos, los resultados y las tablas de todas las ligas en un solo lugar.
-        </p>
-        <a
-          href={COMMUNITY_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-7 inline-flex items-center justify-center rounded-full bg-celeste px-6 py-3 text-[1.05rem] font-semibold text-marino transition hover:bg-celeste-claro"
-        >
-          Mirá la actividad en We Are Weball
-        </a>
-      </Reveal>
     </Section>
   )
 }
