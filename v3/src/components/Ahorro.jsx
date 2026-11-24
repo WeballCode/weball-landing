@@ -62,11 +62,11 @@ export default function Ahorro() {
         <div className="flex flex-col justify-center gap-8 bg-white p-8 sm:p-10 lg:m-2 lg:rounded-[1.4rem]">
           <div>
             <p className="text-sm font-medium text-gris">Horas que vuelven a tu equipo, por año</p>
-            <p className="mt-1 text-6xl font-bold tracking-tight tabular-nums">{fmt(recuperadas)}</p>
+            <p className="mt-1 text-[2.6rem] leading-tight font-bold tracking-tight tabular-nums sm:text-6xl">{fmt(recuperadas)}</p>
           </div>
           <div>
             <p className="text-sm font-medium text-gris">Ahorro por año</p>
-            <p className="texto-ia mt-1 text-6xl font-bold tracking-tight tabular-nums">USD {fmt(plata)}</p>
+            <p className="texto-ia mt-1 text-[2.6rem] leading-tight font-bold tracking-tight tabular-nums sm:text-6xl">USD {fmt(plata)}</p>
           </div>
           <p className="text-xs text-gris-claro">Estimación con tus números, sobre {fmt(horasAnio)} horas de gestión al año.</p>
         </div>
