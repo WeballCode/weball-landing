@@ -50,6 +50,9 @@ export default function Hero() {
             con <PalabraQueCambia />
           </Reveal>
         </h1>
+        <Reveal as="p" delay={260} className="mt-3 text-[1.6rem] leading-tight font-bold tracking-[-0.02em] sm:text-[2.2rem]">
+          O con tu IA favorita.
+        </Reveal>
 
         <Reveal as="p" delay={320} className="mx-auto mt-6 max-w-2xl text-[1.2rem] leading-relaxed font-medium text-gris text-pretty sm:text-[1.4rem]">
           Inscripciones. Fixtures. Programaciones de partidos. Carga de resultados. Pedile todo a tu IA y Weball lo hace.

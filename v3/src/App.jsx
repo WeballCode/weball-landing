@@ -3,6 +3,7 @@ import Hero from './components/Hero.jsx'
 import FuncionaCon from './components/FuncionaCon.jsx'
 import Escribis from './components/Escribis.jsx'
 import Tareas from './components/Tareas.jsx'
+import Conversacion from './components/Conversacion.jsx'
 import ComoFunciona from './components/ComoFunciona.jsx'
 import Ahorro from './components/Ahorro.jsx'
 import Ligas from './components/Ligas.jsx'
@@ -23,6 +24,7 @@ export default function App() {
         <FuncionaCon />
         <Escribis />
         <Tareas />
+        <Conversacion />
         <ComoFunciona />
         <Ahorro />
         <Ligas />

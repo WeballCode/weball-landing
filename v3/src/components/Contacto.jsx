@@ -16,7 +16,7 @@ export default function Contacto() {
           Menos horas de gestión. <span className="texto-ia">Más liga.</span>
         </Reveal>
         <Reveal as="p" delay={100} className="mx-auto mt-6 max-w-2xl text-[1.2rem] leading-relaxed font-medium text-gris sm:text-[1.35rem]">
-          Te mostramos tu liga funcionando con tu IA, con tus equipos y tu formato.
+          Weball funciona con ChatGPT, Claude, Gemini o la IA que ya usás. Te mostramos tu liga funcionando, con tus equipos y tu formato.
         </Reveal>
 
         <Reveal delay={200} className="mt-10 flex flex-col items-center gap-3">
