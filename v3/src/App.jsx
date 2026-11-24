@@ -10,6 +10,7 @@ import Faq from './components/Faq.jsx'
 import Contacto from './components/Contacto.jsx'
 import Footer from './components/Footer.jsx'
 import WhatsAppButton from './components/WhatsAppButton.jsx'
+import AgendaModal from './components/AgendaModal.jsx'
 
 // Landing V3: "Organizá tu liga con tu IA favorita", con estética clara inspirada en Apple.
 // Portada (notebook con el panel + celular con la IA) → con qué IA funciona → "Escribís. Weball lo hace." →
@@ -31,6 +32,7 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppButton />
+      <AgendaModal />
     </>
   )
 }

@@ -41,10 +41,28 @@ function cargarCalendly() {
   return calendly
 }
 
+// "Probar con mi liga": primero abre nuestra ventana para dejar los datos (AgendaModal.jsx), como hace lazo.us
 export function abrirAgenda(e) {
   if (!AGENDA_URL) return
   e.preventDefault()
+  window.dispatchEvent(new Event('abrir-agenda'))
+}
+
+// Después de completar los datos: abre Calendly encima de la web, con nombre y email ya cargados
+export function abrirCalendly({ nombre, apellido, email, liga }) {
+  // Los datos van en el link, que es como Calendly los precarga.
+  // a1 = primera pregunta extra del evento en Calendly (si la creás, ej. "¿Cómo se llama tu liga?", llega completa)
+  const datos = new URLSearchParams({
+    hide_gdpr_banner: '1',
+    primary_color: '3fb6ff',
+    name: `${nombre} ${apellido}`.trim(),
+    first_name: nombre,
+    last_name: apellido,
+    email,
+  })
+  if (liga) datos.set('a1', liga)
+  const url = `${AGENDA_URL}?${datos}`
   cargarCalendly()
-    .then((Calendly) => Calendly.initPopupWidget({ url: `${AGENDA_URL}?hide_gdpr_banner=1&primary_color=3fb6ff` }))
-    .catch(() => window.open(AGENDA_URL, '_blank', 'noopener'))
+    .then((Calendly) => Calendly.initPopupWidget({ url }))
+    .catch(() => window.open(url, '_blank', 'noopener'))
 }
