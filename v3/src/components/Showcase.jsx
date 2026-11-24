@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react'
 import { tareas } from '../tareas.js'
 import { Celular, Notebook } from './Dispositivos.jsx'
-import Panel from './Panel.jsx'
+import PanelVivo, { CAMBIOS } from './PanelVivo.jsx'
 import { prefersReducedMotion, useInView } from './motion.jsx'
 
 // La escena de la portada: en el celular le pedís algo a tu IA; en la notebook, el panel de Weball se completa solo.
 // Pasa por las 4 tareas en loop; con los botones de abajo se elige una.
 
-const DURACION = 12500
 const T = { enviado: 2100, pensando: 2300, confirma: 3100, si: 4300, paso: 4900, pasoCada: 700, respuesta: 7300 }
 const LISTO = T.paso + 3 * T.pasoCada
+// Cuánto dura cada escena: las de fixture y resultados siguen un rato más porque después muestran la clasificación
+const DURACION = {
+  inscripcion: LISTO + 4500,
+  torneo: LISTO + CAMBIOS.torneoPlayoffs + 4000,
+  programacion: LISTO + 4500,
+  resultados: LISTO + CAMBIOS.resultadosTabla + 4500,
+}
 
 function Burbuja({ yo, children }) {
   return (
@@ -113,7 +119,7 @@ export default function Showcase() {
     const start = performance.now() - t
     const id = setInterval(() => {
       const now = performance.now() - start
-      if (now >= DURACION) {
+      if (now >= DURACION[tareas[escena].slug]) {
         clearInterval(id)
         setT(0)
         setEscena((e) => (e + 1) % tareas.length)
@@ -137,7 +143,7 @@ export default function Showcase() {
       <div className="relative mx-auto max-w-5xl">
         {/* Notebook con el panel real */}
         <Notebook className="mx-[4%] sm:mr-[18%] sm:ml-[3%]">
-          <Panel key={k} panel={tarea.panel} listo={t >= LISTO} />
+          <PanelVivo key={k} slug={tarea.slug} d={t - LISTO} />
         </Notebook>
 
         {/* Celular con la IA, adelante a la derecha */}

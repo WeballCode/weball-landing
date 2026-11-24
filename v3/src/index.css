@@ -97,6 +97,15 @@ body {
   animation: fila-nueva 1.6s ease both;
 }
 
+/* Fila que cambia de estado (pendiente → programado → finalizado): se resalta un momento */
+@keyframes fila-cambia {
+  0% { background: rgba(63, 182, 255, 0.22); }
+  100% { background: transparent; }
+}
+.fila-cambia {
+  animation: fila-cambia 1.4s ease both;
+}
+
 @keyframes caret {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
@@ -150,5 +159,5 @@ input[type="range"] {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .msg-in, .fila-nueva, .caret, .spin, .dot, .borde-ia, .marquee { animation: none; }
+  .msg-in, .fila-nueva, .fila-cambia, .caret, .spin, .dot, .borde-ia, .marquee { animation: none; }
 }
